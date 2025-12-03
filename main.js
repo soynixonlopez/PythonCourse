@@ -432,74 +432,66 @@ function toggleCodingHint(challengeId) {
 
 function runCodingChallenge(challengeId) {
     const textarea = document.getElementById(`${challengeId}-input`);
-    const code = textarea.value.toLowerCase();
+    const code = textarea.value; // Keep original case for indentation check
     const resultDiv = document.getElementById(`result-${challengeId}`);
     
     resultDiv.classList.add('show');
     resultDiv.classList.remove('success', 'error', 'partial');
     
-    let isCorrect = false;
+    let result;
     let feedback = '';
     
     switch(challengeId) {
         case 'code1':
-            isCorrect = checkCode1(code);
-            feedback = isCorrect ? 
-                `🎉 <strong>Excellent!</strong> Your code correctly identifies positive, negative, and zero numbers!<br><br>
+            result = checkCode1(code);
+            if (result.isCorrect) {
+                feedback = `🎉 <strong>Excellent!</strong> Your code correctly identifies positive, negative, and zero numbers!<br><br>
                 <strong>Key concepts used:</strong>
                 <ul style="margin-top: 0.5rem; margin-left: 1rem;">
                     <li>Comparison operators (<code>&gt;</code>, <code>&lt;</code>, <code>==</code>)</li>
                     <li>if-elif-else chain</li>
-                </ul>` :
-                `❌ <strong>Not quite!</strong> Make sure your code:<br>
-                <ul style="margin-top: 0.5rem; margin-left: 1rem;">
-                    <li>Prints <code>"Positive"</code>, <code>"Negative"</code>, and <code>"Zero"</code></li>
-                    <li>Uses <code>if</code>, <code>elif</code>/<code>else</code> structure</li>
-                    <li>Compares the number with <code>0</code></li>
-                </ul>
-                <br><em>💡 There are multiple valid solutions! You can check conditions in any order.</em>`;
+                    <li>Proper indentation (4 spaces)</li>
+                    <li>Colons after conditions</li>
+                </ul>`;
+            } else {
+                feedback = buildErrorFeedback(result, 'code1');
+            }
             break;
             
         case 'code2':
-            isCorrect = checkCode2(code);
-            feedback = isCorrect ?
-                `🎉 <strong>Great job!</strong> Your age category classifier works correctly!<br><br>
+            result = checkCode2(code);
+            if (result.isCorrect) {
+                feedback = `🎉 <strong>Great job!</strong> Your age category classifier works correctly!<br><br>
                 <strong>Key concepts used:</strong>
                 <ul style="margin-top: 0.5rem; margin-left: 1rem;">
                     <li>Multiple elif conditions</li>
                     <li>Range checking with <code>&lt;=</code> and <code>&gt;=</code></li>
-                </ul>` :
-                `❌ <strong>Check your logic!</strong> Make sure your code:<br>
-                <ul style="margin-top: 0.5rem; margin-left: 1rem;">
-                    <li>Prints all four categories: <code>"Child"</code>, <code>"Teenager"</code>, <code>"Adult"</code>, <code>"Senior"</code></li>
-                    <li>Uses <code>if</code> and <code>elif</code> structure</li>
-                    <li>Checks the age boundaries (12/13, 17/18, 64/65)</li>
-                </ul>
-                <br><em>💡 You can check ages in different orders - just make sure your ranges don't overlap!</em>`;
+                    <li>Proper indentation (4 spaces)</li>
+                    <li>Colons after conditions</li>
+                </ul>`;
+            } else {
+                feedback = buildErrorFeedback(result, 'code2');
+            }
             break;
             
         case 'code3':
-            isCorrect = checkCode3(code);
-            feedback = isCorrect ?
-                `🎉 <strong>Excellent work!</strong> Your nested login system is correct!<br><br>
+            result = checkCode3(code);
+            if (result.isCorrect) {
+                feedback = `🎉 <strong>Excellent work!</strong> Your nested login system is correct!<br><br>
                 <strong>Key concepts used:</strong>
                 <ul style="margin-top: 0.5rem; margin-left: 1rem;">
                     <li>Nested if statements</li>
                     <li>String comparison with <code>==</code></li>
-                    <li>Multiple levels of validation</li>
-                </ul>` :
-                `❌ <strong>Almost there!</strong> Make sure your code:<br>
-                <ul style="margin-top: 0.5rem; margin-left: 1rem;">
-                    <li>Checks <code>username</code> against <code>"admin"</code></li>
-                    <li>Checks <code>password</code> against <code>"1234"</code></li>
-                    <li>Uses <strong>nested</strong> if statements (one inside another)</li>
-                    <li>Has different messages for success and failure</li>
-                </ul>
-                <br><em>💡 The password check should be inside the username check!</em>`;
+                    <li>Proper indentation for nested blocks</li>
+                    <li>Colons after conditions</li>
+                </ul>`;
+            } else {
+                feedback = buildErrorFeedback(result, 'code3');
+            }
             break;
     }
     
-    if (isCorrect) {
+    if (result && result.isCorrect) {
         resultDiv.classList.add('success');
         state.coding.completed.add(challengeId);
         updateProgress('coding');
@@ -510,87 +502,245 @@ function runCodingChallenge(challengeId) {
     resultDiv.innerHTML = feedback;
 }
 
-function checkCode1(code) {
-    // Flexible check - multiple valid solutions exist!
-    // The code must print "Positive", "Negative", and "Zero" based on conditions
+// Build specific error feedback based on what's missing
+function buildErrorFeedback(result, challengeId) {
+    let errors = [];
+    let syntaxErrors = [];
     
-    // Check that all three outputs exist
-    const hasPositive = code.includes('positive');
-    const hasNegative = code.includes('negative');
-    const hasZero = code.includes('zero');
+    // Check for Python syntax errors first (most important!)
+    if (!result.hasColons) {
+        syntaxErrors.push(`<li>⚠️ <strong>Missing colons!</strong> Every <code>if</code>, <code>elif</code>, and <code>else</code> must end with <code>:</code></li>`);
+    }
+    if (!result.hasIndentation) {
+        syntaxErrors.push(`<li>⚠️ <strong>Missing indentation!</strong> Code inside <code>if</code>/<code>else</code> blocks must be indented with <strong>4 spaces</strong></li>`);
+    }
+    
+    // Challenge-specific errors
+    if (!result.hasOutputs) {
+        if (challengeId === 'code1') {
+            errors.push(`<li>Print <code>"Positive"</code>, <code>"Negative"</code>, and <code>"Zero"</code></li>`);
+        } else if (challengeId === 'code2') {
+            errors.push(`<li>Print all four categories: <code>"Child"</code>, <code>"Teenager"</code>, <code>"Adult"</code>, <code>"Senior"</code></li>`);
+        } else if (challengeId === 'code3') {
+            errors.push(`<li>Include messages for success and failure cases</li>`);
+        }
+    }
+    
+    if (!result.hasStructure) {
+        if (challengeId === 'code1') {
+            errors.push(`<li>Use <code>if</code>, <code>elif</code>/<code>else</code> structure with comparisons to <code>0</code></li>`);
+        } else if (challengeId === 'code2') {
+            errors.push(`<li>Use <code>if</code> and <code>elif</code> to check age ranges</li>`);
+        } else if (challengeId === 'code3') {
+            errors.push(`<li>Use <strong>nested</strong> if statements - password check inside username check</li>`);
+        }
+    }
+    
+    let html = `❌ <strong>Not quite right!</strong><br><br>`;
+    
+    // Show syntax errors prominently if any
+    if (syntaxErrors.length > 0) {
+        html += `<div style="background: rgba(243, 139, 168, 0.15); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid var(--accent-red);">
+            <strong>🐍 Python Syntax Errors:</strong>
+            <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+                ${syntaxErrors.join('')}
+            </ul>
+        </div>`;
+    }
+    
+    // Show other errors
+    if (errors.length > 0) {
+        html += `<strong>Also check:</strong>
+        <ul style="margin-top: 0.5rem; margin-left: 1rem;">
+            ${errors.join('')}
+        </ul>`;
+    }
+    
+    // Add example of correct syntax
+    html += `<br><div style="background: var(--code-bg); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+        <strong>📝 Remember Python syntax:</strong>
+        <pre style="margin-top: 0.5rem; color: var(--text-secondary);">if condition<span style="color: var(--accent-yellow);">:</span>
+<span style="color: var(--accent-blue);">    </span>print("inside block")  <span style="color: var(--text-muted)"># ← 4 spaces!</span>
+else<span style="color: var(--accent-yellow);">:</span>
+<span style="color: var(--accent-blue);">    </span>print("else block")    <span style="color: var(--text-muted)"># ← 4 spaces!</span></pre>
+    </div>`;
+    
+    return html;
+}
+
+function checkCode1(code) {
+    // Check for proper Python syntax including indentation and colons!
+    const originalCode = code;
+    const codeLower = code.toLowerCase();
+    
+    // Check that all three outputs exist (must be in quotes!)
+    const hasPositive = /["']positive["']/i.test(code);
+    const hasNegative = /["']negative["']/i.test(code);
+    const hasZero = /["']zero["']/i.test(code);
     
     // Check for conditional structure
-    const hasIf = code.includes('if');
-    const hasElifOrElse = code.includes('elif') || code.includes('else');
+    const hasIf = codeLower.includes('if');
+    const hasElifOrElse = codeLower.includes('elif') || codeLower.includes('else');
     
-    // Check for some comparison with 0 (any valid comparison)
-    const hasComparison = code.includes('> 0') || code.includes('>0') || 
-                          code.includes('< 0') || code.includes('<0') ||
-                          code.includes('== 0') || code.includes('==0') ||
-                          code.includes('!= 0') || code.includes('!=0') ||
-                          code.includes('>= 0') || code.includes('>=0') ||
-                          code.includes('<= 0') || code.includes('<=0');
+    // Check for comparison with 0
+    const hasComparison = codeLower.includes('> 0') || codeLower.includes('>0') || 
+                          codeLower.includes('< 0') || codeLower.includes('<0') ||
+                          codeLower.includes('== 0') || codeLower.includes('==0') ||
+                          codeLower.includes('!= 0') || codeLower.includes('!=0');
     
     // Check for print statements
-    const hasPrint = code.includes('print');
+    const hasPrint = codeLower.includes('print');
     
-    // Valid if has all outputs, uses conditionals, and has comparisons
-    return hasPositive && hasNegative && hasZero && hasIf && hasElifOrElse && hasComparison && hasPrint;
+    // IMPORTANT: Check for colons - must have : at end of line with if/elif/else
+    const syntaxCheck = checkPythonSyntax(originalCode);
+    
+    return {
+        isCorrect: hasPositive && hasNegative && hasZero && hasIf && hasElifOrElse && 
+                   hasComparison && hasPrint && syntaxCheck.hasColons && syntaxCheck.hasIndentation,
+        hasColons: syntaxCheck.hasColons,
+        hasIndentation: syntaxCheck.hasIndentation,
+        hasOutputs: hasPositive && hasNegative && hasZero,
+        hasStructure: hasIf && hasElifOrElse && hasComparison
+    };
 }
 
 function checkCode2(code) {
-    // Flexible check for age categories
-    // Multiple valid approaches: checking ranges differently, different order, etc.
+    // Check for proper Python syntax including indentation and colons!
+    const originalCode = code;
+    const codeLower = code.toLowerCase();
     
-    // Check that all four categories are mentioned
-    const hasChild = code.includes('child');
-    const hasTeenager = code.includes('teenager') || code.includes('teen');
-    const hasAdult = code.includes('adult');
-    const hasSenior = code.includes('senior');
+    // Check that all four categories are mentioned (in quotes!)
+    const hasChild = /["']child["']/i.test(code);
+    const hasTeenager = /["']teenager["']/i.test(code) || /["']teen["']/i.test(code);
+    const hasAdult = /["']adult["']/i.test(code);
+    const hasSenior = /["']senior["']/i.test(code);
     
     // Check for conditional structure with multiple branches
-    const hasIf = code.includes('if');
-    const hasElif = code.includes('elif');
+    const hasIf = codeLower.includes('if');
+    const hasElif = codeLower.includes('elif');
     
-    // Check for age-related comparisons (flexible - any age boundary checks)
-    const hasAgeChecks = (code.includes('12') || code.includes('13')) &&
-                         (code.includes('17') || code.includes('18')) &&
-                         (code.includes('64') || code.includes('65'));
+    // Check for age-related comparisons
+    const hasAgeChecks = (codeLower.includes('12') || codeLower.includes('13')) &&
+                         (codeLower.includes('17') || codeLower.includes('18')) &&
+                         (codeLower.includes('64') || codeLower.includes('65'));
     
     // Check for print statements
-    const hasPrint = code.includes('print');
+    const hasPrint = codeLower.includes('print');
     
-    return hasChild && hasTeenager && hasAdult && hasSenior && hasIf && hasElif && hasAgeChecks && hasPrint;
+    // IMPORTANT: Check for colons and indentation
+    const syntaxCheck = checkPythonSyntax(originalCode);
+    
+    return {
+        isCorrect: hasChild && hasTeenager && hasAdult && hasSenior && hasIf && hasElif && 
+                   hasAgeChecks && hasPrint && syntaxCheck.hasColons && syntaxCheck.hasIndentation,
+        hasColons: syntaxCheck.hasColons,
+        hasIndentation: syntaxCheck.hasIndentation,
+        hasOutputs: hasChild && hasTeenager && hasAdult && hasSenior,
+        hasStructure: hasIf && hasElif && hasAgeChecks
+    };
 }
 
 function checkCode3(code) {
-    // Flexible check for nested login structure
-    // The key is: nested ifs checking username then password
+    // Check for proper Python syntax including indentation and colons!
+    const originalCode = code;
+    const codeLower = code.toLowerCase();
     
-    // Check for username validation
-    const hasUsernameCheck = code.includes('username') && code.includes('admin');
+    // Check for username validation (admin must be in quotes)
+    const hasUsernameCheck = codeLower.includes('username') && /["']admin["']/i.test(code);
     
-    // Check for password validation  
-    const hasPasswordCheck = code.includes('password') && code.includes('1234');
+    // Check for password validation (1234 must be in quotes)
+    const hasPasswordCheck = codeLower.includes('password') && /["']1234["']/i.test(code);
     
     // Check for nested structure (at least 2 if statements)
-    const hasNestedIf = (code.match(/if/g) || []).length >= 2;
+    const hasNestedIf = (codeLower.match(/if\s/g) || []).length >= 2;
     
-    // Check for different outcome messages (flexible - just needs to have distinct outputs)
-    const hasSuccessMessage = code.includes('success') || code.includes('welcome') || 
-                              code.includes('login') || code.includes('correct') ||
-                              code.includes('✅') || code.includes('granted');
-    const hasFailMessage = code.includes('wrong') || code.includes('incorrect') || 
-                           code.includes('invalid') || code.includes('fail') ||
-                           code.includes('❌') || code.includes('error') ||
-                           code.includes('not found') || code.includes('denied');
+    // Check for different outcome messages (must be in quotes!)
+    const hasSuccessMessage = /["'][^"']*(?:success|welcome|login|correct|granted)[^"']*["']/i.test(code) ||
+                              code.includes('✅');
+    const hasFailMessage = /["'][^"']*(?:wrong|incorrect|invalid|fail|error|not found|denied)[^"']*["']/i.test(code) ||
+                           code.includes('❌');
     
     // Check for print and else
-    const hasPrint = code.includes('print');
-    const hasElse = code.includes('else');
+    const hasPrint = codeLower.includes('print');
+    const hasElse = codeLower.includes('else');
     
-    return hasUsernameCheck && hasPasswordCheck && hasNestedIf && 
-           hasSuccessMessage && hasFailMessage && hasPrint && hasElse;
+    // IMPORTANT: Check for colons and indentation
+    const syntaxCheck = checkPythonSyntax(originalCode);
+    
+    return {
+        isCorrect: hasUsernameCheck && hasPasswordCheck && hasNestedIf && 
+                   hasSuccessMessage && hasFailMessage && hasPrint && hasElse &&
+                   syntaxCheck.hasColons && syntaxCheck.hasIndentation,
+        hasColons: syntaxCheck.hasColons,
+        hasIndentation: syntaxCheck.hasIndentation,
+        hasOutputs: hasSuccessMessage && hasFailMessage,
+        hasStructure: hasUsernameCheck && hasPasswordCheck && hasNestedIf
+    };
+}
+
+// Helper function to check for proper Python syntax (colons and indentation)
+function checkPythonSyntax(code) {
+    const lines = code.split('\n');
+    let hasColons = true;
+    let hasIndentation = true;
+    let expectIndentNext = false;
+    let foundAnyConditional = false;
+    
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const trimmedLine = line.trim();
+        const trimmedLower = trimmedLine.toLowerCase();
+        
+        // Skip empty lines and comments
+        if (trimmedLine === '' || trimmedLine.startsWith('#')) continue;
+        
+        // Check if previous line was a conditional, this line should be indented
+        if (expectIndentNext) {
+            const leadingSpaces = line.match(/^(\s*)/)[1];
+            // Must have at least 2 spaces/characters of indentation
+            if (leadingSpaces.length < 2) {
+                // Unless this is another conditional statement at same level
+                if (!trimmedLower.startsWith('elif') && !trimmedLower.startsWith('else')) {
+                    hasIndentation = false;
+                }
+            }
+            expectIndentNext = false;
+        }
+        
+        // Check for if/elif/else statements - MUST have colon at end
+        if (trimmedLower.startsWith('if ') || trimmedLower.startsWith('if(')) {
+            foundAnyConditional = true;
+            if (!trimmedLine.endsWith(':')) {
+                hasColons = false;
+            } else {
+                expectIndentNext = true;
+            }
+        }
+        else if (trimmedLower.startsWith('elif ') || trimmedLower.startsWith('elif(')) {
+            if (!trimmedLine.endsWith(':')) {
+                hasColons = false;
+            } else {
+                expectIndentNext = true;
+            }
+        }
+        else if (trimmedLower === 'else' || trimmedLower.startsWith('else:') || trimmedLower.startsWith('else ')) {
+            if (!trimmedLine.includes(':')) {
+                hasColons = false;
+            } else {
+                expectIndentNext = true;
+            }
+        }
+    }
+    
+    // If no conditionals found with colons, fail
+    if (!foundAnyConditional) {
+        hasColons = false;
+    }
+    
+    return {
+        hasColons: hasColons,
+        hasIndentation: hasIndentation
+    };
 }
 
 // ========================================
