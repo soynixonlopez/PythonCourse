@@ -386,6 +386,18 @@
 
         .lesson-card.coming-soon {
             opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        a.lesson-card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a.lesson-card:hover {
+            border-color: var(--accent-green);
+            transform: translateX(8px);
+            box-shadow: 0 10px 30px rgba(74, 222, 128, 0.2);
         }
 
         .lesson-number {
@@ -564,102 +576,102 @@
     <section class="course-preview" id="lessons">
         <div class="section-title">
             <h2>Course Content</h2>
-            <p>20+ lessons from beginner to confident Python programmer</p>
+            <p>20+ lessons from beginner to confident Python programmer • <span style="color: var(--accent-green);">7 Available Now!</span></p>
         </div>
         <div class="lessons-preview">
-            <div class="lesson-card coming-soon">
+            <a href="lessons/introduction.html" class="lesson-card active">
                 <div class="lesson-number">01</div>
                 <div class="lesson-info">
                     <h4>Introduction to Python</h4>
-                    <span>Coming Soon</span>
+                    <span>print(), comments, Hello World</span>
                 </div>
-                <div class="lesson-status">🔒</div>
-            </div>
-            <div class="lesson-card coming-soon">
+                <div class="lesson-status">✅</div>
+            </a>
+            <a href="lessons/variables.html" class="lesson-card active">
                 <div class="lesson-number">02</div>
                 <div class="lesson-info">
                     <h4>Variables & Constants</h4>
-                    <span>Coming Soon</span>
+                    <span>naming, assignment, snake_case</span>
                 </div>
-                <div class="lesson-status">🔒</div>
-            </div>
-            <div class="lesson-card coming-soon">
+                <div class="lesson-status">✅</div>
+            </a>
+            <a href="lessons/datatypes.html" class="lesson-card active">
                 <div class="lesson-number">03</div>
                 <div class="lesson-info">
                     <h4>Data Types</h4>
-                    <span>Coming Soon</span>
+                    <span>str, int, float, bool</span>
                 </div>
-                <div class="lesson-status">🔒</div>
-            </div>
-            <div class="lesson-card coming-soon">
+                <div class="lesson-status">✅</div>
+            </a>
+            <a href="lessons/operators.html" class="lesson-card active">
                 <div class="lesson-number">04</div>
                 <div class="lesson-info">
                     <h4>Operators</h4>
-                    <span>Coming Soon</span>
+                    <span>arithmetic, comparison, logical</span>
                 </div>
-                <div class="lesson-status">🔒</div>
-            </div>
-            <div class="lesson-card coming-soon">
+                <div class="lesson-status">✅</div>
+            </a>
+            <a href="lessons/userinput.html" class="lesson-card active">
                 <div class="lesson-number">05</div>
                 <div class="lesson-info">
                     <h4>User Input</h4>
-                    <span>Coming Soon</span>
+                    <span>input(), type conversion</span>
                 </div>
-                <div class="lesson-status">🔒</div>
-            </div>
-            <div class="lesson-card active">
+                <div class="lesson-status">✅</div>
+            </a>
+            <a href="lessons/syntax-errors.html" class="lesson-card active">
                 <div class="lesson-number">06</div>
+                <div class="lesson-info">
+                    <h4>Common Syntax Errors</h4>
+                    <span>debugging, fixing errors</span>
+                </div>
+                <div class="lesson-status">✅</div>
+            </a>
+            <a href="lessons/conditionals.html" class="lesson-card active">
+                <div class="lesson-number">07</div>
                 <div class="lesson-info">
                     <h4>Conditional Statements</h4>
                     <span>if, elif, else, match</span>
                 </div>
                 <div class="lesson-status">✅</div>
-            </div>
-            <div class="lesson-card coming-soon">
-                <div class="lesson-number">07</div>
-                <div class="lesson-info">
-                    <h4>For Loops</h4>
-                    <span>Coming Soon</span>
-                </div>
-                <div class="lesson-status">🔒</div>
-            </div>
+            </a>
             <div class="lesson-card coming-soon">
                 <div class="lesson-number">08</div>
                 <div class="lesson-info">
-                    <h4>While Loops</h4>
-                    <span>Coming Soon</span>
+                    <h4>For Loops</h4>
+                    <span>🔜 Coming Soon</span>
                 </div>
                 <div class="lesson-status">🔒</div>
             </div>
             <div class="lesson-card coming-soon">
                 <div class="lesson-number">09</div>
                 <div class="lesson-info">
-                    <h4>Strings in Depth</h4>
-                    <span>Coming Soon</span>
+                    <h4>While Loops</h4>
+                    <span>🔜 Coming Soon</span>
                 </div>
                 <div class="lesson-status">🔒</div>
             </div>
             <div class="lesson-card coming-soon">
                 <div class="lesson-number">10</div>
                 <div class="lesson-info">
-                    <h4>Lists</h4>
-                    <span>Coming Soon</span>
+                    <h4>Strings in Depth</h4>
+                    <span>🔜 Coming Soon</span>
                 </div>
                 <div class="lesson-status">🔒</div>
             </div>
             <div class="lesson-card coming-soon">
                 <div class="lesson-number">11</div>
                 <div class="lesson-info">
-                    <h4>Dictionaries</h4>
-                    <span>Coming Soon</span>
+                    <h4>Lists</h4>
+                    <span>🔜 Coming Soon</span>
                 </div>
                 <div class="lesson-status">🔒</div>
             </div>
             <div class="lesson-card coming-soon">
                 <div class="lesson-number">12</div>
                 <div class="lesson-info">
-                    <h4>Functions</h4>
-                    <span>Coming Soon</span>
+                    <h4>Dictionaries</h4>
+                    <span>🔜 Coming Soon</span>
                 </div>
                 <div class="lesson-status">🔒</div>
             </div>
