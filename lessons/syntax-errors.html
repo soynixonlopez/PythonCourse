@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Syntax Errors - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 06</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Common Syntax Errors</h1>
+        <p class="subtitle">Learn to debug like a pro! 🐛</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Reading Errors</button>
+        <button class="tab-btn" data-tab="syntax">❌ SyntaxError</button>
+        <button class="tab-btn" data-tab="indent">📐 IndentationError</button>
+        <button class="tab-btn" data-tab="name">🔤 NameError</button>
+        <button class="tab-btn" data-tab="type">🔢 TypeError</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- READING ERRORS -->
+        <section id="intro" class="tab-content active">
+            <div class="card">
+                <h2>📚 How to Read Error Messages</h2>
+                <div class="markdown-content">
+                    <p>Don't panic when you see an error! Python is actually <strong>trying to help you</strong> by telling you what went wrong.</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Error messages are like a GPS saying "You missed the turn! Go back 100 meters and turn left." They tell you <strong>where</strong> the problem is and <strong>what</strong> went wrong.</p>
+                    </div>
+
+                    <h3>🔍 Anatomy of an Error</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Error Message</span>
+                        </div>
+                        <pre><code style="color: var(--accent-red);">Traceback (most recent call last):
+  File "program.py", line 3, in &lt;module&gt;
+    print(Hello)
+          ^^^^^
+NameError: name 'Hello' is not defined</code></pre>
+                    </div>
+
+                    <h3>📋 Understanding the Parts</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Part</th><th>What It Tells You</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>Traceback</code></td><td>Start of error report</td></tr>
+                            <tr><td><code>File "program.py"</code></td><td>Which file has the error</td></tr>
+                            <tr><td><code>line 3</code></td><td>Which line number to check</td></tr>
+                            <tr><td><code>print(Hello)</code></td><td>The problematic code</td></tr>
+                            <tr><td><code>^^^^^</code></td><td>Points to the exact problem</td></tr>
+                            <tr><td><code>NameError</code></td><td>Type of error</td></tr>
+                            <tr><td><code>name 'Hello' is not defined</code></td><td>Explanation of what's wrong</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h3>💡 Pro Tips for Debugging</h3>
+                        <ul>
+                            <li><strong>Read from bottom to top</strong> - The error type and description are at the bottom</li>
+                            <li><strong>Check the line number</strong> - Go to that line in your code</li>
+                            <li><strong>Google the error</strong> - Copy the error message and search for solutions</li>
+                            <li><strong>Check the line BEFORE</strong> - Sometimes the error is on the previous line!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYNTAX ERRORS -->
+        <section id="syntax" class="tab-content">
+            <div class="card">
+                <h2>❌ SyntaxError</h2>
+                <div class="markdown-content">
+                    <p>A <strong>SyntaxError</strong> means Python can't understand your code because you broke the "grammar rules."</p>
+                    
+                    <h3>🔴 Common Causes</h3>
+
+                    <h4>1. Missing Quotes</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">print(Hello World)</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>print("Hello World")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>2. Missing Parentheses</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">print "Hello"</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>print("Hello")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>3. Missing Colon (:)</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">if age >= 18
+    print("Adult")</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>if age >= 18:
+    print("Adult")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>4. Mismatched Quotes</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">name = "Alex'
+name = 'Hello"</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>name = "Alex"
+name = 'Hello'</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>5. Using = Instead of ==</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">if x = 5:  # Assignment!
+    print("x is 5")</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>if x == 5:  # Comparison!
+    print("x is 5")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INDENTATION ERRORS -->
+        <section id="indent" class="tab-content">
+            <div class="card">
+                <h2>📐 IndentationError</h2>
+                <div class="markdown-content">
+                    <p>Python uses <strong>indentation</strong> (spaces at the beginning of lines) to group code. If it's wrong, you get an IndentationError!</p>
+                    
+                    <div class="warning-box">
+                        <h3>⚠️ The Rule</h3>
+                        <p>After <code>if</code>, <code>for</code>, <code>while</code>, <code>def</code>, etc., the next lines must be <strong>indented</strong> (usually 4 spaces).</p>
+                    </div>
+
+                    <h3>🔴 Common Causes</h3>
+
+                    <h4>1. No Indentation After Colon</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">if True:
+print("Hello")  # Not indented!</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>if True:
+    print("Hello")  # 4 spaces</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>2. Inconsistent Indentation</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">if True:
+    print("Line 1")
+      print("Line 2")  # Too many spaces!</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>if True:
+    print("Line 1")
+    print("Line 2")  # Same indent</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>3. Mixing Tabs and Spaces</h4>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>The Problem</span>
+                        </div>
+                        <pre><code style="color: var(--accent-red);"># Sometimes code LOOKS right but uses different
+# invisible characters (tabs vs spaces)
+if True:
+→   print("uses tab")
+    print("uses spaces")  # Inconsistent!</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 How to Fix</h3>
+                        <ul>
+                            <li>Configure your editor to use <strong>4 spaces</strong> for indentation</li>
+                            <li>Enable "Show whitespace" in your editor</li>
+                            <li>Use the "Convert indentation to spaces" feature</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAME ERROR -->
+        <section id="name" class="tab-content">
+            <div class="card">
+                <h2>🔤 NameError</h2>
+                <div class="markdown-content">
+                    <p>A <strong>NameError</strong> means Python doesn't recognize a name you used. Usually it's a typo or undefined variable!</p>
+                    
+                    <h3>🔴 Common Causes</h3>
+
+                    <h4>1. Typos in Variable Names</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">username = "Alex"
+print(usernme)  # Typo!</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>username = "Alex"
+print(username)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>2. Using Before Defining</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">print(score)  # Used before defined!
+score = 100</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>score = 100   # Define first
+print(score)  # Then use</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>3. Forgetting Quotes on Strings</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">print(Hello)  # Python thinks Hello
+              # is a variable!</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>print("Hello")  # Quotes make it text</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>4. Case Sensitivity</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">Name = "Alex"
+print(name)  # Different case!</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>name = "Alex"
+print(name)  # Same case</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TYPE ERROR -->
+        <section id="type" class="tab-content">
+            <div class="card">
+                <h2>🔢 TypeError</h2>
+                <div class="markdown-content">
+                    <p>A <strong>TypeError</strong> means you're trying to do something with the wrong type of data!</p>
+                    
+                    <h3>🔴 Common Causes</h3>
+
+                    <h4>1. Adding String + Number</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">age = "15"
+next_year = age + 1  # Can't add!</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>age = int("15")  # Convert first
+next_year = age + 1</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>2. Concatenating Without str()</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">score = 100
+print("Score: " + score)</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>score = 100
+print("Score: " + str(score))
+# Or use f-string:
+print(f"Score: {score}")</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>3. Calling Non-Callable</h4>
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>❌ Wrong</h4>
+                                <div class="code-block small">
+                                    <pre><code style="color: var(--accent-red);">message = "Hello"
+message()  # String is not a function!</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>✅ Correct</h4>
+                                <div class="code-block small">
+                                    <pre><code>message = "Hello"
+print(message)  # Just use it directly</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Debug Challenge!</h2>
+                <p class="practice-intro">Find and identify the errors in these code snippets!</p>
+
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="quiz-section">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Quiz</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding-section">
+                        <span class="tab-icon">🐛</span>
+                        <span class="tab-label">Fix the Code</span>
+                    </button>
+                </div>
+
+                <!-- QUIZ SECTION -->
+                <div id="quiz-section" class="practice-content active">
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                    <div class="code-display">
+                        <pre><code style="color: var(--accent-red);">print("Hello World"</code></pre>
+                    </div>
+                    <p class="question-text">What's the error?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="err-q1" value="a"><span class="option-text">Missing closing parenthesis )</span></label>
+                        <label class="option-label"><input type="radio" name="err-q1" value="b"><span class="option-text">Missing quotes</span></label>
+                        <label class="option-label"><input type="radio" name="err-q1" value="c"><span class="option-text">Wrong function name</span></label>
+                        <label class="option-label"><input type="radio" name="err-q1" value="d"><span class="option-text">No error</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                    <div class="code-display">
+                        <pre><code style="color: var(--accent-red);">if age > 18
+    print("Adult")</code></pre>
+                    </div>
+                    <p class="question-text">What's missing?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="err-q2" value="a"><span class="option-text">Parentheses around condition</span></label>
+                        <label class="option-label"><input type="radio" name="err-q2" value="b"><span class="option-text">Colon : after condition</span></label>
+                        <label class="option-label"><input type="radio" name="err-q2" value="c"><span class="option-text">The word "then"</span></label>
+                        <label class="option-label"><input type="radio" name="err-q2" value="d"><span class="option-text">Semicolon ;</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                    <div class="code-display">
+                        <pre><code style="color: var(--accent-red);">name = "Alex"
+print(Name)</code></pre>
+                    </div>
+                    <p class="question-text">What type of error will this cause?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="err-q3" value="a"><span class="option-text">SyntaxError</span></label>
+                        <label class="option-label"><input type="radio" name="err-q3" value="b"><span class="option-text">NameError</span></label>
+                        <label class="option-label"><input type="radio" name="err-q3" value="c"><span class="option-text">TypeError</span></label>
+                        <label class="option-label"><input type="radio" name="err-q3" value="d"><span class="option-text">No error</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                    <div class="code-display">
+                        <pre><code style="color: var(--accent-red);">age = input("Age: ")
+print(age + 1)</code></pre>
+                    </div>
+                    <p class="question-text">What's the problem?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="err-q4" value="a"><span class="option-text">SyntaxError - missing quotes</span></label>
+                        <label class="option-label"><input type="radio" name="err-q4" value="b"><span class="option-text">TypeError - adding string + int</span></label>
+                        <label class="option-label"><input type="radio" name="err-q4" value="c"><span class="option-text">NameError - input not defined</span></label>
+                        <label class="option-label"><input type="radio" name="err-q4" value="d"><span class="option-text">No error</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                    <div class="code-display">
+                        <pre><code style="color: var(--accent-red);">if True:
+print("Hello")
+    print("World")</code></pre>
+                    </div>
+                    <p class="question-text">What's wrong here?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="err-q5" value="a"><span class="option-text">IndentationError - first print not indented</span></label>
+                        <label class="option-label"><input type="radio" name="err-q5" value="b"><span class="option-text">SyntaxError - missing quotes</span></label>
+                        <label class="option-label"><input type="radio" name="err-q5" value="c"><span class="option-text">NameError - True not defined</span></label>
+                        <label class="option-label"><input type="radio" name="err-q5" value="d"><span class="option-text">No error</span></label>
+                    </div>
+                </div>
+
+                <button class="submit-quiz-btn" onclick="submitErrQuiz()">📊 Submit Quiz</button>
+                
+                <div class="quiz-final-result" id="quiz-final-result">
+                    <div class="result-score">
+                        <span class="score-value" id="quiz-score">0</span>
+                        <span class="score-total">/5</span>
+                    </div>
+                    <div class="result-message" id="quiz-message"></div>
+                    <button class="retry-btn" onclick="resetErrQuiz()">🔄 Try Again</button>
+                </div>
+                </div>
+
+                <!-- CODING/DEBUG SECTION -->
+                <div id="coding-section" class="practice-content">
+                    <div class="section-header">
+                        <h3>🐛 Fix the Bugs!</h3>
+                        <p>Each code snippet has an error. Fix it to make it work!</p>
+                    </div>
+
+                    <!-- Debug Challenge 1 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">Bug 1/4</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🔧 Fix the SyntaxError</h4>
+                            <p>This code has a missing character. Find and fix it!</p>
+                            <div class="error-message-box">
+                                <span class="error-label">Error:</span>
+                                <code>SyntaxError: '(' was never closed</code>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python - Buggy Code</span>
+                            </div>
+                            <textarea id="err-code1" class="code-textarea" spellcheck="false">name = "Python"
+print("Welcome to " + name</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkErrCode1()">✓ Check Fix</button>
+                            <button class="hint-toggle" onclick="toggleHint('err-hint1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="err-hint1">
+                            <p>Count the parentheses! Every <code>(</code> needs a matching <code>)</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-err-code1"></div>
+                    </div>
+
+                    <!-- Debug Challenge 2 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">Bug 2/4</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🔧 Fix the Indentation</h4>
+                            <p>The indentation is wrong. Fix it!</p>
+                            <div class="error-message-box">
+                                <span class="error-label">Error:</span>
+                                <code>IndentationError: expected an indented block</code>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python - Buggy Code</span>
+                            </div>
+                            <textarea id="err-code2" class="code-textarea" spellcheck="false">score = 85
+if score >= 60:
+print("You passed!")
+print("Congratulations!")</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkErrCode2()">✓ Check Fix</button>
+                            <button class="hint-toggle" onclick="toggleHint('err-hint2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="err-hint2">
+                            <p>After an <code>if</code> statement with <code>:</code>, the next lines need to be indented with 4 spaces!</p>
+                        </div>
+                        <div class="challenge-result" id="result-err-code2"></div>
+                    </div>
+
+                    <!-- Debug Challenge 3 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">Bug 3/4</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🔧 Fix the TypeError</h4>
+                            <p>The code tries to do math with the wrong types!</p>
+                            <div class="error-message-box">
+                                <span class="error-label">Error:</span>
+                                <code>TypeError: can only concatenate str (not "int") to str</code>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python - Buggy Code</span>
+                            </div>
+                            <textarea id="err-code3" class="code-textarea" spellcheck="false"># Calculate total price
+price = "50"
+quantity = 3
+total = price * quantity
+print("Total: $" + total)</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkErrCode3()">✓ Check Fix</button>
+                            <button class="hint-toggle" onclick="toggleHint('err-hint3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="err-hint3">
+                            <p>Convert the string "50" to a number using <code>int()</code> or <code>float()</code>, and use <code>str()</code> or f-strings when printing!</p>
+                        </div>
+                        <div class="challenge-result" id="result-err-code3"></div>
+                    </div>
+
+                    <!-- Debug Challenge 4 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">Bug 4/4</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🔧 Fix Multiple Errors!</h4>
+                            <p>This code has SEVERAL errors. Fix them all!</p>
+                            <div class="error-message-box">
+                                <span class="error-label">Expected Output:</span>
+                                <code>Hello, Alex! You are 15 years old.</code>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python - Multiple Bugs</span>
+                            </div>
+                            <textarea id="err-code4" class="code-textarea" spellcheck="false"># Greeting program with BUGS!
+name = "Alex"
+Age = "15"
+print("Hello, " + Name + "! You are " + age + " years old.")</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkErrCode4()">✓ Check Fix</button>
+                            <button class="hint-toggle" onclick="toggleHint('err-hint4')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="err-hint4">
+                            <p>Check: 1) Variable names are case-sensitive (name ≠ Name) 2) Make sure all variable names match!</p>
+                        </div>
+                        <div class="challenge-result" id="result-err-code4"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        function copyCode(btn) {
+            const code = btn.closest('.code-block').querySelector('code').textContent;
+            navigator.clipboard.writeText(code);
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy', 2000);
+        }
+
+        const errAnswers = {'err-q1': 'a', 'err-q2': 'b', 'err-q3': 'b', 'err-q4': 'b', 'err-q5': 'a'};
+        
+        function submitErrQuiz() {
+            let score = 0;
+            for (const [name, correct] of Object.entries(errAnswers)) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                document.querySelectorAll(`input[name="${name}"]`).forEach(opt => {
+                    opt.parentElement.classList.remove('correct', 'incorrect');
+                    if (opt.value === correct) opt.parentElement.classList.add('correct');
+                    else if (selected && opt === selected) opt.parentElement.classList.add('incorrect');
+                });
+                if (selected && selected.value === correct) score++;
+            }
+            document.getElementById('quiz-score').textContent = score;
+            const msgs = {5: "🎉 Perfect Debugger!", 4: "👏 Great!", 3: "👍 Good!", 2: "📚 Practice more!", 1: "💪 Keep trying!", 0: "🔄 Review the lesson!"};
+            document.getElementById('quiz-message').textContent = msgs[score];
+            document.getElementById('quiz-final-result').classList.add('show');
+        }
+
+        function resetErrQuiz() {
+            document.querySelectorAll('.analysis-question input').forEach(i => {
+                i.checked = false;
+                i.parentElement.classList.remove('correct', 'incorrect');
+            });
+            document.getElementById('quiz-final-result').classList.remove('show');
+        }
+
+        // Practice Tab Navigation
+        document.querySelectorAll('.practice-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.practice-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.practice-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.practice).classList.add('active');
+            });
+        });
+
+        function toggleHint(id) {
+            document.getElementById(id).classList.toggle('show');
+        }
+
+        // Debug Challenge Checks
+        function checkErrCode1() {
+            const code = document.getElementById('err-code1').value;
+            const result = document.getElementById('result-err-code1');
+            
+            // Check if the parenthesis is closed
+            const hasClosingParen = /print\s*\(\s*["'].*["']\s*\+\s*\w+\s*\)/.test(code);
+            
+            if (hasClosingParen) {
+                result.innerHTML = '✅ Fixed! The closing parenthesis ) was missing.';
+                result.className = 'challenge-result show success';
+            } else {
+                result.innerHTML = '❌ Still has an error. Check the parentheses!';
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkErrCode2() {
+            const code = document.getElementById('err-code2').value;
+            const result = document.getElementById('result-err-code2');
+            
+            // Check if lines after if are indented
+            const lines = code.split('\n');
+            let hasIndentation = false;
+            let afterIf = false;
+            
+            for (const line of lines) {
+                if (line.includes('if') && line.includes(':')) {
+                    afterIf = true;
+                    continue;
+                }
+                if (afterIf && line.includes('print')) {
+                    hasIndentation = line.startsWith('    ') || line.startsWith('\t');
+                    break;
+                }
+            }
+            
+            if (hasIndentation) {
+                result.innerHTML = '✅ Fixed! Lines after if: need to be indented.';
+                result.className = 'challenge-result show success';
+            } else {
+                result.innerHTML = '❌ Add 4 spaces before print statements after if:';
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkErrCode3() {
+            const code = document.getElementById('err-code3').value;
+            const result = document.getElementById('result-err-code3');
+            
+            // Check for proper type conversion
+            const hasIntConversion = /int\s*\(.*50.*\)|float\s*\(.*50.*\)|price\s*=\s*50[^"']/.test(code);
+            const hasStrConversion = /str\s*\(\s*total\s*\)|f["'].*\{total\}/.test(code);
+            
+            if (hasIntConversion && hasStrConversion) {
+                result.innerHTML = '✅ Excellent! You fixed the type conversions!';
+                result.className = 'challenge-result show success';
+            } else if (hasIntConversion) {
+                result.innerHTML = '❌ Good start! Now fix the print statement - use str(total) or f-string';
+                result.className = 'challenge-result show error';
+            } else {
+                result.innerHTML = '❌ Change price = "50" to price = 50 (remove quotes) or use int("50")';
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkErrCode4() {
+            const code = document.getElementById('err-code4').value;
+            const result = document.getElementById('result-err-code4');
+            
+            // Check all variable names are consistent
+            const hasConsistentName = /name\s*=.*Alex/i.test(code) && code.includes('name') && !code.includes('Name');
+            const hasConsistentAge = /age\s*=.*15/i.test(code.toLowerCase()) && code.includes('age');
+            const usesSameCase = !(/Name/.test(code) && /name/.test(code)) || 
+                                 (code.match(/name/gi) || []).every((v, i, arr) => v === arr[0]);
+            
+            // Simplified check - just verify the output would work
+            const worksCorrectly = (code.includes('name') && !code.includes('Name') && 
+                                   code.includes('age') && !code.includes('Age')) ||
+                                  (code.includes('Name') && !code.includes('name') && 
+                                   code.includes('Age') && !code.includes('age'));
+            
+            if (worksCorrectly || (code.includes('name') && code.includes('age') && 
+                code.match(/name/g)?.length >= 2 && code.match(/age/g)?.length >= 2)) {
+                result.innerHTML = '✅ All bugs fixed! Variable names must be consistent!';
+                result.className = 'challenge-result show success';
+            } else {
+                result.innerHTML = '❌ Variable names are case-sensitive! Make sure name, Name and age, Age match.';
+                result.className = 'challenge-result show error';
+            }
+        }
+    </script>
+</body>
+</html>
+

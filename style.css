@@ -44,6 +44,50 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Lesson Navigation Bar */
+.lesson-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    background: rgba(30, 30, 46, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.back-to-roadmap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.back-to-roadmap:hover {
+    background: var(--accent-purple);
+    color: var(--bg-primary);
+}
+
+.lesson-badge {
+    padding: 0.4rem 1rem;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--bg-primary);
+}
+
 body {
     font-family: 'Outfit', sans-serif;
     background: var(--bg-primary);
@@ -71,7 +115,7 @@ body {
 /* Header */
 header {
     text-align: center;
-    padding: 3rem 2rem 2rem;
+    padding: 5rem 2rem 2rem;
     animation: fadeInDown 0.8s ease;
 }
 
@@ -1257,6 +1301,34 @@ main {
     padding: 0.1rem 0.4rem;
     border-radius: 3px;
     color: var(--accent-purple);
+}
+
+/* Error Message Box - for debug challenges */
+.error-message-box {
+    background: rgba(243, 139, 168, 0.15);
+    border: 1px solid var(--accent-red);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.error-message-box .error-label {
+    background: var(--accent-red);
+    color: var(--bg-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.error-message-box code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: var(--accent-red);
+    font-size: 0.9rem;
 }
 
 /* ==================== CODE ANALYSIS QUIZ STYLES ==================== */

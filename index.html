@@ -3,1114 +3,680 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Conditional Statements - Interactive Learning</title>
+    <title>Python Junior Course - Learn Python from Zero</title>
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --text-primary: #eef1ff;
+            --text-secondary: #a0a7c4;
+            --accent-yellow: #f0db4f;
+            --accent-blue: #306998;
+            --accent-purple: #9d4edd;
+            --accent-green: #4ade80;
+            --accent-orange: #fb923c;
+            --gradient-python: linear-gradient(135deg, #306998, #f0db4f);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(48, 105, 152, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(240, 219, 79, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(157, 78, 221, 0.08) 0%, transparent 60%);
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { top: 20%; right: 15%; animation-delay: -5s; }
+        .shape:nth-child(3) { bottom: 30%; left: 20%; animation-delay: -10s; }
+        .shape:nth-child(4) { bottom: 10%; right: 10%; animation-delay: -15s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            background: var(--gradient-python);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .btn-start {
+            padding: 0.8rem 1.5rem;
+            background: var(--gradient-python);
+            border: none;
+            border-radius: 50px;
+            color: var(--bg-primary);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(240, 219, 79, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text h1 .highlight {
+            background: var(--gradient-python);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: var(--gradient-python);
+            border: none;
+            border-radius: 50px;
+            color: var(--bg-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(240, 219, 79, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .code-window {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-header {
+            background: var(--bg-card);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28c840; }
+
+        .code-content {
+            padding: 1.5rem;
+            font-family: 'Consolas', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .code-line {
+            display: block;
+        }
+
+        .keyword { color: #ff79c6; }
+        .string { color: #f1fa8c; }
+        .function { color: #50fa7b; }
+        .comment { color: #6272a4; }
+        .variable { color: #f8f8f2; }
+        .operator { color: #ff79c6; }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--accent-yellow);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-python);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Course Preview */
+        .course-preview {
+            padding: 6rem 5%;
+        }
+
+        .lessons-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .lesson-card {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .lesson-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateX(5px);
+        }
+
+        .lesson-card.active {
+            border-color: var(--accent-green);
+            background: rgba(74, 222, 128, 0.1);
+        }
+
+        .lesson-card.coming-soon {
+            opacity: 0.6;
+        }
+
+        .lesson-number {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .lesson-card.active .lesson-number {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+        }
+
+        .lesson-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .lesson-info span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .lesson-status {
+            margin-left: auto;
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="background-pattern"></div>
-    
-    <header>
-        <div class="logo">🐍 Python Jr.</div>
-        <h1>Conditional Statements</h1>
-        <p class="subtitle">Master the art of decision-making in Python!</p>
-    </header>
+    <div class="bg-animation"></div>
+    <div class="floating-shapes">
+        <div class="shape">🐍</div>
+        <div class="shape">💻</div>
+        <div class="shape">🚀</div>
+        <div class="shape">⭐</div>
+    </div>
 
-    <nav class="nav-tabs">
-        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
-        <button class="tab-btn" data-tab="if">🔹 if Statement</button>
-        <button class="tab-btn" data-tab="elif">🔸 if-elif-else</button>
-        <button class="tab-btn" data-tab="nested">🔷 Nested if</button>
-        <button class="tab-btn" data-tab="match">⭐ match-case</button>
-        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    <nav>
+        <div class="logo">
+            🐍 <span>Python Jr.</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#lessons">Lessons</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+        <a href="roadmap.html" class="btn-start">Start Learning →</a>
     </nav>
 
-    <main>
-        <!-- INTRODUCTION -->
-        <section id="intro" class="tab-content active">
-            <div class="card intro-card">
-                <h2>🎯 What are Conditional Statements?</h2>
-                <div class="markdown-content">
-                    <p>Conditional statements allow your program to <strong>make decisions</strong> based on certain conditions. Think of them as the brain of your program!</p>
-                    
-                    <div class="analogy-box">
-                        <h3>🌍 Real-Life Analogy</h3>
-                        <p>Imagine you're deciding what to wear:</p>
-                        <ul>
-                            <li><strong>IF</strong> it's raining → take an umbrella</li>
-                            <li><strong>ELIF</strong> it's sunny → wear sunglasses</li>
-                            <li><strong>ELSE</strong> → just go outside normally</li>
-                        </ul>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Learn <span class="highlight">Python</span> the Interactive Way</h1>
+                <p>Master Python programming from zero to hero with our interactive lessons, hands-on exercises, and real-world projects. Perfect for beginners!</p>
+                <div class="hero-buttons">
+                    <a href="roadmap.html" class="btn-primary">🚀 Start Course</a>
+                    <a href="#lessons" class="btn-secondary">View Lessons</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="code-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
                     </div>
-
-                    <div class="intro-image-container">
-                        <img src="assets/img/conditionals.png" alt="Conditional Statements Diagram" class="intro-image">
-                    </div>
-
-                    <h3>📋 Types of Conditionals in Python</h3>
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>Type</th>
-                                <th>Use Case</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>if</code></td>
-                                <td>Check a single condition</td>
-                            </tr>
-                            <tr>
-                                <td><code>if-else</code></td>
-                                <td>Choose between two options</td>
-                            </tr>
-                            <tr>
-                                <td><code>if-elif-else</code></td>
-                                <td>Multiple conditions to check</td>
-                            </tr>
-                            <tr>
-                                <td><code>Nested if</code></td>
-                                <td>Conditions inside conditions</td>
-                            </tr>
-                            <tr>
-                                <td><code>match-case</code></td>
-                                <td>Pattern matching (Python 3.10+)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="tip-box">
-                        <h3>💡 Key Concept: Indentation</h3>
-                        <p>Python uses <strong>indentation</strong> (spaces at the beginning of a line) to define code blocks. Always use 4 spaces inside your conditionals!</p>
+                    <div class="code-content">
+                        <span class="code-line"><span class="comment"># Welcome to Python! 🐍</span></span>
+                        <span class="code-line"><span class="variable">name</span> <span class="operator">=</span> <span class="string">"Student"</span></span>
+                        <span class="code-line"><span class="variable">level</span> <span class="operator">=</span> <span class="string">"Beginner"</span></span>
+                        <span class="code-line"></span>
+                        <span class="code-line"><span class="keyword">if</span> <span class="variable">level</span> <span class="operator">==</span> <span class="string">"Beginner"</span><span class="operator">:</span></span>
+                        <span class="code-line">    <span class="function">print</span>(<span class="string">"Let's start learning!"</span>)</span>
+                        <span class="code-line"></span>
+                        <span class="code-line"><span class="comment"># Output: Let's start learning!</span><span class="typing-cursor"></span></span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- IF STATEMENT -->
-        <section id="if" class="tab-content">
-            <div class="card">
-                <h2>🔹 The <code>if</code> Statement</h2>
-                
-                <div class="markdown-content">
-                    <p>The simplest form of conditional. It runs code <strong>only if</strong> the condition is <code>True</code>.</p>
-                    
-                    <h3>📝 Syntax</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>if condition:
-    # code to execute if condition is True</code></pre>
-                    </div>
-
-                    <h3>🎯 Example: Checking Age</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>age = 16
-
-if age >= 18:
-    print("You can vote!")
-
-if age < 18:
-    print("You're still young!")</code></pre>
-                    </div>
-
-                    <h3>🔥 The <code>if-else</code> Statement</h3>
-                    <p>When you want to do something <strong>else</strong> if the condition is False:</p>
-                    
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>temperature = 25
-
-if temperature > 30:
-    print("It's hot! 🔥")
-else:
-    print("The weather is nice! 😊")</code></pre>
-                    </div>
-                </div>
-
-                <div class="interactive-demo">
-                    <h3>🎮 Try It Yourself!</h3>
-                    <div class="demo-controls">
-                        <label>Enter a number:</label>
-                        <input type="number" id="if-demo-input" value="10">
-                        <button onclick="runIfDemo()">▶ Run Code</button>
-                    </div>
-                    <div class="demo-code">
-                        <pre><code>number = <span id="if-demo-value">10</span>
-
-if number > 0:
-    print("Positive number! ➕")
-else:
-    print("Zero or negative! ➖")</code></pre>
-                    </div>
-                    <div class="demo-output" id="if-demo-output">
-                        Click "Run Code" to see the result!
-                    </div>
-                </div>
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Why Learn Python With Us?</h2>
+            <p>Our course is designed specifically for beginners</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Interactive Learning</h3>
+                <p>Practice directly in your browser with our interactive code editors and instant feedback.</p>
             </div>
-        </section>
-
-        <!-- IF-ELIF-ELSE -->
-        <section id="elif" class="tab-content">
-            <div class="card">
-                <h2>🔸 The <code>if-elif-else</code> Chain</h2>
-                
-                <div class="markdown-content">
-                    <p>When you have <strong>multiple conditions</strong> to check, use <code>elif</code> (short for "else if").</p>
-                    
-                    <h3>📝 Syntax</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>if condition1:
-    # code if condition1 is True
-elif condition2:
-    # code if condition2 is True
-elif condition3:
-    # code if condition3 is True
-else:
-    # code if ALL conditions are False</code></pre>
-                    </div>
-
-                    <div class="warning-box">
-                        <h3>⚠️ Important!</h3>
-                        <p>Python checks conditions <strong>from top to bottom</strong>. Once a condition is True, it runs that code and <strong>skips the rest</strong>!</p>
-                    </div>
-
-                    <h3>🎯 Example: Grade Calculator</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>score = 85
-
-if score >= 90:
-    grade = "A"
-    print("Excellent! 🌟")
-elif score >= 80:
-    grade = "B"
-    print("Great job! 👍")
-elif score >= 70:
-    grade = "C"
-    print("Good effort! 💪")
-elif score >= 60:
-    grade = "D"
-    print("Keep trying! 📚")
-else:
-    grade = "F"
-    print("Need improvement 😢")
-
-print(f"Your grade is: {grade}")</code></pre>
-                    </div>
-                </div>
-
-                <div class="interactive-demo">
-                    <h3>🎮 Grade Calculator</h3>
-                    <div class="demo-controls">
-                        <label>Enter your score (0-100):</label>
-                        <input type="number" id="elif-demo-input" value="85" min="0" max="100">
-                        <button onclick="runElifDemo()">▶ Calculate Grade</button>
-                    </div>
-                    <div class="demo-output" id="elif-demo-output">
-                        Enter a score and click "Calculate Grade"!
-                    </div>
-                    <div class="grade-visual" id="grade-visual">
-                        <div class="grade-bar">
-                            <div class="grade-fill" id="grade-fill"></div>
-                            <div class="grade-marker" id="grade-marker"></div>
-                        </div>
-                        <div class="grade-labels">
-                            <span>F</span><span>D</span><span>C</span><span>B</span><span>A</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧩</div>
+                <h3>Drag & Drop Exercises</h3>
+                <p>Learn by doing with fun drag-and-drop challenges that teach you Python syntax.</p>
             </div>
-        </section>
-
-        <!-- NESTED IF -->
-        <section id="nested" class="tab-content">
-            <div class="card">
-                <h2>🔷 Nested <code>if</code> Statements</h2>
-                
-                <div class="markdown-content">
-                    <p>You can put an <code>if</code> statement <strong>inside another</strong> <code>if</code> statement. This is called <strong>nesting</strong>.</p>
-                    
-                    <h3>📝 Syntax</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>if outer_condition:
-    # outer code
-    if inner_condition:
-        # inner code (runs if BOTH conditions are True)
-    else:
-        # runs if outer is True but inner is False
-else:
-    # runs if outer condition is False</code></pre>
-                    </div>
-
-                    <h3>🎯 Example: Theme Park Ride</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>age = 14
-height = 150  # in centimeters
-has_ticket = True
-
-if has_ticket:
-    print("✓ You have a ticket!")
-    
-    if age >= 12:
-        print("✓ Age requirement met!")
-        
-        if height >= 140:
-            print("✓ Height requirement met!")
-            print("🎢 Enjoy the ride!")
-        else:
-            print("✗ Sorry, you must be at least 140cm tall.")
-    else:
-        print("✗ Sorry, you must be at least 12 years old.")
-else:
-    print("✗ Please buy a ticket first!")</code></pre>
-                    </div>
-
-                    <div class="tip-box">
-                        <h3>💡 Pro Tip: Avoid Deep Nesting</h3>
-                        <p>Too many nested levels can make code hard to read. Consider using <code>and</code> / <code>or</code> operators instead:</p>
-                        <div class="code-block small">
-                            <pre><code>if has_ticket and age >= 12 and height >= 140:
-    print("🎢 Enjoy the ride!")</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="interactive-demo">
-                    <h3>🎢 Theme Park Ride Checker</h3>
-                    <div class="demo-controls nested-controls">
-                        <div class="control-group">
-                            <label>Age:</label>
-                            <input type="number" id="nested-age" value="14" min="1" max="100">
-                        </div>
-                        <div class="control-group">
-                            <label>Height (cm):</label>
-                            <input type="number" id="nested-height" value="150" min="50" max="250">
-                        </div>
-                        <div class="control-group">
-                            <label>Has Ticket:</label>
-                            <input type="checkbox" id="nested-ticket" checked>
-                        </div>
-                        <button onclick="runNestedDemo()">▶ Check Eligibility</button>
-                    </div>
-                    <div class="demo-output" id="nested-demo-output">
-                        Adjust the values and click "Check Eligibility"!
-                    </div>
-                    <div class="flowchart" id="nested-flowchart">
-                        <div class="flow-node" id="flow-ticket">🎫 Has Ticket?</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-node" id="flow-age">👤 Age ≥ 12?</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-node" id="flow-height">📏 Height ≥ 140?</div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-node" id="flow-result">🎢 Result</div>
-                    </div>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Step-by-Step Lessons</h3>
+                <p>Clear explanations with real-world examples that make complex concepts simple.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- MATCH-CASE -->
-        <section id="match" class="tab-content">
-            <div class="card">
-                <h2>⭐ The <code>match-case</code> Statement</h2>
-                
-                <div class="markdown-content">
-                    <div class="new-badge">New in Python 3.10!</div>
-                    
-                    <p>The <code>match-case</code> statement provides a cleaner way to handle multiple specific values. It's similar to <code>switch</code> in other languages.</p>
-                    
-                    <h3>📝 Syntax</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>match variable:
-    case value1:
-        # code for value1
-    case value2:
-        # code for value2
-    case value3 | value4:
-        # code for value3 OR value4
-    case _:
-        # default case (like 'else')</code></pre>
-                    </div>
-
-                    <h3>🎯 Example: Day of the Week</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>day = "Monday"
-
-match day:
-    case "Monday":
-        print("😫 Start of the work week...")
-    case "Tuesday" | "Wednesday" | "Thursday":
-        print("💼 Keep working hard!")
-    case "Friday":
-        print("🎉 TGIF! Almost weekend!")
-    case "Saturday" | "Sunday":
-        print("🎮 Weekend! Time to relax!")
-    case _:
-        print("❓ That's not a valid day!")</code></pre>
-                    </div>
-
-                    <h3>🎯 Example: HTTP Status Codes</h3>
-                    <div class="code-block">
-                        <div class="code-header">
-                            <span>Python</span>
-                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                        <pre><code>status_code = 404
-
-match status_code:
-    case 200:
-        print("✅ OK - Request successful!")
-    case 301 | 302:
-        print("🔄 Redirect - Page moved!")
-    case 404:
-        print("❌ Not Found - Page doesn't exist!")
-    case 500:
-        print("💥 Server Error!")
-    case _:
-        print(f"Unknown status: {status_code}")</code></pre>
-                    </div>
-
-                    <div class="comparison-box">
-                        <h3>🔄 match vs if-elif: When to Use?</h3>
-                        <div class="comparison-grid">
-                            <div class="comparison-item">
-                                <h4>Use <code>match</code> when:</h4>
-                                <ul>
-                                    <li>Checking ONE variable against many specific values</li>
-                                    <li>Values are exact matches (not ranges)</li>
-                                    <li>You want cleaner, more readable code</li>
-                                </ul>
-                            </div>
-                            <div class="comparison-item">
-                                <h4>Use <code>if-elif</code> when:</h4>
-                                <ul>
-                                    <li>Checking ranges (like score >= 90)</li>
-                                    <li>Complex conditions with and/or</li>
-                                    <li>Using Python versions before 3.10</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+    <section class="course-preview" id="lessons">
+        <div class="section-title">
+            <h2>Course Content</h2>
+            <p>20+ lessons from beginner to confident Python programmer</p>
+        </div>
+        <div class="lessons-preview">
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">01</div>
+                <div class="lesson-info">
+                    <h4>Introduction to Python</h4>
+                    <span>Coming Soon</span>
                 </div>
-
-                <div class="interactive-demo">
-                    <h3>🌙 Day Mood Checker</h3>
-                    <div class="demo-controls">
-                        <label>Select a day:</label>
-                        <select id="match-demo-input">
-                            <option value="Monday">Monday</option>
-                            <option value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                            <option value="Saturday">Saturday</option>
-                            <option value="Sunday">Sunday</option>
-                        </select>
-                        <button onclick="runMatchDemo()">▶ Check Mood</button>
-                    </div>
-                    <div class="demo-output" id="match-demo-output">
-                        Select a day and click "Check Mood"!
-                    </div>
-                </div>
+                <div class="lesson-status">🔒</div>
             </div>
-        </section>
-
-        <!-- PRACTICE -->
-        <section id="practice" class="tab-content">
-            <div class="card">
-                <h2>🎮 Practice Zone</h2>
-                <p class="practice-intro">Complete all three challenge types to master conditional statements!</p>
-                
-                <!-- Practice Sub-Navigation -->
-                <div class="practice-tabs">
-                    <button class="practice-tab-btn active" data-practice="dragdrop">
-                        <span class="tab-icon">🧩</span>
-                        <span class="tab-label">Part 1: Drag & Drop</span>
-                    </button>
-                    <button class="practice-tab-btn" data-practice="coding">
-                        <span class="tab-icon">⌨️</span>
-                        <span class="tab-label">Part 2: Write Code</span>
-                    </button>
-                    <button class="practice-tab-btn" data-practice="quiz">
-                        <span class="tab-icon">🧠</span>
-                        <span class="tab-label">Part 3: Code Analysis</span>
-                    </button>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">02</div>
+                <div class="lesson-info">
+                    <h4>Variables & Constants</h4>
+                    <span>Coming Soon</span>
                 </div>
-
-                <!-- ==================== PART 1: DRAG & DROP ==================== -->
-                <div id="dragdrop" class="practice-content active">
-                    <div class="section-header">
-                        <h3>🧩 Complete the Code</h3>
-                        <p>Drag the correct pieces to fill in the blanks!</p>
-                    </div>
-
-                    <!-- Drag & Drop Challenge 1 -->
-                    <div class="drag-challenge" data-challenge="drag1">
-                        <div class="challenge-header">
-                            <span class="difficulty easy">Easy</span>
-                            <span class="challenge-num">1/4</span>
-                        </div>
-                        <h4>Check if a student passed the exam (score >= 60)</h4>
-                        
-                        <div class="code-puzzle">
-                            <div class="puzzle-line">
-                                <span class="code-text">score = 75</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="code-text"></span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="if" data-index="0"></span>
-                                <span class="code-text"> score </span>
-                                <span class="drop-zone" data-answer=">=" data-index="1"></span>
-                                <span class="code-text"> 60</span>
-                                <span class="drop-zone" data-answer=":" data-index="2"></span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">print("You passed! ✅")</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="else" data-index="3"></span>
-                                <span class="drop-zone" data-answer=":" data-index="4"></span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">print("Try again! 📚")</span>
-                            </div>
-                        </div>
-
-                        <div class="drag-pieces" id="pieces-drag1">
-                            <div class="drag-piece" draggable="true" data-value=":">:</div>
-                            <div class="drag-piece" draggable="true" data-value="if">if</div>
-                            <div class="drag-piece" draggable="true" data-value=">=">>=</div>
-                            <div class="drag-piece" draggable="true" data-value="else">else</div>
-                            <div class="drag-piece" draggable="true" data-value=":">:</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="==">==</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="<="><=</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="elif">elif</div>
-                        </div>
-
-                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
-                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
-                        <div class="challenge-result" id="result-drag1"></div>
-                    </div>
-
-                    <!-- Drag & Drop Challenge 2 -->
-                    <div class="drag-challenge" data-challenge="drag2">
-                        <div class="challenge-header">
-                            <span class="difficulty medium">Medium</span>
-                            <span class="challenge-num">2/4</span>
-                        </div>
-                        <h4>Grade calculator with multiple conditions</h4>
-                        
-                        <div class="code-puzzle">
-                            <div class="puzzle-line">
-                                <span class="code-text">score = 85</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="code-text"></span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="if" data-index="0"></span>
-                                <span class="code-text"> score >= 90:</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">grade = "A"</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="elif" data-index="1"></span>
-                                <span class="code-text"> score </span>
-                                <span class="drop-zone" data-answer=">=" data-index="2"></span>
-                                <span class="code-text"> 80:</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">grade = "B"</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="elif" data-index="3"></span>
-                                <span class="code-text"> score >= 70:</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">grade = "C"</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="else" data-index="4"></span>
-                                <span class="code-text">:</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">grade = "F"</span>
-                            </div>
-                        </div>
-
-                        <div class="drag-pieces" id="pieces-drag2">
-                            <div class="drag-piece" draggable="true" data-value="elif">elif</div>
-                            <div class="drag-piece" draggable="true" data-value="if">if</div>
-                            <div class="drag-piece" draggable="true" data-value=">=">>=</div>
-                            <div class="drag-piece" draggable="true" data-value="else">else</div>
-                            <div class="drag-piece" draggable="true" data-value="elif">elif</div>
-                            <div class="drag-piece decoy" draggable="true" data-value=">">&gt;</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="!=">!=</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="<">&lt;</div>
-                        </div>
-
-                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
-                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
-                        <div class="challenge-result" id="result-drag2"></div>
-                    </div>
-
-                    <!-- Drag & Drop Challenge 3 -->
-                    <div class="drag-challenge" data-challenge="drag3">
-                        <div class="challenge-header">
-                            <span class="difficulty medium">Medium</span>
-                            <span class="challenge-num">3/4</span>
-                        </div>
-                        <h4>Match-case statement for day of week</h4>
-                        
-                        <div class="code-puzzle">
-                            <div class="puzzle-line">
-                                <span class="code-text">day = "Monday"</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="code-text"></span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="match" data-index="0"></span>
-                                <span class="code-text"> day:</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="drop-zone" data-answer="case" data-index="1"></span>
-                                <span class="code-text"> "Monday":</span>
-                            </div>
-                            <div class="puzzle-line indent-2">
-                                <span class="code-text">print("Start of week 😫")</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="drop-zone" data-answer="case" data-index="2"></span>
-                                <span class="code-text"> "Friday":</span>
-                            </div>
-                            <div class="puzzle-line indent-2">
-                                <span class="code-text">print("Weekend soon! 🎉")</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">case </span>
-                                <span class="drop-zone" data-answer="_" data-index="3"></span>
-                                <span class="code-text">:</span>
-                            </div>
-                            <div class="puzzle-line indent-2">
-                                <span class="code-text">print("Regular day")</span>
-                            </div>
-                        </div>
-
-                        <div class="drag-pieces" id="pieces-drag3">
-                            <div class="drag-piece" draggable="true" data-value="match">match</div>
-                            <div class="drag-piece" draggable="true" data-value="case">case</div>
-                            <div class="drag-piece" draggable="true" data-value="case">case</div>
-                            <div class="drag-piece" draggable="true" data-value="_">_</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="switch">switch</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="default">default</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="else">else</div>
-                        </div>
-
-                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
-                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
-                        <div class="challenge-result" id="result-drag3"></div>
-                    </div>
-
-                    <!-- Drag & Drop Challenge 4 -->
-                    <div class="drag-challenge" data-challenge="drag4">
-                        <div class="challenge-header">
-                            <span class="difficulty hard">Hard</span>
-                            <span class="challenge-num">4/4</span>
-                        </div>
-                        <h4>Nested if: Check if user can access VIP area</h4>
-                        
-                        <div class="code-puzzle">
-                            <div class="puzzle-line">
-                                <span class="code-text">age = 21</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="code-text">has_vip_pass = True</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="code-text"></span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="if" data-index="0"></span>
-                                <span class="code-text"> age </span>
-                                <span class="drop-zone" data-answer=">=" data-index="1"></span>
-                                <span class="code-text"> 18:</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="drop-zone" data-answer="if" data-index="2"></span>
-                                <span class="code-text"> has_vip_pass </span>
-                                <span class="drop-zone" data-answer="==" data-index="3"></span>
-                                <span class="code-text"> True:</span>
-                            </div>
-                            <div class="puzzle-line indent-2">
-                                <span class="code-text">print("Welcome to VIP! 🌟")</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="drop-zone" data-answer="else" data-index="4"></span>
-                                <span class="code-text">:</span>
-                            </div>
-                            <div class="puzzle-line indent-2">
-                                <span class="code-text">print("Buy VIP pass first")</span>
-                            </div>
-                            <div class="puzzle-line">
-                                <span class="drop-zone" data-answer="else" data-index="5"></span>
-                                <span class="code-text">:</span>
-                            </div>
-                            <div class="puzzle-line indent">
-                                <span class="code-text">print("Must be 18+ 🚫")</span>
-                            </div>
-                        </div>
-
-                        <div class="drag-pieces" id="pieces-drag4">
-                            <div class="drag-piece" draggable="true" data-value="if">if</div>
-                            <div class="drag-piece" draggable="true" data-value=">=">>=</div>
-                            <div class="drag-piece" draggable="true" data-value="if">if</div>
-                            <div class="drag-piece" draggable="true" data-value="==">==</div>
-                            <div class="drag-piece" draggable="true" data-value="else">else</div>
-                            <div class="drag-piece" draggable="true" data-value="else">else</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="elif">elif</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="=">=</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="!=">!=</div>
-                            <div class="drag-piece decoy" draggable="true" data-value="<=">&lt;=</div>
-                        </div>
-
-                        <button class="check-btn" onclick="checkDragChallenge('drag4')">✓ Check Answer</button>
-                        <button class="reset-btn" onclick="resetDragChallenge('drag4')">↺ Reset</button>
-                        <div class="challenge-result" id="result-drag4"></div>
-                    </div>
-
-                    <div class="progress-tracker" id="dragdrop-progress">
-                        <span class="progress-label">Progress:</span>
-                        <div class="progress-dots">
-                            <span class="dot" data-num="1"></span>
-                            <span class="dot" data-num="2"></span>
-                            <span class="dot" data-num="3"></span>
-                            <span class="dot" data-num="4"></span>
-                        </div>
-                        <span class="progress-text">0/4 completed</span>
-                    </div>
-                </div>
-
-                <!-- ==================== PART 2: WRITE CODE ==================== -->
-                <div id="coding" class="practice-content">
-                    <div class="section-header">
-                        <h3>⌨️ Write Your Own Code</h3>
-                        <p>Read the problem carefully and write the solution!</p>
-                    </div>
-
-                    <!-- Coding Challenge 1 -->
-                    <div class="coding-challenge" data-challenge="code1">
-                        <div class="challenge-header">
-                            <span class="difficulty easy">Easy</span>
-                            <span class="challenge-num">1/3</span>
-                        </div>
-                        <div class="problem-statement">
-                            <h4>🎯 Problem: Positive, Negative, or Zero</h4>
-                            <p>Write a program that checks a number and prints:</p>
-                            <ul>
-                                <li><code>"Positive"</code> if the number is greater than 0</li>
-                                <li><code>"Negative"</code> if the number is less than 0</li>
-                                <li><code>"Zero"</code> if the number equals 0</li>
-                            </ul>
-                            <div class="example-box">
-                                <strong>Example:</strong>
-                                <div class="example-case">
-                                    <span>If <code>number = 5</code> → Output: <code>"Positive"</code></span>
-                                </div>
-                                <div class="example-case">
-                                    <span>If <code>number = -3</code> → Output: <code>"Negative"</code></span>
-                                </div>
-                                <div class="example-case">
-                                    <span>If <code>number = 0</code> → Output: <code>"Zero"</code></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="code-editor">
-                            <div class="editor-header">
-                                <span>Python</span>
-                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
-                            </div>
-                            <textarea id="code1-input" class="code-textarea" placeholder="# Start with the variable:
-number = 5
-
-# Write your if-elif-else here:
-" spellcheck="false">number = 5
-
-</textarea>
-                        </div>
-                        <div class="code-actions">
-                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
-                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
-                        </div>
-                        <div class="coding-hint" id="hint-code1">
-                            <p>Use <code>if</code>, <code>elif</code>, and <code>else</code>. Compare with <code>&gt;</code>, <code>&lt;</code>, and <code>==</code></p>
-                        </div>
-                        <div class="challenge-result" id="result-code1"></div>
-                    </div>
-
-                    <!-- Coding Challenge 2 -->
-                    <div class="coding-challenge" data-challenge="code2">
-                        <div class="challenge-header">
-                            <span class="difficulty medium">Medium</span>
-                            <span class="challenge-num">2/3</span>
-                        </div>
-                        <div class="problem-statement">
-                            <h4>🎯 Problem: Age Category</h4>
-                            <p>Create a program that categorizes a person by age:</p>
-                            <ul>
-                                <li>0-12: <code>"Child"</code></li>
-                                <li>13-17: <code>"Teenager"</code></li>
-                                <li>18-64: <code>"Adult"</code></li>
-                                <li>65+: <code>"Senior"</code></li>
-                            </ul>
-                            <div class="example-box">
-                                <strong>Example:</strong>
-                                <div class="example-case">
-                                    <span>If <code>age = 8</code> → Output: <code>"Child"</code></span>
-                                </div>
-                                <div class="example-case">
-                                    <span>If <code>age = 25</code> → Output: <code>"Adult"</code></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="code-editor">
-                            <div class="editor-header">
-                                <span>Python</span>
-                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
-                            </div>
-                            <textarea id="code2-input" class="code-textarea" placeholder="# Start with the variable:
-age = 25
-
-# Write your if-elif-else chain here:
-" spellcheck="false">age = 25
-
-</textarea>
-                        </div>
-                        <div class="code-actions">
-                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
-                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
-                        </div>
-                        <div class="coding-hint" id="hint-code2">
-                            <p>Start from the youngest and work up. Use <code>&lt;=</code> for ranges. Remember: order matters in elif chains!</p>
-                        </div>
-                        <div class="challenge-result" id="result-code2"></div>
-                    </div>
-
-                    <!-- Coding Challenge 3 -->
-                    <div class="coding-challenge" data-challenge="code3">
-                        <div class="challenge-header">
-                            <span class="difficulty hard">Hard</span>
-                            <span class="challenge-num">3/3</span>
-                        </div>
-                        <div class="problem-statement">
-                            <h4>🎯 Problem: Login System</h4>
-                            <p>Create a login validation system with nested conditions:</p>
-                            <ol>
-                                <li>First, check if <code>username</code> equals <code>"admin"</code></li>
-                                <li>If username is correct, check if <code>password</code> equals <code>"1234"</code></li>
-                                <li>Print appropriate messages for each case</li>
-                            </ol>
-                            <div class="example-box">
-                                <strong>Expected outputs:</strong>
-                                <div class="example-case">
-                                    <span>Correct username + password: <code>"Login successful! ✅"</code></span>
-                                </div>
-                                <div class="example-case">
-                                    <span>Correct username, wrong password: <code>"Wrong password! ❌"</code></span>
-                                </div>
-                                <div class="example-case">
-                                    <span>Wrong username: <code>"User not found! 🔍"</code></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="code-editor">
-                            <div class="editor-header">
-                                <span>Python</span>
-                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
-                            </div>
-                            <textarea id="code3-input" class="code-textarea" placeholder="# Start with these variables:
-username = &quot;admin&quot;
-password = &quot;1234&quot;
-
-# Write your nested if structure here:
-" spellcheck="false">username = "admin"
-password = "1234"
-
-</textarea>
-                        </div>
-                        <div class="code-actions">
-                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
-                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
-                        </div>
-                        <div class="coding-hint" id="hint-code3">
-                            <p>Put the password check <em>inside</em> the username check. The outer <code>else</code> handles wrong username, the inner <code>else</code> handles wrong password.</p>
-                        </div>
-                        <div class="challenge-result" id="result-code3"></div>
-                    </div>
-
-                    <div class="progress-tracker" id="coding-progress">
-                        <span class="progress-label">Progress:</span>
-                        <div class="progress-dots">
-                            <span class="dot" data-num="1"></span>
-                            <span class="dot" data-num="2"></span>
-                            <span class="dot" data-num="3"></span>
-                        </div>
-                        <span class="progress-text">0/3 completed</span>
-                    </div>
-                </div>
-
-                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
-                <div id="quiz" class="practice-content">
-                    <div class="section-header">
-                        <h3>🧠 Code Analysis Quiz</h3>
-                        <p>Look at the code carefully and predict what will happen!</p>
-                    </div>
-
-                    <!-- Quiz Question 1 -->
-                    <div class="analysis-question" data-question="q1">
-                        <div class="question-header">
-                            <span class="question-num">Question 1/5</span>
-                        </div>
-                        <div class="code-display">
-                            <pre><code>x = 10
-y = 5
-
-if x > y:
-    print("A")
-else:
-    print("B")</code></pre>
-                        </div>
-                        <p class="question-text">What will this code print?</p>
-                        <div class="quiz-options">
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q1" value="a">
-                                <span class="option-text">A</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q1" value="b">
-                                <span class="option-text">B</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q1" value="c">
-                                <span class="option-text">A and B</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q1" value="d">
-                                <span class="option-text">Nothing</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Question 2 -->
-                    <div class="analysis-question" data-question="q2">
-                        <div class="question-header">
-                            <span class="question-num">Question 2/5</span>
-                        </div>
-                        <div class="code-display">
-                            <pre><code>score = 75
-
-if score >= 90:
-    result = "A"
-elif score >= 80:
-    result = "B"
-elif score >= 70:
-    result = "C"
-else:
-    result = "F"
-
-print(result)</code></pre>
-                        </div>
-                        <p class="question-text">What will be printed?</p>
-                        <div class="quiz-options">
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q2" value="a">
-                                <span class="option-text">A</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q2" value="b">
-                                <span class="option-text">B</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q2" value="c">
-                                <span class="option-text">C</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q2" value="d">
-                                <span class="option-text">F</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Question 3 -->
-                    <div class="analysis-question" data-question="q3">
-                        <div class="question-header">
-                            <span class="question-num">Question 3/5</span>
-                        </div>
-                        <div class="code-display">
-                            <pre><code>num = 15
-
-if num > 10:
-    print("Big")
-if num > 5:
-    print("Medium")
-if num > 0:
-    print("Small")</code></pre>
-                        </div>
-                        <p class="question-text">What will this code print? (Watch out! These are separate if statements, not elif)</p>
-                        <div class="quiz-options">
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q3" value="a">
-                                <span class="option-text">Big</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q3" value="b">
-                                <span class="option-text">Big, Medium</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q3" value="c">
-                                <span class="option-text">Big, Medium, Small</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q3" value="d">
-                                <span class="option-text">Small</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Question 4 -->
-                    <div class="analysis-question" data-question="q4">
-                        <div class="question-header">
-                            <span class="question-num">Question 4/5</span>
-                        </div>
-                        <div class="code-display">
-                            <pre><code>has_ticket = True
-age = 15
-
-if has_ticket:
-    if age >= 18:
-        print("Welcome!")
-    else:
-        print("Too young")
-else:
-    print("Buy ticket")</code></pre>
-                        </div>
-                        <p class="question-text">What will be printed?</p>
-                        <div class="quiz-options">
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q4" value="a">
-                                <span class="option-text">Welcome!</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q4" value="b">
-                                <span class="option-text">Too young</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q4" value="c">
-                                <span class="option-text">Buy ticket</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q4" value="d">
-                                <span class="option-text">Nothing</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Question 5 -->
-                    <div class="analysis-question" data-question="q5">
-                        <div class="question-header">
-                            <span class="question-num">Question 5/5</span>
-                        </div>
-                        <div class="code-display">
-                            <pre><code>color = "blue"
-
-match color:
-    case "red":
-        print("Stop")
-    case "green":
-        print("Go")
-    case "yellow":
-        print("Slow")
-    case _:
-        print("Unknown")</code></pre>
-                        </div>
-                        <p class="question-text">What will this match-case statement print?</p>
-                        <div class="quiz-options">
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q5" value="a">
-                                <span class="option-text">Stop</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q5" value="b">
-                                <span class="option-text">Go</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q5" value="c">
-                                <span class="option-text">Slow</span>
-                            </label>
-                            <label class="option-label">
-                                <input type="radio" name="analysis-q5" value="d">
-                                <span class="option-text">Unknown</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
-                    
-                    <div class="quiz-final-result" id="quiz-final-result">
-                        <div class="result-score">
-                            <span class="score-value" id="quiz-score">0</span>
-                            <span class="score-total">/5</span>
-                        </div>
-                        <div class="result-message" id="quiz-message"></div>
-                        <div class="result-breakdown" id="quiz-breakdown"></div>
-                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
-                    </div>
-                </div>
-
+                <div class="lesson-status">🔒</div>
             </div>
-        </section>
-    </main>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">03</div>
+                <div class="lesson-info">
+                    <h4>Data Types</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">04</div>
+                <div class="lesson-info">
+                    <h4>Operators</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">05</div>
+                <div class="lesson-info">
+                    <h4>User Input</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card active">
+                <div class="lesson-number">06</div>
+                <div class="lesson-info">
+                    <h4>Conditional Statements</h4>
+                    <span>if, elif, else, match</span>
+                </div>
+                <div class="lesson-status">✅</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">07</div>
+                <div class="lesson-info">
+                    <h4>For Loops</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">08</div>
+                <div class="lesson-info">
+                    <h4>While Loops</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">09</div>
+                <div class="lesson-info">
+                    <h4>Strings in Depth</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">10</div>
+                <div class="lesson-info">
+                    <h4>Lists</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">11</div>
+                <div class="lesson-info">
+                    <h4>Dictionaries</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+            <div class="lesson-card coming-soon">
+                <div class="lesson-number">12</div>
+                <div class="lesson-info">
+                    <h4>Functions</h4>
+                    <span>Coming Soon</span>
+                </div>
+                <div class="lesson-status">🔒</div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="roadmap.html" class="btn-secondary" style="display: inline-block;">View Full Roadmap (20+ Lessons) →</a>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Start Learning?</h2>
+        <p>Begin your Python journey today with interactive lessons!</p>
+        <a href="roadmap.html" class="btn-primary">🚀 View Full Roadmap</a>
+    </section>
 
     <footer>
-        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course 2024</p>
     </footer>
-    <script src="main.js"></script>
 </body>
 </html>

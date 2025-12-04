@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 04</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Operators</h1>
+        <p class="subtitle">Perform calculations and comparisons! ➕</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="arithmetic">🧮 Arithmetic</button>
+        <button class="tab-btn" data-tab="comparison">⚖️ Comparison</button>
+        <button class="tab-btn" data-tab="logical">🔗 Logical</button>
+        <button class="tab-btn" data-tab="assignment">📝 Assignment</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- ARITHMETIC -->
+        <section id="arithmetic" class="tab-content active">
+            <div class="card">
+                <h2>🧮 Arithmetic Operators</h2>
+                <div class="markdown-content">
+                    <p>Use these to do math in Python!</p>
+                    
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>+</code></td><td>Addition</td><td><code>10 + 5</code></td><td>15</td></tr>
+                            <tr><td><code>-</code></td><td>Subtraction</td><td><code>10 - 5</code></td><td>5</td></tr>
+                            <tr><td><code>*</code></td><td>Multiplication</td><td><code>10 * 5</code></td><td>50</td></tr>
+                            <tr><td><code>/</code></td><td>Division</td><td><code>10 / 4</code></td><td>2.5</td></tr>
+                            <tr><td><code>//</code></td><td>Floor Division</td><td><code>10 // 4</code></td><td>2</td></tr>
+                            <tr><td><code>%</code></td><td>Modulo (remainder)</td><td><code>10 % 3</code></td><td>1</td></tr>
+                            <tr><td><code>**</code></td><td>Exponent</td><td><code>2 ** 3</code></td><td>8</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>📝 Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Basic operations
+print(15 + 7)    # 22
+print(20 - 8)    # 12
+print(6 * 9)     # 54
+print(100 / 4)   # 25.0
+
+# Floor division (rounds down)
+print(17 // 5)   # 3 (not 3.4)
+
+# Modulo (remainder after division)
+print(17 % 5)    # 2 (17 = 5*3 + 2)
+
+# Exponent (power)
+print(2 ** 10)   # 1024 (2 to the power of 10)</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Order of Operations (PEMDAS)</h3>
+                        <p>Python follows math rules: Parentheses → Exponents → Multiply/Divide → Add/Subtract</p>
+                        <div class="code-block small">
+                            <pre><code>print(2 + 3 * 4)     # 14 (not 20!)
+print((2 + 3) * 4)   # 20 (parentheses first)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🧮 Try Arithmetic</h3>
+                    <div class="demo-controls">
+                        <input type="number" id="arith-n1" value="17" style="width: 70px;">
+                        <select id="arith-op">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                            <option value="//">//</option>
+                            <option value="%">%</option>
+                            <option value="**">**</option>
+                        </select>
+                        <input type="number" id="arith-n2" value="5" style="width: 70px;">
+                        <button onclick="calcArith()">▶ Calculate</button>
+                    </div>
+                    <div class="demo-output" id="arith-output">Click "Calculate"!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARISON -->
+        <section id="comparison" class="tab-content">
+            <div class="card">
+                <h2>⚖️ Comparison Operators</h2>
+                <div class="markdown-content">
+                    <p>Compare values and get <code>True</code> or <code>False</code>! These are super useful for making decisions in your code.</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🐊 The Crocodile Trick for &gt; and &lt;</h3>
+                        <p>Imagine the symbol is a <strong>hungry crocodile's mouth</strong> - it ALWAYS wants to eat the <strong>bigger number</strong>!</p>
+                        <div style="font-size: 2rem; text-align: center; margin: 1rem 0; font-family: monospace;">
+                            <div>🐊 10 <span style="color: var(--accent-green); font-weight: bold;">&gt;</span> 5 → The crocodile eats 10 (bigger!) ✅</div>
+                            <div style="margin-top: 0.5rem;">🐊 3 <span style="color: var(--accent-green); font-weight: bold;">&lt;</span> 7 → The crocodile eats 7 (bigger!) ✅</div>
+                        </div>
+                        <p><strong>Remember:</strong> The open mouth (the wide part) always faces the BIGGER number!</p>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>🐤 Another Way to Remember: The Hungry Chick!</h3>
+                        <p>Think of <code>&lt;</code> as a baby chick's beak pointing to food:</p>
+                        <ul>
+                            <li><code>3 &lt; 7</code> → The chick 🐤 points its beak at 7 because it's bigger (more food!)</li>
+                            <li><code>10 &gt; 5</code> → Flip it! The big number is on the LEFT</li>
+                        </ul>
+                    </div>
+
+                    <h3>📋 All Comparison Operators</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Symbol</th><th>Meaning</th><th>Easy Way to Remember</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>==</code></td>
+                                <td>Equal to</td>
+                                <td>🤝 "Are they twins?"</td>
+                                <td><code>5 == 5</code> → True</td>
+                            </tr>
+                            <tr>
+                                <td><code>!=</code></td>
+                                <td>Not equal to</td>
+                                <td>🙅 "Are they different?"</td>
+                                <td><code>5 != 3</code> → True</td>
+                            </tr>
+                            <tr>
+                                <td><code>&gt;</code></td>
+                                <td>Greater than</td>
+                                <td>🐊 Crocodile eats the bigger (LEFT)</td>
+                                <td><code>10 > 5</code> → True</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;</code></td>
+                                <td>Less than</td>
+                                <td>🐤 Chick points to bigger (RIGHT)</td>
+                                <td><code>3 < 7</code> → True</td>
+                            </tr>
+                            <tr>
+                                <td><code>&gt;=</code></td>
+                                <td>Greater OR equal</td>
+                                <td>🐊= "Big or same size"</td>
+                                <td><code>5 >= 5</code> → True</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;=</code></td>
+                                <td>Less OR equal</td>
+                                <td>🐤= "Small or same size"</td>
+                                <td><code>4 <= 3</code> → False</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🎮 Real-Life Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># 🎂 Can you vote? (age must be 18 or more)
+age = 16
+can_vote = age >= 18      # False (16 is not >= 18)
+
+# 🎮 Did you beat the high score?
+your_score = 850
+high_score = 800
+new_record = your_score > high_score  # True! 850 > 800
+
+# 💰 Do you have enough money?
+price = 50
+my_money = 45
+can_buy = my_money >= price  # False (45 < 50)
+
+# 🔐 Is the password correct?
+password = "python123"
+attempt = "python123"
+access = password == attempt  # True! They match!</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Super Important: = vs ==</h3>
+                        <p>This is the #1 mistake beginners make!</p>
+                        <ul>
+                            <li><code>=</code> (one equals) → <strong>ASSIGNS</strong> a value: <code>x = 5</code> means "put 5 in x"</li>
+                            <li><code>==</code> (two equals) → <strong>COMPARES</strong> values: <code>x == 5</code> means "is x equal to 5?"</li>
+                        </ul>
+                        <div class="code-block small">
+                            <pre><code>x = 5      # ✅ Assigns 5 to x
+x == 5     # ✅ Checks if x equals 5 (returns True)
+if x = 5:  # ❌ ERROR! Use == for comparisons!</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🐊 Try the Crocodile Game!</h3>
+                    <div class="demo-controls">
+                        <input type="number" id="comp-n1" value="10" style="width: 70px;">
+                        <select id="comp-op">
+                            <option value="==">== (equal?)</option>
+                            <option value="!=">!= (different?)</option>
+                            <option value=">">&gt; (crocodile eats left)</option>
+                            <option value="<">&lt; (chick points right)</option>
+                            <option value=">=">&gt;= (big or same)</option>
+                            <option value="<=">&lt;= (small or same)</option>
+                        </select>
+                        <input type="number" id="comp-n2" value="5" style="width: 70px;">
+                        <button onclick="calcComp()">▶ Compare</button>
+                    </div>
+                    <div class="demo-output" id="comp-output">Click "Compare" to see if it's True or False!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOGICAL -->
+        <section id="logical" class="tab-content">
+            <div class="card">
+                <h2>🔗 Logical Operators</h2>
+                <div class="markdown-content">
+                    <p>These operators help you combine multiple conditions. Think of them as ways to ask complex questions!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🍕 The Pizza Party Analogy</h3>
+                        <p>Imagine you want to have a pizza party. Let's see how <code>and</code>, <code>or</code>, and <code>not</code> work!</p>
+                    </div>
+
+                    <h3>🤝 <code>and</code> - You Need EVERYTHING!</h3>
+                    <div class="tip-box">
+                        <h3>🍕 AND = "I need pizza AND drinks AND friends"</h3>
+                        <p>With <code>and</code>, ALL conditions must be True. If even ONE is False, the whole thing is False!</p>
+                        <p>Think of it like a checklist where you need ✅ on EVERY item:</p>
+                        <ul>
+                            <li>✅ Pizza AND ✅ Drinks AND ✅ Friends = 🎉 PARTY! (True)</li>
+                            <li>✅ Pizza AND ❌ Drinks AND ✅ Friends = 😢 No party (False)</li>
+                            <li>❌ Anything missing = No party!</li>
+                        </ul>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python - AND Examples</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># 🎮 Can you play the video game?
+has_console = True
+has_game = True
+has_controller = False
+
+can_play = has_console and has_game and has_controller
+print(can_play)  # False! (missing controller 😢)
+
+# 🚗 Can you drive?
+age = 18
+has_license = True
+is_sober = True
+
+can_drive = age >= 18 and has_license and is_sober
+print(can_drive)  # True! (all conditions met ✅)</code></pre>
+                    </div>
+
+                    <h3>🤷 <code>or</code> - You Need AT LEAST ONE!</h3>
+                    <div class="tip-box">
+                        <h3>🍕 OR = "I'll eat pizza OR burger OR tacos"</h3>
+                        <p>With <code>or</code>, you only need ONE condition to be True. You're happy with any option!</p>
+                        <p>Think of it like ordering food - you'll be happy with ANY of these:</p>
+                        <ul>
+                            <li>✅ Pizza OR ❌ Burger OR ❌ Tacos = 😊 Happy! (True - got pizza!)</li>
+                            <li>❌ Pizza OR ❌ Burger OR ✅ Tacos = 😊 Happy! (True - got tacos!)</li>
+                            <li>❌ Pizza OR ❌ Burger OR ❌ Tacos = 😢 Hungry (False - nothing!)</li>
+                        </ul>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python - OR Examples</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># 🎬 Can you watch a movie?
+has_netflix = False
+has_disney = True
+has_hbo = False
+
+can_watch = has_netflix or has_disney or has_hbo
+print(can_watch)  # True! (Disney+ is enough! 🎬)
+
+# 📅 Is it a day off?
+is_saturday = False
+is_sunday = False
+is_holiday = True
+
+day_off = is_saturday or is_sunday or is_holiday
+print(day_off)  # True! (holiday counts! 🎉)</code></pre>
+                    </div>
+
+                    <h3>🔄 <code>not</code> - Flip It!</h3>
+                    <div class="tip-box">
+                        <h3>🔄 NOT = "The opposite!"</h3>
+                        <p><code>not</code> simply flips True to False, and False to True. Like a light switch!</p>
+                        <ul>
+                            <li><code>not True</code> → False (turn OFF the light 💡→🌑)</li>
+                            <li><code>not False</code> → True (turn ON the light 🌑→💡)</li>
+                        </ul>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python - NOT Examples</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># 🌧️ Should I take an umbrella?
+is_raining = False
+need_umbrella = is_raining          # False
+no_need_umbrella = not is_raining   # True (not raining!)
+
+# 🔐 Is the door unlocked?
+is_locked = True
+is_unlocked = not is_locked  # False (it's locked!)
+
+# 🎮 Is the game NOT over?
+game_over = False
+still_playing = not game_over  # True! Keep playing! 🎮</code></pre>
+                    </div>
+
+                    <h3>📋 Quick Reference Table</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Operator</th><th>What it means</th><th>Easy memory trick</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>and</code></td>
+                                <td>ALL must be True</td>
+                                <td>🤝 "I need THIS <strong>and</strong> THAT" (strict!)</td>
+                            </tr>
+                            <tr>
+                                <td><code>or</code></td>
+                                <td>AT LEAST ONE True</td>
+                                <td>🤷 "I'll take THIS <strong>or</strong> THAT" (flexible!)</td>
+                            </tr>
+                            <tr>
+                                <td><code>not</code></td>
+                                <td>Flip True↔False</td>
+                                <td>🔄 "The opposite!" (light switch)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🎯 Combining Everything!</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python - Real World Example</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># 🎢 Can you ride the roller coaster?
+# Rules: Must be 12+ years old AND (tall enough OR have adult)
+
+age = 10
+height = 140  # cm
+has_adult = True
+
+# Too young, but has adult with them!
+can_ride = age >= 12 or (height >= 130 and has_adult)
+print(can_ride)  # True! (height + adult = OK!)
+
+# 🎬 Can you watch an R-rated movie?
+# Rules: 18+ OR (under 18 AND with parent)
+age = 15
+with_parent = True
+
+can_watch = age >= 18 or (age < 18 and with_parent)
+print(can_watch)  # True! (young but with parent!)</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚡ Remember the Order!</h3>
+                        <p>Python evaluates in this order: <code>not</code> → <code>and</code> → <code>or</code></p>
+                        <p>Use parentheses <code>()</code> to make your code clear!</p>
+                        <div class="code-block small">
+                            <pre><code># These are different!
+True or False and False   # True (and runs first)
+(True or False) and False # False (parentheses first)</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ASSIGNMENT -->
+        <section id="assignment" class="tab-content">
+            <div class="card">
+                <h2>📝 Assignment Operators</h2>
+                <div class="markdown-content">
+                    <p>Shortcuts for updating variables!</p>
+                    
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Operator</th><th>Example</th><th>Same As</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>=</code></td><td><code>x = 5</code></td><td><code>x = 5</code></td></tr>
+                            <tr><td><code>+=</code></td><td><code>x += 3</code></td><td><code>x = x + 3</code></td></tr>
+                            <tr><td><code>-=</code></td><td><code>x -= 3</code></td><td><code>x = x - 3</code></td></tr>
+                            <tr><td><code>*=</code></td><td><code>x *= 3</code></td><td><code>x = x * 3</code></td></tr>
+                            <tr><td><code>/=</code></td><td><code>x /= 3</code></td><td><code>x = x / 3</code></td></tr>
+                            <tr><td><code>//=</code></td><td><code>x //= 3</code></td><td><code>x = x // 3</code></td></tr>
+                            <tr><td><code>%=</code></td><td><code>x %= 3</code></td><td><code>x = x % 3</code></td></tr>
+                            <tr><td><code>**=</code></td><td><code>x **= 3</code></td><td><code>x = x ** 3</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>📝 Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Score counter
+score = 0
+score += 10    # score is now 10
+score += 5     # score is now 15
+score *= 2     # score is now 30
+print(score)   # 30
+
+# Health points
+health = 100
+health -= 25   # Took damage! health = 75
+health -= 10   # More damage! health = 65
+print(health)  # 65</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Very Common in Games & Counters!</h3>
+                        <p>You'll use <code>+=</code> and <code>-=</code> a LOT when making games or counting things!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Test your knowledge and practice writing code!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="quiz-section">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Quiz</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding-section">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Write Code</span>
+                    </button>
+                </div>
+
+                <!-- QUIZ SECTION -->
+                <div id="quiz-section" class="practice-content active">
+                <div class="section-header">
+                    <h3>🧠 Operators Quiz</h3>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                    <p class="question-text">What is <code>17 % 5</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="op-q1" value="a"><span class="option-text">3</span></label>
+                        <label class="option-label"><input type="radio" name="op-q1" value="b"><span class="option-text">2</span></label>
+                        <label class="option-label"><input type="radio" name="op-q1" value="c"><span class="option-text">3.4</span></label>
+                        <label class="option-label"><input type="radio" name="op-q1" value="d"><span class="option-text">12</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                    <p class="question-text">What is <code>2 ** 4</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="op-q2" value="a"><span class="option-text">8</span></label>
+                        <label class="option-label"><input type="radio" name="op-q2" value="b"><span class="option-text">6</span></label>
+                        <label class="option-label"><input type="radio" name="op-q2" value="c"><span class="option-text">16</span></label>
+                        <label class="option-label"><input type="radio" name="op-q2" value="d"><span class="option-text">24</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                    <p class="question-text">What is <code>True and False</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="op-q3" value="a"><span class="option-text">True</span></label>
+                        <label class="option-label"><input type="radio" name="op-q3" value="b"><span class="option-text">False</span></label>
+                        <label class="option-label"><input type="radio" name="op-q3" value="c"><span class="option-text">Error</span></label>
+                        <label class="option-label"><input type="radio" name="op-q3" value="d"><span class="option-text">None</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                    <p class="question-text">What is <code>not (5 > 3)</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="op-q4" value="a"><span class="option-text">True</span></label>
+                        <label class="option-label"><input type="radio" name="op-q4" value="b"><span class="option-text">False</span></label>
+                        <label class="option-label"><input type="radio" name="op-q4" value="c"><span class="option-text">2</span></label>
+                        <label class="option-label"><input type="radio" name="op-q4" value="d"><span class="option-text">Error</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                    <p class="question-text">If <code>x = 10</code>, what is <code>x</code> after <code>x += 5</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="op-q5" value="a"><span class="option-text">5</span></label>
+                        <label class="option-label"><input type="radio" name="op-q5" value="b"><span class="option-text">10</span></label>
+                        <label class="option-label"><input type="radio" name="op-q5" value="c"><span class="option-text">15</span></label>
+                        <label class="option-label"><input type="radio" name="op-q5" value="d"><span class="option-text">50</span></label>
+                    </div>
+                </div>
+
+                <button class="submit-quiz-btn" onclick="submitOpQuiz()">📊 Submit Quiz</button>
+                
+                <div class="quiz-final-result" id="quiz-final-result">
+                    <div class="result-score">
+                        <span class="score-value" id="quiz-score">0</span>
+                        <span class="score-total">/5</span>
+                    </div>
+                    <div class="result-message" id="quiz-message"></div>
+                    <button class="retry-btn" onclick="resetOpQuiz()">🔄 Try Again</button>
+                </div>
+                </div>
+
+                <!-- CODING SECTION -->
+                <div id="coding-section" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Practice operators by solving these challenges!</p>
+                    </div>
+
+                    <!-- Challenge 1 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">Challenge 1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🧮 Simple Calculator</h4>
+                            <p>Create a mini calculator! Given two numbers:</p>
+                            <ul>
+                                <li>Calculate the sum (+)</li>
+                                <li>Calculate the difference (-)</li>
+                                <li>Calculate the product (*)</li>
+                                <li>Calculate the division (/)</li>
+                            </ul>
+                            <p>Print each result!</p>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="op-code1" class="code-textarea" spellcheck="false"># Given numbers
+num1 = 20
+num2 = 5
+
+# Calculate and print each operation
+sum_result = 
+diff_result = 
+product = 
+division = 
+
+print(sum_result)
+print(diff_result)
+print(product)
+print(division)</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkOpCode1()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('op-hint1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="op-hint1">
+                            <p>Use <code>num1 + num2</code>, <code>num1 - num2</code>, <code>num1 * num2</code>, and <code>num1 / num2</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-op-code1"></div>
+                    </div>
+
+                    <!-- Challenge 2 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">Challenge 2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🐊 Comparison Challenge</h4>
+                            <p>You have a student's score. Check if:</p>
+                            <ul>
+                                <li><code>passed</code> = score is greater than or equal to 60</li>
+                                <li><code>perfect</code> = score equals 100</li>
+                                <li><code>needs_help</code> = score is less than 50</li>
+                            </ul>
+                            <p>Print each boolean result!</p>
+                            <div class="example-box">
+                                <strong>If score = 75:</strong>
+                                <div class="example-case">passed = True, perfect = False, needs_help = False</div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="op-code2" class="code-textarea" spellcheck="false"># Student's score
+score = 75
+
+# Check the conditions using comparison operators
+passed = 
+perfect = 
+needs_help = 
+
+print("Passed:", passed)
+print("Perfect:", perfect)
+print("Needs help:", needs_help)</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkOpCode2()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('op-hint2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="op-hint2">
+                            <p>Remember: 🐊 >= means "greater or equal", == means "equals", < means "less than"</p>
+                        </div>
+                        <div class="challenge-result" id="result-op-code2"></div>
+                    </div>
+
+                    <!-- Challenge 3 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">Challenge 3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎢 Theme Park Ride Logic</h4>
+                            <p>Create logic for a theme park ride with these rules:</p>
+                            <ul>
+                                <li><code>can_ride_alone</code> = age >= 12 <strong>AND</strong> height >= 140</li>
+                                <li><code>can_ride_with_adult</code> = (age < 12 <strong>OR</strong> height < 140) <strong>AND</strong> has_adult == True</li>
+                                <li><code>can_ride</code> = can_ride_alone <strong>OR</strong> can_ride_with_adult</li>
+                            </ul>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="op-code3" class="code-textarea" spellcheck="false"># Person's info
+age = 10
+height = 135
+has_adult = True
+
+# Write the logical conditions
+can_ride_alone = 
+can_ride_with_adult = 
+can_ride = 
+
+print("Can ride alone:", can_ride_alone)
+print("Can ride with adult:", can_ride_with_adult)
+print("Can ride:", can_ride)</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkOpCode3()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('op-hint3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="op-hint3">
+                            <p>Use <code>and</code> for ALL conditions needed, <code>or</code> for at least one. Use parentheses to group conditions!</p>
+                        </div>
+                        <div class="challenge-result" id="result-op-code3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        function copyCode(btn) {
+            const code = btn.closest('.code-block').querySelector('code').textContent;
+            navigator.clipboard.writeText(code);
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy', 2000);
+        }
+
+        function calcArith() {
+            const n1 = parseFloat(document.getElementById('arith-n1').value);
+            const n2 = parseFloat(document.getElementById('arith-n2').value);
+            const op = document.getElementById('arith-op').value;
+            let r;
+            switch(op) {
+                case '+': r = n1 + n2; break;
+                case '-': r = n1 - n2; break;
+                case '*': r = n1 * n2; break;
+                case '/': r = n1 / n2; break;
+                case '//': r = Math.floor(n1 / n2); break;
+                case '%': r = n1 % n2; break;
+                case '**': r = Math.pow(n1, n2); break;
+            }
+            document.getElementById('arith-output').textContent = `${n1} ${op} ${n2} = ${r}`;
+            document.getElementById('arith-output').classList.add('success');
+        }
+
+        function calcComp() {
+            const n1 = parseFloat(document.getElementById('comp-n1').value);
+            const n2 = parseFloat(document.getElementById('comp-n2').value);
+            const op = document.getElementById('comp-op').value;
+            let r;
+            switch(op) {
+                case '==': r = n1 === n2; break;
+                case '!=': r = n1 !== n2; break;
+                case '>': r = n1 > n2; break;
+                case '<': r = n1 < n2; break;
+                case '>=': r = n1 >= n2; break;
+                case '<=': r = n1 <= n2; break;
+            }
+            document.getElementById('comp-output').textContent = `${n1} ${op} ${n2} = ${r ? 'True' : 'False'}`;
+            document.getElementById('comp-output').classList.add('success');
+        }
+
+        const opAnswers = {'op-q1': 'b', 'op-q2': 'c', 'op-q3': 'b', 'op-q4': 'b', 'op-q5': 'c'};
+        
+        function submitOpQuiz() {
+            let score = 0;
+            for (const [name, correct] of Object.entries(opAnswers)) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                document.querySelectorAll(`input[name="${name}"]`).forEach(opt => {
+                    opt.parentElement.classList.remove('correct', 'incorrect');
+                    if (opt.value === correct) opt.parentElement.classList.add('correct');
+                    else if (selected && opt === selected) opt.parentElement.classList.add('incorrect');
+                });
+                if (selected && selected.value === correct) score++;
+            }
+            document.getElementById('quiz-score').textContent = score;
+            const msgs = {5: "🎉 Perfect!", 4: "👏 Great!", 3: "👍 Good!", 2: "📚 Keep learning!", 1: "💪 Try again!", 0: "🔄 Review!"};
+            document.getElementById('quiz-message').textContent = msgs[score];
+            document.getElementById('quiz-final-result').classList.add('show');
+        }
+
+        function resetOpQuiz() {
+            document.querySelectorAll('.analysis-question input').forEach(i => {
+                i.checked = false;
+                i.parentElement.classList.remove('correct', 'incorrect');
+            });
+            document.getElementById('quiz-final-result').classList.remove('show');
+        }
+
+        // Practice Tab Navigation
+        document.querySelectorAll('.practice-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.practice-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.practice-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.practice).classList.add('active');
+            });
+        });
+
+        function toggleHint(id) {
+            document.getElementById(id).classList.toggle('show');
+        }
+
+        // Coding challenges
+        function checkOpCode1() {
+            const code = document.getElementById('op-code1').value;
+            const result = document.getElementById('result-op-code1');
+            
+            const hasSum = /sum_result\s*=\s*num1\s*\+\s*num2/.test(code);
+            const hasDiff = /diff_result\s*=\s*num1\s*-\s*num2/.test(code);
+            const hasProd = /product\s*=\s*num1\s*\*\s*num2/.test(code);
+            const hasDiv = /division\s*=\s*num1\s*\/\s*num2/.test(code);
+            
+            if (hasSum && hasDiff && hasProd && hasDiv) {
+                result.innerHTML = '✅ Perfect! All arithmetic operations are correct!';
+                result.className = 'challenge-result show success';
+            } else {
+                let missing = [];
+                if (!hasSum) missing.push('sum (use +)');
+                if (!hasDiff) missing.push('difference (use -)');
+                if (!hasProd) missing.push('product (use *)');
+                if (!hasDiv) missing.push('division (use /)');
+                result.innerHTML = '❌ Check: ' + missing.join(', ');
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkOpCode2() {
+            const code = document.getElementById('op-code2').value;
+            const result = document.getElementById('result-op-code2');
+            
+            const hasPassed = /passed\s*=\s*score\s*>=\s*60/.test(code);
+            const hasPerfect = /perfect\s*=\s*score\s*==\s*100/.test(code);
+            const hasNeedsHelp = /needs_help\s*=\s*score\s*<\s*50/.test(code);
+            
+            if (hasPassed && hasPerfect && hasNeedsHelp) {
+                result.innerHTML = '✅ Excellent! You mastered comparison operators! 🐊';
+                result.className = 'challenge-result show success';
+            } else {
+                let hints = [];
+                if (!hasPassed) hints.push('passed: use score >= 60');
+                if (!hasPerfect) hints.push('perfect: use score == 100');
+                if (!hasNeedsHelp) hints.push('needs_help: use score < 50');
+                result.innerHTML = '❌ ' + hints.join(', ');
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkOpCode3() {
+            const code = document.getElementById('op-code3').value;
+            const result = document.getElementById('result-op-code3');
+            
+            const hasAnd = /and/.test(code);
+            const hasOr = /or/.test(code);
+            const hasComparisons = />=/.test(code) && /</.test(code);
+            const hasAllVars = /can_ride_alone\s*=/.test(code) && /can_ride_with_adult\s*=/.test(code) && /can_ride\s*=/.test(code);
+            
+            if (hasAnd && hasOr && hasComparisons && hasAllVars) {
+                result.innerHTML = '✅ Amazing! You combined logical and comparison operators perfectly! 🎢';
+                result.className = 'challenge-result show success';
+            } else {
+                let hints = [];
+                if (!hasAnd) hints.push('Use "and" operator');
+                if (!hasOr) hints.push('Use "or" operator');
+                if (!hasComparisons) hints.push('Use comparison operators (>=, <)');
+                result.innerHTML = '❌ ' + hints.join('. ');
+                result.className = 'challenge-result show error';
+            }
+        }
+    </script>
+</body>
+</html>
+

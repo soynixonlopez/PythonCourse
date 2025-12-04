@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Types - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 03</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Data Types</h1>
+        <p class="subtitle">Understand the different types of data in Python! 🔤</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Overview</button>
+        <button class="tab-btn" data-tab="strings">📝 Strings</button>
+        <button class="tab-btn" data-tab="numbers">🔢 Numbers</button>
+        <button class="tab-btn" data-tab="booleans">✅ Booleans</button>
+        <button class="tab-btn" data-tab="conversion">🔄 Type Conversion</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- OVERVIEW -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🔤 What are Data Types?</h2>
+                <div class="markdown-content">
+                    <p>In Python, every value has a <strong>type</strong>. The type tells Python what kind of data it is and what operations can be done with it.</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of data types like different containers:</p>
+                        <ul>
+                            <li>📝 <strong>Strings</strong> = A notebook (holds text)</li>
+                            <li>🔢 <strong>Integers</strong> = A counter (holds whole numbers)</li>
+                            <li>💧 <strong>Floats</strong> = A measuring cup (holds decimal numbers)</li>
+                            <li>✅ <strong>Booleans</strong> = A light switch (on/off, true/false)</li>
+                        </ul>
+                    </div>
+
+                    <h3>📋 Python's Basic Data Types</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>str</code></td>
+                                <td>Text (strings)</td>
+                                <td><code>"Hello"</code>, <code>'Python'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>int</code></td>
+                                <td>Whole numbers</td>
+                                <td><code>42</code>, <code>-10</code>, <code>0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>float</code></td>
+                                <td>Decimal numbers</td>
+                                <td><code>3.14</code>, <code>-0.5</code>, <code>2.0</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>bool</code></td>
+                                <td>True or False</td>
+                                <td><code>True</code>, <code>False</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🔍 Check the Type with <code>type()</code></h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Use type() to check data types
+print(type("Hello"))     # &lt;class 'str'&gt;
+print(type(42))          # &lt;class 'int'&gt;
+print(type(3.14))        # &lt;class 'float'&gt;
+print(type(True))        # &lt;class 'bool'&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRINGS -->
+        <section id="strings" class="tab-content">
+            <div class="card">
+                <h2>📝 Strings (str)</h2>
+                
+                <div class="markdown-content">
+                    <p>A <strong>string</strong> is a sequence of characters (text). Always wrap strings in quotes!</p>
+                    
+                    <h3>✨ Creating Strings</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Single quotes
+name = 'Alex'
+
+# Double quotes (same thing!)
+greeting = "Hello, World!"
+
+# Triple quotes (for multiple lines)
+poem = """Roses are red,
+Violets are blue,
+Python is awesome,
+And so are you!"""
+
+# Empty string
+empty = ""</code></pre>
+                    </div>
+
+                    <h3>🔗 String Concatenation (+)</h3>
+                    <p>Combine strings using the <code>+</code> operator:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>first_name = "John"
+last_name = "Doe"
+
+# Combine strings
+full_name = first_name + " " + last_name
+print(full_name)  # John Doe
+
+# Repeat strings with *
+laugh = "ha" * 3
+print(laugh)  # hahaha</code></pre>
+                    </div>
+
+                    <h3>📏 String Length</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>message = "Hello!"
+print(len(message))  # 6</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Pro Tip: f-Strings</h3>
+                        <p>The easiest way to include variables in strings:</p>
+                        <div class="code-block small">
+                            <pre><code>name = "Alex"
+age = 15
+print(f"My name is {name} and I'm {age} years old")
+# Output: My name is Alex and I'm 15 years old</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 String Combiner</h3>
+                    <div class="demo-controls">
+                        <input type="text" id="str1" value="Hello" style="width: 100px;">
+                        <span style="color: var(--accent-yellow); font-size: 1.5rem;">+</span>
+                        <input type="text" id="str2" value="World" style="width: 100px;">
+                        <button onclick="combineStrings()">▶ Combine</button>
+                    </div>
+                    <div class="demo-output" id="string-output">Click "Combine" to see the result!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUMBERS -->
+        <section id="numbers" class="tab-content">
+            <div class="card">
+                <h2>🔢 Numbers (int & float)</h2>
+                
+                <div class="markdown-content">
+                    <h3>📊 Integers (int)</h3>
+                    <p>Whole numbers without decimals:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>age = 25
+temperature = -10
+score = 0
+big_number = 1000000
+
+# You can use underscores for readability
+population = 7_900_000_000  # Same as 7900000000</code></pre>
+                    </div>
+
+                    <h3>💧 Floats (float)</h3>
+                    <p>Numbers with decimal points:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>pi = 3.14159
+price = 19.99
+temperature = -2.5
+percentage = 0.85</code></pre>
+                    </div>
+
+                    <h3>🧮 Math Operations</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Operator</th>
+                                <th>Name</th>
+                                <th>Example</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>+</code></td><td>Addition</td><td><code>5 + 3</code></td><td>8</td></tr>
+                            <tr><td><code>-</code></td><td>Subtraction</td><td><code>10 - 4</code></td><td>6</td></tr>
+                            <tr><td><code>*</code></td><td>Multiplication</td><td><code>6 * 7</code></td><td>42</td></tr>
+                            <tr><td><code>/</code></td><td>Division</td><td><code>15 / 4</code></td><td>3.75</td></tr>
+                            <tr><td><code>//</code></td><td>Floor Division</td><td><code>15 // 4</code></td><td>3</td></tr>
+                            <tr><td><code>%</code></td><td>Modulo (remainder)</td><td><code>15 % 4</code></td><td>3</td></tr>
+                            <tr><td><code>**</code></td><td>Exponent (power)</td><td><code>2 ** 3</code></td><td>8</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Division Always Returns Float!</h3>
+                        <div class="code-block small">
+                            <pre><code>print(10 / 2)   # 5.0 (float, not int!)
+print(10 // 2)  # 5 (floor division = int)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🧮 Calculator</h3>
+                    <div class="demo-controls">
+                        <input type="number" id="num1" value="10" style="width: 80px;">
+                        <select id="op">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">×</option>
+                            <option value="/">÷</option>
+                            <option value="//">// (floor)</option>
+                            <option value="%">% (mod)</option>
+                            <option value="**">** (power)</option>
+                        </select>
+                        <input type="number" id="num2" value="3" style="width: 80px;">
+                        <button onclick="calculate()">▶ Calculate</button>
+                    </div>
+                    <div class="demo-output" id="calc-output">Click "Calculate" to see the result!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOLEANS -->
+        <section id="booleans" class="tab-content">
+            <div class="card">
+                <h2>✅ Booleans (bool)</h2>
+                
+                <div class="markdown-content">
+                    <p>Booleans have only two possible values: <code>True</code> or <code>False</code>. They're used for logic and decision-making!</p>
+                    
+                    <h3>📝 Creating Booleans</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Direct assignment
+is_student = True
+has_license = False
+is_raining = True
+
+# Note: True and False are capitalized!
+# true ❌  True ✅</code></pre>
+                    </div>
+
+                    <h3>🔍 Comparison Operators</h3>
+                    <p>Comparisons return boolean values:</p>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>x = 10
+y = 5
+
+print(x > y)    # True  (10 is greater than 5)
+print(x < y)    # False (10 is not less than 5)
+print(x == y)   # False (10 does not equal 5)
+print(x != y)   # True  (10 is not equal to 5)
+print(x >= 10)  # True  (10 is >= 10)
+print(x <= 5)   # False (10 is not <= 5)</code></pre>
+                    </div>
+
+                    <h3>🎯 Comparison Operators Table</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Operator</th><th>Meaning</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>==</code></td><td>Equal to</td><td><code>5 == 5</code> → True</td></tr>
+                            <tr><td><code>!=</code></td><td>Not equal to</td><td><code>5 != 3</code> → True</td></tr>
+                            <tr><td><code>&gt;</code></td><td>Greater than</td><td><code>10 > 5</code> → True</td></tr>
+                            <tr><td><code>&lt;</code></td><td>Less than</td><td><code>3 < 7</code> → True</td></tr>
+                            <tr><td><code>&gt;=</code></td><td>Greater or equal</td><td><code>5 >= 5</code> → True</td></tr>
+                            <tr><td><code>&lt;=</code></td><td>Less or equal</td><td><code>4 <= 3</code> → False</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h3>💡 Boolean Values</h3>
+                        <p>In Python, some values are considered "truthy" or "falsy":</p>
+                        <ul>
+                            <li><strong>Falsy:</strong> <code>False</code>, <code>0</code>, <code>""</code> (empty string), <code>None</code></li>
+                            <li><strong>Truthy:</strong> Everything else!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TYPE CONVERSION -->
+        <section id="conversion" class="tab-content">
+            <div class="card">
+                <h2>🔄 Type Conversion</h2>
+                
+                <div class="markdown-content">
+                    <p>Sometimes you need to convert data from one type to another. Python provides built-in functions for this!</p>
+                    
+                    <h3>🔧 Conversion Functions</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Function</th><th>Converts to</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>str()</code></td><td>String</td><td><code>str(42)</code> → <code>"42"</code></td></tr>
+                            <tr><td><code>int()</code></td><td>Integer</td><td><code>int("42")</code> → <code>42</code></td></tr>
+                            <tr><td><code>float()</code></td><td>Float</td><td><code>float("3.14")</code> → <code>3.14</code></td></tr>
+                            <tr><td><code>bool()</code></td><td>Boolean</td><td><code>bool(1)</code> → <code>True</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>📝 Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># String to Number
+age_str = "25"
+age_int = int(age_str)
+print(age_int + 5)  # 30
+
+# Number to String
+score = 100
+message = "Your score is: " + str(score)
+print(message)  # Your score is: 100
+
+# Float to Integer (removes decimals!)
+price = 19.99
+whole_price = int(price)
+print(whole_price)  # 19
+
+# Integer to Float
+number = 42
+decimal = float(number)
+print(decimal)  # 42.0</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Common Errors</h3>
+                        <div class="code-block small">
+                            <pre><code># This will cause an ERROR!
+int("hello")     # ❌ Can't convert text to number
+int("3.14")      # ❌ Use float() first, then int()
+
+# This works:
+int(float("3.14"))  # ✅ → 3</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🔄 Type Converter</h3>
+                    <div class="demo-controls">
+                        <input type="text" id="convert-input" value="42" style="width: 120px;">
+                        <select id="convert-type">
+                            <option value="str">str()</option>
+                            <option value="int">int()</option>
+                            <option value="float">float()</option>
+                            <option value="bool">bool()</option>
+                            <option value="type">type()</option>
+                        </select>
+                        <button onclick="convertType()">▶ Convert</button>
+                    </div>
+                    <div class="demo-output" id="convert-output">Click "Convert" to see the result!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Test your knowledge and practice writing code!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="quiz-section">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Quiz</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding-section">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Write Code</span>
+                    </button>
+                </div>
+
+                <!-- QUIZ SECTION -->
+                <div id="quiz-section" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧠 Data Types Quiz</h3>
+                    </div>
+
+                <div class="analysis-question" data-question="q1">
+                    <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                    <p class="question-text">What is the type of <code>"Hello"</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="dt-q1" value="a"><span class="option-text">int</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q1" value="b"><span class="option-text">str</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q1" value="c"><span class="option-text">bool</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q1" value="d"><span class="option-text">float</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question" data-question="q2">
+                    <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                    <p class="question-text">What is <code>10 / 4</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="dt-q2" value="a"><span class="option-text">2</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q2" value="b"><span class="option-text">2.5</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q2" value="c"><span class="option-text">2.0</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q2" value="d"><span class="option-text">3</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question" data-question="q3">
+                    <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                    <p class="question-text">What is <code>10 // 4</code> (floor division)?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="dt-q3" value="a"><span class="option-text">2</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q3" value="b"><span class="option-text">2.5</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q3" value="c"><span class="option-text">3</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q3" value="d"><span class="option-text">2.0</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question" data-question="q4">
+                    <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                    <p class="question-text">What is <code>5 > 3</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="dt-q4" value="a"><span class="option-text">True</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q4" value="b"><span class="option-text">False</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q4" value="c"><span class="option-text">"True"</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q4" value="d"><span class="option-text">2</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question" data-question="q5">
+                    <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                    <p class="question-text">What is <code>int("3.14")</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="dt-q5" value="a"><span class="option-text">3</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q5" value="b"><span class="option-text">3.14</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q5" value="c"><span class="option-text">"3"</span></label>
+                        <label class="option-label"><input type="radio" name="dt-q5" value="d"><span class="option-text">Error</span></label>
+                    </div>
+                </div>
+
+                <button class="submit-quiz-btn" onclick="submitDTQuiz()">📊 Submit Quiz</button>
+                
+                <div class="quiz-final-result" id="quiz-final-result">
+                    <div class="result-score">
+                        <span class="score-value" id="quiz-score">0</span>
+                        <span class="score-total">/5</span>
+                    </div>
+                    <div class="result-message" id="quiz-message"></div>
+                    <button class="retry-btn" onclick="resetDTQuiz()">🔄 Try Again</button>
+                </div>
+                </div>
+
+                <!-- CODING SECTION -->
+                <div id="coding-section" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Practice by solving these coding challenges!</p>
+                    </div>
+
+                    <!-- Challenge 1 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">Challenge 1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Create a Student Profile</h4>
+                            <p>Create variables to store information about a student:</p>
+                            <ul>
+                                <li>A <strong>string</strong> for the student's name</li>
+                                <li>An <strong>integer</strong> for their age</li>
+                                <li>A <strong>float</strong> for their grade average (e.g., 8.5)</li>
+                                <li>A <strong>boolean</strong> for whether they passed (True/False)</li>
+                            </ul>
+                            <p>Then print each variable using <code>print()</code></p>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="dt-code1" class="code-textarea" spellcheck="false"># Create your variables here
+name = 
+age = 
+grade_average = 
+passed = 
+
+# Print each one
+print(name)
+print(age)
+print(grade_average)
+print(passed)</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkDTCode1()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('dt-hint1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="dt-hint1">
+                            <p>Remember: strings need quotes <code>"Alex"</code>, integers are whole numbers <code>15</code>, floats have decimals <code>8.5</code>, booleans are <code>True</code> or <code>False</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-dt-code1"></div>
+                    </div>
+
+                    <!-- Challenge 2 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">Challenge 2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Type Conversion Challenge</h4>
+                            <p>You have a string <code>"25"</code> stored in a variable. Convert it to:</p>
+                            <ol>
+                                <li>An integer and add 10 to it</li>
+                                <li>A float and multiply by 2.5</li>
+                            </ol>
+                            <p>Print the results!</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case"><span>35</span></div>
+                                <div class="example-case"><span>62.5</span></div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="dt-code2" class="code-textarea" spellcheck="false"># Start with this string
+number_str = "25"
+
+# Convert to int and add 10
+result1 = 
+
+# Convert to float and multiply by 2.5
+result2 = 
+
+# Print both results
+print(result1)
+print(result2)</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkDTCode2()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('dt-hint2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="dt-hint2">
+                            <p>Use <code>int(number_str) + 10</code> for the first one and <code>float(number_str) * 2.5</code> for the second!</p>
+                        </div>
+                        <div class="challenge-result" id="result-dt-code2"></div>
+                    </div>
+
+                    <!-- Challenge 3 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">Challenge 3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Build a Product Description</h4>
+                            <p>Create a shopping item with these variables:</p>
+                            <ul>
+                                <li><code>product_name</code> = "Laptop" (string)</li>
+                                <li><code>price</code> = 999.99 (float)</li>
+                                <li><code>quantity</code> = 2 (integer)</li>
+                                <li><code>in_stock</code> = True (boolean)</li>
+                            </ul>
+                            <p>Then create and print a message using f-strings that says:</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case"><span>"Product: Laptop, Price: $999.99, Quantity: 2, Available: True"</span></div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="dt-code3" class="code-textarea" spellcheck="false"># Create your variables
+product_name = "Laptop"
+price = 999.99
+quantity = 2
+in_stock = True
+
+# Create and print the message using f-string
+message = f""
+print(message)</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkDTCode3()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('dt-hint3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="dt-hint3">
+                            <p>Use f-strings like this: <code>f"Product: {product_name}, Price: ${price}..."</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-dt-code3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        function copyCode(btn) {
+            const code = btn.closest('.code-block').querySelector('code').textContent;
+            navigator.clipboard.writeText(code);
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy', 2000);
+        }
+
+        // String combiner
+        function combineStrings() {
+            const s1 = document.getElementById('str1').value;
+            const s2 = document.getElementById('str2').value;
+            document.getElementById('string-output').textContent = s1 + " " + s2;
+            document.getElementById('string-output').classList.add('success');
+        }
+
+        // Calculator
+        function calculate() {
+            const n1 = parseFloat(document.getElementById('num1').value);
+            const n2 = parseFloat(document.getElementById('num2').value);
+            const op = document.getElementById('op').value;
+            let result;
+            switch(op) {
+                case '+': result = n1 + n2; break;
+                case '-': result = n1 - n2; break;
+                case '*': result = n1 * n2; break;
+                case '/': result = n1 / n2; break;
+                case '//': result = Math.floor(n1 / n2); break;
+                case '%': result = n1 % n2; break;
+                case '**': result = Math.pow(n1, n2); break;
+            }
+            document.getElementById('calc-output').textContent = result;
+            document.getElementById('calc-output').classList.add('success');
+        }
+
+        // Type converter
+        function convertType() {
+            const val = document.getElementById('convert-input').value;
+            const type = document.getElementById('convert-type').value;
+            let result;
+            try {
+                switch(type) {
+                    case 'str': result = `"${val}" (string)`; break;
+                    case 'int': result = parseInt(val) + " (int)"; break;
+                    case 'float': result = parseFloat(val) + " (float)"; break;
+                    case 'bool': result = (val && val !== "0" && val !== "false" && val !== "False") ? "True" : "False"; break;
+                    case 'type': result = isNaN(val) ? "str" : (val.includes('.') ? "float" : "int"); break;
+                }
+                document.getElementById('convert-output').textContent = result;
+                document.getElementById('convert-output').className = 'demo-output success';
+            } catch(e) {
+                document.getElementById('convert-output').textContent = "Error: " + e.message;
+                document.getElementById('convert-output').className = 'demo-output error';
+            }
+        }
+
+        // Quiz
+        const dtAnswers = {'dt-q1': 'b', 'dt-q2': 'b', 'dt-q3': 'a', 'dt-q4': 'a', 'dt-q5': 'd'};
+        
+        function submitDTQuiz() {
+            let score = 0;
+            for (const [name, correct] of Object.entries(dtAnswers)) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                document.querySelectorAll(`input[name="${name}"]`).forEach(opt => {
+                    opt.parentElement.classList.remove('correct', 'incorrect');
+                    if (opt.value === correct) opt.parentElement.classList.add('correct');
+                    else if (selected && opt === selected) opt.parentElement.classList.add('incorrect');
+                });
+                if (selected && selected.value === correct) score++;
+            }
+            document.getElementById('quiz-score').textContent = score;
+            const msgs = {5: "🎉 Perfect!", 4: "👏 Great!", 3: "👍 Good!", 2: "📚 Keep learning!", 1: "💪 Try again!", 0: "🔄 Review the lesson!"};
+            document.getElementById('quiz-message').textContent = msgs[score];
+            document.getElementById('quiz-final-result').classList.add('show');
+        }
+
+        function resetDTQuiz() {
+            document.querySelectorAll('.analysis-question input').forEach(i => {
+                i.checked = false;
+                i.parentElement.classList.remove('correct', 'incorrect');
+            });
+            document.getElementById('quiz-final-result').classList.remove('show');
+        }
+
+        // Practice Tab Navigation
+        document.querySelectorAll('.practice-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.practice-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.practice-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.practice).classList.add('active');
+            });
+        });
+
+        // Toggle hint
+        function toggleHint(id) {
+            const hint = document.getElementById(id);
+            hint.classList.toggle('show');
+        }
+
+        // Check coding challenges
+        function checkDTCode1() {
+            const code = document.getElementById('dt-code1').value;
+            const result = document.getElementById('result-dt-code1');
+            
+            const hasString = /name\s*=\s*["'].+["']/.test(code);
+            const hasInt = /age\s*=\s*\d+/.test(code) && !/age\s*=\s*\d+\./.test(code);
+            const hasFloat = /grade_average\s*=\s*\d+\.\d+/.test(code);
+            const hasBool = /passed\s*=\s*(True|False)/.test(code);
+            
+            if (hasString && hasInt && hasFloat && hasBool) {
+                result.innerHTML = '✅ Excellent! You correctly used all 4 data types: string, int, float, and boolean!';
+                result.className = 'challenge-result show success';
+            } else {
+                let missing = [];
+                if (!hasString) missing.push('string (name needs quotes)');
+                if (!hasInt) missing.push('integer (age should be a whole number)');
+                if (!hasFloat) missing.push('float (grade_average needs a decimal point)');
+                if (!hasBool) missing.push('boolean (passed should be True or False)');
+                result.innerHTML = '❌ Check these: ' + missing.join(', ');
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkDTCode2() {
+            const code = document.getElementById('dt-code2').value;
+            const result = document.getElementById('result-dt-code2');
+            
+            const hasIntConversion = /int\s*\(\s*number_str\s*\)/.test(code) && /\+\s*10/.test(code);
+            const hasFloatConversion = /float\s*\(\s*number_str\s*\)/.test(code) && /\*\s*2\.5/.test(code);
+            
+            if (hasIntConversion && hasFloatConversion) {
+                result.innerHTML = '✅ Perfect! You correctly converted the string to int and float!';
+                result.className = 'challenge-result show success';
+            } else {
+                let hints = [];
+                if (!hasIntConversion) hints.push('Use int(number_str) + 10 for result1');
+                if (!hasFloatConversion) hints.push('Use float(number_str) * 2.5 for result2');
+                result.innerHTML = '❌ ' + hints.join('. ');
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkDTCode3() {
+            const code = document.getElementById('dt-code3').value;
+            const result = document.getElementById('result-dt-code3');
+            
+            const hasFString = /f["']/.test(code);
+            const hasProductName = /\{product_name\}/.test(code);
+            const hasPrice = /\{price\}/.test(code);
+            const hasQuantity = /\{quantity\}/.test(code);
+            const hasInStock = /\{in_stock\}/.test(code);
+            
+            if (hasFString && hasProductName && hasPrice && hasQuantity && hasInStock) {
+                result.innerHTML = '✅ Amazing! You mastered f-strings with multiple data types!';
+                result.className = 'challenge-result show success';
+            } else {
+                let missing = [];
+                if (!hasFString) missing.push('Use f"..." for f-strings');
+                if (!hasProductName) missing.push('Include {product_name}');
+                if (!hasPrice) missing.push('Include {price}');
+                if (!hasQuantity) missing.push('Include {quantity}');
+                if (!hasInStock) missing.push('Include {in_stock}');
+                result.innerHTML = '❌ ' + missing.join(', ');
+                result.className = 'challenge-result show error';
+            }
+        }
+    </script>
+</body>
+</html>
+

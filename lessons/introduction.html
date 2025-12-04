@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Python - Python Junior Course</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Lesson Navigation -->
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 01</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Introduction to Python</h1>
+        <p class="subtitle">Welcome to your programming journey! 🚀</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 What is Python?</button>
+        <button class="tab-btn" data-tab="hello">👋 Hello World</button>
+        <button class="tab-btn" data-tab="print">🖨️ The print() Function</button>
+        <button class="tab-btn" data-tab="comments">💬 Comments</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- WHAT IS PYTHON -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🐍 What is Python?</h2>
+                <div class="markdown-content">
+                    <p>Python is one of the most <strong>popular programming languages</strong> in the world! It's used by companies like Google, Netflix, Instagram, and NASA.</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of Python as learning a new language - but instead of talking to people, you're talking to computers! Just like Spanish or English has rules (grammar), Python has rules (syntax) that you need to follow.</p>
+                    </div>
+
+                    <h3>✨ Why Python is Great for Beginners</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Why It's Awesome</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🎯 Easy to Read</td>
+                                <td>Python code looks almost like English!</td>
+                            </tr>
+                            <tr>
+                                <td>⚡ Quick Results</td>
+                                <td>Write a few lines and see results immediately</td>
+                            </tr>
+                            <tr>
+                                <td>🌐 Versatile</td>
+                                <td>Web apps, games, AI, data science - Python does it all!</td>
+                            </tr>
+                            <tr>
+                                <td>👥 Huge Community</td>
+                                <td>Millions of developers ready to help you learn</td>
+                            </tr>
+                            <tr>
+                                <td>💰 Free Forever</td>
+                                <td>Python is open source - 100% free!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🚀 What Can You Build with Python?</h3>
+                    <ul>
+                        <li><strong>Websites & Web Apps</strong> - Instagram, Pinterest, Spotify</li>
+                        <li><strong>Games</strong> - Simple to complex video games</li>
+                        <li><strong>Artificial Intelligence</strong> - ChatGPT uses Python!</li>
+                        <li><strong>Data Science</strong> - Analyze data, create visualizations</li>
+                        <li><strong>Automation</strong> - Make your computer do boring tasks for you</li>
+                        <li><strong>Mobile Apps</strong> - Create apps for iOS and Android</li>
+                    </ul>
+
+                    <div class="tip-box">
+                        <h3>💡 Fun Fact</h3>
+                        <p>Python was named after the British comedy group <strong>"Monty Python"</strong>, not the snake! The creator, Guido van Rossum, was a fan of their TV show.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HELLO WORLD -->
+        <section id="hello" class="tab-content">
+            <div class="card">
+                <h2>👋 Your First Program: Hello World!</h2>
+                
+                <div class="markdown-content">
+                    <p>Every programmer starts their journey with a simple program that displays "Hello, World!" on the screen. Let's write yours!</p>
+                    
+                    <h3>🎯 The Classic Hello World</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>print("Hello, World!")</code></pre>
+                    </div>
+
+                    <p>That's it! <strong>One line of code</strong> and you've written your first program! 🎉</p>
+
+                    <div class="analogy-box">
+                        <h3>🔍 Breaking It Down</h3>
+                        <ul>
+                            <li><code>print</code> - This is a <strong>function</strong> that displays text on the screen</li>
+                            <li><code>(</code> and <code>)</code> - Parentheses that wrap what you want to print</li>
+                            <li><code>"Hello, World!"</code> - The text you want to display (in quotes)</li>
+                        </ul>
+                    </div>
+
+                    <h3>🎨 Customize Your Message</h3>
+                    <p>You can change the text inside the quotes to say anything you want:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>print("My name is Python Junior!")
+print("I'm learning to code! 🚀")
+print("This is amazing!")</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Important Rules</h3>
+                        <ul>
+                            <li>Always use <strong>quotes</strong> around your text (either <code>"double"</code> or <code>'single'</code>)</li>
+                            <li><code>print</code> must be <strong>lowercase</strong> - Python is case-sensitive!</li>
+                            <li>Don't forget the <strong>parentheses</strong> <code>()</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Try It Yourself!</h3>
+                    <div class="demo-controls">
+                        <label>Type your message:</label>
+                        <input type="text" id="hello-input" value="Hello, World!" style="width: 250px;">
+                        <button onclick="runHelloDemo()">▶ Run Code</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code>print("<span id="hello-value">Hello, World!</span>")</code></pre>
+                    </div>
+                    <div class="demo-output" id="hello-output">
+                        Click "Run Code" to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE PRINT FUNCTION -->
+        <section id="print" class="tab-content">
+            <div class="card">
+                <h2>🖨️ The <code>print()</code> Function</h2>
+                
+                <div class="markdown-content">
+                    <p>The <code>print()</code> function is your window to communicate with the world! It displays information on the screen.</p>
+                    
+                    <h3>📝 Basic Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>print("Your message here")</code></pre>
+                    </div>
+
+                    <h3>🎯 Printing Multiple Things</h3>
+                    <p>You can print several items separated by commas:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Printing multiple items
+print("Hello", "World", "!")
+
+# Output: Hello World !
+
+# Printing text and numbers
+print("I am", 15, "years old")
+
+# Output: I am 15 years old</code></pre>
+                    </div>
+
+                    <h3>🔢 Printing Numbers</h3>
+                    <p>Numbers don't need quotes:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Printing numbers (no quotes needed!)
+print(42)
+print(3.14159)
+
+# You can even do math!
+print(10 + 5)      # Output: 15
+print(100 - 25)    # Output: 75
+print(7 * 8)       # Output: 56
+print(20 / 4)      # Output: 5.0</code></pre>
+                    </div>
+
+                    <h3>🆕 Empty Lines</h3>
+                    <p>Use <code>print()</code> with nothing inside to create a blank line:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>print("Line 1")
+print()           # Empty line
+print("Line 3")</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Pro Tip: Using Quotes</h3>
+                        <p>Both single <code>'</code> and double <code>"</code> quotes work the same:</p>
+                        <div class="code-block small">
+                            <pre><code>print("Hello!")   # Double quotes
+print('Hello!')   # Single quotes - same result!</code></pre>
+                        </div>
+                        <p>Use double quotes when your text contains an apostrophe:</p>
+                        <div class="code-block small">
+                            <pre><code>print("I'm learning Python!")  # ✓ Works!
+print('I'm learning Python!')  # ✗ Error!</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🔢 Math Calculator</h3>
+                    <div class="demo-controls">
+                        <input type="number" id="calc-num1" value="10" style="width: 80px;">
+                        <select id="calc-operator">
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">×</option>
+                            <option value="/">÷</option>
+                        </select>
+                        <input type="number" id="calc-num2" value="5" style="width: 80px;">
+                        <button onclick="runCalcDemo()">▶ Calculate</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code>print(<span id="calc-expression">10 + 5</span>)</code></pre>
+                    </div>
+                    <div class="demo-output" id="calc-output">
+                        Click "Calculate" to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMENTS -->
+        <section id="comments" class="tab-content">
+            <div class="card">
+                <h2>💬 Comments in Python</h2>
+                
+                <div class="markdown-content">
+                    <p>Comments are <strong>notes for humans</strong> that Python ignores. They help explain your code!</p>
+                    
+                    <h3>📝 Single-Line Comments</h3>
+                    <p>Use the <code>#</code> symbol to create a comment:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># This is a comment - Python ignores this line
+print("Hello!")  # You can also comment at the end of a line
+
+# Comments help explain what your code does
+# They're like sticky notes for programmers!</code></pre>
+                    </div>
+
+                    <h3>📄 Multi-Line Comments</h3>
+                    <p>For longer explanations, use triple quotes:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>"""
+This is a multi-line comment.
+You can write as many lines as you want.
+Python will ignore all of this!
+"""
+
+print("This code runs normally")</code></pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h3>🎯 Why Use Comments?</h3>
+                        <ul>
+                            <li><strong>Explain complex code</strong> - Help others (and future you!) understand</li>
+                            <li><strong>Leave reminders</strong> - "TODO: fix this later"</li>
+                            <li><strong>Temporarily disable code</strong> - Without deleting it</li>
+                            <li><strong>Document your program</strong> - What does it do? How does it work?</li>
+                        </ul>
+                    </div>
+
+                    <h3>🎯 Good vs Bad Comments</h3>
+                    
+                    <div class="comparison-box">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>✅ Good Comments</h4>
+                                <div class="code-block small">
+                                    <pre><code># Calculate the total price with 10% tax
+total = price * 1.10
+
+# Check if user is old enough to vote
+if age >= 18:</code></pre>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>❌ Bad Comments</h4>
+                                <div class="code-block small">
+                                    <pre><code># Print hello
+print("Hello")
+
+# Add 1 to x
+x = x + 1</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Pro Tip</h3>
+                        <p>Write comments that explain <strong>WHY</strong> you're doing something, not <strong>WHAT</strong> the code does. The code itself shows what it does!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Test your knowledge with these fun exercises!</p>
+                
+                <!-- Practice Sub-Navigation -->
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Quiz</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Write Code</span>
+                    </button>
+                </div>
+
+                <!-- QUIZ SECTION -->
+                <div id="quiz" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧠 Knowledge Check</h3>
+                        <p>Answer these questions to test what you've learned!</p>
+                    </div>
+
+                    <!-- Question 1 -->
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header">
+                            <span class="question-num">Question 1/5</span>
+                        </div>
+                        <p class="question-text">What will this code display?</p>
+                        <div class="code-display">
+                            <pre><code>print("Python is awesome!")</code></pre>
+                        </div>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="intro-q1" value="a">
+                                <span class="option-text">Python is awesome!</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q1" value="b">
+                                <span class="option-text">"Python is awesome!"</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q1" value="c">
+                                <span class="option-text">print("Python is awesome!")</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q1" value="d">
+                                <span class="option-text">Error</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header">
+                            <span class="question-num">Question 2/5</span>
+                        </div>
+                        <p class="question-text">Which symbol is used to create a comment in Python?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="intro-q2" value="a">
+                                <span class="option-text">//</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q2" value="b">
+                                <span class="option-text">#</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q2" value="c">
+                                <span class="option-text">/*</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q2" value="d">
+                                <span class="option-text">--</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header">
+                            <span class="question-num">Question 3/5</span>
+                        </div>
+                        <p class="question-text">What will this code display?</p>
+                        <div class="code-display">
+                            <pre><code>print(5 + 3)</code></pre>
+                        </div>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="intro-q3" value="a">
+                                <span class="option-text">5 + 3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q3" value="b">
+                                <span class="option-text">"5 + 3"</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q3" value="c">
+                                <span class="option-text">8</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q3" value="d">
+                                <span class="option-text">53</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header">
+                            <span class="question-num">Question 4/5</span>
+                        </div>
+                        <p class="question-text">Which of these is a valid way to print text?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="intro-q4" value="a">
+                                <span class="option-text">Print("Hello")</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q4" value="b">
+                                <span class="option-text">print "Hello"</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q4" value="c">
+                                <span class="option-text">print('Hello')</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q4" value="d">
+                                <span class="option-text">PRINT("Hello")</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header">
+                            <span class="question-num">Question 5/5</span>
+                        </div>
+                        <p class="question-text">What does this code do?</p>
+                        <div class="code-display">
+                            <pre><code># print("Hello")
+print("Goodbye")</code></pre>
+                        </div>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="intro-q5" value="a">
+                                <span class="option-text">Prints "Hello" and "Goodbye"</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q5" value="b">
+                                <span class="option-text">Prints only "Goodbye"</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q5" value="c">
+                                <span class="option-text">Prints only "Hello"</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="intro-q5" value="d">
+                                <span class="option-text">Error - invalid code</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitIntroQuiz()">📊 Submit Quiz</button>
+                    
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <button class="retry-btn" onclick="resetIntroQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+
+                <!-- CODING SECTION -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Complete these coding challenges!</p>
+                    </div>
+
+                    <!-- Coding Challenge 1 -->
+                    <div class="coding-challenge" data-challenge="intro-code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/2</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Challenge: Introduce Yourself</h4>
+                            <p>Write code that prints your name and your favorite hobby on separate lines.</p>
+                            <div class="example-box">
+                                <strong>Example Output:</strong>
+                                <div class="example-case">
+                                    <span>My name is Alex</span>
+                                </div>
+                                <div class="example-case">
+                                    <span>I love playing video games</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-intro1">1</span></span>
+                            </div>
+                            <textarea id="intro-code1-input" class="code-textarea" placeholder="# Write your code here
+print(&quot;My name is ...&quot;)
+print(&quot;I love ...&quot;)" spellcheck="false"># Write your code here
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runIntroCode('intro-code1')">▶ Run Code</button>
+                        </div>
+                        <div class="challenge-result" id="result-intro-code1"></div>
+                    </div>
+
+                    <!-- Coding Challenge 2 -->
+                    <div class="coding-challenge" data-challenge="intro-code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/2</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Challenge: Math Output</h4>
+                            <p>Write code that:</p>
+                            <ol>
+                                <li>Prints the result of 25 + 17</li>
+                                <li>Prints the result of 100 - 33</li>
+                                <li>Includes a comment explaining what the code does</li>
+                            </ol>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-intro2">1</span></span>
+                            </div>
+                            <textarea id="intro-code2-input" class="code-textarea" placeholder="# This program does math calculations
+
+" spellcheck="false"># This program does math calculations
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runIntroCode('intro-code2')">▶ Run Code</button>
+                        </div>
+                        <div class="challenge-result" id="result-intro-code2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Practice Tab Navigation
+        document.querySelectorAll('.practice-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.practice-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.practice-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.practice).classList.add('active');
+            });
+        });
+
+        // Copy code function
+        function copyCode(btn) {
+            const code = btn.closest('.code-block').querySelector('code').textContent;
+            navigator.clipboard.writeText(code);
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy', 2000);
+        }
+
+        // Hello World Demo
+        const helloInput = document.getElementById('hello-input');
+        const helloValue = document.getElementById('hello-value');
+        
+        helloInput.addEventListener('input', () => {
+            helloValue.textContent = helloInput.value;
+        });
+
+        function runHelloDemo() {
+            const output = document.getElementById('hello-output');
+            output.textContent = helloInput.value;
+            output.classList.add('success');
+        }
+
+        // Calculator Demo
+        function runCalcDemo() {
+            const num1 = parseFloat(document.getElementById('calc-num1').value);
+            const num2 = parseFloat(document.getElementById('calc-num2').value);
+            const op = document.getElementById('calc-operator').value;
+            
+            let result;
+            let expression;
+            
+            switch(op) {
+                case '+': result = num1 + num2; expression = `${num1} + ${num2}`; break;
+                case '-': result = num1 - num2; expression = `${num1} - ${num2}`; break;
+                case '*': result = num1 * num2; expression = `${num1} * ${num2}`; break;
+                case '/': result = num1 / num2; expression = `${num1} / ${num2}`; break;
+            }
+            
+            document.getElementById('calc-expression').textContent = expression;
+            document.getElementById('calc-output').textContent = result;
+            document.getElementById('calc-output').classList.add('success');
+        }
+
+        // Quiz answers
+        const introQuizAnswers = {
+            'intro-q1': 'a',
+            'intro-q2': 'b',
+            'intro-q3': 'c',
+            'intro-q4': 'c',
+            'intro-q5': 'b'
+        };
+
+        function submitIntroQuiz() {
+            let score = 0;
+            
+            for (const [name, correct] of Object.entries(introQuizAnswers)) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                const options = document.querySelectorAll(`input[name="${name}"]`);
+                
+                options.forEach(opt => {
+                    const label = opt.parentElement;
+                    label.classList.remove('correct', 'incorrect');
+                    
+                    if (opt.value === correct) {
+                        label.classList.add('correct');
+                    } else if (selected && opt === selected && opt.value !== correct) {
+                        label.classList.add('incorrect');
+                    }
+                });
+                
+                if (selected && selected.value === correct) {
+                    score++;
+                }
+            }
+            
+            document.getElementById('quiz-score').textContent = score;
+            
+            const messages = {
+                5: "🎉 Perfect! You're a natural!",
+                4: "👏 Great job! Almost perfect!",
+                3: "👍 Good effort! Keep practicing!",
+                2: "💪 Not bad! Review the material.",
+                1: "📚 Keep learning! You'll get it!",
+                0: "🔄 Try again after reviewing the lesson."
+            };
+            
+            document.getElementById('quiz-message').textContent = messages[score];
+            document.getElementById('quiz-final-result').classList.add('show');
+        }
+
+        function resetIntroQuiz() {
+            document.querySelectorAll('.analysis-question input').forEach(input => {
+                input.checked = false;
+                input.parentElement.classList.remove('correct', 'incorrect');
+            });
+            document.getElementById('quiz-final-result').classList.remove('show');
+        }
+
+        // Coding challenges
+        function runIntroCode(challengeId) {
+            const textarea = document.getElementById(`${challengeId}-input`);
+            const result = document.getElementById(`result-${challengeId}`);
+            const code = textarea.value;
+            
+            // Simple validation - check if they have print statements
+            if (code.includes('print(')) {
+                result.innerHTML = '✅ Great job! Your code looks correct!';
+                result.className = 'challenge-result show success';
+            } else {
+                result.innerHTML = '❌ Make sure to use the print() function!';
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        // Update line counts
+        document.querySelectorAll('.code-textarea').forEach(textarea => {
+            textarea.addEventListener('input', () => {
+                const lines = textarea.value.split('\n').length;
+                const lineCountSpan = textarea.closest('.code-editor').querySelector('.line-count span');
+                if (lineCountSpan) {
+                    lineCountSpan.textContent = lines;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

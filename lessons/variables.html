@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables & Constants - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 02</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Variables & Constants</h1>
+        <p class="subtitle">Store and manage data like a pro! 📦</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 What are Variables?</button>
+        <button class="tab-btn" data-tab="creating">✨ Creating Variables</button>
+        <button class="tab-btn" data-tab="naming">📝 Naming Rules</button>
+        <button class="tab-btn" data-tab="constants">🔒 Constants</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- WHAT ARE VARIABLES -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>📦 What are Variables?</h2>
+                <div class="markdown-content">
+                    <p>A <strong>variable</strong> is like a <strong>labeled box</strong> that stores information. You give it a name, and Python remembers what's inside!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Imagine you have labeled boxes in your room:</p>
+                        <ul>
+                            <li>📦 Box labeled <strong>"my_age"</strong> contains: <code>15</code></li>
+                            <li>📦 Box labeled <strong>"my_name"</strong> contains: <code>"Alex"</code></li>
+                            <li>📦 Box labeled <strong>"is_student"</strong> contains: <code>True</code></li>
+                        </ul>
+                        <p>Variables work the same way - they're containers with names!</p>
+                    </div>
+
+                    <h3>🎯 Why Do We Need Variables?</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Without Variables</th>
+                                <th>With Variables</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Type the same value over and over</td>
+                                <td>Store once, use many times</td>
+                            </tr>
+                            <tr>
+                                <td>Hard to change values</td>
+                                <td>Change in one place, updates everywhere</td>
+                            </tr>
+                            <tr>
+                                <td>Code is confusing</td>
+                                <td>Code is clear and readable</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>📝 Basic Example</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Creating variables
+name = "Python Student"
+age = 15
+score = 95.5
+
+# Using variables
+print(name)    # Output: Python Student
+print(age)     # Output: 15
+print(score)   # Output: 95.5</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CREATING VARIABLES -->
+        <section id="creating" class="tab-content">
+            <div class="card">
+                <h2>✨ Creating Variables</h2>
+                
+                <div class="markdown-content">
+                    <p>Creating a variable in Python is super easy - just use the <code>=</code> sign!</p>
+                    
+                    <h3>📝 Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>variable_name = value</code></pre>
+                    </div>
+
+                    <h3>🎯 Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Storing text (strings)
+greeting = "Hello, World!"
+city = 'New York'
+
+# Storing numbers
+age = 25
+temperature = 98.6
+year = 2024
+
+# Storing True/False (booleans)
+is_raining = True
+has_license = False
+
+# You can change variables anytime!
+score = 100
+print(score)    # Output: 100
+
+score = 200     # Changed!
+print(score)    # Output: 200</code></pre>
+                    </div>
+
+                    <h3>🔄 Multiple Assignment</h3>
+                    <p>Assign multiple variables in one line:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Multiple variables, one line
+x, y, z = 1, 2, 3
+print(x)  # 1
+print(y)  # 2
+print(z)  # 3
+
+# Same value to multiple variables
+a = b = c = 100
+print(a)  # 100
+print(b)  # 100
+print(c)  # 100</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Pro Tip</h3>
+                        <p>You can use variables in calculations and expressions:</p>
+                        <div class="code-block small">
+                            <pre><code>price = 50
+quantity = 3
+total = price * quantity  # 150
+
+name = "Alex"
+greeting = "Hello, " + name  # "Hello, Alex"</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Variable Creator</h3>
+                    <div class="demo-controls">
+                        <label>Variable name:</label>
+                        <input type="text" id="var-name" value="my_number" style="width: 120px;">
+                        <label>Value:</label>
+                        <input type="text" id="var-value" value="42">
+                        <button onclick="runVarDemo()">▶ Create & Print</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code><span id="var-code">my_number = 42</span>
+print(<span id="var-print">my_number</span>)</code></pre>
+                    </div>
+                    <div class="demo-output" id="var-output">
+                        Click "Create & Print" to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAMING RULES -->
+        <section id="naming" class="tab-content">
+            <div class="card">
+                <h2>📝 Variable Naming Rules</h2>
+                
+                <div class="markdown-content">
+                    <p>Python has specific rules for naming variables. Follow these to avoid errors!</p>
+                    
+                    <h3>✅ Rules You MUST Follow</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Rule</th>
+                                <th>✅ Valid</th>
+                                <th>❌ Invalid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Start with letter or underscore</td>
+                                <td><code>name</code>, <code>_private</code></td>
+                                <td><code>1name</code>, <code>@data</code></td>
+                            </tr>
+                            <tr>
+                                <td>Only letters, numbers, underscores</td>
+                                <td><code>user_name2</code></td>
+                                <td><code>user-name</code>, <code>user name</code></td>
+                            </tr>
+                            <tr>
+                                <td>Case-sensitive</td>
+                                <td><code>Age</code> ≠ <code>age</code> ≠ <code>AGE</code></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>No reserved words</td>
+                                <td><code>my_class</code></td>
+                                <td><code>class</code>, <code>if</code>, <code>for</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🌟 Best Practices (Conventions)</h3>
+                    
+                    <div class="tip-box">
+                        <h3>🐍 snake_case - The Python Way!</h3>
+                        <p>Python uses <strong>snake_case</strong> for variable and function names. This means:</p>
+                        <ul>
+                            <li>All letters are <strong>lowercase</strong></li>
+                            <li>Words are separated by <strong>underscores</strong> (_)</li>
+                            <li>This is defined in <strong>PEP 8</strong> (Python's official style guide)</li>
+                        </ul>
+                    </div>
+
+                    <h4>📋 Python Naming Conventions (PEP 8)</h4>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Convention</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Variables</td>
+                                <td><code>snake_case</code></td>
+                                <td><code>user_name</code>, <code>total_score</code></td>
+                            </tr>
+                            <tr>
+                                <td>Functions</td>
+                                <td><code>snake_case</code></td>
+                                <td><code>calculate_total()</code>, <code>get_user()</code></td>
+                            </tr>
+                            <tr>
+                                <td>Constants</td>
+                                <td><code>SCREAMING_SNAKE_CASE</code></td>
+                                <td><code>MAX_SIZE</code>, <code>PI</code></td>
+                            </tr>
+                            <tr>
+                                <td>Classes</td>
+                                <td><code>PascalCase</code></td>
+                                <td><code>MyClass</code>, <code>StudentRecord</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># ✅ Good: Use snake_case (the Python way!)
+user_name = "Alex"
+total_score = 100
+is_active = True
+first_name = "John"
+last_login_date = "2024-01-15"
+
+# ❌ Avoid: camelCase (used in JavaScript, Java)
+userName = "Alex"      # Works, but NOT Pythonic!
+totalScore = 100       # This is not Python style
+
+# ❌ Avoid: PascalCase for variables (use for classes only)
+UserName = "Alex"      # Looks like a class name!
+
+# ✅ Good: Descriptive names tell you what the variable stores
+student_count = 25
+max_temperature = 100
+is_logged_in = True
+
+# ❌ Avoid: Single letters (except in loops or math)
+x = 25                 # What does x mean?
+n = 100                # Confusing!
+# Exception: for i in range(10) is okay!</code></pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h3>🔄 Other Languages Use Different Styles</h3>
+                        <ul>
+                            <li><strong>JavaScript/Java:</strong> <code>camelCase</code> → <code>userName</code></li>
+                            <li><strong>Python:</strong> <code>snake_case</code> → <code>user_name</code></li>
+                            <li><strong>C#:</strong> <code>PascalCase</code> → <code>UserName</code></li>
+                        </ul>
+                        <p>When writing Python, always use <strong>snake_case</strong> to follow the community standards!</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Reserved Words (Can't Use These!)</h3>
+                        <p>Python reserves these words for special purposes:</p>
+                        <div class="code-block small">
+                            <pre><code>False  True   None   and    as     assert
+break  class  continue  def    del    elif
+else   except finally  for    from   global
+if     import in      is     lambda not
+or     pass   raise   return try    while
+with   yield</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONSTANTS -->
+        <section id="constants" class="tab-content">
+            <div class="card">
+                <h2>🔒 Constants</h2>
+                
+                <div class="markdown-content">
+                    <p>A <strong>constant</strong> is a variable whose value should <strong>never change</strong>. Python doesn't enforce this, but we use a naming convention to show it.</p>
+                    
+                    <h3>📝 Convention: ALL_CAPS</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Constants use ALL_CAPS with underscores
+PI = 3.14159
+MAX_SPEED = 120
+GRAVITY = 9.8
+WEBSITE_URL = "https://python.org"
+
+# Regular variables use lowercase
+radius = 5
+speed = 60
+
+# Using constants
+circumference = 2 * PI * radius
+print(circumference)  # 31.4159</code></pre>
+                    </div>
+
+                    <div class="analogy-box">
+                        <h3>🎯 When to Use Constants?</h3>
+                        <ul>
+                            <li><strong>Mathematical values</strong> - PI, E, GOLDEN_RATIO</li>
+                            <li><strong>Configuration</strong> - MAX_USERS, DEFAULT_TIMEOUT</li>
+                            <li><strong>Fixed values</strong> - DAYS_IN_WEEK, MONTHS_IN_YEAR</li>
+                            <li><strong>URLs and paths</strong> - API_URL, DATABASE_PATH</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Important Note</h3>
+                        <p>Python doesn't actually prevent you from changing constants - it's just a convention. The ALL_CAPS tells other programmers "don't change this!"</p>
+                        <div class="code-block small">
+                            <pre><code>PI = 3.14159
+PI = 999      # This works, but DON'T do it!</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Test your knowledge of variables!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Quiz</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Fix the Code</span>
+                    </button>
+                </div>
+
+                <!-- QUIZ -->
+                <div id="quiz" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧠 Knowledge Check</h3>
+                    </div>
+
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header">
+                            <span class="question-num">Question 1/4</span>
+                        </div>
+                        <p class="question-text">Which is a valid variable name?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="var-q1" value="a">
+                                <span class="option-text">2fast2furious</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q1" value="b">
+                                <span class="option-text">my-variable</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q1" value="c">
+                                <span class="option-text">_my_var</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q1" value="d">
+                                <span class="option-text">class</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header">
+                            <span class="question-num">Question 2/4</span>
+                        </div>
+                        <p class="question-text">What will this code print?</p>
+                        <div class="code-display">
+                            <pre><code>x = 10
+x = 20
+print(x)</code></pre>
+                        </div>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="var-q2" value="a">
+                                <span class="option-text">10</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q2" value="b">
+                                <span class="option-text">20</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q2" value="c">
+                                <span class="option-text">10 20</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q2" value="d">
+                                <span class="option-text">Error</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header">
+                            <span class="question-num">Question 3/4</span>
+                        </div>
+                        <p class="question-text">How should you name a constant in Python?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="var-q3" value="a">
+                                <span class="option-text">myConstant</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q3" value="b">
+                                <span class="option-text">MY_CONSTANT</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q3" value="c">
+                                <span class="option-text">my_constant</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q3" value="d">
+                                <span class="option-text">MYCONSTANT</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header">
+                            <span class="question-num">Question 4/4</span>
+                        </div>
+                        <p class="question-text">What will this print?</p>
+                        <div class="code-display">
+                            <pre><code>a, b, c = 1, 2, 3
+print(b)</code></pre>
+                        </div>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="var-q4" value="a">
+                                <span class="option-text">1</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q4" value="b">
+                                <span class="option-text">2</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q4" value="c">
+                                <span class="option-text">3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="var-q4" value="d">
+                                <span class="option-text">1, 2, 3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitVarQuiz()">📊 Submit Quiz</button>
+                    
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/4</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <button class="retry-btn" onclick="resetVarQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+
+                <!-- FIX THE CODE -->
+                <div id="dragdrop" class="practice-content">
+                    <div class="section-header">
+                        <h3>🧩 Fix the Variable Names</h3>
+                        <p>Find and fix the errors in these variable declarations!</p>
+                    </div>
+
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Challenge</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🐛 Fix these invalid variable names:</h4>
+                            <div class="code-display">
+                                <pre><code>1st_place = "Gold"     # ❌ Error
+my-score = 100         # ❌ Error  
+class = "Python"       # ❌ Error
+user name = "Alex"     # ❌ Error</code></pre>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python - Fix the errors!</span>
+                            </div>
+                            <textarea id="fix-vars" class="code-textarea" placeholder="# Fix the variable names here
+first_place = &quot;Gold&quot;
+..." spellcheck="false"># Fix the variable names here
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkFixedVars()">✓ Check Solution</button>
+                        </div>
+                        <div class="challenge-result" id="result-fix-vars"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+
+    <script>
+        // Tab Navigation
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Practice Tab Navigation
+        document.querySelectorAll('.practice-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.practice-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.practice-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.practice).classList.add('active');
+            });
+        });
+
+        // Copy code
+        function copyCode(btn) {
+            const code = btn.closest('.code-block').querySelector('code').textContent;
+            navigator.clipboard.writeText(code);
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy', 2000);
+        }
+
+        // Variable Demo
+        function runVarDemo() {
+            const name = document.getElementById('var-name').value;
+            const value = document.getElementById('var-value').value;
+            
+            document.getElementById('var-code').textContent = `${name} = ${value}`;
+            document.getElementById('var-print').textContent = name;
+            document.getElementById('var-output').textContent = value;
+            document.getElementById('var-output').classList.add('success');
+        }
+
+        // Quiz
+        const varQuizAnswers = {'var-q1': 'c', 'var-q2': 'b', 'var-q3': 'b', 'var-q4': 'b'};
+
+        function submitVarQuiz() {
+            let score = 0;
+            for (const [name, correct] of Object.entries(varQuizAnswers)) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                document.querySelectorAll(`input[name="${name}"]`).forEach(opt => {
+                    opt.parentElement.classList.remove('correct', 'incorrect');
+                    if (opt.value === correct) opt.parentElement.classList.add('correct');
+                    else if (selected && opt === selected) opt.parentElement.classList.add('incorrect');
+                });
+                if (selected && selected.value === correct) score++;
+            }
+            document.getElementById('quiz-score').textContent = score;
+            const msgs = {4: "🎉 Perfect!", 3: "👏 Great job!", 2: "👍 Good effort!", 1: "📚 Keep learning!", 0: "🔄 Try again!"};
+            document.getElementById('quiz-message').textContent = msgs[score];
+            document.getElementById('quiz-final-result').classList.add('show');
+        }
+
+        function resetVarQuiz() {
+            document.querySelectorAll('.analysis-question input').forEach(i => {
+                i.checked = false;
+                i.parentElement.classList.remove('correct', 'incorrect');
+            });
+            document.getElementById('quiz-final-result').classList.remove('show');
+        }
+
+        // Fix vars challenge
+        function checkFixedVars() {
+            const code = document.getElementById('fix-vars').value.toLowerCase();
+            const result = document.getElementById('result-fix-vars');
+            
+            // Check for valid variable patterns
+            const hasValidNames = (
+                (code.includes('first_place') || code.includes('first_') || code.includes('_place')) &&
+                (code.includes('my_score') || code.includes('myscore') || code.includes('score')) &&
+                !code.includes('class =')
+            );
+            
+            if (hasValidNames) {
+                result.innerHTML = '✅ Great job! Your variable names are valid!';
+                result.className = 'challenge-result show success';
+            } else {
+                result.innerHTML = '❌ Check your variable names. Remember: no spaces, no hyphens, no starting with numbers, no reserved words!';
+                result.className = 'challenge-result show error';
+            }
+        }
+    </script>
+</body>
+</html>
+

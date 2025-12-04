@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 05</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>User Input</h1>
+        <p class="subtitle">Make your programs interactive! ⌨️</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 The input() Function</button>
+        <button class="tab-btn" data-tab="convert">🔄 Converting Input</button>
+        <button class="tab-btn" data-tab="examples">💡 Examples</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INPUT FUNCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card">
+                <h2>⌨️ The <code>input()</code> Function</h2>
+                <div class="markdown-content">
+                    <p>The <code>input()</code> function lets your program <strong>ask the user for information</strong>!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of <code>input()</code> like asking someone a question and waiting for their answer. The program pauses until they type something and press Enter!</p>
+                    </div>
+
+                    <h3>📝 Basic Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Ask for input and store it in a variable
+answer = input("Your question here: ")
+
+# Example
+name = input("What is your name? ")
+print("Hello, " + name + "!")</code></pre>
+                    </div>
+
+                    <h3>🔍 How It Works</h3>
+                    <ol>
+                        <li>Python displays the message in quotes (the "prompt")</li>
+                        <li>The program <strong>waits</strong> for the user to type</li>
+                        <li>User presses <strong>Enter</strong></li>
+                        <li>Whatever they typed gets stored in the variable</li>
+                    </ol>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Simple greeting program
+name = input("Enter your name: ")
+print(f"Nice to meet you, {name}!")
+
+# The program shows:
+# Enter your name: Alex     ← User types "Alex"
+# Nice to meet you, Alex!   ← Program responds</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Important: input() ALWAYS returns a string!</h3>
+                        <p>Even if the user types a number, Python treats it as text:</p>
+                        <div class="code-block small">
+                            <pre><code>age = input("Enter your age: ")  # User types: 15
+print(type(age))  # &lt;class 'str'&gt; - It's a STRING!</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Simulate input()</h3>
+                    <div class="demo-controls">
+                        <label>Prompt:</label>
+                        <input type="text" id="prompt" value="What is your name? " style="width: 200px;">
+                    </div>
+                    <div class="demo-controls">
+                        <label>Your answer:</label>
+                        <input type="text" id="user-answer" value="Alex" style="width: 150px;">
+                        <button onclick="simulateInput()">▶ Run</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code>name = input("<span id="prompt-display">What is your name? </span>")
+print(f"Hello, {name}!")</code></pre>
+                    </div>
+                    <div class="demo-output" id="input-output">Click "Run" to see the result!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONVERTING INPUT -->
+        <section id="convert" class="tab-content">
+            <div class="card">
+                <h2>🔄 Converting Input to Numbers</h2>
+                <div class="markdown-content">
+                    <p>Since <code>input()</code> always returns a string, you need to <strong>convert</strong> it to do math!</p>
+                    
+                    <h3>📝 Convert to Integer</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># ❌ Wrong - this won't work for math!
+age = input("Enter your age: ")
+next_year = age + 1  # ERROR! Can't add string + number
+
+# ✅ Correct - convert to int first!
+age = int(input("Enter your age: "))
+next_year = age + 1  # Works! age is now a number
+print(f"Next year you'll be {next_year}")</code></pre>
+                    </div>
+
+                    <h3>📝 Convert to Float</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># For decimal numbers, use float()
+price = float(input("Enter the price: "))
+tax = price * 0.10
+total = price + tax
+print(f"Total with tax: ${total}")</code></pre>
+                    </div>
+
+                    <h3>🔧 Common Pattern</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Wrap input() with the conversion function
+name = input("Name: ")           # String (no conversion)
+age = int(input("Age: "))        # Integer
+height = float(input("Height: ")) # Float</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Pro Tip: Handle Errors</h3>
+                        <p>If the user types text when you expect a number, your program will crash! Later you'll learn to handle this with <code>try-except</code>.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🧮 Age Calculator</h3>
+                    <div class="demo-controls">
+                        <label>Enter your birth year:</label>
+                        <input type="number" id="birth-year" value="2008" style="width: 100px;">
+                        <button onclick="calcAge()">▶ Calculate Age</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code>birth_year = int(input("Enter your birth year: "))
+current_year = 2024
+age = current_year - birth_year
+print(f"You are {age} years old!")</code></pre>
+                    </div>
+                    <div class="demo-output" id="age-output">Click "Calculate Age"!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXAMPLES -->
+        <section id="examples" class="tab-content">
+            <div class="card">
+                <h2>💡 Practical Examples</h2>
+                <div class="markdown-content">
+                    
+                    <h3>🧮 Simple Calculator</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Simple addition calculator
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+result = num1 + num2
+print(f"{num1} + {num2} = {result}")</code></pre>
+                    </div>
+
+                    <h3>👋 Personalized Greeting</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Collect user info
+name = input("What's your name? ")
+color = input("What's your favorite color? ")
+food = input("What's your favorite food? ")
+
+# Create personalized message
+print(f"\n--- About {name} ---")
+print(f"Favorite color: {color}")
+print(f"Favorite food: {food}")
+print(f"Nice to meet you, {name}! 🎉")</code></pre>
+                    </div>
+
+                    <h3>🎮 Mad Libs Game</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Simple Mad Libs
+print("=== Mad Libs Game ===")
+adjective = input("Enter an adjective: ")
+noun = input("Enter a noun: ")
+verb = input("Enter a verb: ")
+place = input("Enter a place: ")
+
+story = f"""
+The {adjective} {noun} decided to {verb} 
+all the way to {place}. What a day!
+"""
+print(story)</code></pre>
+                    </div>
+
+                    <h3>💰 Tip Calculator</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code># Restaurant tip calculator
+bill = float(input("Enter the bill amount: $"))
+tip_percent = int(input("Tip percentage (15, 18, 20): "))
+
+tip_amount = bill * (tip_percent / 100)
+total = bill + tip_amount
+
+print(f"Bill: ${bill:.2f}")
+print(f"Tip ({tip_percent}%): ${tip_amount:.2f}")
+print(f"Total: ${total:.2f}")</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Test your knowledge and practice writing code!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="quiz-section">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Quiz</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding-section">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Write Code</span>
+                    </button>
+                </div>
+
+                <!-- QUIZ SECTION -->
+                <div id="quiz-section" class="practice-content active">
+                <div class="section-header">
+                    <h3>🧠 Input Quiz</h3>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 1/4</span></div>
+                    <p class="question-text">What type does <code>input()</code> always return?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="in-q1" value="a"><span class="option-text">int</span></label>
+                        <label class="option-label"><input type="radio" name="in-q1" value="b"><span class="option-text">float</span></label>
+                        <label class="option-label"><input type="radio" name="in-q1" value="c"><span class="option-text">str</span></label>
+                        <label class="option-label"><input type="radio" name="in-q1" value="d"><span class="option-text">bool</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 2/4</span></div>
+                    <p class="question-text">How do you get an integer from user input?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="in-q2" value="a"><span class="option-text">input(int("prompt"))</span></label>
+                        <label class="option-label"><input type="radio" name="in-q2" value="b"><span class="option-text">int(input("prompt"))</span></label>
+                        <label class="option-label"><input type="radio" name="in-q2" value="c"><span class="option-text">input.int("prompt")</span></label>
+                        <label class="option-label"><input type="radio" name="in-q2" value="d"><span class="option-text">integer(input("prompt"))</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 3/4</span></div>
+                    <div class="code-display">
+                        <pre><code>x = input("Number: ")  # User types: 5
+y = input("Number: ")  # User types: 3
+print(x + y)</code></pre>
+                    </div>
+                    <p class="question-text">What will this print?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="in-q3" value="a"><span class="option-text">8</span></label>
+                        <label class="option-label"><input type="radio" name="in-q3" value="b"><span class="option-text">53</span></label>
+                        <label class="option-label"><input type="radio" name="in-q3" value="c"><span class="option-text">"53"</span></label>
+                        <label class="option-label"><input type="radio" name="in-q3" value="d"><span class="option-text">Error</span></label>
+                    </div>
+                </div>
+
+                <div class="analysis-question">
+                    <div class="question-header"><span class="question-num">Question 4/4</span></div>
+                    <p class="question-text">What happens if user types "hello" and you do <code>int(input())</code>?</p>
+                    <div class="quiz-options">
+                        <label class="option-label"><input type="radio" name="in-q4" value="a"><span class="option-text">Returns 0</span></label>
+                        <label class="option-label"><input type="radio" name="in-q4" value="b"><span class="option-text">Returns "hello"</span></label>
+                        <label class="option-label"><input type="radio" name="in-q4" value="c"><span class="option-text">Returns None</span></label>
+                        <label class="option-label"><input type="radio" name="in-q4" value="d"><span class="option-text">Error (ValueError)</span></label>
+                    </div>
+                </div>
+
+                <button class="submit-quiz-btn" onclick="submitInQuiz()">📊 Submit Quiz</button>
+                
+                <div class="quiz-final-result" id="quiz-final-result">
+                    <div class="result-score">
+                        <span class="score-value" id="quiz-score">0</span>
+                        <span class="score-total">/4</span>
+                    </div>
+                    <div class="result-message" id="quiz-message"></div>
+                    <button class="retry-btn" onclick="resetInQuiz()">🔄 Try Again</button>
+                </div>
+                </div>
+
+                <!-- CODING SECTION -->
+                <div id="coding-section" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Practice user input by completing these challenges!</p>
+                    </div>
+
+                    <!-- Challenge 1 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">Challenge 1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>👋 Personalized Greeting</h4>
+                            <p>Ask the user for their name and then greet them!</p>
+                            <p>Your program should:</p>
+                            <ul>
+                                <li>Ask "What is your name? "</li>
+                                <li>Print a greeting using their name</li>
+                            </ul>
+                            <div class="example-box">
+                                <strong>Example:</strong>
+                                <div class="example-case">Input: Mario → Output: Hello, Mario! Nice to meet you!</div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="in-code1" class="code-textarea" spellcheck="false"># Ask for the user's name
+name = input()
+
+# Print a greeting with their name
+print()</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkInCode1()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('in-hint1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="in-hint1">
+                            <p>Use <code>input("What is your name? ")</code> and then <code>print(f"Hello, {name}!")</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-in-code1"></div>
+                    </div>
+
+                    <!-- Challenge 2 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">Challenge 2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🧮 Age Calculator</h4>
+                            <p>Ask the user for their birth year and calculate their age!</p>
+                            <p>Your program should:</p>
+                            <ul>
+                                <li>Ask "What year were you born? "</li>
+                                <li>Convert the input to an integer</li>
+                                <li>Calculate age (2024 - birth_year)</li>
+                                <li>Print "You are X years old!"</li>
+                            </ul>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="in-code2" class="code-textarea" spellcheck="false"># Ask for birth year (remember to convert to int!)
+birth_year = 
+
+# Calculate age
+age = 
+
+# Print the result
+print()</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkInCode2()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('in-hint2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="in-hint2">
+                            <p>Use <code>int(input("..."))</code> to get a number. Then <code>2024 - birth_year</code> for age!</p>
+                        </div>
+                        <div class="challenge-result" id="result-in-code2"></div>
+                    </div>
+
+                    <!-- Challenge 3 -->
+                    <div class="coding-challenge">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">Challenge 3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🛒 Shopping Calculator</h4>
+                            <p>Create a simple shopping calculator:</p>
+                            <ul>
+                                <li>Ask for the product name (string)</li>
+                                <li>Ask for the price (float)</li>
+                                <li>Ask for the quantity (int)</li>
+                                <li>Calculate and print the total cost</li>
+                            </ul>
+                            <div class="example-box">
+                                <strong>Example:</strong>
+                                <div class="example-case">Product: Apple, Price: 0.50, Qty: 4 → Total: $2.00</div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="in-code3" class="code-textarea" spellcheck="false"># Ask for product info
+product = input("Product name: ")
+price = 
+quantity = 
+
+# Calculate total
+total = 
+
+# Print result
+print(f"Total for {product}: ${total}")</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="checkInCode3()">✓ Check Code</button>
+                            <button class="hint-toggle" onclick="toggleHint('in-hint3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="in-hint3">
+                            <p>Use <code>float(input(...))</code> for price and <code>int(input(...))</code> for quantity. Then <code>price * quantity</code>!</p>
+                        </div>
+                        <div class="challenge-result" id="result-in-code3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        function copyCode(btn) {
+            const code = btn.closest('.code-block').querySelector('code').textContent;
+            navigator.clipboard.writeText(code);
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => btn.textContent = '📋 Copy', 2000);
+        }
+
+        // Update prompt display
+        document.getElementById('prompt').addEventListener('input', function() {
+            document.getElementById('prompt-display').textContent = this.value;
+        });
+
+        function simulateInput() {
+            const answer = document.getElementById('user-answer').value;
+            document.getElementById('input-output').textContent = `Hello, ${answer}!`;
+            document.getElementById('input-output').classList.add('success');
+        }
+
+        function calcAge() {
+            const birthYear = parseInt(document.getElementById('birth-year').value);
+            const age = 2024 - birthYear;
+            document.getElementById('age-output').textContent = `You are ${age} years old!`;
+            document.getElementById('age-output').classList.add('success');
+        }
+
+        const inAnswers = {'in-q1': 'c', 'in-q2': 'b', 'in-q3': 'b', 'in-q4': 'd'};
+        
+        function submitInQuiz() {
+            let score = 0;
+            for (const [name, correct] of Object.entries(inAnswers)) {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                document.querySelectorAll(`input[name="${name}"]`).forEach(opt => {
+                    opt.parentElement.classList.remove('correct', 'incorrect');
+                    if (opt.value === correct) opt.parentElement.classList.add('correct');
+                    else if (selected && opt === selected) opt.parentElement.classList.add('incorrect');
+                });
+                if (selected && selected.value === correct) score++;
+            }
+            document.getElementById('quiz-score').textContent = score;
+            const msgs = {4: "🎉 Perfect!", 3: "👏 Great!", 2: "👍 Good!", 1: "💪 Keep going!", 0: "🔄 Review!"};
+            document.getElementById('quiz-message').textContent = msgs[score];
+            document.getElementById('quiz-final-result').classList.add('show');
+        }
+
+        function resetInQuiz() {
+            document.querySelectorAll('.analysis-question input').forEach(i => {
+                i.checked = false;
+                i.parentElement.classList.remove('correct', 'incorrect');
+            });
+            document.getElementById('quiz-final-result').classList.remove('show');
+        }
+
+        // Practice Tab Navigation
+        document.querySelectorAll('.practice-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.practice-tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.practice-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.practice).classList.add('active');
+            });
+        });
+
+        function toggleHint(id) {
+            document.getElementById(id).classList.toggle('show');
+        }
+
+        // Coding challenges
+        function checkInCode1() {
+            const code = document.getElementById('in-code1').value;
+            const result = document.getElementById('result-in-code1');
+            
+            const hasInput = /input\s*\(/.test(code);
+            const hasPrompt = /input\s*\(\s*["'].*["']\s*\)/.test(code);
+            const hasPrint = /print\s*\(/.test(code);
+            const usesName = /\{name\}|["']\s*\+\s*name|\+\s*name|name\s*\+/.test(code);
+            
+            if (hasInput && hasPrint && usesName) {
+                result.innerHTML = '✅ Great job! You created a personalized greeting! 👋';
+                result.className = 'challenge-result show success';
+            } else {
+                let hints = [];
+                if (!hasInput) hints.push('Use input() to get user data');
+                if (!hasPrompt) hints.push('Add a prompt message inside input()');
+                if (!hasPrint) hints.push('Use print() to show the greeting');
+                if (!usesName) hints.push('Include the name variable in your print');
+                result.innerHTML = '❌ ' + hints.join('. ');
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkInCode2() {
+            const code = document.getElementById('in-code2').value;
+            const result = document.getElementById('result-in-code2');
+            
+            const hasIntInput = /int\s*\(\s*input\s*\(/.test(code);
+            const hasCalc = /2024\s*-\s*birth_year|age\s*=/.test(code);
+            const hasPrint = /print\s*\(/.test(code);
+            
+            if (hasIntInput && hasCalc && hasPrint) {
+                result.innerHTML = '✅ Perfect! You converted input to integer and calculated age! 🧮';
+                result.className = 'challenge-result show success';
+            } else {
+                let hints = [];
+                if (!hasIntInput) hints.push('Use int(input(...)) to get a number');
+                if (!hasCalc) hints.push('Calculate: age = 2024 - birth_year');
+                if (!hasPrint) hints.push('Print the result');
+                result.innerHTML = '❌ ' + hints.join('. ');
+                result.className = 'challenge-result show error';
+            }
+        }
+
+        function checkInCode3() {
+            const code = document.getElementById('in-code3').value;
+            const result = document.getElementById('result-in-code3');
+            
+            const hasFloatInput = /float\s*\(\s*input\s*\(/.test(code);
+            const hasIntInput = /int\s*\(\s*input\s*\(/.test(code);
+            const hasCalc = /price\s*\*\s*quantity|quantity\s*\*\s*price/.test(code);
+            const hasFString = /f["']/.test(code);
+            
+            if (hasFloatInput && hasIntInput && hasCalc) {
+                result.innerHTML = '✅ Excellent! You handled multiple input types and calculations! 🛒';
+                result.className = 'challenge-result show success';
+            } else {
+                let hints = [];
+                if (!hasFloatInput) hints.push('Use float(input(...)) for price');
+                if (!hasIntInput) hints.push('Use int(input(...)) for quantity');
+                if (!hasCalc) hints.push('Calculate: total = price * quantity');
+                result.innerHTML = '❌ ' + hints.join('. ');
+                result.className = 'challenge-result show error';
+            }
+        }
+    </script>
+</body>
+</html>
+
