@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists - Python Junior Course</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Lesson Navigation -->
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 11</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Lists</h1>
+        <p class="subtitle">Store and manage collections of data! 📋</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="access">🔢 Accessing Items</button>
+        <button class="tab-btn" data-tab="modify">✏️ Modifying Lists</button>
+        <button class="tab-btn" data-tab="methods">🛠️ List Methods</button>
+        <button class="tab-btn" data-tab="loops">🔄 Looping</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are Lists?</h2>
+                <div class="markdown-content">
+                    <p>A <strong>list</strong> is an ordered collection of items. Lists can hold any type of data and you can add, remove, or change items!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of a list like a shopping list:</p>
+                        <ul>
+                            <li>Items are in a specific <strong>order</strong></li>
+                            <li>You can <strong>add</strong> new items</li>
+                            <li>You can <strong>remove</strong> items</li>
+                            <li>You can <strong>check</strong> what's on the list</li>
+                            <li>Items can be <strong>repeated</strong></li>
+                        </ul>
+                    </div>
+
+                    <h3>📝 Creating Lists</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Empty list</span>
+<span class="variable">empty</span> <span class="operator">=</span> []
+
+<span class="comment"># List of numbers</span>
+<span class="variable">numbers</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+
+<span class="comment"># List of strings</span>
+<span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="comment"># Mixed types</span>
+<span class="variable">mixed</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="string">"hello"</span>, <span class="number">3.14</span>, <span class="boolean">True</span>]
+
+<span class="comment"># Nested lists (list of lists)</span>
+<span class="variable">matrix</span> <span class="operator">=</span> [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">6</span>]]
+
+<span class="comment"># Using list() constructor</span>
+<span class="variable">letters</span> <span class="operator">=</span> <span class="builtin">list</span>(<span class="string">"hello"</span>)  <span class="comment"># ['h', 'e', 'l', 'l', 'o']</span></code></pre>
+                    </div>
+
+                    <h3>📋 List Properties</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ordered</strong></td>
+                                <td>Items have a defined position (index)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mutable</strong></td>
+                                <td>Can be changed after creation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Allow Duplicates</strong></td>
+                                <td>Same value can appear multiple times</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dynamic</strong></td>
+                                <td>Can grow or shrink in size</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Heterogeneous</strong></td>
+                                <td>Can hold different data types</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h3>💡 List Length</h3>
+                        <p>Use <code>len()</code> to get the number of items in a list:</p>
+                        <div class="code-block small">
+                            <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+<span class="function">print</span>(<span class="builtin">len</span>(<span class="variable">fruits</span>))  <span class="comment"># 3</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESSING ITEMS -->
+        <section id="access" class="tab-content">
+            <div class="card">
+                <h2>🔢 Accessing List Items</h2>
+                
+                <div class="markdown-content">
+                    <p>Just like strings, lists use <strong>indexing</strong> and <strong>slicing</strong> to access items.</p>
+                    
+                    <div class="visual-index">
+                        <h3>📊 Visual Index: ["a", "b", "c", "d", "e"]</h3>
+                        <table class="index-table">
+                            <tr>
+                                <td class="index-cell">"a"</td>
+                                <td class="index-cell">"b"</td>
+                                <td class="index-cell">"c"</td>
+                                <td class="index-cell">"d"</td>
+                                <td class="index-cell">"e"</td>
+                            </tr>
+                            <tr>
+                                <td class="positive">0</td>
+                                <td class="positive">1</td>
+                                <td class="positive">2</td>
+                                <td class="positive">3</td>
+                                <td class="positive">4</td>
+                            </tr>
+                            <tr>
+                                <td class="negative">-5</td>
+                                <td class="negative">-4</td>
+                                <td class="negative">-3</td>
+                                <td class="negative">-2</td>
+                                <td class="negative">-1</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3>📝 Indexing</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>, <span class="string">"date"</span>]
+
+<span class="comment"># Positive indexing</span>
+<span class="function">print</span>(<span class="variable">fruits</span>[<span class="number">0</span>])   <span class="comment"># "apple" (first)</span>
+<span class="function">print</span>(<span class="variable">fruits</span>[<span class="number">2</span>])   <span class="comment"># "cherry" (third)</span>
+
+<span class="comment"># Negative indexing</span>
+<span class="function">print</span>(<span class="variable">fruits</span>[<span class="number">-1</span>])  <span class="comment"># "date" (last)</span>
+<span class="function">print</span>(<span class="variable">fruits</span>[<span class="number">-2</span>])  <span class="comment"># "cherry" (second to last)</span></code></pre>
+                    </div>
+
+                    <h3>📝 Slicing</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">numbers</span> <span class="operator">=</span> [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+
+<span class="function">print</span>(<span class="variable">numbers</span>[<span class="number">1</span>:<span class="number">4</span>])   <span class="comment"># [1, 2, 3]</span>
+<span class="function">print</span>(<span class="variable">numbers</span>[:<span class="number">3</span>])    <span class="comment"># [0, 1, 2]</span>
+<span class="function">print</span>(<span class="variable">numbers</span>[<span class="number">3</span>:])    <span class="comment"># [3, 4, 5]</span>
+<span class="function">print</span>(<span class="variable">numbers</span>[::<span class="number">2</span>])   <span class="comment"># [0, 2, 4] (every other)</span>
+<span class="function">print</span>(<span class="variable">numbers</span>[::<span class="number">-1</span>])  <span class="comment"># [5, 4, 3, 2, 1, 0] (reversed)</span></code></pre>
+                    </div>
+
+                    <h3>📝 Nested List Access</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">matrix</span> <span class="operator">=</span> [
+    [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],
+    [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>],
+    [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]
+]
+
+<span class="function">print</span>(<span class="variable">matrix</span>[<span class="number">0</span>])       <span class="comment"># [1, 2, 3] (first row)</span>
+<span class="function">print</span>(<span class="variable">matrix</span>[<span class="number">0</span>][<span class="number">0</span>])    <span class="comment"># 1 (first row, first item)</span>
+<span class="function">print</span>(<span class="variable">matrix</span>[<span class="number">1</span>][<span class="number">2</span>])    <span class="comment"># 6 (second row, third item)</span>
+<span class="function">print</span>(<span class="variable">matrix</span>[<span class="number">-1</span>][<span class="number">-1</span>])  <span class="comment"># 9 (last row, last item)</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Check if Item Exists</h3>
+                        <p>Use <code>in</code> to check if an item is in a list:</p>
+                        <div class="code-block small">
+                            <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>]
+<span class="function">print</span>(<span class="string">"apple"</span> <span class="keyword">in</span> <span class="variable">fruits</span>)   <span class="comment"># True</span>
+<span class="function">print</span>(<span class="string">"grape"</span> <span class="keyword">in</span> <span class="variable">fruits</span>)   <span class="comment"># False</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 List Index Explorer</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📋 List Items (comma-separated)</span>
+                            <div class="input-group">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="list-items" value="apple, banana, cherry, date" placeholder="item1, item2, item3">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Index</span>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="number" id="list-index" value="0">
+                            </div>
+                        </div>
+                        <button onclick="runListIndexDemo()">▶ Get Item</button>
+                    </div>
+                    <div class="demo-output" id="list-index-output">
+                        Enter list items and an index to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODIFYING LISTS -->
+        <section id="modify" class="tab-content">
+            <div class="card">
+                <h2>✏️ Modifying Lists</h2>
+                
+                <div class="markdown-content">
+                    <p>Lists are <strong>mutable</strong> - you can change, add, and remove items!</p>
+                    
+                    <h3>📝 Changing Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="comment"># Change single item</span>
+<span class="variable">fruits</span>[<span class="number">1</span>] <span class="operator">=</span> <span class="string">"blueberry"</span>
+<span class="function">print</span>(<span class="variable">fruits</span>)  <span class="comment"># ["apple", "blueberry", "cherry"]</span>
+
+<span class="comment"># Change multiple items with slicing</span>
+<span class="variable">fruits</span>[<span class="number">0</span>:<span class="number">2</span>] <span class="operator">=</span> [<span class="string">"apricot"</span>, <span class="string">"blackberry"</span>]
+<span class="function">print</span>(<span class="variable">fruits</span>)  <span class="comment"># ["apricot", "blackberry", "cherry"]</span></code></pre>
+                    </div>
+
+                    <h3>📝 Adding Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>]
+
+<span class="comment"># append() - add to end</span>
+<span class="variable">fruits</span>.<span class="function">append</span>(<span class="string">"cherry"</span>)
+<span class="function">print</span>(<span class="variable">fruits</span>)  <span class="comment"># ["apple", "banana", "cherry"]</span>
+
+<span class="comment"># insert() - add at specific position</span>
+<span class="variable">fruits</span>.<span class="function">insert</span>(<span class="number">1</span>, <span class="string">"blueberry"</span>)
+<span class="function">print</span>(<span class="variable">fruits</span>)  <span class="comment"># ["apple", "blueberry", "banana", "cherry"]</span>
+
+<span class="comment"># extend() - add multiple items</span>
+<span class="variable">fruits</span>.<span class="function">extend</span>([<span class="string">"date"</span>, <span class="string">"elderberry"</span>])
+<span class="function">print</span>(<span class="variable">fruits</span>)  <span class="comment"># ["apple", "blueberry", "banana", "cherry", "date", "elderberry"]</span>
+
+<span class="comment"># Concatenation with +</span>
+<span class="variable">more_fruits</span> <span class="operator">=</span> <span class="variable">fruits</span> <span class="operator">+</span> [<span class="string">"fig"</span>, <span class="string">"grape"</span>]</code></pre>
+                    </div>
+
+                    <h3>📝 Removing Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>, <span class="string">"banana"</span>]
+
+<span class="comment"># remove() - remove first occurrence of value</span>
+<span class="variable">fruits</span>.<span class="function">remove</span>(<span class="string">"banana"</span>)
+<span class="function">print</span>(<span class="variable">fruits</span>)  <span class="comment"># ["apple", "cherry", "banana"]</span>
+
+<span class="comment"># pop() - remove by index (default: last item)</span>
+<span class="variable">last</span> <span class="operator">=</span> <span class="variable">fruits</span>.<span class="function">pop</span>()
+<span class="function">print</span>(<span class="variable">last</span>)    <span class="comment"># "banana"</span>
+<span class="function">print</span>(<span class="variable">fruits</span>)  <span class="comment"># ["apple", "cherry"]</span>
+
+<span class="variable">first</span> <span class="operator">=</span> <span class="variable">fruits</span>.<span class="function">pop</span>(<span class="number">0</span>)
+<span class="function">print</span>(<span class="variable">first</span>)   <span class="comment"># "apple"</span>
+
+<span class="comment"># del - delete by index or slice</span>
+<span class="variable">nums</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+<span class="keyword">del</span> <span class="variable">nums</span>[<span class="number">0</span>]      <span class="comment"># [2, 3, 4, 5]</span>
+<span class="keyword">del</span> <span class="variable">nums</span>[<span class="number">1</span>:<span class="number">3</span>]   <span class="comment"># [2, 5]</span>
+
+<span class="comment"># clear() - remove all items</span>
+<span class="variable">nums</span>.<span class="function">clear</span>()
+<span class="function">print</span>(<span class="variable">nums</span>)  <span class="comment"># []</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Common Errors</h3>
+                        <ul>
+                            <li><code>remove()</code> raises <code>ValueError</code> if item not found</li>
+                            <li><code>pop()</code> raises <code>IndexError</code> if list is empty or index out of range</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 List Modifier</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🛠️ Operation</span>
+                            <select id="list-operation">
+                                <option value="append">append(item)</option>
+                                <option value="insert">insert(index, item)</option>
+                                <option value="remove">remove(item)</option>
+                                <option value="pop">pop()</option>
+                            </select>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📝 Value</span>
+                            <div class="input-group">
+                                <span class="input-icon">+</span>
+                                <input type="text" id="list-value" value="mango" placeholder="Item to add/remove">
+                            </div>
+                        </div>
+                        <button onclick="runListModifyDemo()">▶ Execute</button>
+                        <button onclick="resetListDemo()" style="background: var(--accent-orange);">🔄 Reset</button>
+                    </div>
+                    <div class="demo-output" id="list-modify-output">
+                        Current list: ["apple", "banana", "cherry"]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIST METHODS -->
+        <section id="methods" class="tab-content">
+            <div class="card">
+                <h2>🛠️ List Methods</h2>
+                
+                <div class="markdown-content">
+                    <h3>📋 All List Methods</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>append(x)</code></td>
+                                <td>Add item to end</td>
+                                <td><code>list.append("new")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>extend(list)</code></td>
+                                <td>Add all items from another list</td>
+                                <td><code>list.extend([1,2])</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>insert(i, x)</code></td>
+                                <td>Insert at position</td>
+                                <td><code>list.insert(0, "first")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>remove(x)</code></td>
+                                <td>Remove first occurrence</td>
+                                <td><code>list.remove("item")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>pop(i)</code></td>
+                                <td>Remove & return by index</td>
+                                <td><code>item = list.pop()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>clear()</code></td>
+                                <td>Remove all items</td>
+                                <td><code>list.clear()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>index(x)</code></td>
+                                <td>Find index of value</td>
+                                <td><code>list.index("item")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>count(x)</code></td>
+                                <td>Count occurrences</td>
+                                <td><code>list.count("item")</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>sort()</code></td>
+                                <td>Sort in place</td>
+                                <td><code>list.sort()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>reverse()</code></td>
+                                <td>Reverse in place</td>
+                                <td><code>list.reverse()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>copy()</code></td>
+                                <td>Return shallow copy</td>
+                                <td><code>new = list.copy()</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🎯 Sorting Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">numbers</span> <span class="operator">=</span> [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>]
+
+<span class="comment"># Sort ascending (modifies original)</span>
+<span class="variable">numbers</span>.<span class="function">sort</span>()
+<span class="function">print</span>(<span class="variable">numbers</span>)  <span class="comment"># [1, 1, 3, 4, 5, 9]</span>
+
+<span class="comment"># Sort descending</span>
+<span class="variable">numbers</span>.<span class="function">sort</span>(<span class="variable">reverse</span><span class="operator">=</span><span class="boolean">True</span>)
+<span class="function">print</span>(<span class="variable">numbers</span>)  <span class="comment"># [9, 5, 4, 3, 1, 1]</span>
+
+<span class="comment"># sorted() returns NEW list (original unchanged)</span>
+<span class="variable">original</span> <span class="operator">=</span> [<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>]
+<span class="variable">new_sorted</span> <span class="operator">=</span> <span class="builtin">sorted</span>(<span class="variable">original</span>)
+<span class="function">print</span>(<span class="variable">original</span>)    <span class="comment"># [3, 1, 2] (unchanged)</span>
+<span class="function">print</span>(<span class="variable">new_sorted</span>)  <span class="comment"># [1, 2, 3]</span>
+
+<span class="comment"># Sort strings alphabetically</span>
+<span class="variable">words</span> <span class="operator">=</span> [<span class="string">"banana"</span>, <span class="string">"Apple"</span>, <span class="string">"cherry"</span>]
+<span class="variable">words</span>.<span class="function">sort</span>()  <span class="comment"># ['Apple', 'banana', 'cherry'] (case-sensitive!)</span>
+<span class="variable">words</span>.<span class="function">sort</span>(<span class="variable">key</span><span class="operator">=</span><span class="builtin">str</span>.<span class="function">lower</span>)  <span class="comment"># Case-insensitive sort</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Finding Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>, <span class="string">"banana"</span>]
+
+<span class="comment"># Find index of item</span>
+<span class="function">print</span>(<span class="variable">fruits</span>.<span class="function">index</span>(<span class="string">"banana"</span>))  <span class="comment"># 1 (first occurrence)</span>
+
+<span class="comment"># Count occurrences</span>
+<span class="function">print</span>(<span class="variable">fruits</span>.<span class="function">count</span>(<span class="string">"banana"</span>))  <span class="comment"># 2</span>
+
+<span class="comment"># Check membership</span>
+<span class="function">print</span>(<span class="string">"apple"</span> <span class="keyword">in</span> <span class="variable">fruits</span>)      <span class="comment"># True</span>
+
+<span class="comment"># Min, max, sum (for numbers)</span>
+<span class="variable">nums</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">2</span>]
+<span class="function">print</span>(<span class="builtin">min</span>(<span class="variable">nums</span>))  <span class="comment"># 1</span>
+<span class="function">print</span>(<span class="builtin">max</span>(<span class="variable">nums</span>))  <span class="comment"># 9</span>
+<span class="function">print</span>(<span class="builtin">sum</span>(<span class="variable">nums</span>))  <span class="comment"># 20</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Copy vs Reference</h3>
+                        <p>Be careful when copying lists!</p>
+                        <div class="code-block small">
+                            <pre><code><span class="variable">a</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+<span class="variable">b</span> <span class="operator">=</span> <span class="variable">a</span>           <span class="comment"># b points to SAME list!</span>
+<span class="variable">b</span>[<span class="number">0</span>] <span class="operator">=</span> <span class="number">99</span>
+<span class="function">print</span>(<span class="variable">a</span>)  <span class="comment"># [99, 2, 3] - a changed too!</span>
+
+<span class="variable">c</span> <span class="operator">=</span> <span class="variable">a</span>.<span class="function">copy</span>()     <span class="comment"># c is a NEW copy</span>
+<span class="variable">c</span>[<span class="number">0</span>] <span class="operator">=</span> <span class="number">1</span>
+<span class="function">print</span>(<span class="variable">a</span>)  <span class="comment"># [99, 2, 3] - a unchanged</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOOPING -->
+        <section id="loops" class="tab-content">
+            <div class="card">
+                <h2>🔄 Looping Through Lists</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Basic For Loop</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="keyword">for</span> <span class="variable">fruit</span> <span class="keyword">in</span> <span class="variable">fruits</span>:
+    <span class="function">print</span>(<span class="string">f"I like </span><span class="variable">{fruit}</span><span class="string">"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># I like apple</span>
+<span class="comment"># I like banana</span>
+<span class="comment"># I like cherry</span></code></pre>
+                    </div>
+
+                    <h3>📝 Loop with Index (enumerate)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="keyword">for</span> <span class="variable">index</span>, <span class="variable">fruit</span> <span class="keyword">in</span> <span class="builtin">enumerate</span>(<span class="variable">fruits</span>):
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{index}</span><span class="string">: </span><span class="variable">{fruit}</span><span class="string">"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># 0: apple</span>
+<span class="comment"># 1: banana</span>
+<span class="comment"># 2: cherry</span></code></pre>
+                    </div>
+
+                    <h3>📝 Loop with range()</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="builtin">len</span>(<span class="variable">fruits</span>)):
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{i}</span><span class="string">: </span><span class="variable">{fruits[i]}</span><span class="string">"</span>)</code></pre>
+                    </div>
+
+                    <h3>📝 While Loop</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+<span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">while</span> <span class="variable">i</span> <span class="operator"><</span> <span class="builtin">len</span>(<span class="variable">fruits</span>):
+    <span class="function">print</span>(<span class="variable">fruits</span>[<span class="variable">i</span>])
+    <span class="variable">i</span> <span class="operator">+=</span> <span class="number">1</span></code></pre>
+                    </div>
+
+                    <h3>📝 List Comprehension (Advanced)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Create new list from existing</span>
+<span class="variable">numbers</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+
+<span class="comment"># Square each number</span>
+<span class="variable">squares</span> <span class="operator">=</span> [<span class="variable">x</span><span class="operator">**</span><span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="variable">numbers</span>]
+<span class="function">print</span>(<span class="variable">squares</span>)  <span class="comment"># [1, 4, 9, 16, 25]</span>
+
+<span class="comment"># Filter even numbers</span>
+<span class="variable">evens</span> <span class="operator">=</span> [<span class="variable">x</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="variable">numbers</span> <span class="keyword">if</span> <span class="variable">x</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span>]
+<span class="function">print</span>(<span class="variable">evens</span>)   <span class="comment"># [2, 4]</span>
+
+<span class="comment"># Transform strings</span>
+<span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>]
+<span class="variable">upper_fruits</span> <span class="operator">=</span> [<span class="variable">f</span>.<span class="function">upper</span>() <span class="keyword">for</span> <span class="variable">f</span> <span class="keyword">in</span> <span class="variable">fruits</span>]
+<span class="function">print</span>(<span class="variable">upper_fruits</span>)  <span class="comment"># ["APPLE", "BANANA"]</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Which Loop to Use?</h3>
+                        <ul>
+                            <li><strong>for item in list</strong> - When you just need the items</li>
+                            <li><strong>enumerate()</strong> - When you need index AND item</li>
+                            <li><strong>range(len())</strong> - When you need to modify items</li>
+                            <li><strong>List comprehension</strong> - When creating a new list</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master lists!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- DRAG & DROP -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/4</span>
+                        </div>
+                        <h4>Add "orange" to the end of the list</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">fruits = ["apple", "banana"]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">fruits.</span>
+                                <span class="drop-zone" data-answer="append" data-index="0"></span>
+                                <span class="code-text">(</span>
+                                <span class="drop-zone" data-answer="&quot;orange&quot;" data-index="1"></span>
+                                <span class="code-text">)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="append">append</div>
+                            <div class="drag-piece" draggable="true" data-value="&quot;orange&quot;">"orange"</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="add">add</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="insert">insert</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/4</span>
+                        </div>
+                        <h4>Get the last item from the list</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">numbers = [10, 20, 30, 40]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">last = numbers[</span>
+                                <span class="drop-zone" data-answer="-1" data-index="0"></span>
+                                <span class="code-text">]</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="-1">-1</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="3">3</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="4">4</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="0">0</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">3/4</span>
+                        </div>
+                        <h4>Sort the list in descending order</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">nums = [3, 1, 4, 1, 5]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">nums.</span>
+                                <span class="drop-zone" data-answer="sort" data-index="0"></span>
+                                <span class="code-text">(reverse=</span>
+                                <span class="drop-zone" data-answer="True" data-index="1"></span>
+                                <span class="code-text">)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="sort">sort</div>
+                            <div class="drag-piece" draggable="true" data-value="True">True</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="sorted">sorted</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="False">False</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag4">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">4/4</span>
+                        </div>
+                        <h4>Loop through list with index</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">items = ["a", "b", "c"]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="for" data-index="0"></span>
+                                <span class="code-text"> i, item </span>
+                                <span class="drop-zone" data-answer="in" data-index="1"></span>
+                                <span class="code-text"> </span>
+                                <span class="drop-zone" data-answer="enumerate" data-index="2"></span>
+                                <span class="code-text">(items):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print(f"{i}: {item}")</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag4">
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="in">in</div>
+                            <div class="drag-piece" draggable="true" data-value="enumerate">enumerate</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="range">range</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="while">while</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag4')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag4')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag4"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                            <span class="dot" data-num="4"></span>
+                        </div>
+                        <span class="progress-text">0/4 completed</span>
+                    </div>
+                </div>
+
+                <!-- CODING -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Sum of List</h4>
+                            <p>Calculate the sum of all numbers in the list.</p>
+                        </div>
+                        <div class="code-editor">
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false">numbers = [10, 20, 30, 40, 50]
+
+# Calculate and print the sum
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>sum(numbers)</code> or loop through and add each number.</p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Find Maximum</h4>
+                            <p>Find and print the largest number in the list without using max().</p>
+                        </div>
+                        <div class="code-editor">
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false">numbers = [45, 22, 78, 12, 99, 33]
+
+# Find the maximum without using max()
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Start with first element as max, then loop and update if you find larger.</p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Remove Duplicates</h4>
+                            <p>Create a new list with duplicates removed (keep original order).</p>
+                        </div>
+                        <div class="code-editor">
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false">numbers = [1, 2, 2, 3, 4, 4, 4, 5]
+
+# Create a list without duplicates
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Create empty list, loop through original, only append if not already in new list.</p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- QUIZ -->
+                <div id="quiz" class="practice-content">
+                    <div class="section-header">
+                        <h3>🧠 Code Analysis Quiz</h3>
+                    </div>
+
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header">
+                            <span class="question-num">Question 1/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>nums = [1, 2, 3]
+nums.append(4)
+print(len(nums))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="a">
+                                <span class="option-text">3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="b">
+                                <span class="option-text">4</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="c">
+                                <span class="option-text">[1, 2, 3, 4]</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="d">
+                                <span class="option-text">Error</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header">
+                            <span class="question-num">Question 2/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>fruits = ["a", "b", "c", "d"]
+print(fruits[1:3])</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="a">
+                                <span class="option-text">["a", "b", "c"]</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="b">
+                                <span class="option-text">["b", "c"]</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="c">
+                                <span class="option-text">["b", "c", "d"]</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="d">
+                                <span class="option-text">["a", "b"]</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header">
+                            <span class="question-num">Question 3/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>nums = [5, 2, 8, 1]
+nums.sort()
+print(nums[0])</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="a">
+                                <span class="option-text">5</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="b">
+                                <span class="option-text">1</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="c">
+                                <span class="option-text">8</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="d">
+                                <span class="option-text">2</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header">
+                            <span class="question-num">Question 4/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>x = [1, 2, 3]
+y = x
+y.append(4)
+print(len(x))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="a">
+                                <span class="option-text">3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="b">
+                                <span class="option-text">4</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="c">
+                                <span class="option-text">Error</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="d">
+                                <span class="option-text">[1, 2, 3]</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header">
+                            <span class="question-num">Question 5/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>items = ["a", "b", "c"]
+items.pop(1)
+print(items)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="a">
+                                <span class="option-text">["b", "c"]</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="b">
+                                <span class="option-text">["a", "c"]</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="c">
+                                <span class="option-text">["a", "b"]</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="d">
+                                <span class="option-text">"b"</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        // List specific demos
+        let demoList = ["apple", "banana", "cherry"];
+
+        function runListIndexDemo() {
+            const itemsStr = document.getElementById('list-items').value;
+            const index = parseInt(document.getElementById('list-index').value);
+            const items = itemsStr.split(',').map(s => s.trim());
+            
+            const outputEl = document.getElementById('list-index-output');
+            
+            if (index >= items.length || index < -items.length) {
+                outputEl.innerHTML = `<span class="error">❌ IndexError! Index ${index} is out of range (list has ${items.length} items)</span>`;
+                return;
+            }
+            
+            const actualIndex = index < 0 ? items.length + index : index;
+            outputEl.innerHTML = `
+                <div><strong>List:</strong> [${items.map(i => `"${i}"`).join(', ')}]</div>
+                <div><strong>Index:</strong> ${index}</div>
+                <div><strong>Item:</strong> "${items[actualIndex]}"</div>
+            `;
+        }
+
+        function runListModifyDemo() {
+            const operation = document.getElementById('list-operation').value;
+            const value = document.getElementById('list-value').value;
+            
+            const outputEl = document.getElementById('list-modify-output');
+            let result = '';
+            
+            switch(operation) {
+                case 'append':
+                    demoList.push(value);
+                    result = `✅ Appended "${value}" to end`;
+                    break;
+                case 'insert':
+                    demoList.splice(0, 0, value);
+                    result = `✅ Inserted "${value}" at index 0`;
+                    break;
+                case 'remove':
+                    const idx = demoList.indexOf(value);
+                    if (idx > -1) {
+                        demoList.splice(idx, 1);
+                        result = `✅ Removed "${value}"`;
+                    } else {
+                        result = `❌ "${value}" not found in list`;
+                    }
+                    break;
+                case 'pop':
+                    if (demoList.length > 0) {
+                        const popped = demoList.pop();
+                        result = `✅ Popped "${popped}" from end`;
+                    } else {
+                        result = `❌ Cannot pop from empty list`;
+                    }
+                    break;
+            }
+            
+            outputEl.innerHTML = `
+                <div>${result}</div>
+                <div><strong>Current list:</strong> [${demoList.map(i => `"${i}"`).join(', ')}]</div>
+            `;
+        }
+
+        function resetListDemo() {
+            demoList = ["apple", "banana", "cherry"];
+            document.getElementById('list-modify-output').innerHTML = `
+                <div>🔄 List reset!</div>
+                <div><strong>Current list:</strong> ["apple", "banana", "cherry"]</div>
+            `;
+        }
+    </script>
+</body>
+</html>
+

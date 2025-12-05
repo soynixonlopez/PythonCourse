@@ -1,5 +1,5 @@
 // ========================================
-// Python Conditional Statements - Interactive Learning
+// Python Junior Course - Interactive Learning
 // ========================================
 
 // State management
@@ -8,6 +8,186 @@ const state = {
     coding: { completed: new Set() },
     quiz: { answers: {}, submitted: false }
 };
+
+// ========================================
+// COURSE PROGRESS SYSTEM
+// ========================================
+
+// Lesson order for unlocking
+const LESSON_ORDER = [
+    'introduction',
+    'variables',
+    'datatypes',
+    'operators',
+    'userinput',
+    'syntax-errors',
+    'conditionals',
+    'forloops',
+    'whileloops',
+    'strings',
+    'lists',
+    'tuples',
+    'dictionaries',
+    'sets',
+    'comprehensions',
+    'functions',
+    'advanced-functions',
+    'modules',
+    'error-handling',
+    'files',
+    'classes',
+    'capstone'
+];
+
+// Get current lesson name from URL
+function getCurrentLessonName() {
+    const path = window.location.pathname;
+    const match = path.match(/lessons\/([^.]+)\.html/);
+    return match ? match[1] : null;
+}
+
+// Get progress from localStorage
+function getProgress() {
+    const saved = localStorage.getItem('pythonJrProgress');
+    return saved ? JSON.parse(saved) : { completedLessons: ['introduction'] };
+}
+
+// Save progress to localStorage
+function saveProgress(progress) {
+    localStorage.setItem('pythonJrProgress', JSON.stringify(progress));
+}
+
+// Check if a lesson is unlocked
+function isLessonUnlocked(lessonName) {
+    const progress = getProgress();
+    const lessonIndex = LESSON_ORDER.indexOf(lessonName);
+    
+    // First lesson is always unlocked
+    if (lessonIndex === 0) return true;
+    
+    // Check if previous lesson is completed
+    const previousLesson = LESSON_ORDER[lessonIndex - 1];
+    return progress.completedLessons.includes(previousLesson);
+}
+
+// Check if a lesson is completed
+function isLessonCompleted(lessonName) {
+    const progress = getProgress();
+    return progress.completedLessons.includes(lessonName);
+}
+
+// Mark a lesson as completed
+function completeLesson(lessonName) {
+    const progress = getProgress();
+    if (!progress.completedLessons.includes(lessonName)) {
+        progress.completedLessons.push(lessonName);
+        saveProgress(progress);
+        
+        // Show completion notification
+        showCompletionNotification(lessonName);
+        
+        return true;
+    }
+    return false;
+}
+
+// Show completion notification
+function showCompletionNotification(lessonName) {
+    const notification = document.createElement('div');
+    notification.className = 'lesson-complete-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-icon">🎉</span>
+            <div class="notification-text">
+                <strong>Lesson Complete!</strong>
+                <p>You've unlocked the next lesson!</p>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => notification.classList.add('show'), 100);
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 500);
+    }, 3000);
+}
+
+// Check if all practice sections are completed
+function checkAllPracticeCompleted() {
+    const currentLesson = getCurrentLessonName();
+    if (!currentLesson) return;
+    
+    // Get total required completions for each section
+    const dragdropChallenges = document.querySelectorAll('.drag-challenge').length;
+    const codingChallenges = document.querySelectorAll('.coding-challenge').length;
+    const hasQuiz = document.querySelector('.submit-quiz-btn') !== null;
+    
+    // Check if all are done
+    const dragdropDone = state.dragdrop.completed.size >= dragdropChallenges || dragdropChallenges === 0;
+    const codingDone = state.coding.completed.size >= codingChallenges || codingChallenges === 0;
+    const quizDone = state.quiz.submitted || !hasQuiz;
+    
+    // If all practice is done, mark lesson as complete
+    if (dragdropDone && codingDone && quizDone) {
+        if (!isLessonCompleted(currentLesson)) {
+            completeLesson(currentLesson);
+        }
+    }
+}
+
+// Manual complete lesson button (for lessons without full practice)
+function manualCompleteLesson() {
+    const currentLesson = getCurrentLessonName();
+    if (!currentLesson) return;
+    
+    if (confirm('Are you sure you have completed this lesson?')) {
+        completeLesson(currentLesson);
+    }
+}
+
+// Add completion button to lessons
+function addCompletionButton() {
+    const currentLesson = getCurrentLessonName();
+    if (!currentLesson) return;
+    
+    // Don't add if already completed
+    if (isLessonCompleted(currentLesson)) {
+        // Show completed badge
+        const badge = document.createElement('div');
+        badge.className = 'lesson-completed-badge';
+        badge.innerHTML = '✅ Lesson Completed!';
+        const header = document.querySelector('header');
+        if (header) {
+            header.appendChild(badge);
+        }
+        return;
+    }
+    
+    // Check if lesson has practice sections
+    const hasPractice = document.querySelector('.drag-challenge') || 
+                        document.querySelector('.coding-challenge') || 
+                        document.querySelector('.submit-quiz-btn');
+    
+    // If no practice, show manual complete button
+    if (!hasPractice) {
+        const btn = document.createElement('button');
+        btn.className = 'manual-complete-btn';
+        btn.innerHTML = '✅ Mark Lesson as Complete';
+        btn.onclick = manualCompleteLesson;
+        
+        const footer = document.querySelector('footer');
+        if (footer) {
+            footer.insertBefore(btn, footer.firstChild);
+        }
+    }
+}
+
+// Get completion percentage
+function getCompletionPercentage() {
+    const progress = getProgress();
+    return Math.round((progress.completedLessons.length / LESSON_ORDER.length) * 100);
+}
 
 // ========================================
 // INITIALIZATION
@@ -19,6 +199,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initDemoInputs();
     initDragAndDrop();
     initCodeEditors();
+    
+    // Check if on roadmap page
+    if (window.location.pathname.includes('roadmap.html')) {
+        initRoadmapProgress();
+    }
+    
+    // Check if on a lesson page
+    if (window.location.pathname.includes('lessons/')) {
+        addCompletionButton();
+    }
 });
 
 // Main Tab Navigation
@@ -368,6 +558,9 @@ function checkDragChallenge(challengeId) {
         // Mark as completed
         state.dragdrop.completed.add(challengeId);
         updateProgress('dragdrop');
+        
+        // Check if all practice is done
+        checkAllPracticeCompleted();
     } else {
         resultDiv.classList.add('error');
         resultDiv.innerHTML = `❌ Not quite right. ${correctCount}/${dropZones.length} correct. The red pieces are in the wrong place - click them to remove and try again!`;
@@ -495,6 +688,9 @@ function runCodingChallenge(challengeId) {
         resultDiv.classList.add('success');
         state.coding.completed.add(challengeId);
         updateProgress('coding');
+        
+        // Check if all practice is done
+        checkAllPracticeCompleted();
     } else {
         resultDiv.classList.add('error');
     }
@@ -841,6 +1037,9 @@ function submitAnalysisQuiz() {
     
     // Hide submit button
     document.querySelector('.submit-quiz-btn').style.display = 'none';
+    
+    // Check if all practice is done
+    checkAllPracticeCompleted();
 }
 
 function resetAnalysisQuiz() {
@@ -937,6 +1136,152 @@ function toggleHint(hintId) {
     if (hint) {
         hint.classList.toggle('show');
     }
+}
+
+// ========================================
+// ROADMAP PROGRESS INITIALIZATION
+// ========================================
+
+function initRoadmapProgress() {
+    const progress = getProgress();
+    const modules = document.querySelectorAll('.module');
+    
+    modules.forEach(module => {
+        const link = module.querySelector('a[href*="lessons/"]');
+        if (!link) return;
+        
+        // Extract lesson name from href
+        const href = link.getAttribute('href');
+        const match = href.match(/lessons\/([^.]+)\.html/);
+        if (!match) return;
+        
+        const lessonName = match[1];
+        const isUnlocked = isLessonUnlocked(lessonName);
+        const isCompleted = isLessonCompleted(lessonName);
+        
+        // Update module status
+        if (isCompleted) {
+            module.classList.add('completed');
+            module.classList.remove('locked');
+            const statusSpan = module.querySelector('.module-status');
+            if (statusSpan) {
+                statusSpan.textContent = 'Completed ✓';
+                statusSpan.classList.remove('status-available', 'status-coming');
+                statusSpan.classList.add('status-completed');
+            }
+        } else if (isUnlocked) {
+            module.classList.remove('locked', 'completed');
+            module.classList.add('available');
+        } else {
+            module.classList.add('locked');
+            module.classList.remove('available', 'completed');
+            
+            // Update status
+            const statusSpan = module.querySelector('.module-status');
+            if (statusSpan) {
+                statusSpan.textContent = '🔒 Locked';
+                statusSpan.classList.remove('status-available', 'status-completed');
+                statusSpan.classList.add('status-locked');
+            }
+            
+            // Disable click
+            const card = module.querySelector('.module-card');
+            if (card) {
+                card.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showLockedMessage(lessonName);
+                };
+                card.style.cursor = 'not-allowed';
+            }
+            
+            // Disable link
+            const startBtn = module.querySelector('.start-lesson-btn');
+            if (startBtn) {
+                startBtn.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showLockedMessage(lessonName);
+                };
+                startBtn.classList.add('locked-btn');
+            }
+        }
+    });
+    
+    // Update progress bar
+    updateRoadmapProgressBar();
+}
+
+function showLockedMessage(lessonName) {
+    const lessonIndex = LESSON_ORDER.indexOf(lessonName);
+    const previousLesson = lessonIndex > 0 ? LESSON_ORDER[lessonIndex - 1] : null;
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'locked-modal';
+    modal.innerHTML = `
+        <div class="locked-modal-content">
+            <span class="locked-icon">🔒</span>
+            <h3>Lesson Locked!</h3>
+            <p>Complete the previous lesson to unlock this one.</p>
+            ${previousLesson ? `<p style="margin-top: 0.5rem; color: var(--accent-yellow);">Complete: <strong>${formatLessonName(previousLesson)}</strong></p>` : ''}
+            <button onclick="this.closest('.locked-modal').remove()">OK</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('show'), 10);
+}
+
+function formatLessonName(name) {
+    const names = {
+        'introduction': 'Introduction to Python',
+        'variables': 'Variables & Constants',
+        'datatypes': 'Data Types',
+        'operators': 'Operators',
+        'userinput': 'User Input',
+        'syntax-errors': 'Common Syntax Errors',
+        'conditionals': 'Conditional Statements',
+        'forloops': 'For Loops',
+        'whileloops': 'While Loops',
+        'strings': 'Strings in Depth',
+        'lists': 'Lists',
+        'tuples': 'Tuples',
+        'dictionaries': 'Dictionaries',
+        'sets': 'Sets',
+        'comprehensions': 'Comprehensions',
+        'functions': 'Functions Basics',
+        'advanced-functions': 'Advanced Functions',
+        'modules': 'Modules & Imports',
+        'error-handling': 'Error Handling',
+        'files': 'File Handling',
+        'classes': 'Classes & Objects',
+        'capstone': 'Capstone Project'
+    };
+    return names[name] || name;
+}
+
+function updateRoadmapProgressBar() {
+    const progress = getProgress();
+    const completed = progress.completedLessons.length;
+    const total = LESSON_ORDER.length;
+    const percentage = Math.round((completed / total) * 100);
+    
+    const progressFill = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text');
+    
+    if (progressFill) {
+        progressFill.style.width = `${percentage}%`;
+    }
+    
+    if (progressText) {
+        progressText.textContent = `${completed} of ${total} lessons completed (${percentage}%)`;
+    }
+}
+
+// Reset progress (for testing)
+function resetProgress() {
+    localStorage.removeItem('pythonJrProgress');
+    location.reload();
 }
 
 // Initialize on window load for animations

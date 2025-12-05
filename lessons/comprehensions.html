@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensions - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 15</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Comprehensions</h1>
+        <p class="subtitle">Write elegant, Pythonic code! ✨</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="list">📋 List Comprehension</button>
+        <button class="tab-btn" data-tab="dict">📖 Dict Comprehension</button>
+        <button class="tab-btn" data-tab="set">🎯 Set Comprehension</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are Comprehensions?</h2>
+                <div class="markdown-content">
+                    <p>Comprehensions are a <strong>concise, Pythonic way</strong> to create collections (lists, dicts, sets) from existing iterables in a single line!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Before vs After</h3>
+                        <div class="code-block">
+                            <div class="code-header"><span>Traditional Way</span></div>
+                            <pre><code><span class="variable">squares</span> <span class="operator">=</span> []
+<span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>):
+    <span class="variable">squares</span>.<span class="function">append</span>(<span class="variable">x</span> <span class="operator">**</span> <span class="number">2</span>)</code></pre>
+                        </div>
+                        <div class="code-block">
+                            <div class="code-header"><span>Comprehension Way</span></div>
+                            <pre><code><span class="variable">squares</span> <span class="operator">=</span> [<span class="variable">x</span> <span class="operator">**</span> <span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>)]</code></pre>
+                        </div>
+                        <p>Both produce: <code>[0, 1, 4, 9, 16]</code></p>
+                    </div>
+
+                    <h3>📋 Benefits</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Benefit</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Concise</strong></td><td>One line instead of multiple</td></tr>
+                            <tr><td><strong>Readable</strong></td><td>Once you know the syntax</td></tr>
+                            <tr><td><strong>Faster</strong></td><td>Optimized by Python</td></tr>
+                            <tr><td><strong>Pythonic</strong></td><td>The "right" way in Python</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIST COMPREHENSION -->
+        <section id="list" class="tab-content">
+            <div class="card">
+                <h2>📋 List Comprehension</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Basic Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>[<span class="variable">expression</span> <span class="keyword">for</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">iterable</span>]</code></pre>
+                    </div>
+
+                    <h3>🎯 Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Square numbers</span>
+<span class="variable">squares</span> <span class="operator">=</span> [<span class="variable">x</span><span class="operator">**</span><span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>)]
+<span class="comment"># [0, 1, 4, 9, 16]</span>
+
+<span class="comment"># Double each number</span>
+<span class="variable">nums</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+<span class="variable">doubled</span> <span class="operator">=</span> [<span class="variable">n</span> <span class="operator">*</span> <span class="number">2</span> <span class="keyword">for</span> <span class="variable">n</span> <span class="keyword">in</span> <span class="variable">nums</span>]
+<span class="comment"># [2, 4, 6]</span>
+
+<span class="comment"># Convert to uppercase</span>
+<span class="variable">words</span> <span class="operator">=</span> [<span class="string">"hello"</span>, <span class="string">"world"</span>]
+<span class="variable">upper</span> <span class="operator">=</span> [<span class="variable">w</span>.<span class="function">upper</span>() <span class="keyword">for</span> <span class="variable">w</span> <span class="keyword">in</span> <span class="variable">words</span>]
+<span class="comment"># ["HELLO", "WORLD"]</span></code></pre>
+                    </div>
+
+                    <h3>📝 With Condition (Filtering)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>[<span class="variable">expression</span> <span class="keyword">for</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">iterable</span> <span class="keyword">if</span> <span class="variable">condition</span>]
+
+<span class="comment"># Only even numbers</span>
+<span class="variable">evens</span> <span class="operator">=</span> [<span class="variable">x</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">10</span>) <span class="keyword">if</span> <span class="variable">x</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span>]
+<span class="comment"># [0, 2, 4, 6, 8]</span>
+
+<span class="comment"># Words longer than 3 characters</span>
+<span class="variable">words</span> <span class="operator">=</span> [<span class="string">"hi"</span>, <span class="string">"hello"</span>, <span class="string">"hey"</span>, <span class="string">"howdy"</span>]
+<span class="variable">long_words</span> <span class="operator">=</span> [<span class="variable">w</span> <span class="keyword">for</span> <span class="variable">w</span> <span class="keyword">in</span> <span class="variable">words</span> <span class="keyword">if</span> <span class="builtin">len</span>(<span class="variable">w</span>) <span class="operator">></span> <span class="number">3</span>]
+<span class="comment"># ["hello", "howdy"]</span></code></pre>
+                    </div>
+
+                    <h3>📝 With if-else</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Note: if-else goes BEFORE for</span>
+[<span class="variable">expression_if</span> <span class="keyword">if</span> <span class="variable">condition</span> <span class="keyword">else</span> <span class="variable">expression_else</span> <span class="keyword">for</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">iterable</span>]
+
+<span class="comment"># Mark even/odd</span>
+<span class="variable">labels</span> <span class="operator">=</span> [<span class="string">"even"</span> <span class="keyword">if</span> <span class="variable">x</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span> <span class="keyword">else</span> <span class="string">"odd"</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>)]
+<span class="comment"># ["even", "odd", "even", "odd", "even"]</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DICT COMPREHENSION -->
+        <section id="dict" class="tab-content">
+            <div class="card">
+                <h2>📖 Dictionary Comprehension</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Basic Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>{<span class="variable">key_expr</span>: <span class="variable">value_expr</span> <span class="keyword">for</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">iterable</span>}</code></pre>
+                    </div>
+
+                    <h3>🎯 Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Number to its square</span>
+<span class="variable">squares</span> <span class="operator">=</span> {<span class="variable">x</span>: <span class="variable">x</span><span class="operator">**</span><span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>)}
+<span class="comment"># {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</span>
+
+<span class="comment"># Word to length</span>
+<span class="variable">words</span> <span class="operator">=</span> [<span class="string">"hi"</span>, <span class="string">"hello"</span>, <span class="string">"hey"</span>]
+<span class="variable">lengths</span> <span class="operator">=</span> {<span class="variable">w</span>: <span class="builtin">len</span>(<span class="variable">w</span>) <span class="keyword">for</span> <span class="variable">w</span> <span class="keyword">in</span> <span class="variable">words</span>}
+<span class="comment"># {"hi": 2, "hello": 5, "hey": 3}</span>
+
+<span class="comment"># From two lists</span>
+<span class="variable">keys</span> <span class="operator">=</span> [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]
+<span class="variable">values</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]
+<span class="variable">result</span> <span class="operator">=</span> {<span class="variable">k</span>: <span class="variable">v</span> <span class="keyword">for</span> <span class="variable">k</span>, <span class="variable">v</span> <span class="keyword">in</span> <span class="builtin">zip</span>(<span class="variable">keys</span>, <span class="variable">values</span>)}
+<span class="comment"># {"a": 1, "b": 2, "c": 3}</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SET COMPREHENSION -->
+        <section id="set" class="tab-content">
+            <div class="card">
+                <h2>🎯 Set Comprehension</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Basic Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code>{<span class="variable">expression</span> <span class="keyword">for</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">iterable</span>}</code></pre>
+                    </div>
+
+                    <h3>🎯 Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Unique squares</span>
+<span class="variable">nums</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">-1</span>, <span class="number">2</span>, <span class="number">-2</span>, <span class="number">3</span>]
+<span class="variable">unique_squares</span> <span class="operator">=</span> {<span class="variable">x</span><span class="operator">**</span><span class="number">2</span> <span class="keyword">for</span> <span class="variable">x</span> <span class="keyword">in</span> <span class="variable">nums</span>}
+<span class="comment"># {1, 4, 9}</span>
+
+<span class="comment"># Unique first letters</span>
+<span class="variable">words</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"ant"</span>, <span class="string">"banana"</span>, <span class="string">"berry"</span>]
+<span class="variable">first_letters</span> <span class="operator">=</span> {<span class="variable">w</span>[<span class="number">0</span>] <span class="keyword">for</span> <span class="variable">w</span> <span class="keyword">in</span> <span class="variable">words</span>}
+<span class="comment"># {"a", "b"}</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master comprehensions!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <h4>Create squares with list comprehension</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">squares = </span>
+                                <span class="drop-zone" data-answer="[" data-index="0"></span>
+                                <span class="code-text">x**2 </span>
+                                <span class="drop-zone" data-answer="for" data-index="1"></span>
+                                <span class="code-text"> x in range(5)</span>
+                                <span class="drop-zone" data-answer="]" data-index="2"></span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="[">[</div>
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="]">]</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="(">(</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="in">in</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <h4>List comprehension with condition</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">evens = [x for x in range(10) </span>
+                                <span class="drop-zone" data-answer="if" data-index="0"></span>
+                                <span class="code-text"> x </span>
+                                <span class="drop-zone" data-answer="%" data-index="1"></span>
+                                <span class="code-text"> 2 == 0]</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="if">if</div>
+                            <div class="drag-piece" draggable="true" data-value="%">%</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="when">when</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="/">/</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <h4>Dictionary comprehension</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">squares = </span>
+                                <span class="drop-zone" data-answer="{" data-index="0"></span>
+                                <span class="code-text">x</span>
+                                <span class="drop-zone" data-answer=":" data-index="1"></span>
+                                <span class="code-text"> x**2 for x in range(5)</span>
+                                <span class="drop-zone" data-answer="}" data-index="2"></span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="{">{</div>
+                            <div class="drag-piece" draggable="true" data-value=":">:</div>
+                            <div class="drag-piece" draggable="true" data-value="}">}</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="[">[</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="=>">=></div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Double All Numbers</h4>
+                            <p>Use a list comprehension to double all numbers in the list.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>[2, 4, 6, 8, 10]</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false">nums = [1, 2, 3, 4, 5]
+
+# Use list comprehension to double each number
+doubled = 
+
+print(doubled)
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>[x * 2 for x in nums]</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Filter Short Words</h4>
+                            <p>Use a list comprehension to get words with 4+ characters.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>['apple', 'banana', 'cherry']</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false">words = ["hi", "apple", "go", "banana", "cherry", "ok"]
+
+# Filter words with 4+ characters
+long_words = 
+
+print(long_words)
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use <code>[w for w in words if len(w) >= 4]</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Word Lengths Dictionary</h4>
+                            <p>Create a dictionary with words as keys and their lengths as values.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>{'cat': 3, 'elephant': 8, 'dog': 3}</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false">animals = ["cat", "elephant", "dog"]
+
+# Create dict with word:length using dict comprehension
+lengths = 
+
+print(lengths)
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Use <code>{word: len(word) for word in animals}</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                        <div class="code-display">
+                            <pre><code>result = [x*2 for x in [1, 2, 3]]
+print(result)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="a"><span class="option-text">[1, 2, 3, 1, 2, 3]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="b"><span class="option-text">[2, 4, 6]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="c"><span class="option-text">[1, 4, 9]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                        <div class="code-display">
+                            <pre><code>result = [x for x in range(6) if x % 2 == 0]
+print(result)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="a"><span class="option-text">[0, 2, 4]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="b"><span class="option-text">[1, 3, 5]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="c"><span class="option-text">[2, 4, 6]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="d"><span class="option-text">[0, 2, 4, 6]</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                        <div class="code-display">
+                            <pre><code>result = {x: x**2 for x in [1, 2, 3]}
+print(result[2])</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="a"><span class="option-text">2</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="b"><span class="option-text">4</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="c"><span class="option-text">9</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                        <div class="code-display">
+                            <pre><code>nums = [1, 1, 2, 2, 3]
+result = {x for x in nums}
+print(len(result))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="a"><span class="option-text">5</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="b"><span class="option-text">3</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="c"><span class="option-text">2</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                        <div class="code-display">
+                            <pre><code>result = ["even" if x%2==0 else "odd" for x in [1,2,3]]
+print(result)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="a"><span class="option-text">["odd", "even", "odd"]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="b"><span class="option-text">["even", "odd", "even"]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="c"><span class="option-text">[1, 2, 3]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+</body>
+</html>
+

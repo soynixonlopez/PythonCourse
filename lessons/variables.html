@@ -79,15 +79,15 @@
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Creating variables
-name = "Python Student"
-age = 15
-score = 95.5
+                        <pre><code><span class="comment"># Creating variables</span>
+<span class="variable">name</span> <span class="operator">=</span> <span class="string">"Python Student"</span>
+<span class="variable">age</span> <span class="operator">=</span> <span class="number">15</span>
+<span class="variable">score</span> <span class="operator">=</span> <span class="number">95.5</span>
 
-# Using variables
-print(name)    # Output: Python Student
-print(age)     # Output: 15
-print(score)   # Output: 95.5</code></pre>
+<span class="comment"># Using variables</span>
+<span class="function">print</span>(<span class="variable">name</span>)    <span class="comment"># Output: Python Student</span>
+<span class="function">print</span>(<span class="variable">age</span>)     <span class="comment"># Output: 15</span>
+<span class="function">print</span>(<span class="variable">score</span>)   <span class="comment"># Output: 95.5</span></code></pre>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ print(score)   # Output: 95.5</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>variable_name = value</code></pre>
+                        <pre><code><span class="variable">variable_name</span> <span class="operator">=</span> <span class="variable">value</span></code></pre>
                     </div>
 
                     <h3>🎯 Examples</h3>
@@ -116,25 +116,25 @@ print(score)   # Output: 95.5</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Storing text (strings)
-greeting = "Hello, World!"
-city = 'New York'
+                        <pre><code><span class="comment"># Storing text (strings)</span>
+<span class="variable">greeting</span> <span class="operator">=</span> <span class="string">"Hello, World!"</span>
+<span class="variable">city</span> <span class="operator">=</span> <span class="string">'New York'</span>
 
-# Storing numbers
-age = 25
-temperature = 98.6
-year = 2024
+<span class="comment"># Storing numbers</span>
+<span class="variable">age</span> <span class="operator">=</span> <span class="number">25</span>
+<span class="variable">temperature</span> <span class="operator">=</span> <span class="number">98.6</span>
+<span class="variable">year</span> <span class="operator">=</span> <span class="number">2024</span>
 
-# Storing True/False (booleans)
-is_raining = True
-has_license = False
+<span class="comment"># Storing True/False (booleans)</span>
+<span class="variable">is_raining</span> <span class="operator">=</span> <span class="keyword">True</span>
+<span class="variable">has_license</span> <span class="operator">=</span> <span class="keyword">False</span>
 
-# You can change variables anytime!
-score = 100
-print(score)    # Output: 100
+<span class="comment"># You can change variables anytime!</span>
+<span class="variable">score</span> <span class="operator">=</span> <span class="number">100</span>
+<span class="function">print</span>(<span class="variable">score</span>)    <span class="comment"># Output: 100</span>
 
-score = 200     # Changed!
-print(score)    # Output: 200</code></pre>
+<span class="variable">score</span> <span class="operator">=</span> <span class="number">200</span>     <span class="comment"># Changed!</span>
+<span class="function">print</span>(<span class="variable">score</span>)    <span class="comment"># Output: 200</span></code></pre>
                     </div>
 
                     <h3>🔄 Multiple Assignment</h3>
@@ -145,29 +145,29 @@ print(score)    # Output: 200</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Multiple variables, one line
-x, y, z = 1, 2, 3
-print(x)  # 1
-print(y)  # 2
-print(z)  # 3
+                        <pre><code><span class="comment"># Multiple variables, one line</span>
+<span class="variable">x</span>, <span class="variable">y</span>, <span class="variable">z</span> <span class="operator">=</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>
+<span class="function">print</span>(<span class="variable">x</span>)  <span class="comment"># 1</span>
+<span class="function">print</span>(<span class="variable">y</span>)  <span class="comment"># 2</span>
+<span class="function">print</span>(<span class="variable">z</span>)  <span class="comment"># 3</span>
 
-# Same value to multiple variables
-a = b = c = 100
-print(a)  # 100
-print(b)  # 100
-print(c)  # 100</code></pre>
+<span class="comment"># Same value to multiple variables</span>
+<span class="variable">a</span> <span class="operator">=</span> <span class="variable">b</span> <span class="operator">=</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">100</span>
+<span class="function">print</span>(<span class="variable">a</span>)  <span class="comment"># 100</span>
+<span class="function">print</span>(<span class="variable">b</span>)  <span class="comment"># 100</span>
+<span class="function">print</span>(<span class="variable">c</span>)  <span class="comment"># 100</span></code></pre>
                     </div>
 
                     <div class="tip-box">
                         <h3>💡 Pro Tip</h3>
                         <p>You can use variables in calculations and expressions:</p>
                         <div class="code-block small">
-                            <pre><code>price = 50
-quantity = 3
-total = price * quantity  # 150
+                            <pre><code><span class="variable">price</span> <span class="operator">=</span> <span class="number">50</span>
+<span class="variable">quantity</span> <span class="operator">=</span> <span class="number">3</span>
+<span class="variable">total</span> <span class="operator">=</span> <span class="variable">price</span> <span class="operator">*</span> <span class="variable">quantity</span>  <span class="comment"># 150</span>
 
-name = "Alex"
-greeting = "Hello, " + name  # "Hello, Alex"</code></pre>
+<span class="variable">name</span> <span class="operator">=</span> <span class="string">"Alex"</span>
+<span class="variable">greeting</span> <span class="operator">=</span> <span class="string">"Hello, "</span> <span class="operator">+</span> <span class="variable">name</span>  <span class="comment"># "Hello, Alex"</span></code></pre>
                         </div>
                     </div>
                 </div>
@@ -175,15 +175,25 @@ greeting = "Hello, " + name  # "Hello, Alex"</code></pre>
                 <div class="interactive-demo">
                     <h3>🎮 Variable Creator</h3>
                     <div class="demo-controls">
-                        <label>Variable name:</label>
-                        <input type="text" id="var-name" value="my_number" style="width: 120px;">
-                        <label>Value:</label>
-                        <input type="text" id="var-value" value="42">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📦 Variable Name</span>
+                            <div class="input-group">
+                                <span class="input-icon">🏷️</span>
+                                <input type="text" id="var-name" value="my_number" placeholder="snake_case_name">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">💎 Value</span>
+                            <div class="input-group">
+                                <span class="input-icon">✨</span>
+                                <input type="text" id="var-value" value="42" placeholder="Any value...">
+                            </div>
+                        </div>
                         <button onclick="runVarDemo()">▶ Create & Print</button>
                     </div>
                     <div class="demo-code">
-                        <pre><code><span id="var-code">my_number = 42</span>
-print(<span id="var-print">my_number</span>)</code></pre>
+                        <pre><code><span id="var-code" style="color: #50fa7b;">my_number</span> <span style="color: #ff79c6;">=</span> <span style="color: #bd93f9;">42</span>
+<span style="color: #ff79c6;">print</span>(<span id="var-print" style="color: #50fa7b;">my_number</span>)</code></pre>
                     </div>
                     <div class="demo-output" id="var-output">
                         Click "Create & Print" to see the result!
@@ -283,29 +293,29 @@ print(<span id="var-print">my_number</span>)</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># ✅ Good: Use snake_case (the Python way!)
-user_name = "Alex"
-total_score = 100
-is_active = True
-first_name = "John"
-last_login_date = "2024-01-15"
+                        <pre><code><span class="comment"># ✅ Good: Use snake_case (the Python way!)</span>
+<span class="variable">user_name</span> <span class="operator">=</span> <span class="string">"Alex"</span>
+<span class="variable">total_score</span> <span class="operator">=</span> <span class="number">100</span>
+<span class="variable">is_active</span> <span class="operator">=</span> <span class="keyword">True</span>
+<span class="variable">first_name</span> <span class="operator">=</span> <span class="string">"John"</span>
+<span class="variable">last_login_date</span> <span class="operator">=</span> <span class="string">"2024-01-15"</span>
 
-# ❌ Avoid: camelCase (used in JavaScript, Java)
-userName = "Alex"      # Works, but NOT Pythonic!
-totalScore = 100       # This is not Python style
+<span class="comment"># ❌ Avoid: camelCase (used in JavaScript, Java)</span>
+<span class="variable">userName</span> <span class="operator">=</span> <span class="string">"Alex"</span>      <span class="comment"># Works, but NOT Pythonic!</span>
+<span class="variable">totalScore</span> <span class="operator">=</span> <span class="number">100</span>       <span class="comment"># This is not Python style</span>
 
-# ❌ Avoid: PascalCase for variables (use for classes only)
-UserName = "Alex"      # Looks like a class name!
+<span class="comment"># ❌ Avoid: PascalCase for variables (use for classes only)</span>
+<span class="variable">UserName</span> <span class="operator">=</span> <span class="string">"Alex"</span>      <span class="comment"># Looks like a class name!</span>
 
-# ✅ Good: Descriptive names tell you what the variable stores
-student_count = 25
-max_temperature = 100
-is_logged_in = True
+<span class="comment"># ✅ Good: Descriptive names tell you what the variable stores</span>
+<span class="variable">student_count</span> <span class="operator">=</span> <span class="number">25</span>
+<span class="variable">max_temperature</span> <span class="operator">=</span> <span class="number">100</span>
+<span class="variable">is_logged_in</span> <span class="operator">=</span> <span class="keyword">True</span>
 
-# ❌ Avoid: Single letters (except in loops or math)
-x = 25                 # What does x mean?
-n = 100                # Confusing!
-# Exception: for i in range(10) is okay!</code></pre>
+<span class="comment"># ❌ Avoid: Single letters (except in loops or math)</span>
+<span class="variable">x</span> <span class="operator">=</span> <span class="number">25</span>                 <span class="comment"># What does x mean?</span>
+<span class="variable">n</span> <span class="operator">=</span> <span class="number">100</span>                <span class="comment"># Confusing!</span>
+<span class="comment"># Exception: for i in range(10) is okay!</span></code></pre>
                     </div>
 
                     <div class="analogy-box">
@@ -348,19 +358,19 @@ with   yield</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Constants use ALL_CAPS with underscores
-PI = 3.14159
-MAX_SPEED = 120
-GRAVITY = 9.8
-WEBSITE_URL = "https://python.org"
+                        <pre><code><span class="comment"># Constants use ALL_CAPS with underscores</span>
+<span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14159</span>
+<span class="variable">MAX_SPEED</span> <span class="operator">=</span> <span class="number">120</span>
+<span class="variable">GRAVITY</span> <span class="operator">=</span> <span class="number">9.8</span>
+<span class="variable">WEBSITE_URL</span> <span class="operator">=</span> <span class="string">"https://python.org"</span>
 
-# Regular variables use lowercase
-radius = 5
-speed = 60
+<span class="comment"># Regular variables use lowercase</span>
+<span class="variable">radius</span> <span class="operator">=</span> <span class="number">5</span>
+<span class="variable">speed</span> <span class="operator">=</span> <span class="number">60</span>
 
-# Using constants
-circumference = 2 * PI * radius
-print(circumference)  # 31.4159</code></pre>
+<span class="comment"># Using constants</span>
+<span class="variable">circumference</span> <span class="operator">=</span> <span class="number">2</span> <span class="operator">*</span> <span class="variable">PI</span> <span class="operator">*</span> <span class="variable">radius</span>
+<span class="function">print</span>(<span class="variable">circumference</span>)  <span class="comment"># 31.4159</span></code></pre>
                     </div>
 
                     <div class="analogy-box">
@@ -377,8 +387,8 @@ print(circumference)  # 31.4159</code></pre>
                         <h3>💡 Important Note</h3>
                         <p>Python doesn't actually prevent you from changing constants - it's just a convention. The ALL_CAPS tells other programmers "don't change this!"</p>
                         <div class="code-block small">
-                            <pre><code>PI = 3.14159
-PI = 999      # This works, but DON'T do it!</code></pre>
+                            <pre><code><span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14159</span>
+<span class="variable">PI</span> <span class="operator">=</span> <span class="number">999</span>      <span class="comment"># This works, but DON'T do it!</span></code></pre>
                         </div>
                     </div>
                 </div>
@@ -608,10 +618,16 @@ first_place = &quot;Gold&quot;
             const name = document.getElementById('var-name').value;
             const value = document.getElementById('var-value').value;
             
-            document.getElementById('var-code').textContent = `${name} = ${value}`;
-            document.getElementById('var-print').textContent = name;
-            document.getElementById('var-output').textContent = value;
-            document.getElementById('var-output').classList.add('success');
+            // Update the code display
+            const varCode = document.getElementById('var-code');
+            const varPrint = document.getElementById('var-print');
+            if (varCode) varCode.textContent = name;
+            if (varPrint) varPrint.textContent = name;
+            
+            // Show the output
+            const output = document.getElementById('var-output');
+            output.textContent = value;
+            output.classList.add('success');
         }
 
         // Quiz

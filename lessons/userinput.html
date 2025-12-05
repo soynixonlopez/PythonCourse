@@ -91,19 +91,27 @@ print(type(age))  # &lt;class 'str'&gt; - It's a STRING!</code></pre>
                 <div class="interactive-demo">
                     <h3>🎮 Simulate input()</h3>
                     <div class="demo-controls">
-                        <label>Prompt:</label>
-                        <input type="text" id="prompt" value="What is your name? " style="width: 200px;">
-                    </div>
-                    <div class="demo-controls">
-                        <label>Your answer:</label>
-                        <input type="text" id="user-answer" value="Alex" style="width: 150px;">
-                        <button onclick="simulateInput()">▶ Run</button>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📢 Your Prompt</span>
+                            <div class="input-group">
+                                <span class="input-icon">💬</span>
+                                <input type="text" id="prompt" value="What is your name? " placeholder="Type your question...">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">⌨️ User's Answer</span>
+                            <div class="input-group">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="user-answer" value="Alex" placeholder="Simulated user input...">
+                            </div>
+                        </div>
+                        <button onclick="simulateInput()">▶ Run Code</button>
                     </div>
                     <div class="demo-code">
-                        <pre><code>name = input("<span id="prompt-display">What is your name? </span>")
-print(f"Hello, {name}!")</code></pre>
+                        <pre><code><span style="color: #50fa7b;">name</span> <span style="color: #ff79c6;">=</span> <span style="color: #8be9fd;">input</span>(<span style="color: #f1fa8c;">"<span id="prompt-display" style="color: #f1fa8c;">What is your name? </span>"</span>)
+<span style="color: #ff79c6;">print</span>(<span style="color: #f1fa8c;">f"Hello, {name}!"</span>)</code></pre>
                     </div>
-                    <div class="demo-output" id="input-output">Click "Run" to see the result!</div>
+                    <div class="demo-output" id="input-output">Click "Run Code" to see the result!</div>
                 </div>
             </div>
         </section>
@@ -162,18 +170,23 @@ height = float(input("Height: ")) # Float</code></pre>
                     </div>
                 </div>
 
-                <div class="interactive-demo">
+                <div class="interactive-demo calculator-demo">
                     <h3>🧮 Age Calculator</h3>
                     <div class="demo-controls">
-                        <label>Enter your birth year:</label>
-                        <input type="number" id="birth-year" value="2008" style="width: 100px;">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🎂 Birth Year</span>
+                            <div class="input-group">
+                                <span class="input-icon">📅</span>
+                                <input type="number" id="birth-year" value="2008" placeholder="e.g. 2005" min="1900" max="2024">
+                            </div>
+                        </div>
                         <button onclick="calcAge()">▶ Calculate Age</button>
                     </div>
                     <div class="demo-code">
-                        <pre><code>birth_year = int(input("Enter your birth year: "))
-current_year = 2024
-age = current_year - birth_year
-print(f"You are {age} years old!")</code></pre>
+                        <pre><code><span style="color: #50fa7b;">birth_year</span> <span style="color: #ff79c6;">=</span> <span style="color: #8be9fd;">int</span>(<span style="color: #8be9fd;">input</span>(<span style="color: #f1fa8c;">"Enter your birth year: "</span>))
+<span style="color: #50fa7b;">current_year</span> <span style="color: #ff79c6;">=</span> <span style="color: #bd93f9;">2024</span>
+<span style="color: #50fa7b;">age</span> <span style="color: #ff79c6;">=</span> current_year <span style="color: #ff79c6;">-</span> birth_year
+<span style="color: #ff79c6;">print</span>(<span style="color: #f1fa8c;">f"You are {age} years old!"</span>)</code></pre>
                     </div>
                     <div class="demo-output" id="age-output">Click "Calculate Age"!</div>
                 </div>

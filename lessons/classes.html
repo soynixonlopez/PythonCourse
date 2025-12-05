@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes & Objects - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 21</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Classes & Objects</h1>
+        <p class="subtitle">Object-Oriented Programming basics! 🏗️</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="create">🔧 Creating Classes</button>
+        <button class="tab-btn" data-tab="methods">⚡ Methods</button>
+        <button class="tab-btn" data-tab="attributes">📦 Attributes</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What is OOP?</h2>
+                <div class="markdown-content">
+                    <p><strong>Object-Oriented Programming (OOP)</strong> is a way to structure code by creating "objects" that contain both data and behavior.</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of a <strong>Class</strong> as a blueprint for a house:</p>
+                        <ul>
+                            <li><strong>Class</strong> = Blueprint (design)</li>
+                            <li><strong>Object</strong> = Actual house (instance)</li>
+                            <li><strong>Attributes</strong> = House features (color, rooms)</li>
+                            <li><strong>Methods</strong> = What house can do (open door)</li>
+                        </ul>
+                    </div>
+
+                    <h3>📋 Key Concepts</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Term</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Class</strong></td><td>Blueprint/template for objects</td></tr>
+                            <tr><td><strong>Object</strong></td><td>Instance of a class</td></tr>
+                            <tr><td><strong>Attribute</strong></td><td>Data stored in object</td></tr>
+                            <tr><td><strong>Method</strong></td><td>Function inside a class</td></tr>
+                            <tr><td><strong>__init__</strong></td><td>Constructor (runs when creating object)</td></tr>
+                            <tr><td><strong>self</strong></td><td>Reference to current object</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- CREATING CLASSES -->
+        <section id="create" class="tab-content">
+            <div class="card">
+                <h2>🔧 Creating Classes</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Basic Class Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="function">Dog</span>:
+    <span class="string">"""A simple Dog class"""</span>
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">name</span>, <span class="variable">age</span>):
+        <span class="string">"""Initialize dog with name and age"""</span>
+        <span class="variable">self</span>.<span class="variable">name</span> <span class="operator">=</span> <span class="variable">name</span>
+        <span class="variable">self</span>.<span class="variable">age</span> <span class="operator">=</span> <span class="variable">age</span>
+    
+    <span class="keyword">def</span> <span class="function">bark</span>(<span class="variable">self</span>):
+        <span class="string">"""Make the dog bark"""</span>
+        <span class="function">print</span>(<span class="string">f"</span><span class="variable">{self.name}</span><span class="string"> says: Woof!"</span>)</code></pre>
+                    </div>
+
+                    <h3>📝 Creating Objects (Instances)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Create dog objects</span>
+<span class="variable">my_dog</span> <span class="operator">=</span> <span class="function">Dog</span>(<span class="string">"Buddy"</span>, <span class="number">3</span>)
+<span class="variable">your_dog</span> <span class="operator">=</span> <span class="function">Dog</span>(<span class="string">"Max"</span>, <span class="number">5</span>)
+
+<span class="comment"># Access attributes</span>
+<span class="function">print</span>(<span class="variable">my_dog</span>.<span class="variable">name</span>)   <span class="comment"># Buddy</span>
+<span class="function">print</span>(<span class="variable">your_dog</span>.<span class="variable">age</span>)  <span class="comment"># 5</span>
+
+<span class="comment"># Call methods</span>
+<span class="variable">my_dog</span>.<span class="function">bark</span>()   <span class="comment"># Buddy says: Woof!</span>
+<span class="variable">your_dog</span>.<span class="function">bark</span>() <span class="comment"># Max says: Woof!</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 About <code>self</code></h3>
+                        <p><code>self</code> refers to the current instance. It must be the first parameter of every method, but you don't pass it when calling!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODS -->
+        <section id="methods" class="tab-content">
+            <div class="card">
+                <h2>⚡ Methods</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Instance Methods</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="function">BankAccount</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">owner</span>, <span class="variable">balance</span><span class="operator">=</span><span class="number">0</span>):
+        <span class="variable">self</span>.<span class="variable">owner</span> <span class="operator">=</span> <span class="variable">owner</span>
+        <span class="variable">self</span>.<span class="variable">balance</span> <span class="operator">=</span> <span class="variable">balance</span>
+    
+    <span class="keyword">def</span> <span class="function">deposit</span>(<span class="variable">self</span>, <span class="variable">amount</span>):
+        <span class="variable">self</span>.<span class="variable">balance</span> <span class="operator">+=</span> <span class="variable">amount</span>
+        <span class="function">print</span>(<span class="string">f"Deposited ${amount}. Balance: ${self.balance}"</span>)
+    
+    <span class="keyword">def</span> <span class="function">withdraw</span>(<span class="variable">self</span>, <span class="variable">amount</span>):
+        <span class="keyword">if</span> <span class="variable">amount</span> <span class="operator"><=</span> <span class="variable">self</span>.<span class="variable">balance</span>:
+            <span class="variable">self</span>.<span class="variable">balance</span> <span class="operator">-=</span> <span class="variable">amount</span>
+            <span class="function">print</span>(<span class="string">f"Withdrew ${amount}. Balance: ${self.balance}"</span>)
+        <span class="keyword">else</span>:
+            <span class="function">print</span>(<span class="string">"Insufficient funds!"</span>)
+    
+    <span class="keyword">def</span> <span class="function">get_balance</span>(<span class="variable">self</span>):
+        <span class="keyword">return</span> <span class="variable">self</span>.<span class="variable">balance</span>
+
+<span class="comment"># Using the class</span>
+<span class="variable">account</span> <span class="operator">=</span> <span class="function">BankAccount</span>(<span class="string">"Alice"</span>, <span class="number">100</span>)
+<span class="variable">account</span>.<span class="function">deposit</span>(<span class="number">50</span>)    <span class="comment"># Deposited $50. Balance: $150</span>
+<span class="variable">account</span>.<span class="function">withdraw</span>(<span class="number">30</span>)   <span class="comment"># Withdrew $30. Balance: $120</span></code></pre>
+                    </div>
+
+                    <h3>📝 Methods Can Return Values</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="function">Rectangle</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">width</span>, <span class="variable">height</span>):
+        <span class="variable">self</span>.<span class="variable">width</span> <span class="operator">=</span> <span class="variable">width</span>
+        <span class="variable">self</span>.<span class="variable">height</span> <span class="operator">=</span> <span class="variable">height</span>
+    
+    <span class="keyword">def</span> <span class="function">area</span>(<span class="variable">self</span>):
+        <span class="keyword">return</span> <span class="variable">self</span>.<span class="variable">width</span> <span class="operator">*</span> <span class="variable">self</span>.<span class="variable">height</span>
+    
+    <span class="keyword">def</span> <span class="function">perimeter</span>(<span class="variable">self</span>):
+        <span class="keyword">return</span> <span class="number">2</span> <span class="operator">*</span> (<span class="variable">self</span>.<span class="variable">width</span> <span class="operator">+</span> <span class="variable">self</span>.<span class="variable">height</span>)
+
+<span class="variable">rect</span> <span class="operator">=</span> <span class="function">Rectangle</span>(<span class="number">5</span>, <span class="number">3</span>)
+<span class="function">print</span>(<span class="variable">rect</span>.<span class="function">area</span>())       <span class="comment"># 15</span>
+<span class="function">print</span>(<span class="variable">rect</span>.<span class="function">perimeter</span>())  <span class="comment"># 16</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATTRIBUTES -->
+        <section id="attributes" class="tab-content">
+            <div class="card">
+                <h2>📦 Attributes</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Instance vs Class Attributes</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="function">Dog</span>:
+    <span class="comment"># Class attribute (shared by ALL dogs)</span>
+    <span class="variable">species</span> <span class="operator">=</span> <span class="string">"Canis familiaris"</span>
+    
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">name</span>):
+        <span class="comment"># Instance attribute (unique to each dog)</span>
+        <span class="variable">self</span>.<span class="variable">name</span> <span class="operator">=</span> <span class="variable">name</span>
+
+<span class="variable">dog1</span> <span class="operator">=</span> <span class="function">Dog</span>(<span class="string">"Buddy"</span>)
+<span class="variable">dog2</span> <span class="operator">=</span> <span class="function">Dog</span>(<span class="string">"Max"</span>)
+
+<span class="function">print</span>(<span class="variable">dog1</span>.<span class="variable">name</span>)      <span class="comment"># Buddy (unique)</span>
+<span class="function">print</span>(<span class="variable">dog2</span>.<span class="variable">name</span>)      <span class="comment"># Max (unique)</span>
+<span class="function">print</span>(<span class="variable">dog1</span>.<span class="variable">species</span>)   <span class="comment"># Canis familiaris (shared)</span>
+<span class="function">print</span>(<span class="variable">dog2</span>.<span class="variable">species</span>)   <span class="comment"># Canis familiaris (shared)</span></code></pre>
+                    </div>
+
+                    <h3>📝 Modifying Attributes</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">class</span> <span class="function">Person</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">name</span>, <span class="variable">age</span>):
+        <span class="variable">self</span>.<span class="variable">name</span> <span class="operator">=</span> <span class="variable">name</span>
+        <span class="variable">self</span>.<span class="variable">age</span> <span class="operator">=</span> <span class="variable">age</span>
+    
+    <span class="keyword">def</span> <span class="function">birthday</span>(<span class="variable">self</span>):
+        <span class="variable">self</span>.<span class="variable">age</span> <span class="operator">+=</span> <span class="number">1</span>
+        <span class="function">print</span>(<span class="string">f"Happy Birthday! Now </span><span class="variable">{self.age}</span><span class="string"> years old."</span>)
+
+<span class="variable">person</span> <span class="operator">=</span> <span class="function">Person</span>(<span class="string">"Alice"</span>, <span class="number">25</span>)
+<span class="function">print</span>(<span class="variable">person</span>.<span class="variable">age</span>)    <span class="comment"># 25</span>
+<span class="variable">person</span>.<span class="function">birthday</span>()   <span class="comment"># Happy Birthday! Now 26 years old.</span>
+<span class="function">print</span>(<span class="variable">person</span>.<span class="variable">age</span>)    <span class="comment"># 26</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 OOP Benefits</h3>
+                        <ul>
+                            <li><strong>Encapsulation</strong>: Bundle data with methods</li>
+                            <li><strong>Reusability</strong>: Create many objects from one class</li>
+                            <li><strong>Organization</strong>: Cleaner, structured code</li>
+                            <li><strong>Real-world modeling</strong>: Objects mirror reality</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master classes & OOP!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <h4>Define a simple class</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="class" data-index="0"></span>
+                                <span class="code-text"> Dog:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">def __init__(</span>
+                                <span class="drop-zone" data-answer="self" data-index="1"></span>
+                                <span class="code-text">, name):</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">self.name = name</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="class">class</div>
+                            <div class="drag-piece" draggable="true" data-value="self">self</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="def">def</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="this">this</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <h4>Create an instance and call method</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">class Cat:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">def meow(self):</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">return "Meow!"</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">my_cat = </span>
+                                <span class="drop-zone" data-answer="Cat" data-index="0"></span>
+                                <span class="code-text">()</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(my_cat.</span>
+                                <span class="drop-zone" data-answer="meow" data-index="1"></span>
+                                <span class="code-text">())</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="Cat">Cat</div>
+                            <div class="drag-piece" draggable="true" data-value="meow">meow</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="new">new</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="call">call</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <h4>Class with __str__ method</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">class Person:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">def </span>
+                                <span class="drop-zone" data-answer="__init__" data-index="0"></span>
+                                <span class="code-text">(self, name):</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">self.name = name</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">def </span>
+                                <span class="drop-zone" data-answer="__str__" data-index="1"></span>
+                                <span class="code-text">(self):</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">return self.name</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="__init__">__init__</div>
+                            <div class="drag-piece" draggable="true" data-value="__str__">__str__</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="__new__">__new__</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="__repr__">__repr__</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Simple Dog Class</h4>
+                            <p>Create a Dog class with a name attribute and a bark method.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>Buddy says: Woof!</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false"># Create a Dog class with:
+# - __init__ that takes name
+# - bark method that prints "{name} says: Woof!"
+
+# Test it
+dog = Dog("Buddy")
+dog.bark()
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>self.name = name</code> in __init__ and <code>print(f"{self.name} says: Woof!")</code> in bark</p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Counter Class</h4>
+                            <p>Create a Counter class that starts at 0 and has increment and get_count methods.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>Count: 3</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false"># Create a Counter class with:
+# - count attribute starting at 0
+# - increment() method
+# - get_count() method
+
+# Test it
+c = Counter()
+c.increment()
+c.increment()
+c.increment()
+print(f"Count: {c.get_count()}")
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use <code>self.count = 0</code> in __init__, <code>self.count += 1</code> in increment</p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Rectangle Class</h4>
+                            <p>Create a Rectangle class with width, height and an area method.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>Area: 50</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false"># Create a Rectangle class with:
+# - width and height attributes
+# - area() method that returns width * height
+
+# Test it
+rect = Rectangle(10, 5)
+print(f"Area: {rect.area()}")
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>__init__ takes width and height, area returns <code>self.width * self.height</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                        <div class="code-display">
+                            <pre><code>class Cat:
+    def __init__(self, name):
+        self.name = name
+
+cat = Cat("Whiskers")
+print(cat.name)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="a"><span class="option-text">Whiskers</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="b"><span class="option-text">Cat</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="c"><span class="option-text">name</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                        <div class="code-display">
+                            <pre><code>class Counter:
+    count = 0
+    def __init__(self):
+        Counter.count += 1
+
+a = Counter()
+b = Counter()
+print(Counter.count)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="a"><span class="option-text">0</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="b"><span class="option-text">1</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="c"><span class="option-text">2</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                        <p class="question-text">What does <code>self</code> represent in a class method?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="a"><span class="option-text">The class itself</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="b"><span class="option-text">The current instance</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="c"><span class="option-text">A global variable</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="d"><span class="option-text">Nothing special</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                        <p class="question-text">What is <code>__init__</code>?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="a"><span class="option-text">A destructor</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="b"><span class="option-text">A constructor</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="c"><span class="option-text">A regular method</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="d"><span class="option-text">A variable</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                        <div class="code-display">
+                            <pre><code>class Box:
+    def __init__(self, size):
+        self.size = size
+
+box = Box(10)
+box.size = 20
+print(box.size)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="a"><span class="option-text">10</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="b"><span class="option-text">20</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="c"><span class="option-text">Error</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="d"><span class="option-text">None</span></label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+</body>
+</html>
+

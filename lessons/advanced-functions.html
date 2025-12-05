@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 17</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Advanced Functions</h1>
+        <p class="subtitle">*args, **kwargs, lambda & more! 🔥</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="args">📥 *args & **kwargs</button>
+        <button class="tab-btn" data-tab="lambda">⚡ Lambda Functions</button>
+        <button class="tab-btn" data-tab="recursion">🔄 Recursion</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- *args & **kwargs -->
+        <section id="args" class="tab-content active">
+            <div class="card">
+                <h2>📥 *args and **kwargs</h2>
+                
+                <div class="markdown-content">
+                    <p>These allow functions to accept a <strong>variable number</strong> of arguments!</p>
+                    
+                    <h3>📝 *args (Positional Arguments)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">add_all</span>(<span class="operator">*</span><span class="variable">args</span>):
+    <span class="string">"""Add any number of values"""</span>
+    <span class="variable">total</span> <span class="operator">=</span> <span class="number">0</span>
+    <span class="keyword">for</span> <span class="variable">num</span> <span class="keyword">in</span> <span class="variable">args</span>:
+        <span class="variable">total</span> <span class="operator">+=</span> <span class="variable">num</span>
+    <span class="keyword">return</span> <span class="variable">total</span>
+
+<span class="function">print</span>(<span class="function">add_all</span>(<span class="number">1</span>, <span class="number">2</span>))           <span class="comment"># 3</span>
+<span class="function">print</span>(<span class="function">add_all</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))  <span class="comment"># 15</span>
+<span class="function">print</span>(<span class="function">add_all</span>(<span class="number">10</span>))              <span class="comment"># 10</span></code></pre>
+                    </div>
+
+                    <h3>📝 **kwargs (Keyword Arguments)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">introduce</span>(<span class="operator">**</span><span class="variable">kwargs</span>):
+    <span class="string">"""Print all key-value pairs"""</span>
+    <span class="keyword">for</span> <span class="variable">key</span>, <span class="variable">value</span> <span class="keyword">in</span> <span class="variable">kwargs</span>.<span class="function">items</span>():
+        <span class="function">print</span>(<span class="string">f"</span><span class="variable">{key}</span><span class="string">: </span><span class="variable">{value}</span><span class="string">"</span>)
+
+<span class="function">introduce</span>(<span class="variable">name</span><span class="operator">=</span><span class="string">"Alice"</span>, <span class="variable">age</span><span class="operator">=</span><span class="number">25</span>, <span class="variable">city</span><span class="operator">=</span><span class="string">"NYC"</span>)
+<span class="comment"># name: Alice</span>
+<span class="comment"># age: 25</span>
+<span class="comment"># city: NYC</span></code></pre>
+                    </div>
+
+                    <h3>📝 Combining All Types</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">complex_func</span>(<span class="variable">a</span>, <span class="variable">b</span>, <span class="operator">*</span><span class="variable">args</span>, <span class="operator">**</span><span class="variable">kwargs</span>):
+    <span class="function">print</span>(<span class="string">f"a: </span><span class="variable">{a}</span><span class="string">, b: </span><span class="variable">{b}</span><span class="string">"</span>)
+    <span class="function">print</span>(<span class="string">f"args: </span><span class="variable">{args}</span><span class="string">"</span>)
+    <span class="function">print</span>(<span class="string">f"kwargs: </span><span class="variable">{kwargs}</span><span class="string">"</span>)
+
+<span class="function">complex_func</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="variable">x</span><span class="operator">=</span><span class="number">10</span>, <span class="variable">y</span><span class="operator">=</span><span class="number">20</span>)
+<span class="comment"># a: 1, b: 2</span>
+<span class="comment"># args: (3, 4)</span>
+<span class="comment"># kwargs: {'x': 10, 'y': 20}</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Order Matters!</h3>
+                        <p>Parameters must be in this order: regular → *args → **kwargs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAMBDA -->
+        <section id="lambda" class="tab-content">
+            <div class="card">
+                <h2>⚡ Lambda Functions</h2>
+                
+                <div class="markdown-content">
+                    <p><strong>Lambda functions</strong> are small, anonymous (nameless) functions defined in one line.</p>
+                    
+                    <h3>📝 Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">lambda</span> <span class="variable">arguments</span>: <span class="variable">expression</span>
+
+<span class="comment"># Regular function</span>
+<span class="keyword">def</span> <span class="function">add</span>(<span class="variable">a</span>, <span class="variable">b</span>):
+    <span class="keyword">return</span> <span class="variable">a</span> <span class="operator">+</span> <span class="variable">b</span>
+
+<span class="comment"># Same as lambda</span>
+<span class="variable">add</span> <span class="operator">=</span> <span class="keyword">lambda</span> <span class="variable">a</span>, <span class="variable">b</span>: <span class="variable">a</span> <span class="operator">+</span> <span class="variable">b</span>
+<span class="function">print</span>(<span class="function">add</span>(<span class="number">3</span>, <span class="number">5</span>))  <span class="comment"># 8</span></code></pre>
+                    </div>
+
+                    <h3>📝 Common Use Cases</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># With sorted()</span>
+<span class="variable">students</span> <span class="operator">=</span> [(<span class="string">"Alice"</span>, <span class="number">85</span>), (<span class="string">"Bob"</span>, <span class="number">92</span>), (<span class="string">"Charlie"</span>, <span class="number">78</span>)]
+<span class="variable">by_score</span> <span class="operator">=</span> <span class="builtin">sorted</span>(<span class="variable">students</span>, <span class="variable">key</span><span class="operator">=</span><span class="keyword">lambda</span> <span class="variable">x</span>: <span class="variable">x</span>[<span class="number">1</span>])
+<span class="comment"># [('Charlie', 78), ('Alice', 85), ('Bob', 92)]</span>
+
+<span class="comment"># With map()</span>
+<span class="variable">nums</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]
+<span class="variable">squared</span> <span class="operator">=</span> <span class="builtin">list</span>(<span class="builtin">map</span>(<span class="keyword">lambda</span> <span class="variable">x</span>: <span class="variable">x</span><span class="operator">**</span><span class="number">2</span>, <span class="variable">nums</span>))
+<span class="comment"># [1, 4, 9, 16]</span>
+
+<span class="comment"># With filter()</span>
+<span class="variable">evens</span> <span class="operator">=</span> <span class="builtin">list</span>(<span class="builtin">filter</span>(<span class="keyword">lambda</span> <span class="variable">x</span>: <span class="variable">x</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span>, <span class="variable">nums</span>))
+<span class="comment"># [2, 4]</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 When to Use Lambda?</h3>
+                        <ul>
+                            <li>Simple, one-time operations</li>
+                            <li>As arguments to functions like sort(), map(), filter()</li>
+                            <li>When a full function is overkill</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECURSION -->
+        <section id="recursion" class="tab-content">
+            <div class="card">
+                <h2>🔄 Recursion</h2>
+                
+                <div class="markdown-content">
+                    <p><strong>Recursion</strong> is when a function calls itself to solve a problem.</p>
+                    
+                    <h3>📝 Basic Structure</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">recursive_func</span>(<span class="variable">param</span>):
+    <span class="comment"># Base case - stop condition!</span>
+    <span class="keyword">if</span> <span class="variable">base_condition</span>:
+        <span class="keyword">return</span> <span class="variable">result</span>
+    
+    <span class="comment"># Recursive case - call itself</span>
+    <span class="keyword">return</span> <span class="function">recursive_func</span>(<span class="variable">modified_param</span>)</code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Factorial</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">factorial</span>(<span class="variable">n</span>):
+    <span class="comment"># Base case</span>
+    <span class="keyword">if</span> <span class="variable">n</span> <span class="operator">==</span> <span class="number">0</span> <span class="keyword">or</span> <span class="variable">n</span> <span class="operator">==</span> <span class="number">1</span>:
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="comment"># Recursive case</span>
+    <span class="keyword">return</span> <span class="variable">n</span> <span class="operator">*</span> <span class="function">factorial</span>(<span class="variable">n</span> <span class="operator">-</span> <span class="number">1</span>)
+
+<span class="function">print</span>(<span class="function">factorial</span>(<span class="number">5</span>))  <span class="comment"># 120 (5*4*3*2*1)</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Countdown</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">countdown</span>(<span class="variable">n</span>):
+    <span class="keyword">if</span> <span class="variable">n</span> <span class="operator"><=</span> <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">"Blast off! 🚀"</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="variable">n</span>)
+        <span class="function">countdown</span>(<span class="variable">n</span> <span class="operator">-</span> <span class="number">1</span>)
+
+<span class="function">countdown</span>(<span class="number">5</span>)  <span class="comment"># 5, 4, 3, 2, 1, Blast off!</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Always Need a Base Case!</h3>
+                        <p>Without a base case, recursion continues forever → "RecursionError"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master advanced functions!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <h4>Create a lambda function</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">double = </span>
+                                <span class="drop-zone" data-answer="lambda" data-index="0"></span>
+                                <span class="code-text"> x</span>
+                                <span class="drop-zone" data-answer=":" data-index="1"></span>
+                                <span class="code-text"> x * 2</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(double(5))  # 10</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="lambda">lambda</div>
+                            <div class="drag-piece" draggable="true" data-value=":">:</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="def">def</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="=>">=></div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <h4>Function with *args</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">def sum_all(</span>
+                                <span class="drop-zone" data-answer="*args" data-index="0"></span>
+                                <span class="code-text">):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">return </span>
+                                <span class="drop-zone" data-answer="sum" data-index="1"></span>
+                                <span class="code-text">(args)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="*args">*args</div>
+                            <div class="drag-piece" draggable="true" data-value="sum">sum</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="**kwargs">**kwargs</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="total">total</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <h4>Recursive factorial function</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">def factorial(n):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="drop-zone" data-answer="if" data-index="0"></span>
+                                <span class="code-text"> n == 1:</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">return 1</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">return n * </span>
+                                <span class="drop-zone" data-answer="factorial" data-index="1"></span>
+                                <span class="code-text">(n - </span>
+                                <span class="drop-zone" data-answer="1" data-index="2"></span>
+                                <span class="code-text">)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="if">if</div>
+                            <div class="drag-piece" draggable="true" data-value="factorial">factorial</div>
+                            <div class="drag-piece" draggable="true" data-value="1">1</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="while">while</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="0">0</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Lambda Square</h4>
+                            <p>Create a lambda function that squares a number.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>square(4) → 16</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false"># Create a lambda called 'square'
+
+print(square(4))
+print(square(7))
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>square = lambda x: x ** 2</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Sum Any Numbers</h4>
+                            <p>Create a function using *args that sums any number of arguments.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>sum_all(1, 2, 3) → 6</code></span>
+                                </div>
+                                <div class="example-case">
+                                    <span><code>sum_all(1, 2, 3, 4, 5) → 15</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false"># Create sum_all function using *args
+
+print(sum_all(1, 2, 3))
+print(sum_all(1, 2, 3, 4, 5))
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use <code>def sum_all(*args): return sum(args)</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Recursive Countdown</h4>
+                            <p>Create a recursive function that prints a countdown from n to 1.</p>
+                            <div class="example-box">
+                                <strong>Expected Output for countdown(5):</strong>
+                                <div class="example-case">
+                                    <span><code>5, 4, 3, 2, 1, Blast off!</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false"># Create a recursive countdown function
+
+countdown(5)
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Base case: if n <= 0, print "Blast off!". Otherwise print n and call countdown(n-1)</p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                        <div class="code-display">
+                            <pre><code>def test(*args):
+    return len(args)
+
+print(test(1, 2, 3, 4))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="a"><span class="option-text">10</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="b"><span class="option-text">4</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="c"><span class="option-text">(1, 2, 3, 4)</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                        <div class="code-display">
+                            <pre><code>square = lambda x: x * x
+print(square(4))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="a"><span class="option-text">4</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="b"><span class="option-text">8</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="c"><span class="option-text">16</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                        <div class="code-display">
+                            <pre><code>def f(**kwargs):
+    return kwargs
+
+print(f(a=1, b=2))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="a"><span class="option-text">(1, 2)</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="b"><span class="option-text">[1, 2]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="c"><span class="option-text">{'a': 1, 'b': 2}</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                        <div class="code-display">
+                            <pre><code>def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n-1)
+
+print(factorial(4))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="a"><span class="option-text">4</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="b"><span class="option-text">10</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="c"><span class="option-text">24</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                        <div class="code-display">
+                            <pre><code>nums = [1, 2, 3]
+result = list(map(lambda x: x+1, nums))
+print(result)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="a"><span class="option-text">[2, 3, 4]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="b"><span class="option-text">[1, 2, 3]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="c"><span class="option-text">[0, 1, 2]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+</body>
+</html>
+

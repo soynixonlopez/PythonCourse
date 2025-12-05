@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionaries - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 13</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Dictionaries</h1>
+        <p class="subtitle">Store data as key-value pairs! 📖</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="access">🔑 Accessing Values</button>
+        <button class="tab-btn" data-tab="modify">✏️ Modifying</button>
+        <button class="tab-btn" data-tab="methods">🛠️ Methods</button>
+        <button class="tab-btn" data-tab="loops">🔄 Looping</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are Dictionaries?</h2>
+                <div class="markdown-content">
+                    <p>A <strong>dictionary</strong> stores data as <strong>key-value pairs</strong>. Instead of using indexes (0, 1, 2...), you use meaningful keys to access data!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Like a real dictionary:</p>
+                        <ul>
+                            <li><strong>Word</strong> (key) → <strong>Definition</strong> (value)</li>
+                            <li>"Python" → "A programming language"</li>
+                            <li>Look up by the word, get the definition!</li>
+                        </ul>
+                    </div>
+
+                    <h3>📝 Creating Dictionaries</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Empty dictionary</span>
+<span class="variable">empty</span> <span class="operator">=</span> {}
+
+<span class="comment"># Dictionary with data</span>
+<span class="variable">person</span> <span class="operator">=</span> {
+    <span class="string">"name"</span>: <span class="string">"Alice"</span>,
+    <span class="string">"age"</span>: <span class="number">25</span>,
+    <span class="string">"city"</span>: <span class="string">"New York"</span>
+}
+
+<span class="comment"># Using dict() constructor</span>
+<span class="variable">person2</span> <span class="operator">=</span> <span class="builtin">dict</span>(<span class="variable">name</span><span class="operator">=</span><span class="string">"Bob"</span>, <span class="variable">age</span><span class="operator">=</span><span class="number">30</span>)
+
+<span class="comment"># Keys can be numbers or tuples (immutable types)</span>
+<span class="variable">scores</span> <span class="operator">=</span> {<span class="number">1</span>: <span class="string">"First"</span>, <span class="number">2</span>: <span class="string">"Second"</span>}</code></pre>
+                    </div>
+
+                    <h3>📋 Dictionary Properties</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ordered</strong></td>
+                                <td>Items maintain insertion order (Python 3.7+)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mutable</strong></td>
+                                <td>Can add, change, remove items</td>
+                            </tr>
+                            <tr>
+                                <td><strong>No Duplicate Keys</strong></td>
+                                <td>Each key must be unique</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Keys Must Be Immutable</strong></td>
+                                <td>Strings, numbers, tuples (not lists)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESSING VALUES -->
+        <section id="access" class="tab-content">
+            <div class="card">
+                <h2>🔑 Accessing Dictionary Values</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Using Square Brackets</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"age"</span>: <span class="number">25</span>}
+
+<span class="function">print</span>(<span class="variable">person</span>[<span class="string">"name"</span>])  <span class="comment"># "Alice"</span>
+<span class="function">print</span>(<span class="variable">person</span>[<span class="string">"age"</span>])   <span class="comment"># 25</span>
+
+<span class="comment"># KeyError if key doesn't exist!</span>
+<span class="comment"># print(person["email"])  # ❌ KeyError</span></code></pre>
+                    </div>
+
+                    <h3>📝 Using get() Method (Safer!)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"age"</span>: <span class="number">25</span>}
+
+<span class="comment"># get() returns None if key doesn't exist</span>
+<span class="function">print</span>(<span class="variable">person</span>.<span class="function">get</span>(<span class="string">"name"</span>))     <span class="comment"># "Alice"</span>
+<span class="function">print</span>(<span class="variable">person</span>.<span class="function">get</span>(<span class="string">"email"</span>))    <span class="comment"># None (no error!)</span>
+
+<span class="comment"># Provide default value</span>
+<span class="function">print</span>(<span class="variable">person</span>.<span class="function">get</span>(<span class="string">"email"</span>, <span class="string">"N/A"</span>))  <span class="comment"># "N/A"</span></code></pre>
+                    </div>
+
+                    <h3>📝 Checking if Key Exists</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"age"</span>: <span class="number">25</span>}
+
+<span class="keyword">if</span> <span class="string">"name"</span> <span class="keyword">in</span> <span class="variable">person</span>:
+    <span class="function">print</span>(<span class="string">"Name exists!"</span>)
+
+<span class="keyword">if</span> <span class="string">"email"</span> <span class="keyword">not</span> <span class="keyword">in</span> <span class="variable">person</span>:
+    <span class="function">print</span>(<span class="string">"No email found"</span>)</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Best Practice</h3>
+                        <p>Use <code>get()</code> when you're not sure if a key exists. Use <code>[]</code> when you're certain or want an error if missing.</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Dictionary Explorer</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔑 Enter Key</span>
+                            <div class="input-group">
+                                <span class="input-icon">🔍</span>
+                                <input type="text" id="dict-key" value="name" placeholder="Key to look up">
+                            </div>
+                        </div>
+                        <button onclick="runDictDemo()">▶ Get Value</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"age"</span>: <span class="number">25</span>, <span class="string">"city"</span>: <span class="string">"NYC"</span>}</code></pre>
+                    </div>
+                    <div class="demo-output" id="dict-demo-output">
+                        Enter a key and click "Get Value"!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODIFYING -->
+        <section id="modify" class="tab-content">
+            <div class="card">
+                <h2>✏️ Modifying Dictionaries</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Adding & Updating Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>}
+
+<span class="comment"># Add new key-value pair</span>
+<span class="variable">person</span>[<span class="string">"age"</span>] <span class="operator">=</span> <span class="number">25</span>
+<span class="variable">person</span>[<span class="string">"city"</span>] <span class="operator">=</span> <span class="string">"NYC"</span>
+
+<span class="comment"># Update existing value</span>
+<span class="variable">person</span>[<span class="string">"age"</span>] <span class="operator">=</span> <span class="number">26</span>
+
+<span class="comment"># Update multiple with update()</span>
+<span class="variable">person</span>.<span class="function">update</span>({<span class="string">"age"</span>: <span class="number">27</span>, <span class="string">"job"</span>: <span class="string">"Developer"</span>})</code></pre>
+                    </div>
+
+                    <h3>📝 Removing Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"age"</span>: <span class="number">25</span>, <span class="string">"city"</span>: <span class="string">"NYC"</span>}
+
+<span class="comment"># pop() - remove and return value</span>
+<span class="variable">age</span> <span class="operator">=</span> <span class="variable">person</span>.<span class="function">pop</span>(<span class="string">"age"</span>)
+<span class="function">print</span>(<span class="variable">age</span>)  <span class="comment"># 25</span>
+
+<span class="comment"># del - delete key</span>
+<span class="keyword">del</span> <span class="variable">person</span>[<span class="string">"city"</span>]
+
+<span class="comment"># popitem() - remove last item</span>
+<span class="variable">last</span> <span class="operator">=</span> <span class="variable">person</span>.<span class="function">popitem</span>()
+
+<span class="comment"># clear() - remove all items</span>
+<span class="variable">person</span>.<span class="function">clear</span>()  <span class="comment"># {}</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODS -->
+        <section id="methods" class="tab-content">
+            <div class="card">
+                <h2>🛠️ Dictionary Methods</h2>
+                
+                <div class="markdown-content">
+                    <h3>📋 All Dictionary Methods</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>keys()</code></td><td>Returns all keys</td></tr>
+                            <tr><td><code>values()</code></td><td>Returns all values</td></tr>
+                            <tr><td><code>items()</code></td><td>Returns all key-value pairs as tuples</td></tr>
+                            <tr><td><code>get(key)</code></td><td>Returns value (None if not found)</td></tr>
+                            <tr><td><code>pop(key)</code></td><td>Remove and return value</td></tr>
+                            <tr><td><code>update(dict)</code></td><td>Update with another dictionary</td></tr>
+                            <tr><td><code>clear()</code></td><td>Remove all items</td></tr>
+                            <tr><td><code>copy()</code></td><td>Returns shallow copy</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>📝 Keys, Values, Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"age"</span>: <span class="number">25</span>}
+
+<span class="function">print</span>(<span class="variable">person</span>.<span class="function">keys</span>())    <span class="comment"># dict_keys(['name', 'age'])</span>
+<span class="function">print</span>(<span class="variable">person</span>.<span class="function">values</span>())  <span class="comment"># dict_values(['Alice', 25])</span>
+<span class="function">print</span>(<span class="variable">person</span>.<span class="function">items</span>())   <span class="comment"># dict_items([('name', 'Alice'), ('age', 25)])</span>
+
+<span class="comment"># Convert to list</span>
+<span class="variable">keys_list</span> <span class="operator">=</span> <span class="builtin">list</span>(<span class="variable">person</span>.<span class="function">keys</span>())</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOOPING -->
+        <section id="loops" class="tab-content">
+            <div class="card">
+                <h2>🔄 Looping Through Dictionaries</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Different Ways to Loop</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">person</span> <span class="operator">=</span> {<span class="string">"name"</span>: <span class="string">"Alice"</span>, <span class="string">"age"</span>: <span class="number">25</span>, <span class="string">"city"</span>: <span class="string">"NYC"</span>}
+
+<span class="comment"># Loop through keys (default)</span>
+<span class="keyword">for</span> <span class="variable">key</span> <span class="keyword">in</span> <span class="variable">person</span>:
+    <span class="function">print</span>(<span class="variable">key</span>)  <span class="comment"># name, age, city</span>
+
+<span class="comment"># Loop through values</span>
+<span class="keyword">for</span> <span class="variable">value</span> <span class="keyword">in</span> <span class="variable">person</span>.<span class="function">values</span>():
+    <span class="function">print</span>(<span class="variable">value</span>)  <span class="comment"># Alice, 25, NYC</span>
+
+<span class="comment"># Loop through both (most useful!)</span>
+<span class="keyword">for</span> <span class="variable">key</span>, <span class="variable">value</span> <span class="keyword">in</span> <span class="variable">person</span>.<span class="function">items</span>():
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{key}</span><span class="string">: </span><span class="variable">{value}</span><span class="string">"</span>)</code></pre>
+                    </div>
+
+                    <h3>📝 Nested Dictionaries</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">students</span> <span class="operator">=</span> {
+    <span class="string">"alice"</span>: {<span class="string">"age"</span>: <span class="number">20</span>, <span class="string">"grade"</span>: <span class="string">"A"</span>},
+    <span class="string">"bob"</span>: {<span class="string">"age"</span>: <span class="number">21</span>, <span class="string">"grade"</span>: <span class="string">"B"</span>}
+}
+
+<span class="comment"># Access nested value</span>
+<span class="function">print</span>(<span class="variable">students</span>[<span class="string">"alice"</span>][<span class="string">"grade"</span>])  <span class="comment"># "A"</span>
+
+<span class="comment"># Loop nested</span>
+<span class="keyword">for</span> <span class="variable">name</span>, <span class="variable">info</span> <span class="keyword">in</span> <span class="variable">students</span>.<span class="function">items</span>():
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{name}</span><span class="string">: </span><span class="variable">{info['grade']}</span><span class="string">"</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master dictionaries!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <h4>Create a dictionary and access a value</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">person = </span>
+                                <span class="drop-zone" data-answer="{" data-index="0"></span>
+                                <span class="code-text">"name": "Alice", "age": 25</span>
+                                <span class="drop-zone" data-answer="}" data-index="1"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(person</span>
+                                <span class="drop-zone" data-answer='["name"]' data-index="2"></span>
+                                <span class="code-text">)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="{">{</div>
+                            <div class="drag-piece" draggable="true" data-value="}">}</div>
+                            <div class="drag-piece" draggable="true" data-value='["name"]'>["name"]</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="[">[</div>
+                            <div class="drag-piece decoy" draggable="true" data-value=".name">.name</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <h4>Use .get() with a default value</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">data = {"x": 10}</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">value = data.</span>
+                                <span class="drop-zone" data-answer="get" data-index="0"></span>
+                                <span class="code-text">(</span>
+                                <span class="drop-zone" data-answer='"y"' data-index="1"></span>
+                                <span class="code-text">, </span>
+                                <span class="drop-zone" data-answer="0" data-index="2"></span>
+                                <span class="code-text">)</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(value)  # Output: 0</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="get">get</div>
+                            <div class="drag-piece" draggable="true" data-value='"y"'>"y"</div>
+                            <div class="drag-piece" draggable="true" data-value="0">0</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="find">find</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="None">None</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <h4>Loop through keys and values</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">scores = {"Alice": 90, "Bob": 85}</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="for" data-index="0"></span>
+                                <span class="code-text"> name, score </span>
+                                <span class="drop-zone" data-answer="in" data-index="1"></span>
+                                <span class="code-text"> scores.</span>
+                                <span class="drop-zone" data-answer="items" data-index="2"></span>
+                                <span class="code-text">():</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print(f"{name}: {score}")</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="in">in</div>
+                            <div class="drag-piece" draggable="true" data-value="items">items</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="keys">keys</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="values">values</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Student Grades</h4>
+                            <p>Create a dictionary with 3 students and their grades, then print Alice's grade.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>Alice's grade: 95</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false"># Create a dictionary with students: Alice=95, Bob=87, Charlie=92
+
+# Print Alice's grade
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Create with <code>grades = {"Alice": 95, ...}</code>, access with <code>grades["Alice"]</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Add and Update</h4>
+                            <p>Add a new key "country" with value "USA", then update "age" to 26.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>{'name': 'Alice', 'age': 26, 'country': 'USA'}</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false">person = {"name": "Alice", "age": 25}
+
+# Add "country": "USA"
+
+# Update "age" to 26
+
+print(person)
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use <code>person["country"] = "USA"</code> and <code>person["age"] = 26</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Word Counter</h4>
+                            <p>Count how many times each word appears in the list.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>{'apple': 2, 'banana': 1, 'cherry': 2}</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false">words = ["apple", "banana", "apple", "cherry", "cherry"]
+count = {}
+
+# Count each word using a for loop
+
+print(count)
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Use <code>count[word] = count.get(word, 0) + 1</code> in the loop!</p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                        <div class="code-display">
+                            <pre><code>d = {"a": 1, "b": 2}
+print(d["c"])</code></pre>
+                        </div>
+                        <p class="question-text">What happens?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="a"><span class="option-text">None</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="b"><span class="option-text">KeyError</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="c"><span class="option-text">0</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="d"><span class="option-text">""</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                        <div class="code-display">
+                            <pre><code>d = {"a": 1, "b": 2}
+print(d.get("c", 0))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="a"><span class="option-text">None</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="b"><span class="option-text">0</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="c"><span class="option-text">KeyError</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="d"><span class="option-text">"c"</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                        <div class="code-display">
+                            <pre><code>d = {"a": 1, "a": 2}
+print(d["a"])</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="a"><span class="option-text">1</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="b"><span class="option-text">2</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="c"><span class="option-text">[1, 2]</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                        <div class="code-display">
+                            <pre><code>d = {"x": 10, "y": 20}
+print(len(d))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="a"><span class="option-text">2</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="b"><span class="option-text">30</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="c"><span class="option-text">4</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                        <div class="code-display">
+                            <pre><code>d = {"a": 1, "b": 2}
+for k in d:
+    print(k)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="a"><span class="option-text">1, 2</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="b"><span class="option-text">a, b</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="c"><span class="option-text">(a, 1), (b, 2)</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="d"><span class="option-text">{"a": 1}, {"b": 2}</span></label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        const demoPerson = {"name": "Alice", "age": 25, "city": "NYC"};
+        
+        function runDictDemo() {
+            const key = document.getElementById('dict-key').value;
+            const outputEl = document.getElementById('dict-demo-output');
+            
+            if (key in demoPerson) {
+                outputEl.innerHTML = `
+                    <div>✅ <strong>person["${key}"]</strong> = "${demoPerson[key]}"</div>
+                `;
+            } else {
+                outputEl.innerHTML = `
+                    <div>❌ Key "${key}" not found!</div>
+                    <div><code>person.get("${key}")</code> would return: <strong>None</strong></div>
+                    <div><code>person.get("${key}", "default")</code> would return: <strong>"default"</strong></div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+

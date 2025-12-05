@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Handling - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 20</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>File Handling</h1>
+        <p class="subtitle">Read and write files with Python! 📁</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="read">📖 Reading Files</button>
+        <button class="tab-btn" data-tab="write">✏️ Writing Files</button>
+        <button class="tab-btn" data-tab="with">🔒 with Statement</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 File Handling in Python</h2>
+                <div class="markdown-content">
+                    <p>File handling lets your programs <strong>save data permanently</strong> and <strong>read existing files</strong>!</p>
+                    
+                    <h3>📋 File Modes</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Mode</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>"r"</code></td><td>Read (default) - File must exist</td></tr>
+                            <tr><td><code>"w"</code></td><td>Write - Creates/overwrites file</td></tr>
+                            <tr><td><code>"a"</code></td><td>Append - Creates file if not exists</td></tr>
+                            <tr><td><code>"r+"</code></td><td>Read and Write</td></tr>
+                            <tr><td><code>"x"</code></td><td>Create - Fails if file exists</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>📝 Basic open() Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">file</span> <span class="operator">=</span> <span class="builtin">open</span>(<span class="string">"filename.txt"</span>, <span class="string">"r"</span>)  <span class="comment"># Open file</span>
+<span class="comment"># ... do something with file ...</span>
+<span class="variable">file</span>.<span class="function">close</span>()  <span class="comment"># Always close!</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Always Close Files!</h3>
+                        <p>Open files use system resources. Always close them, or use <code>with</code> (recommended).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- READING FILES -->
+        <section id="read" class="tab-content">
+            <div class="card">
+                <h2>📖 Reading Files</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Read Entire File</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Read all content at once</span>
+<span class="variable">file</span> <span class="operator">=</span> <span class="builtin">open</span>(<span class="string">"data.txt"</span>, <span class="string">"r"</span>)
+<span class="variable">content</span> <span class="operator">=</span> <span class="variable">file</span>.<span class="function">read</span>()
+<span class="function">print</span>(<span class="variable">content</span>)
+<span class="variable">file</span>.<span class="function">close</span>()</code></pre>
+                    </div>
+
+                    <h3>📝 Read Line by Line</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Read one line</span>
+<span class="variable">line</span> <span class="operator">=</span> <span class="variable">file</span>.<span class="function">readline</span>()
+
+<span class="comment"># Read all lines as list</span>
+<span class="variable">lines</span> <span class="operator">=</span> <span class="variable">file</span>.<span class="function">readlines</span>()
+
+<span class="comment"># Loop through lines</span>
+<span class="keyword">for</span> <span class="variable">line</span> <span class="keyword">in</span> <span class="variable">file</span>:
+    <span class="function">print</span>(<span class="variable">line</span>.<span class="function">strip</span>())  <span class="comment"># strip() removes \n</span></code></pre>
+                    </div>
+
+                    <h3>📝 Read Specific Amount</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Read first 10 characters</span>
+<span class="variable">chunk</span> <span class="operator">=</span> <span class="variable">file</span>.<span class="function">read</span>(<span class="number">10</span>)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WRITING FILES -->
+        <section id="write" class="tab-content">
+            <div class="card">
+                <h2>✏️ Writing Files</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Write Mode (Overwrites!)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">file</span> <span class="operator">=</span> <span class="builtin">open</span>(<span class="string">"output.txt"</span>, <span class="string">"w"</span>)
+<span class="variable">file</span>.<span class="function">write</span>(<span class="string">"Hello, World!\n"</span>)
+<span class="variable">file</span>.<span class="function">write</span>(<span class="string">"Second line\n"</span>)
+<span class="variable">file</span>.<span class="function">close</span>()</code></pre>
+                    </div>
+
+                    <h3>📝 Append Mode</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Add to existing file</span>
+<span class="variable">file</span> <span class="operator">=</span> <span class="builtin">open</span>(<span class="string">"log.txt"</span>, <span class="string">"a"</span>)
+<span class="variable">file</span>.<span class="function">write</span>(<span class="string">"New log entry\n"</span>)
+<span class="variable">file</span>.<span class="function">close</span>()</code></pre>
+                    </div>
+
+                    <h3>📝 Write Multiple Lines</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">lines</span> <span class="operator">=</span> [<span class="string">"Line 1\n"</span>, <span class="string">"Line 2\n"</span>, <span class="string">"Line 3\n"</span>]
+<span class="variable">file</span>.<span class="function">writelines</span>(<span class="variable">lines</span>)</code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ "w" Mode Erases Content!</h3>
+                        <p>Opening with <code>"w"</code> deletes all existing content. Use <code>"a"</code> to append.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WITH STATEMENT -->
+        <section id="with" class="tab-content">
+            <div class="card">
+                <h2>🔒 The <code>with</code> Statement</h2>
+                
+                <div class="markdown-content">
+                    <p>The <code>with</code> statement automatically closes the file, even if errors occur!</p>
+
+                    <h3>📝 Recommended Way</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Reading</span>
+<span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"data.txt"</span>, <span class="string">"r"</span>) <span class="keyword">as</span> <span class="variable">file</span>:
+    <span class="variable">content</span> <span class="operator">=</span> <span class="variable">file</span>.<span class="function">read</span>()
+    <span class="function">print</span>(<span class="variable">content</span>)
+<span class="comment"># File automatically closed here!</span>
+
+<span class="comment"># Writing</span>
+<span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"output.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> <span class="variable">file</span>:
+    <span class="variable">file</span>.<span class="function">write</span>(<span class="string">"Hello!"</span>)
+<span class="comment"># File automatically closed!</span></code></pre>
+                    </div>
+
+                    <h3>📝 Multiple Files</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"input.txt"</span>) <span class="keyword">as</span> <span class="variable">infile</span>, <span class="builtin">open</span>(<span class="string">"output.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> <span class="variable">outfile</span>:
+    <span class="variable">content</span> <span class="operator">=</span> <span class="variable">infile</span>.<span class="function">read</span>()
+    <span class="variable">outfile</span>.<span class="function">write</span>(<span class="variable">content</span>.<span class="function">upper</span>())</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Always Use <code>with</code>!</h3>
+                        <p>It's safer, cleaner, and the Pythonic way to handle files.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master file handling!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <h4>Open and read a file</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="with" data-index="0"></span>
+                                <span class="code-text"> open("file.txt", "r") </span>
+                                <span class="drop-zone" data-answer="as" data-index="1"></span>
+                                <span class="code-text"> f:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">content = f.</span>
+                                <span class="drop-zone" data-answer="read" data-index="2"></span>
+                                <span class="code-text">()</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="with">with</div>
+                            <div class="drag-piece" draggable="true" data-value="as">as</div>
+                            <div class="drag-piece" draggable="true" data-value="read">read</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="using">using</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="get">get</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <h4>Write to a file</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">with open("output.txt", </span>
+                                <span class="drop-zone" data-answer='"w"' data-index="0"></span>
+                                <span class="code-text">) as f:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">f.</span>
+                                <span class="drop-zone" data-answer="write" data-index="1"></span>
+                                <span class="code-text">("Hello, World!")</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value='"w"'>"w"</div>
+                            <div class="drag-piece" draggable="true" data-value="write">write</div>
+                            <div class="drag-piece decoy" draggable="true" data-value='"r"'>"r"</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="print">print</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <h4>Read lines from a file</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">with open("data.txt") as f:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="drop-zone" data-answer="for" data-index="0"></span>
+                                <span class="code-text"> line </span>
+                                <span class="drop-zone" data-answer="in" data-index="1"></span>
+                                <span class="code-text"> f:</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">print(line.</span>
+                                <span class="drop-zone" data-answer="strip" data-index="2"></span>
+                                <span class="code-text">())</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="in">in</div>
+                            <div class="drag-piece" draggable="true" data-value="strip">strip</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="while">while</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="trim">trim</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: File Modes</h4>
+                            <p>Write the correct mode to open a file for writing (creates new or overwrites).</p>
+                            <div class="example-box">
+                                <strong>Expected:</strong>
+                                <div class="example-case">
+                                    <span><code>mode = "w"</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false"># Set the mode variable for writing to a file
+mode = 
+
+print(f"Mode for writing: {mode}")
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>The write mode is <code>"w"</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: With Statement</h4>
+                            <p>Complete the code to open a file safely using the with statement.</p>
+                            <div class="example-box">
+                                <strong>Pattern:</strong>
+                                <div class="example-case">
+                                    <span><code>with open(...) as f:</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false"># Use with statement to safely open a file
+# The file will auto-close after the block
+
+# with open("example.txt", "r") as f:
+#     content = f.read()
+
+# Just print what mode 'r' means
+print("'r' mode means: read-only")
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p><code>with</code> automatically closes the file when done!</p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: All File Modes</h4>
+                            <p>Create a dictionary with all common file modes and their descriptions.</p>
+                            <div class="example-box">
+                                <strong>Expected keys:</strong>
+                                <div class="example-case">
+                                    <span><code>r, w, a, r+</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false"># Create a dictionary with file modes
+modes = {
+    "r": "read only",
+    # Add: "w", "a", "r+"
+}
+
+print(modes)
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>w=write, a=append, r+=read and write</p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                        <p class="question-text">Which mode opens a file for reading only?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="a"><span class="option-text">"w"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="b"><span class="option-text">"r"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="c"><span class="option-text">"a"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="d"><span class="option-text">"x"</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                        <p class="question-text">What happens if you open an existing file with "w" mode?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="a"><span class="option-text">Appends to file</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="b"><span class="option-text">Erases and overwrites</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="c"><span class="option-text">Error occurs</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="d"><span class="option-text">Nothing happens</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                        <div class="code-display">
+                            <pre><code>with open("test.txt", "r") as f:
+    data = f.read()</code></pre>
+                        </div>
+                        <p class="question-text">When is the file closed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="a"><span class="option-text">After f.read()</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="b"><span class="option-text">When with block ends</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="c"><span class="option-text">Never</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="d"><span class="option-text">At program end</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                        <p class="question-text">Which method reads one line at a time?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="a"><span class="option-text">read()</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="b"><span class="option-text">readline()</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="c"><span class="option-text">readlines()</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="d"><span class="option-text">readall()</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                        <p class="question-text">Which mode adds content without erasing?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="a"><span class="option-text">"r"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="b"><span class="option-text">"w"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="c"><span class="option-text">"a"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="d"><span class="option-text">"x"</span></label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+</body>
+</html>
+

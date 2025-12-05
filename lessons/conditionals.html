@@ -148,17 +148,22 @@ else:
                 <div class="interactive-demo">
                     <h3>🎮 Try It Yourself!</h3>
                     <div class="demo-controls">
-                        <label>Enter a number:</label>
-                        <input type="number" id="if-demo-input" value="10">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Enter a Number</span>
+                            <div class="input-group">
+                                <span class="input-icon">➕</span>
+                                <input type="number" id="if-demo-input" value="10" placeholder="Any number...">
+                            </div>
+                        </div>
                         <button onclick="runIfDemo()">▶ Run Code</button>
                     </div>
                     <div class="demo-code">
-                        <pre><code>number = <span id="if-demo-value">10</span>
+                        <pre><code><span style="color: #50fa7b;">number</span> <span style="color: #ff79c6;">=</span> <span id="if-demo-value" style="color: #bd93f9;">10</span>
 
-if number > 0:
-    print("Positive number! ➕")
-else:
-    print("Zero or negative! ➖")</code></pre>
+<span style="color: #ff79c6;">if</span> number <span style="color: #ff79c6;">&gt;</span> <span style="color: #bd93f9;">0</span>:
+    <span style="color: #50fa7b;">print</span>(<span style="color: #f1fa8c;">"Positive number! ➕"</span>)
+<span style="color: #ff79c6;">else</span>:
+    <span style="color: #50fa7b;">print</span>(<span style="color: #f1fa8c;">"Zero or negative! ➖"</span>)</code></pre>
                     </div>
                     <div class="demo-output" id="if-demo-output">
                         Click "Run Code" to see the result!
@@ -224,11 +229,16 @@ print(f"Your grade is: {grade}")</code></pre>
                     </div>
                 </div>
 
-                <div class="interactive-demo">
+                <div class="interactive-demo calculator-demo">
                     <h3>🎮 Grade Calculator</h3>
                     <div class="demo-controls">
-                        <label>Enter your score (0-100):</label>
-                        <input type="number" id="elif-demo-input" value="85" min="0" max="100">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📊 Your Score (0-100)</span>
+                            <div class="input-group">
+                                <span class="input-icon">🎯</span>
+                                <input type="number" id="elif-demo-input" value="85" min="0" max="100" placeholder="0-100">
+                            </div>
+                        </div>
                         <button onclick="runElifDemo()">▶ Calculate Grade</button>
                     </div>
                     <div class="demo-output" id="elif-demo-output">
@@ -311,17 +321,26 @@ else:
                 <div class="interactive-demo">
                     <h3>🎢 Theme Park Ride Checker</h3>
                     <div class="demo-controls nested-controls">
-                        <div class="control-group">
-                            <label>Age:</label>
-                            <input type="number" id="nested-age" value="14" min="1" max="100">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">👤 Your Age</span>
+                            <div class="input-group">
+                                <span class="input-icon">🎂</span>
+                                <input type="number" id="nested-age" value="14" min="1" max="100" placeholder="Age">
+                            </div>
                         </div>
-                        <div class="control-group">
-                            <label>Height (cm):</label>
-                            <input type="number" id="nested-height" value="150" min="50" max="250">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📏 Height (cm)</span>
+                            <div class="input-group">
+                                <span class="input-icon">📐</span>
+                                <input type="number" id="nested-height" value="150" min="50" max="250" placeholder="Height">
+                            </div>
                         </div>
-                        <div class="control-group">
-                            <label>Has Ticket:</label>
-                            <input type="checkbox" id="nested-ticket" checked>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🎫 Has Ticket?</span>
+                            <div class="control-group" style="padding: 0.5rem 0;">
+                                <input type="checkbox" id="nested-ticket" checked>
+                                <label for="nested-ticket" style="color: var(--accent-green); cursor: pointer;">Yes, I have a ticket!</label>
+                            </div>
                         </div>
                         <button onclick="runNestedDemo()">▶ Check Eligibility</button>
                     </div>
@@ -433,19 +452,21 @@ match status_code:
                     </div>
                 </div>
 
-                <div class="interactive-demo">
+                <div class="interactive-demo type-demo">
                     <h3>🌙 Day Mood Checker</h3>
                     <div class="demo-controls">
-                        <label>Select a day:</label>
-                        <select id="match-demo-input">
-                            <option value="Monday">Monday</option>
-                            <option value="Tuesday">Tuesday</option>
-                            <option value="Wednesday">Wednesday</option>
-                            <option value="Thursday">Thursday</option>
-                            <option value="Friday">Friday</option>
-                            <option value="Saturday">Saturday</option>
-                            <option value="Sunday">Sunday</option>
-                        </select>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📅 Select a Day</span>
+                            <select id="match-demo-input">
+                                <option value="Monday">🌧️ Monday</option>
+                                <option value="Tuesday">📚 Tuesday</option>
+                                <option value="Wednesday">🐪 Wednesday</option>
+                                <option value="Thursday">⏳ Thursday</option>
+                                <option value="Friday">🎉 Friday</option>
+                                <option value="Saturday">🎮 Saturday</option>
+                                <option value="Sunday">😴 Sunday</option>
+                            </select>
+                        </div>
                         <button onclick="runMatchDemo()">▶ Check Mood</button>
                     </div>
                     <div class="demo-output" id="match-demo-output">

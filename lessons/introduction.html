@@ -109,7 +109,7 @@
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>print("Hello, World!")</code></pre>
+                        <pre><code><span class="function">print</span>(<span class="string">"Hello, World!"</span>)</code></pre>
                     </div>
 
                     <p>That's it! <strong>One line of code</strong> and you've written your first program! 🎉</p>
@@ -131,9 +131,9 @@
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>print("My name is Python Junior!")
-print("I'm learning to code! 🚀")
-print("This is amazing!")</code></pre>
+                        <pre><code><span class="function">print</span>(<span class="string">"My name is Python Junior!"</span>)
+<span class="function">print</span>(<span class="string">"I'm learning to code! 🚀"</span>)
+<span class="function">print</span>(<span class="string">"This is amazing!"</span>)</code></pre>
                     </div>
 
                     <div class="warning-box">
@@ -149,12 +149,17 @@ print("This is amazing!")</code></pre>
                 <div class="interactive-demo">
                     <h3>🎮 Try It Yourself!</h3>
                     <div class="demo-controls">
-                        <label>Type your message:</label>
-                        <input type="text" id="hello-input" value="Hello, World!" style="width: 250px;">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">💬 Your Message</span>
+                            <div class="input-group">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="hello-input" value="Hello, World!" placeholder="Type something amazing...">
+                            </div>
+                        </div>
                         <button onclick="runHelloDemo()">▶ Run Code</button>
                     </div>
                     <div class="demo-code">
-                        <pre><code>print("<span id="hello-value">Hello, World!</span>")</code></pre>
+                        <pre><code><span style="color: #ff79c6;">print</span>(<span style="color: #f1fa8c;">"<span id="hello-value" style="color: #f1fa8c; background: none;">Hello, World!</span>"</span>)</code></pre>
                     </div>
                     <div class="demo-output" id="hello-output">
                         Click "Run Code" to see the result!
@@ -177,7 +182,7 @@ print("This is amazing!")</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>print("Your message here")</code></pre>
+                        <pre><code><span class="function">print</span>(<span class="string">"Your message here"</span>)</code></pre>
                     </div>
 
                     <h3>🎯 Printing Multiple Things</h3>
@@ -188,15 +193,15 @@ print("This is amazing!")</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Printing multiple items
-print("Hello", "World", "!")
+                        <pre><code><span class="comment"># Printing multiple items</span>
+<span class="function">print</span>(<span class="string">"Hello"</span>, <span class="string">"World"</span>, <span class="string">"!"</span>)
 
-# Output: Hello World !
+<span class="comment"># Output: Hello World !</span>
 
-# Printing text and numbers
-print("I am", 15, "years old")
+<span class="comment"># Printing text and numbers</span>
+<span class="function">print</span>(<span class="string">"I am"</span>, <span class="number">15</span>, <span class="string">"years old"</span>)
 
-# Output: I am 15 years old</code></pre>
+<span class="comment"># Output: I am 15 years old</span></code></pre>
                     </div>
 
                     <h3>🔢 Printing Numbers</h3>
@@ -207,15 +212,15 @@ print("I am", 15, "years old")
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Printing numbers (no quotes needed!)
-print(42)
-print(3.14159)
+                        <pre><code><span class="comment"># Printing numbers (no quotes needed!)</span>
+<span class="function">print</span>(<span class="number">42</span>)
+<span class="function">print</span>(<span class="number">3.14159</span>)
 
-# You can even do math!
-print(10 + 5)      # Output: 15
-print(100 - 25)    # Output: 75
-print(7 * 8)       # Output: 56
-print(20 / 4)      # Output: 5.0</code></pre>
+<span class="comment"># You can even do math!</span>
+<span class="function">print</span>(<span class="number">10</span> <span class="operator">+</span> <span class="number">5</span>)      <span class="comment"># Output: 15</span>
+<span class="function">print</span>(<span class="number">100</span> <span class="operator">-</span> <span class="number">25</span>)    <span class="comment"># Output: 75</span>
+<span class="function">print</span>(<span class="number">7</span> <span class="operator">*</span> <span class="number">8</span>)       <span class="comment"># Output: 56</span>
+<span class="function">print</span>(<span class="number">20</span> <span class="operator">/</span> <span class="number">4</span>)      <span class="comment"># Output: 5.0</span></code></pre>
                     </div>
 
                     <h3>🆕 Empty Lines</h3>
@@ -226,41 +231,47 @@ print(20 / 4)      # Output: 5.0</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>print("Line 1")
-print()           # Empty line
-print("Line 3")</code></pre>
+                        <pre><code><span class="function">print</span>(<span class="string">"Line 1"</span>)
+<span class="function">print</span>()           <span class="comment"># Empty line</span>
+<span class="function">print</span>(<span class="string">"Line 3"</span>)</code></pre>
                     </div>
 
                     <div class="tip-box">
                         <h3>💡 Pro Tip: Using Quotes</h3>
                         <p>Both single <code>'</code> and double <code>"</code> quotes work the same:</p>
                         <div class="code-block small">
-                            <pre><code>print("Hello!")   # Double quotes
-print('Hello!')   # Single quotes - same result!</code></pre>
+                            <pre><code><span class="function">print</span>(<span class="string">"Hello!"</span>)   <span class="comment"># Double quotes</span>
+<span class="function">print</span>(<span class="string">'Hello!'</span>)   <span class="comment"># Single quotes - same result!</span></code></pre>
                         </div>
                         <p>Use double quotes when your text contains an apostrophe:</p>
                         <div class="code-block small">
-                            <pre><code>print("I'm learning Python!")  # ✓ Works!
-print('I'm learning Python!')  # ✗ Error!</code></pre>
+                            <pre><code><span class="function">print</span>(<span class="string">"I'm learning Python!"</span>)  <span class="comment"># ✓ Works!</span>
+<span class="function">print</span>(<span class="string">'I'm learning Python!'</span>)  <span class="comment"># ✗ Error!</span></code></pre>
                         </div>
                     </div>
                 </div>
 
-                <div class="interactive-demo">
+                <div class="interactive-demo calculator-demo">
                     <h3>🔢 Math Calculator</h3>
                     <div class="demo-controls">
-                        <input type="number" id="calc-num1" value="10" style="width: 80px;">
-                        <select id="calc-operator">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">Number 1</span>
+                            <input type="number" id="calc-num1" value="10" placeholder="Enter number">
+                        </div>
+                        <select id="calc-operator" class="operator-select">
                             <option value="+">+</option>
-                            <option value="-">-</option>
+                            <option value="-">−</option>
                             <option value="*">×</option>
                             <option value="/">÷</option>
                         </select>
-                        <input type="number" id="calc-num2" value="5" style="width: 80px;">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">Number 2</span>
+                            <input type="number" id="calc-num2" value="5" placeholder="Enter number">
+                        </div>
                         <button onclick="runCalcDemo()">▶ Calculate</button>
                     </div>
                     <div class="demo-code">
-                        <pre><code>print(<span id="calc-expression">10 + 5</span>)</code></pre>
+                        <pre><code><span style="color: #ff79c6;">print</span>(<span id="calc-expression" style="color: #bd93f9;">10 + 5</span>)</code></pre>
                     </div>
                     <div class="demo-output" id="calc-output">
                         Click "Calculate" to see the result!
@@ -285,11 +296,11 @@ print('I'm learning Python!')  # ✗ Error!</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># This is a comment - Python ignores this line
-print("Hello!")  # You can also comment at the end of a line
+                        <pre><code><span class="comment"># This is a comment - Python ignores this line</span>
+<span class="function">print</span>(<span class="string">"Hello!"</span>)  <span class="comment"># You can also comment at the end of a line</span>
 
-# Comments help explain what your code does
-# They're like sticky notes for programmers!</code></pre>
+<span class="comment"># Comments help explain what your code does</span>
+<span class="comment"># They're like sticky notes for programmers!</span></code></pre>
                     </div>
 
                     <h3>📄 Multi-Line Comments</h3>
@@ -300,13 +311,13 @@ print("Hello!")  # You can also comment at the end of a line
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>"""
+                        <pre><code><span class="string">"""
 This is a multi-line comment.
 You can write as many lines as you want.
 Python will ignore all of this!
-"""
+"""</span>
 
-print("This code runs normally")</code></pre>
+<span class="function">print</span>(<span class="string">"This code runs normally"</span>)</code></pre>
                     </div>
 
                     <div class="analogy-box">
@@ -326,21 +337,21 @@ print("This code runs normally")</code></pre>
                             <div class="comparison-item">
                                 <h4>✅ Good Comments</h4>
                                 <div class="code-block small">
-                                    <pre><code># Calculate the total price with 10% tax
-total = price * 1.10
+                                    <pre><code><span class="comment"># Calculate the total price with 10% tax</span>
+<span class="variable">total</span> <span class="operator">=</span> <span class="variable">price</span> <span class="operator">*</span> <span class="number">1.10</span>
 
-# Check if user is old enough to vote
-if age >= 18:</code></pre>
+<span class="comment"># Check if user is old enough to vote</span>
+<span class="keyword">if</span> <span class="variable">age</span> <span class="operator">>=</span> <span class="number">18</span><span class="operator">:</span></code></pre>
                                 </div>
                             </div>
                             <div class="comparison-item">
                                 <h4>❌ Bad Comments</h4>
                                 <div class="code-block small">
-                                    <pre><code># Print hello
-print("Hello")
+                                    <pre><code><span class="comment"># Print hello</span>
+<span class="function">print</span>(<span class="string">"Hello"</span>)
 
-# Add 1 to x
-x = x + 1</code></pre>
+<span class="comment"># Add 1 to x</span>
+<span class="variable">x</span> <span class="operator">=</span> <span class="variable">x</span> <span class="operator">+</span> <span class="number">1</span></code></pre>
                                 </div>
                             </div>
                         </div>

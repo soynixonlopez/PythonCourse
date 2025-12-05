@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loops - Python Junior Course</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Lesson Navigation -->
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 09</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>While Loops</h1>
+        <p class="subtitle">Loop while a condition is true! 🔁</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="basic">🔹 Basic While Loop</button>
+        <button class="tab-btn" data-tab="control">⚡ break & continue</button>
+        <button class="tab-btn" data-tab="else">🔷 while-else</button>
+        <button class="tab-btn" data-tab="infinite">⚠️ Infinite Loops</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are While Loops?</h2>
+                <div class="markdown-content">
+                    <p>A <strong>while loop</strong> repeats a block of code <em>as long as</em> a condition is <code>True</code>. Unlike for loops, you don't need to know how many times to repeat beforehand!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of it like eating chips:</p>
+                        <ul>
+                            <li><strong>WHILE</strong> there are chips in the bag</li>
+                            <li>Take one chip</li>
+                            <li>Eat it</li>
+                            <li>Check again if there are more chips</li>
+                        </ul>
+                        <p>You keep eating WHILE chips remain!</p>
+                    </div>
+
+                    <h3>📋 For Loop vs While Loop</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>For Loop</th>
+                                <th>While Loop</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Know the number of iterations</td>
+                                <td>Don't know how many times</td>
+                            </tr>
+                            <tr>
+                                <td>Iterate over a sequence</td>
+                                <td>Loop based on a condition</td>
+                            </tr>
+                            <tr>
+                                <td><code>for i in range(5):</code></td>
+                                <td><code>while count < 5:</code></td>
+                            </tr>
+                            <tr>
+                                <td>Automatically moves to next item</td>
+                                <td>You control when to stop</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h3>💡 When to Use While Loops?</h3>
+                        <ul>
+                            <li>When you don't know how many iterations needed</li>
+                            <li>When waiting for user input</li>
+                            <li>When running until a condition changes</li>
+                            <li>For games that run until player loses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BASIC WHILE LOOP -->
+        <section id="basic" class="tab-content">
+            <div class="card">
+                <h2>🔹 Basic While Loop</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">while</span> <span class="variable">condition</span>:
+    <span class="comment"># code to execute while condition is True</span>
+    <span class="comment"># Don't forget to update the condition!</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Counting Up</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>
+
+<span class="keyword">while</span> <span class="variable">count</span> <span class="operator"><=</span> <span class="number">5</span>:
+    <span class="function">print</span>(<span class="string">f"Count: </span><span class="variable">{count}</span><span class="string">"</span>)
+    <span class="variable">count</span> <span class="operator">+=</span> <span class="number">1</span>  <span class="comment"># IMPORTANT: Update the variable!</span>
+
+<span class="function">print</span>(<span class="string">"Done!"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># Count: 1</span>
+<span class="comment"># Count: 2</span>
+<span class="comment"># Count: 3</span>
+<span class="comment"># Count: 4</span>
+<span class="comment"># Count: 5</span>
+<span class="comment"># Done!</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Countdown</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">countdown</span> <span class="operator">=</span> <span class="number">5</span>
+
+<span class="keyword">while</span> <span class="variable">countdown</span> <span class="operator">></span> <span class="number">0</span>:
+    <span class="function">print</span>(<span class="variable">countdown</span>)
+    <span class="variable">countdown</span> <span class="operator">-=</span> <span class="number">1</span>
+
+<span class="function">print</span>(<span class="string">"🚀 Blast off!"</span>)
+
+<span class="comment"># Output: 5, 4, 3, 2, 1, 🚀 Blast off!</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Critical: Update Your Condition!</h3>
+                        <p>Always make sure the condition will eventually become <code>False</code>, otherwise you'll create an <strong>infinite loop</strong>!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Countdown Demo</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🚀 Start From</span>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="number" id="countdown-start" value="5" min="1" max="20">
+                            </div>
+                        </div>
+                        <button onclick="runCountdownDemo()">▶ Start Countdown</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code><span class="variable">countdown</span> <span class="operator">=</span> <span class="number" id="countdown-value">5</span>
+
+<span class="keyword">while</span> <span class="variable">countdown</span> <span class="operator">></span> <span class="number">0</span>:
+    <span class="function">print</span>(<span class="variable">countdown</span>)
+    <span class="variable">countdown</span> <span class="operator">-=</span> <span class="number">1</span>
+
+<span class="function">print</span>(<span class="string">"🚀 Blast off!"</span>)</code></pre>
+                    </div>
+                    <div class="demo-output" id="countdown-demo-output">
+                        Click "Start Countdown" to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BREAK & CONTINUE -->
+        <section id="control" class="tab-content">
+            <div class="card">
+                <h2>⚡ Loop Control: <code>break</code> & <code>continue</code></h2>
+                
+                <div class="markdown-content">
+                    <p>These keywords give you more control over your loops!</p>
+                    
+                    <h3>🛑 The <code>break</code> Statement</h3>
+                    <p><code>break</code> immediately <strong>exits</strong> the loop, skipping any remaining iterations.</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Find the first even number</span>
+<span class="variable">numbers</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">8</span>]
+<span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">while</span> <span class="variable">i</span> <span class="operator"><</span> <span class="builtin">len</span>(<span class="variable">numbers</span>):
+    <span class="keyword">if</span> <span class="variable">numbers</span>[<span class="variable">i</span>] <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">f"Found even: </span><span class="variable">{numbers[i]}</span><span class="string">"</span>)
+        <span class="keyword">break</span>  <span class="comment"># Exit loop immediately!</span>
+    <span class="variable">i</span> <span class="operator">+=</span> <span class="number">1</span>
+
+<span class="comment"># Output: Found even: 4</span></code></pre>
+                    </div>
+
+                    <h3>⏭️ The <code>continue</code> Statement</h3>
+                    <p><code>continue</code> <strong>skips</strong> the rest of the current iteration and moves to the next one.</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Print only odd numbers</span>
+<span class="variable">num</span> <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">while</span> <span class="variable">num</span> <span class="operator"><</span> <span class="number">10</span>:
+    <span class="variable">num</span> <span class="operator">+=</span> <span class="number">1</span>
+    
+    <span class="keyword">if</span> <span class="variable">num</span> <span class="operator">%</span> <span class="number">2</span> <span class="operator">==</span> <span class="number">0</span>:
+        <span class="keyword">continue</span>  <span class="comment"># Skip even numbers</span>
+    
+    <span class="function">print</span>(<span class="variable">num</span>)
+
+<span class="comment"># Output: 1, 3, 5, 7, 9</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Password Checker with break</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">correct_password</span> <span class="operator">=</span> <span class="string">"python123"</span>
+<span class="variable">attempts</span> <span class="operator">=</span> <span class="number">3</span>
+
+<span class="keyword">while</span> <span class="variable">attempts</span> <span class="operator">></span> <span class="number">0</span>:
+    <span class="variable">password</span> <span class="operator">=</span> <span class="builtin">input</span>(<span class="string">"Enter password: "</span>)
+    
+    <span class="keyword">if</span> <span class="variable">password</span> <span class="operator">==</span> <span class="variable">correct_password</span>:
+        <span class="function">print</span>(<span class="string">"✅ Access granted!"</span>)
+        <span class="keyword">break</span>
+    <span class="keyword">else</span>:
+        <span class="variable">attempts</span> <span class="operator">-=</span> <span class="number">1</span>
+        <span class="function">print</span>(<span class="string">f"❌ Wrong! </span><span class="variable">{attempts}</span><span class="string"> attempts left"</span>)
+
+<span class="keyword">if</span> <span class="variable">attempts</span> <span class="operator">==</span> <span class="number">0</span>:
+    <span class="function">print</span>(<span class="string">"🔒 Account locked!"</span>)</code></pre>
+                    </div>
+
+                    <div class="comparison-box">
+                        <h3>🔄 break vs continue Summary</h3>
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4><code>break</code></h4>
+                                <ul>
+                                    <li>Exits the loop completely</li>
+                                    <li>Code after loop runs next</li>
+                                    <li>Use when you found what you need</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item">
+                                <h4><code>continue</code></h4>
+                                <ul>
+                                    <li>Skips current iteration only</li>
+                                    <li>Loop continues normally</li>
+                                    <li>Use to skip unwanted values</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Number Finder (break demo)</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🎯 Target Number</span>
+                            <div class="input-group">
+                                <span class="input-icon">🔍</span>
+                                <input type="number" id="target-num" value="7" min="1" max="20">
+                            </div>
+                        </div>
+                        <button onclick="runBreakDemo()">▶ Find Number</button>
+                    </div>
+                    <div class="demo-output" id="break-demo-output">
+                        Click "Find Number" to search from 1 to 20!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHILE-ELSE -->
+        <section id="else" class="tab-content">
+            <div class="card">
+                <h2>🔷 The <code>while-else</code> Clause</h2>
+                
+                <div class="markdown-content">
+                    <p>Python has a unique feature: an <code>else</code> clause with while loops! The <code>else</code> block runs <strong>only if</strong> the loop completes normally (without hitting <code>break</code>).</p>
+                    
+                    <h3>📝 Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">while</span> <span class="variable">condition</span>:
+    <span class="comment"># loop code</span>
+    <span class="keyword">if</span> <span class="variable">something</span>:
+        <span class="keyword">break</span>  <span class="comment"># else won't run</span>
+<span class="keyword">else</span>:
+    <span class="comment"># runs ONLY if loop wasn't broken</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Search with else</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">numbers</span> <span class="operator">=</span> [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]
+<span class="variable">target</span> <span class="operator">=</span> <span class="number">4</span>
+<span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">while</span> <span class="variable">i</span> <span class="operator"><</span> <span class="builtin">len</span>(<span class="variable">numbers</span>):
+    <span class="keyword">if</span> <span class="variable">numbers</span>[<span class="variable">i</span>] <span class="operator">==</span> <span class="variable">target</span>:
+        <span class="function">print</span>(<span class="string">f"Found </span><span class="variable">{target}</span><span class="string">!"</span>)
+        <span class="keyword">break</span>
+    <span class="variable">i</span> <span class="operator">+=</span> <span class="number">1</span>
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{target}</span><span class="string"> not found in list"</span>)
+
+<span class="comment"># Output: 4 not found in list</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Prime Number Checker</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">num</span> <span class="operator">=</span> <span class="number">17</span>
+<span class="variable">divisor</span> <span class="operator">=</span> <span class="number">2</span>
+
+<span class="keyword">while</span> <span class="variable">divisor</span> <span class="operator"><</span> <span class="variable">num</span>:
+    <span class="keyword">if</span> <span class="variable">num</span> <span class="operator">%</span> <span class="variable">divisor</span> <span class="operator">==</span> <span class="number">0</span>:
+        <span class="function">print</span>(<span class="string">f"</span><span class="variable">{num}</span><span class="string"> is NOT prime (divisible by </span><span class="variable">{divisor}</span><span class="string">)"</span>)
+        <span class="keyword">break</span>
+    <span class="variable">divisor</span> <span class="operator">+=</span> <span class="number">1</span>
+<span class="keyword">else</span>:
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{num}</span><span class="string"> IS prime! ✨"</span>)
+
+<span class="comment"># Output: 17 IS prime! ✨</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 When to Use while-else?</h3>
+                        <ul>
+                            <li>Searching: else runs if item wasn't found</li>
+                            <li>Validation: else runs if all checks passed</li>
+                            <li>Any loop where you need to know if it completed naturally</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Prime Checker</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Check Number</span>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="number" id="prime-input" value="17" min="2" max="1000">
+                            </div>
+                        </div>
+                        <button onclick="runPrimeDemo()">▶ Check Prime</button>
+                    </div>
+                    <div class="demo-output" id="prime-demo-output">
+                        Enter a number to check if it's prime!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFINITE LOOPS -->
+        <section id="infinite" class="tab-content">
+            <div class="card">
+                <h2>⚠️ Infinite Loops</h2>
+                
+                <div class="markdown-content">
+                    <p>An <strong>infinite loop</strong> runs forever because the condition never becomes <code>False</code>. Sometimes this is a bug, but sometimes it's intentional!</p>
+                    
+                    <h3>🐛 Accidental Infinite Loop (Bug!)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python - DON'T DO THIS!</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># ❌ WRONG - count never changes!</span>
+<span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>
+<span class="keyword">while</span> <span class="variable">count</span> <span class="operator"><=</span> <span class="number">5</span>:
+    <span class="function">print</span>(<span class="variable">count</span>)
+    <span class="comment"># Forgot: count += 1</span>
+    <span class="comment"># This will print 1 forever! 😱</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>🆘 How to Stop an Infinite Loop</h3>
+                        <p>If your program is stuck in an infinite loop:</p>
+                        <ul>
+                            <li><strong>In terminal:</strong> Press <code>Ctrl + C</code></li>
+                            <li><strong>In IDE:</strong> Click the "Stop" button</li>
+                        </ul>
+                    </div>
+
+                    <h3>✅ Intentional Infinite Loop (with break)</h3>
+                    <p>Sometimes you WANT an infinite loop, with a way to exit:</p>
+                    
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># ✅ Menu system with intentional infinite loop</span>
+<span class="keyword">while</span> <span class="boolean">True</span>:
+    <span class="function">print</span>(<span class="string">"\n📋 MENU"</span>)
+    <span class="function">print</span>(<span class="string">"1. Say Hello"</span>)
+    <span class="function">print</span>(<span class="string">"2. Say Goodbye"</span>)
+    <span class="function">print</span>(<span class="string">"3. Exit"</span>)
+    
+    <span class="variable">choice</span> <span class="operator">=</span> <span class="builtin">input</span>(<span class="string">"Enter choice: "</span>)
+    
+    <span class="keyword">if</span> <span class="variable">choice</span> <span class="operator">==</span> <span class="string">"1"</span>:
+        <span class="function">print</span>(<span class="string">"Hello! 👋"</span>)
+    <span class="keyword">elif</span> <span class="variable">choice</span> <span class="operator">==</span> <span class="string">"2"</span>:
+        <span class="function">print</span>(<span class="string">"Goodbye! 👋"</span>)
+    <span class="keyword">elif</span> <span class="variable">choice</span> <span class="operator">==</span> <span class="string">"3"</span>:
+        <span class="function">print</span>(<span class="string">"Exiting..."</span>)
+        <span class="keyword">break</span>  <span class="comment"># Exit the infinite loop</span>
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">"Invalid choice!"</span>)</code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Guessing Game</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">import</span> <span class="variable">random</span>
+
+<span class="variable">secret</span> <span class="operator">=</span> <span class="variable">random</span>.<span class="function">randint</span>(<span class="number">1</span>, <span class="number">10</span>)
+<span class="variable">attempts</span> <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">while</span> <span class="boolean">True</span>:
+    <span class="variable">guess</span> <span class="operator">=</span> <span class="builtin">int</span>(<span class="builtin">input</span>(<span class="string">"Guess (1-10): "</span>))
+    <span class="variable">attempts</span> <span class="operator">+=</span> <span class="number">1</span>
+    
+    <span class="keyword">if</span> <span class="variable">guess</span> <span class="operator">==</span> <span class="variable">secret</span>:
+        <span class="function">print</span>(<span class="string">f"🎉 Correct! Took </span><span class="variable">{attempts}</span><span class="string"> attempts"</span>)
+        <span class="keyword">break</span>
+    <span class="keyword">elif</span> <span class="variable">guess</span> <span class="operator"><</span> <span class="variable">secret</span>:
+        <span class="function">print</span>(<span class="string">"Too low! ⬆️"</span>)
+    <span class="keyword">else</span>:
+        <span class="function">print</span>(<span class="string">"Too high! ⬇️"</span>)</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 while True Pattern</h3>
+                        <p><code>while True:</code> with <code>break</code> is a common pattern for:</p>
+                        <ul>
+                            <li>Menu-driven programs</li>
+                            <li>Games (play until quit)</li>
+                            <li>Input validation (keep asking until valid)</li>
+                            <li>Servers (run forever until shutdown)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Guessing Game</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🎯 Your Guess (1-10)</span>
+                            <div class="input-group">
+                                <span class="input-icon">?</span>
+                                <input type="number" id="guess-input" value="5" min="1" max="10">
+                            </div>
+                        </div>
+                        <button onclick="makeGuess()">▶ Guess</button>
+                        <button onclick="resetGame()" style="background: var(--accent-orange);">🔄 New Game</button>
+                    </div>
+                    <div class="demo-output" id="guess-demo-output">
+                        Click "New Game" to start, then make your guesses!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master while loops!</p>
+                
+                <!-- Practice Sub-Navigation -->
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 1 -->
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/4</span>
+                        </div>
+                        <h4>Print numbers 1 to 5</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">count = 1</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="while" data-index="0"></span>
+                                <span class="code-text"> count </span>
+                                <span class="drop-zone" data-answer="<=" data-index="1"></span>
+                                <span class="code-text"> 5:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print(count)</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">count </span>
+                                <span class="drop-zone" data-answer="+=" data-index="2"></span>
+                                <span class="code-text"> 1</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="while">while</div>
+                            <div class="drag-piece" draggable="true" data-value="<="><=</div>
+                            <div class="drag-piece" draggable="true" data-value="+=">+=</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="<"><</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="-=">-=</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 2 -->
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/4</span>
+                        </div>
+                        <h4>Break when finding target</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">numbers = [1, 3, 7, 4, 9]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">i = 0</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="while" data-index="0"></span>
+                                <span class="code-text"> i < len(numbers):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">if numbers[i] == 7:</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">print("Found it!")</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="drop-zone" data-answer="break" data-index="1"></span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">i </span>
+                                <span class="drop-zone" data-answer="+=" data-index="2"></span>
+                                <span class="code-text"> 1</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="while">while</div>
+                            <div class="drag-piece" draggable="true" data-value="break">break</div>
+                            <div class="drag-piece" draggable="true" data-value="+=">+=</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="continue">continue</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="for">for</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 3 -->
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">3/4</span>
+                        </div>
+                        <h4>Skip even numbers with continue</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">num = 0</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">while num < 5:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">num += 1</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="drop-zone" data-answer="if" data-index="0"></span>
+                                <span class="code-text"> num % 2 </span>
+                                <span class="drop-zone" data-answer="==" data-index="1"></span>
+                                <span class="code-text"> 0:</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="drop-zone" data-answer="continue" data-index="2"></span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print(num)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="if">if</div>
+                            <div class="drag-piece" draggable="true" data-value="==">==</div>
+                            <div class="drag-piece" draggable="true" data-value="continue">continue</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="break">break</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="!=">!=</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 4 -->
+                    <div class="drag-challenge" data-challenge="drag4">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">4/4</span>
+                        </div>
+                        <h4>While-else: Print message if not found</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">items = ["a", "b", "c"]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">i = 0</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="while" data-index="0"></span>
+                                <span class="code-text"> i < len(items):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">if items[i] == "x":</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="drop-zone" data-answer="break" data-index="1"></span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">i += 1</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="else" data-index="2"></span>
+                                <span class="code-text">:</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print("Not found!")</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag4">
+                            <div class="drag-piece" draggable="true" data-value="while">while</div>
+                            <div class="drag-piece" draggable="true" data-value="break">break</div>
+                            <div class="drag-piece" draggable="true" data-value="else">else</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="continue">continue</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="elif">elif</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag4')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag4')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag4"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                            <span class="dot" data-num="4"></span>
+                        </div>
+                        <span class="progress-text">0/4 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <!-- Coding Challenge 1 -->
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Countdown</h4>
+                            <p>Create a countdown from 10 to 1, then print "Blast off!"</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>10 9 8 7 6 5 4 3 2 1 Blast off!</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" placeholder="# Start with countdown = 10
+# Use while countdown > 0:
+" spellcheck="false">countdown = 10
+
+# Write your while loop here
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>while countdown > 0:</code>, print countdown, then subtract 1 with <code>countdown -= 1</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <!-- Coding Challenge 2 -->
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Sum Until 100</h4>
+                            <p>Add numbers starting from 1 until the sum exceeds 100. Print how many numbers were added.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span>Should print the count when sum first exceeds 100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" placeholder="# Start with total = 0 and num = 1
+# Keep adding while total <= 100
+
+" spellcheck="false">total = 0
+num = 1
+
+# Write your while loop here
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use <code>while total <= 100:</code>. Inside, add num to total and increment num. After loop, print num - 1.</p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <!-- Coding Challenge 3 -->
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Find First Divisible</h4>
+                            <p>Find the first number from 1 to 100 that is divisible by both 3 AND 7.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>First number divisible by 3 and 7: 21</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" placeholder="# Start with num = 1
+# Loop while num <= 100
+# Check if num % 3 == 0 and num % 7 == 0
+" spellcheck="false">num = 1
+
+# Write your while loop here
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Check <code>if num % 3 == 0 and num % 7 == 0:</code> inside the loop. When found, print and use <code>break</code>!</p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="section-header">
+                        <h3>🧠 Code Analysis Quiz</h3>
+                        <p>Look at the code carefully and predict what will happen!</p>
+                    </div>
+
+                    <!-- Quiz Question 1 -->
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header">
+                            <span class="question-num">Question 1/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>x = 3
+while x > 0:
+    print(x)
+    x -= 1</code></pre>
+                        </div>
+                        <p class="question-text">What will this code print?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="a">
+                                <span class="option-text">3, 2, 1</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="b">
+                                <span class="option-text">3, 2, 1, 0</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="c">
+                                <span class="option-text">2, 1, 0</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="d">
+                                <span class="option-text">Infinite loop</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 2 -->
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header">
+                            <span class="question-num">Question 2/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>i = 0
+while i < 5:
+    if i == 3:
+        break
+    print(i)
+    i += 1</code></pre>
+                        </div>
+                        <p class="question-text">What numbers will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="a">
+                                <span class="option-text">0, 1, 2</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="b">
+                                <span class="option-text">0, 1, 2, 3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="c">
+                                <span class="option-text">0, 1, 2, 3, 4</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="d">
+                                <span class="option-text">1, 2</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 3 -->
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header">
+                            <span class="question-num">Question 3/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>n = 0
+while n < 4:
+    n += 1
+    if n == 2:
+        continue
+    print(n)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="a">
+                                <span class="option-text">1, 2, 3, 4</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="b">
+                                <span class="option-text">1, 3, 4</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="c">
+                                <span class="option-text">0, 1, 3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="d">
+                                <span class="option-text">1, 2, 3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 4 -->
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header">
+                            <span class="question-num">Question 4/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>x = 5
+while x > 0:
+    x -= 1
+else:
+    print("Done!")</code></pre>
+                        </div>
+                        <p class="question-text">Will "Done!" be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="a">
+                                <span class="option-text">Yes</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="b">
+                                <span class="option-text">No</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="c">
+                                <span class="option-text">Error</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="d">
+                                <span class="option-text">Only if x starts > 0</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 5 -->
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header">
+                            <span class="question-num">Question 5/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>count = 0
+total = 0
+while total < 10:
+    count += 1
+    total += count
+print(count)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="a">
+                                <span class="option-text">3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="b">
+                                <span class="option-text">4</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="c">
+                                <span class="option-text">5</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="d">
+                                <span class="option-text">10</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        // While Loop specific demos
+        function runCountdownDemo() {
+            const start = parseInt(document.getElementById('countdown-start').value) || 5;
+            document.getElementById('countdown-value').textContent = start;
+            
+            let output = '';
+            let count = start;
+            while (count > 0) {
+                output += count + '\n';
+                count--;
+            }
+            output += '🚀 Blast off!';
+            
+            const outputEl = document.getElementById('countdown-demo-output');
+            outputEl.innerHTML = `<pre>${output}</pre>`;
+            outputEl.classList.add('success');
+        }
+
+        function runBreakDemo() {
+            const target = parseInt(document.getElementById('target-num').value) || 7;
+            
+            let output = 'Searching from 1 to 20...\n';
+            let i = 1;
+            while (i <= 20) {
+                output += `Checking ${i}... `;
+                if (i === target) {
+                    output += `🎯 Found ${target}! Breaking loop.\n`;
+                    break;
+                }
+                output += 'nope\n';
+                i++;
+            }
+            
+            const outputEl = document.getElementById('break-demo-output');
+            outputEl.innerHTML = `<pre>${output}</pre>`;
+            outputEl.classList.add('success');
+        }
+
+        function runPrimeDemo() {
+            const num = parseInt(document.getElementById('prime-input').value) || 17;
+            
+            if (num < 2) {
+                document.getElementById('prime-demo-output').innerHTML = `<span class="error">❌ ${num} is not prime (must be >= 2)</span>`;
+                return;
+            }
+            
+            let divisor = 2;
+            let isPrime = true;
+            let output = `Checking if ${num} is prime...\n`;
+            
+            while (divisor < num) {
+                if (num % divisor === 0) {
+                    output += `Found divisor: ${divisor}\n`;
+                    output += `❌ ${num} is NOT prime (${num} = ${divisor} × ${num/divisor})`;
+                    isPrime = false;
+                    break;
+                }
+                divisor++;
+            }
+            
+            if (isPrime) {
+                output += `No divisors found between 2 and ${num-1}\n`;
+                output += `✨ ${num} IS prime!`;
+            }
+            
+            const outputEl = document.getElementById('prime-demo-output');
+            outputEl.innerHTML = `<pre>${output}</pre>`;
+            outputEl.classList.add('success');
+        }
+
+        // Guessing Game
+        let secretNumber = 0;
+        let attempts = 0;
+        let gameActive = false;
+
+        function resetGame() {
+            secretNumber = Math.floor(Math.random() * 10) + 1;
+            attempts = 0;
+            gameActive = true;
+            document.getElementById('guess-demo-output').innerHTML = '🎲 New game started! Guess a number between 1-10.';
+        }
+
+        function makeGuess() {
+            if (!gameActive) {
+                document.getElementById('guess-demo-output').innerHTML = '⚠️ Click "New Game" first!';
+                return;
+            }
+            
+            const guess = parseInt(document.getElementById('guess-input').value);
+            attempts++;
+            
+            const outputEl = document.getElementById('guess-demo-output');
+            
+            if (guess === secretNumber) {
+                outputEl.innerHTML = `<div class="success">🎉 Correct! The number was ${secretNumber}!<br>You got it in ${attempts} attempt(s)!</div>`;
+                gameActive = false;
+            } else if (guess < secretNumber) {
+                outputEl.innerHTML = `⬆️ Too low! Try higher. (Attempt ${attempts})`;
+            } else {
+                outputEl.innerHTML = `⬇️ Too high! Try lower. (Attempt ${attempts})`;
+            }
+        }
+
+        // Update live value displays
+        document.getElementById('countdown-start')?.addEventListener('input', function() {
+            document.getElementById('countdown-value').textContent = this.value || '5';
+        });
+    </script>
+</body>
+</html>
+

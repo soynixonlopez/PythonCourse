@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .project-card {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+            border: 2px solid var(--accent-yellow);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .project-title {
+            font-size: 1.8rem;
+            background: var(--gradient-python);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .feature-item {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-green);
+        }
+        .feature-item h4 {
+            color: var(--accent-yellow);
+            margin-bottom: 0.5rem;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-purple);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .task-box {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), transparent);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .task-box h4 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .task-box ul {
+            margin-left: 1.5rem;
+        }
+        .task-box li {
+            margin: 0.5rem 0;
+        }
+        .code-workspace {
+            background: var(--bg-primary);
+            border: 2px solid var(--bg-secondary);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        .workspace-header {
+            background: var(--bg-secondary);
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .workspace-header span {
+            color: var(--accent-yellow);
+            font-weight: 600;
+        }
+        .workspace-textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 1.2rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: none;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            resize: vertical;
+        }
+        .workspace-textarea:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 2px var(--accent-blue);
+        }
+        .checklist {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .checklist h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .checklist-item:hover {
+            background: var(--bg-primary);
+        }
+        .checklist-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        .checklist-item.checked {
+            border-left: 3px solid var(--accent-green);
+        }
+        .checklist-item.checked label {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        .progress-summary {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .progress-summary h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .submit-section {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .submit-section h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+        }
+        .submit-btn {
+            background: var(--gradient-python);
+            color: var(--bg-primary);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(240, 219, 79, 0.4);
+        }
+        .hint-section {
+            background: rgba(157, 78, 221, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            display: none;
+        }
+        .hint-section.show {
+            display: block;
+        }
+        .hint-toggle-btn {
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .concept-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--bg-secondary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+        }
+        .concept-tag.variables { color: var(--accent-blue); border: 1px solid var(--accent-blue); }
+        .concept-tag.conditionals { color: var(--accent-purple); border: 1px solid var(--accent-purple); }
+        .concept-tag.loops { color: var(--accent-orange); border: 1px solid var(--accent-orange); }
+        .concept-tag.functions { color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .concept-tag.files { color: var(--accent-red); border: 1px solid var(--accent-red); }
+        .concept-tag.errors { color: var(--accent-teal); border: 1px solid var(--accent-teal); }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">🎓 Final Project</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>🏆 Capstone Project</h1>
+        <p class="subtitle">Build your own Task Manager - Write the code yourself!</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="overview">📋 Overview</button>
+        <button class="tab-btn" data-tab="step1">1️⃣ Menu & Loop</button>
+        <button class="tab-btn" data-tab="step2">2️⃣ Add & View</button>
+        <button class="tab-btn" data-tab="step3">3️⃣ Complete & Delete</button>
+        <button class="tab-btn" data-tab="step4">4️⃣ Save & Load</button>
+        <button class="tab-btn" data-tab="final">✅ Final Check</button>
+    </nav>
+
+    <main>
+        <!-- OVERVIEW -->
+        <section id="overview" class="tab-content active">
+            <div class="card project-card">
+                <h2 class="project-title">📝 Task Manager Pro</h2>
+                <p>Your mission: Build a <strong>complete Task Manager</strong> application using everything you've learned in this course. <strong>You will write all the code yourself!</strong></p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>➕ Add Tasks</h4>
+                        <p>Create new tasks with descriptions</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📋 View Tasks</h4>
+                        <p>See all tasks with their status</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>✅ Complete Tasks</h4>
+                        <p>Mark tasks as done</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🗑️ Delete Tasks</h4>
+                        <p>Remove tasks you don't need</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>💾 Save to File</h4>
+                        <p>Tasks persist in JSON file</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🛡️ Error Handling</h4>
+                        <p>Handle invalid input gracefully</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🎯 Skills You'll Apply</h2>
+                <div class="markdown-content">
+                    <p>This project uses <strong>everything you've learned</strong>:</p>
+                    
+                    <div style="margin: 1.5rem 0;">
+                        <span class="concept-tag variables">Variables</span>
+                        <span class="concept-tag variables">Lists</span>
+                        <span class="concept-tag variables">Dictionaries</span>
+                        <span class="concept-tag conditionals">if/elif/else</span>
+                        <span class="concept-tag loops">While Loops</span>
+                        <span class="concept-tag loops">For Loops</span>
+                        <span class="concept-tag functions">Functions</span>
+                        <span class="concept-tag files">File I/O</span>
+                        <span class="concept-tag errors">try/except</span>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Important Rules</h3>
+                        <ul>
+                            <li><strong>Write the code yourself</strong> - don't just copy!</li>
+                            <li>Use hints only when you're really stuck</li>
+                            <li>Test your code as you go</li>
+                            <li>At the end, verify all features work</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 How to Work</h3>
+                        <ol>
+                            <li>Read each step's instructions carefully</li>
+                            <li>Write your code in the workspace provided</li>
+                            <li>Copy your code to a <code>.py</code> file and test it</li>
+                            <li>Use hints if you need help</li>
+                            <li>Complete the checklist at the end</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 1: MENU & LOOP -->
+        <section id="step1" class="tab-content">
+            <div class="card">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h2>Create Menu & Main Loop</h2>
+                </div>
+                
+                <div class="markdown-content">
+                    <div class="task-box">
+                        <h4>📋 Your Task</h4>
+                        <p>Create the basic structure of the program:</p>
+                        <ul>
+                            <li>A <code>show_menu()</code> function that prints all menu options</li>
+                            <li>A <code>main()</code> function with a <strong>while loop</strong> that:
+                                <ul>
+                                    <li>Shows the menu</li>
+                                    <li>Gets user input (1-5)</li>
+                                    <li>Uses <strong>if/elif/else</strong> to handle each option</li>
+                                    <li>Exits when user chooses option 5</li>
+                                </ul>
+                            </li>
+                            <li>An empty <code>tasks = []</code> list at the top</li>
+                        </ul>
+                    </div>
+
+                    <h3>📝 Menu Options to Include:</h3>
+                    <div class="code-block">
+                        <div class="code-header"><span>Expected Menu Output</span></div>
+                        <pre><code>===== 📝 TASK MANAGER PRO =====
+1. ➕ Add Task
+2. 📋 View Tasks
+3. ✅ Complete Task
+4. 🗑️ Delete Task
+5. 🚪 Exit</code></pre>
+                    </div>
+
+                    <button class="hint-toggle-btn" onclick="toggleHint('hint1')">💡 Show Hint</button>
+                    <div class="hint-section" id="hint1">
+                        <p><strong>Structure hint:</strong></p>
+                        <pre><code>tasks = []
+
+def show_menu():
+    # Use print() for each menu line
+    pass
+
+def main():
+    while True:
+        show_menu()
+        choice = input("Choose option: ")
+        
+        if choice == "1":
+            print("Add task - coming soon")
+        elif choice == "2":
+            # ... more options
+        elif choice == "5":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid option")
+
+if __name__ == "__main__":
+    main()</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-workspace">
+                    <div class="workspace-header">
+                        <span>📝 Your Code - Step 1: Menu & Main Loop</span>
+                        <button class="copy-btn" onclick="copyWorkspace('workspace1')">📋 Copy</button>
+                    </div>
+                    <textarea id="workspace1" class="workspace-textarea" placeholder="# Write your code here!
+# Create:
+# 1. tasks = [] list
+# 2. show_menu() function
+# 3. main() function with while loop
+
+"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: ADD & VIEW -->
+        <section id="step2" class="tab-content">
+            <div class="card">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h2>Add Task & View Tasks Functions</h2>
+                </div>
+                
+                <div class="markdown-content">
+                    <div class="task-box">
+                        <h4>📋 Task A: add_task() Function</h4>
+                        <p>Create a function that:</p>
+                        <ul>
+                            <li>Asks user for task description using <code>input()</code></li>
+                            <li>Checks if description is empty (show error if it is)</li>
+                            <li>Creates a <strong>dictionary</strong> with: <code>id</code>, <code>description</code>, <code>completed</code></li>
+                            <li>Appends the dictionary to the <code>tasks</code> list</li>
+                            <li>Shows success message</li>
+                        </ul>
+                    </div>
+
+                    <h3>📦 Task Dictionary Structure:</h3>
+                    <div class="code-block">
+                        <div class="code-header"><span>Python</span></div>
+                        <pre><code>task = {
+    "id": 1,
+    "description": "Learn Python",
+    "completed": False
+}</code></pre>
+                    </div>
+
+                    <button class="hint-toggle-btn" onclick="toggleHint('hint2a')">💡 Show Hint for add_task()</button>
+                    <div class="hint-section" id="hint2a">
+                        <pre><code>def add_task():
+    description = input("Enter task: ").strip()
+    
+    if not description:
+        print("Error: empty description!")
+        return
+    
+    task = {
+        "id": len(tasks) + 1,
+        "description": description,
+        "completed": False
+    }
+    
+    tasks.append(task)
+    print(f"Task '{description}' added!")</code></pre>
+                    </div>
+
+                    <div class="task-box" style="margin-top: 2rem;">
+                        <h4>📋 Task B: view_tasks() Function</h4>
+                        <p>Create a function that:</p>
+                        <ul>
+                            <li>Checks if <code>tasks</code> list is empty (show message if it is)</li>
+                            <li>Uses a <strong>for loop</strong> to go through each task</li>
+                            <li>Shows task number, status (✅ or [ ]), and description</li>
+                            <li>Counts pending vs completed tasks</li>
+                            <li>Shows summary at the end</li>
+                        </ul>
+                    </div>
+
+                    <h3>📋 Expected Output:</h3>
+                    <div class="code-block">
+                        <div class="code-header"><span>Output</span></div>
+                        <pre><code>📋 YOUR TASKS:
+────────────────────────────
+1. [ ] Learn Python
+2. ✅ Practice coding
+3. [ ] Build project
+────────────────────────────
+Total: 3 | Pending: 2 | Completed: 1</code></pre>
+                    </div>
+
+                    <button class="hint-toggle-btn" onclick="toggleHint('hint2b')">💡 Show Hint for view_tasks()</button>
+                    <div class="hint-section" id="hint2b">
+                        <pre><code>def view_tasks():
+    if not tasks:
+        print("No tasks yet!")
+        return
+    
+    print("\n📋 YOUR TASKS:")
+    print("─" * 30)
+    
+    pending = 0
+    completed = 0
+    
+    for i, task in enumerate(tasks, 1):
+        status = "✅" if task["completed"] else "[ ]"
+        print(f"{i}. {status} {task['description']}")
+        
+        if task["completed"]:
+            completed += 1
+        else:
+            pending += 1
+    
+    print("─" * 30)
+    print(f"Total: {len(tasks)} | Pending: {pending} | Done: {completed}")</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-workspace">
+                    <div class="workspace-header">
+                        <span>📝 Your Code - Step 2: add_task() & view_tasks()</span>
+                        <button class="copy-btn" onclick="copyWorkspace('workspace2')">📋 Copy</button>
+                    </div>
+                    <textarea id="workspace2" class="workspace-textarea" placeholder="# Write your add_task() and view_tasks() functions here!
+
+def add_task():
+    # Your code here
+    pass
+
+def view_tasks():
+    # Your code here
+    pass
+"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3: COMPLETE & DELETE -->
+        <section id="step3" class="tab-content">
+            <div class="card">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <h2>Complete Task & Delete Task Functions</h2>
+                </div>
+                
+                <div class="markdown-content">
+                    <div class="task-box">
+                        <h4>📋 Task A: complete_task() Function</h4>
+                        <p>Create a function that:</p>
+                        <ul>
+                            <li>First calls <code>view_tasks()</code> to show current tasks</li>
+                            <li>Asks user which task number to complete</li>
+                            <li>Uses <strong>try/except</strong> to handle invalid input</li>
+                            <li>Checks if task number is valid (1 to len(tasks))</li>
+                            <li>Sets <code>task["completed"] = True</code></li>
+                            <li>Shows success message</li>
+                        </ul>
+                    </div>
+
+                    <button class="hint-toggle-btn" onclick="toggleHint('hint3a')">💡 Show Hint for complete_task()</button>
+                    <div class="hint-section" id="hint3a">
+                        <pre><code>def complete_task():
+    view_tasks()
+    
+    if not tasks:
+        return
+    
+    try:
+        num = int(input("Task number to complete: "))
+        
+        if 1 <= num <= len(tasks):
+            task = tasks[num - 1]  # Lists are 0-indexed!
+            
+            if task["completed"]:
+                print("Already completed!")
+            else:
+                task["completed"] = True
+                print(f"Task '{task['description']}' completed! 🎉")
+        else:
+            print("Invalid number!")
+    except ValueError:
+        print("Please enter a number!")</code></pre>
+                    </div>
+
+                    <div class="task-box" style="margin-top: 2rem;">
+                        <h4>📋 Task B: delete_task() Function</h4>
+                        <p>Create a function that:</p>
+                        <ul>
+                            <li>First calls <code>view_tasks()</code> to show current tasks</li>
+                            <li>Asks user which task number to delete</li>
+                            <li>Uses <strong>try/except</strong> to handle invalid input</li>
+                            <li>Uses <code>tasks.pop(index)</code> to remove the task</li>
+                            <li>Shows success message with deleted task name</li>
+                        </ul>
+                    </div>
+
+                    <button class="hint-toggle-btn" onclick="toggleHint('hint3b')">💡 Show Hint for delete_task()</button>
+                    <div class="hint-section" id="hint3b">
+                        <pre><code>def delete_task():
+    view_tasks()
+    
+    if not tasks:
+        return
+    
+    try:
+        num = int(input("Task number to delete: "))
+        
+        if 1 <= num <= len(tasks):
+            removed = tasks.pop(num - 1)
+            print(f"Deleted: '{removed['description']}' 🗑️")
+        else:
+            print("Invalid number!")
+    except ValueError:
+        print("Please enter a number!")</code></pre>
+                    </div>
+                </div>
+
+                <div class="code-workspace">
+                    <div class="workspace-header">
+                        <span>📝 Your Code - Step 3: complete_task() & delete_task()</span>
+                        <button class="copy-btn" onclick="copyWorkspace('workspace3')">📋 Copy</button>
+                    </div>
+                    <textarea id="workspace3" class="workspace-textarea" placeholder="# Write your complete_task() and delete_task() functions here!
+
+def complete_task():
+    # Your code here
+    pass
+
+def delete_task():
+    # Your code here
+    pass
+"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 4: SAVE & LOAD -->
+        <section id="step4" class="tab-content">
+            <div class="card">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <h2>Save & Load Tasks (File Persistence)</h2>
+                </div>
+                
+                <div class="markdown-content">
+                    <p>Now let's make tasks <strong>persist</strong> between program runs using JSON files!</p>
+
+                    <div class="task-box">
+                        <h4>📋 Task A: save_tasks() Function</h4>
+                        <p>Create a function that:</p>
+                        <ul>
+                            <li>Import <code>json</code> at the top of your file</li>
+                            <li>Opens a file called <code>"tasks.json"</code> in write mode (<code>"w"</code>)</li>
+                            <li>Uses <code>json.dump(tasks, f)</code> to save the list</li>
+                            <li>Uses <strong>try/except</strong> to handle errors</li>
+                        </ul>
+                    </div>
+
+                    <button class="hint-toggle-btn" onclick="toggleHint('hint4a')">💡 Show Hint for save_tasks()</button>
+                    <div class="hint-section" id="hint4a">
+                        <pre><code>import json
+
+FILENAME = "tasks.json"
+
+def save_tasks():
+    try:
+        with open(FILENAME, "w") as f:
+            json.dump(tasks, f, indent=2)
+    except IOError as e:
+        print(f"Error saving: {e}")</code></pre>
+                    </div>
+
+                    <div class="task-box" style="margin-top: 2rem;">
+                        <h4>📋 Task B: load_tasks() Function</h4>
+                        <p>Create a function that:</p>
+                        <ul>
+                            <li>Uses <code>global tasks</code> to modify the global list</li>
+                            <li>Opens <code>"tasks.json"</code> in read mode (<code>"r"</code>)</li>
+                            <li>Uses <code>json.load(f)</code> to load tasks</li>
+                            <li>Handles <code>FileNotFoundError</code> (file doesn't exist yet)</li>
+                            <li>Handles <code>json.JSONDecodeError</code> (corrupt file)</li>
+                        </ul>
+                    </div>
+
+                    <button class="hint-toggle-btn" onclick="toggleHint('hint4b')">💡 Show Hint for load_tasks()</button>
+                    <div class="hint-section" id="hint4b">
+                        <pre><code>def load_tasks():
+    global tasks
+    
+    try:
+        with open(FILENAME, "r") as f:
+            tasks = json.load(f)
+            print(f"Loaded {len(tasks)} task(s)")
+    except FileNotFoundError:
+        tasks = []
+        print("Starting fresh - no saved tasks")
+    except json.JSONDecodeError:
+        tasks = []
+        print("Error reading file - starting fresh")</code></pre>
+                    </div>
+
+                    <div class="tip-box" style="margin-top: 2rem;">
+                        <h3>🔗 Connect Everything!</h3>
+                        <p>Don't forget to:</p>
+                        <ul>
+                            <li>Call <code>load_tasks()</code> at the start of <code>main()</code></li>
+                            <li>Call <code>save_tasks()</code> after: add_task, complete_task, delete_task</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="code-workspace">
+                    <div class="workspace-header">
+                        <span>📝 Your Code - Step 4: save_tasks() & load_tasks()</span>
+                        <button class="copy-btn" onclick="copyWorkspace('workspace4')">📋 Copy</button>
+                    </div>
+                    <textarea id="workspace4" class="workspace-textarea" placeholder="# Write your save_tasks() and load_tasks() functions here!
+# Don't forget: import json at the top!
+
+import json
+
+FILENAME = 'tasks.json'
+
+def save_tasks():
+    # Your code here
+    pass
+
+def load_tasks():
+    # Your code here
+    pass
+"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CHECK -->
+        <section id="final" class="tab-content">
+            <div class="card">
+                <h2>✅ Final Verification</h2>
+                
+                <div class="markdown-content">
+                    <p>Before submitting, make sure your Task Manager has all these features working:</p>
+                </div>
+
+                <div class="checklist">
+                    <h3>📋 Feature Checklist</h3>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check1">
+                        <label for="check1">Menu displays all 5 options correctly</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check2">
+                        <label for="check2">Can add new tasks with descriptions</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check3">
+                        <label for="check3">Empty task descriptions are rejected</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check4">
+                        <label for="check4">View tasks shows all tasks with status ([ ] or ✅)</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check5">
+                        <label for="check5">View tasks shows pending/completed count</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check6">
+                        <label for="check6">Can mark tasks as complete</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check7">
+                        <label for="check7">Can delete tasks</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check8">
+                        <label for="check8">Invalid input is handled (doesn't crash)</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check9">
+                        <label for="check9">Tasks are saved to tasks.json file</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check10">
+                        <label for="check10">Tasks load when program restarts</label>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" id="check11">
+                        <label for="check11">Exit option works correctly</label>
+                    </div>
+                </div>
+
+                <div class="progress-summary" id="progress-summary">
+                    <h3><span id="checked-count">0</span>/11 Features Complete</h3>
+                    <p id="progress-message">Check off each feature as you complete it!</p>
+                </div>
+
+                <div class="submit-section">
+                    <h3>🎓 Submit Your Project</h3>
+                    <p style="margin-bottom: 1.5rem;">Once all features are working, paste your complete code below:</p>
+                    
+                    <div class="code-workspace" style="margin-bottom: 1.5rem;">
+                        <div class="workspace-header">
+                            <span>📄 Your Complete task_manager.py Code</span>
+                            <button class="copy-btn" onclick="copyWorkspace('final-code')">📋 Copy</button>
+                        </div>
+                        <textarea id="final-code" class="workspace-textarea" style="min-height: 400px;" placeholder="# Paste your complete Task Manager code here
+# Make sure it includes all functions:
+# - show_menu()
+# - add_task()
+# - view_tasks()
+# - complete_task()
+# - delete_task()
+# - save_tasks()
+# - load_tasks()
+# - main()
+
+"></textarea>
+                    </div>
+
+                    <button class="submit-btn" onclick="verifyProject()">🔍 Verify My Code</button>
+                    
+                    <div id="verification-result" style="margin-top: 1.5rem; text-align: left; display: none;"></div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2rem;">
+                <h2>🎉 Congratulations!</h2>
+                <div class="markdown-content">
+                    <p>You've completed the <strong>Python Junior Course</strong>! You now know:</p>
+                    <ul>
+                        <li>✅ Variables, data types, and operators</li>
+                        <li>✅ Control flow (conditionals and loops)</li>
+                        <li>✅ Data structures (lists, tuples, dictionaries, sets)</li>
+                        <li>✅ Functions and modules</li>
+                        <li>✅ Error handling and file I/O</li>
+                        <li>✅ How to build real applications!</li>
+                    </ul>
+                    <p><strong>Keep coding and building amazing things! 🐍🚀</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | You did it! 🏆</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+
+    <script src="../main.js"></script>
+    <script>
+        // Toggle hint visibility
+        function toggleHint(hintId) {
+            const hint = document.getElementById(hintId);
+            hint.classList.toggle('show');
+        }
+
+        // Copy workspace content
+        function copyWorkspace(textareaId) {
+            const textarea = document.getElementById(textareaId);
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Show feedback
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => btn.textContent = originalText, 2000);
+        }
+
+        // Toggle checklist item
+        function toggleCheck(item) {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            item.classList.toggle('checked', checkbox.checked);
+            updateProgress();
+        }
+
+        // Update progress summary
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const total = checkboxes.length;
+            
+            document.getElementById('checked-count').textContent = checked;
+            
+            const summary = document.getElementById('progress-summary');
+            const message = document.getElementById('progress-message');
+            
+            if (checked === total) {
+                summary.style.background = 'linear-gradient(135deg, #4ade80, #22c55e)';
+                message.textContent = '🎉 All features complete! Your Task Manager is ready!';
+            } else if (checked > total / 2) {
+                summary.style.background = 'linear-gradient(135deg, #f0db4f, #fb923c)';
+                message.textContent = 'Great progress! Keep going!';
+            } else {
+                summary.style.background = 'linear-gradient(135deg, #9d4edd, #306998)';
+                message.textContent = 'Check off each feature as you complete it!';
+            }
+        }
+
+        // Verify project code
+        function verifyProject() {
+            const code = document.getElementById('final-code').value;
+            const resultDiv = document.getElementById('verification-result');
+            resultDiv.style.display = 'block';
+            
+            const requiredElements = [
+                { pattern: /import\s+json/i, name: 'import json' },
+                { pattern: /def\s+show_menu\s*\(/i, name: 'show_menu() function' },
+                { pattern: /def\s+add_task\s*\(/i, name: 'add_task() function' },
+                { pattern: /def\s+view_tasks\s*\(/i, name: 'view_tasks() function' },
+                { pattern: /def\s+complete_task\s*\(/i, name: 'complete_task() function' },
+                { pattern: /def\s+delete_task\s*\(/i, name: 'delete_task() function' },
+                { pattern: /def\s+save_tasks\s*\(/i, name: 'save_tasks() function' },
+                { pattern: /def\s+load_tasks\s*\(/i, name: 'load_tasks() function' },
+                { pattern: /def\s+main\s*\(/i, name: 'main() function' },
+                { pattern: /while\s+(True|1)/i, name: 'Main loop (while True)' },
+                { pattern: /try\s*:/i, name: 'Error handling (try/except)' },
+                { pattern: /json\.(dump|load)/i, name: 'JSON file operations' },
+                { pattern: /tasks\s*=\s*\[\]/i, name: 'tasks list initialization' },
+            ];
+            
+            let found = [];
+            let missing = [];
+            
+            requiredElements.forEach(elem => {
+                if (elem.pattern.test(code)) {
+                    found.push(elem.name);
+                } else {
+                    missing.push(elem.name);
+                }
+            });
+            
+            let html = '<div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 12px;">';
+            
+            if (missing.length === 0) {
+                html += '<h4 style="color: var(--accent-green); margin-bottom: 1rem;">✅ Excellent! Your code has all required elements!</h4>';
+                html += '<p>Your Task Manager appears to be complete. Now test it to make sure everything works!</p>';
+                
+                // Mark capstone as complete!
+                if (typeof completeLesson === 'function') {
+                    completeLesson('capstone');
+                }
+            } else {
+                html += '<h4 style="color: var(--accent-orange); margin-bottom: 1rem;">⚠️ Some elements might be missing:</h4>';
+                html += '<ul style="color: var(--accent-red);">';
+                missing.forEach(item => {
+                    html += `<li>❌ ${item}</li>`;
+                });
+                html += '</ul>';
+            }
+            
+            if (found.length > 0) {
+                html += '<h4 style="color: var(--accent-green); margin-top: 1rem; margin-bottom: 0.5rem;">Found elements:</h4>';
+                html += '<ul style="color: var(--accent-green);">';
+                found.forEach(item => {
+                    html += `<li>✅ ${item}</li>`;
+                });
+                html += '</ul>';
+            }
+            
+            html += '</div>';
+            resultDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

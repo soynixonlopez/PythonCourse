@@ -141,7 +141,7 @@
             height: 12px;
             background: var(--gradient-python);
             border-radius: 50px;
-            width: 33%; /* 7 of 21 lessons */
+            width: 100%; /* 21 of 21 lessons */
             transition: width 0.5s ease;
         }
 
@@ -385,6 +385,176 @@
                 font-size: 1.1rem;
             }
         }
+
+        /* Locked module styles */
+        .module.locked .module-card {
+            opacity: 0.5;
+            filter: grayscale(50%);
+            pointer-events: auto;
+            cursor: not-allowed !important;
+        }
+
+        .module.locked .module-icon {
+            background: var(--bg-secondary) !important;
+            border-color: var(--bg-secondary) !important;
+        }
+
+        .module.locked .start-lesson-btn {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        .module.locked .start-lesson-btn.locked-btn {
+            pointer-events: auto;
+            cursor: not-allowed;
+        }
+
+        /* Completed module styles */
+        .module.completed .module-icon {
+            background: var(--accent-green) !important;
+            border-color: var(--accent-green) !important;
+            position: relative;
+        }
+
+        .module.completed .module-icon::after {
+            content: '✓';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            background: var(--bg-primary);
+            color: var(--accent-green);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent-green);
+        }
+
+        .module.completed .module-card {
+            border-color: var(--accent-green);
+        }
+
+        /* Status badges */
+        .status-locked {
+            background: rgba(160, 167, 196, 0.2) !important;
+            color: var(--text-secondary) !important;
+        }
+
+        .status-completed {
+            background: rgba(74, 222, 128, 0.2) !important;
+            color: var(--accent-green) !important;
+        }
+
+        /* Locked modal */
+        .locked-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .locked-modal.show {
+            opacity: 1;
+        }
+
+        .locked-modal-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+            border: 2px solid var(--accent-orange);
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+
+        .locked-modal.show .locked-modal-content {
+            transform: scale(1);
+        }
+
+        .locked-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .locked-modal-content h3 {
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .locked-modal-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .locked-modal-content button {
+            background: var(--accent-orange);
+            color: var(--bg-primary);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .locked-modal-content button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(251, 146, 60, 0.4);
+        }
+
+        /* Lesson completion notification */
+        .lesson-complete-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-green), #22c55e);
+            color: var(--bg-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(74, 222, 128, 0.4);
+            z-index: 10000;
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .lesson-complete-notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification-icon {
+            font-size: 2rem;
+        }
+
+        .notification-text strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .notification-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -402,9 +572,12 @@
             <h1>🗺️ Course Roadmap</h1>
             <p>Your journey to mastering Python, one lesson at a time</p>
             <div class="progress-bar">
-                <div class="progress-fill"></div>
+                <div class="progress-fill" style="width: 5%;"></div>
             </div>
-            <div class="progress-text">7 of 21 lessons available</div>
+            <div class="progress-text">1 of 22 lessons completed (5%)</div>
+            <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.85rem;">
+                🔒 Complete each lesson's practice to unlock the next one!
+            </p>
         </div>
 
         <div class="roadmap">
@@ -575,13 +748,13 @@
                 </div>
             </div>
 
-            <!-- Module 8: For Loops -->
-            <div class="module coming-soon">
+            <!-- Module 8: For Loops (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🔄</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/forloops.html'">
                     <div class="module-header">
                         <span class="module-number">Module 08</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">For Loops</h3>
                     <p class="module-description">Iterate over sequences and repeat actions a specific number of times with for loops.</p>
@@ -592,16 +765,17 @@
                         <span class="topic-tag">Nested Loops</span>
                         <span class="topic-tag">Loop Patterns</span>
                     </div>
+                    <a href="lessons/forloops.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 9: While Loops -->
-            <div class="module coming-soon">
+            <!-- Module 9: While Loops (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🔁</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/whileloops.html'">
                     <div class="module-header">
                         <span class="module-number">Module 09</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">While Loops</h3>
                     <p class="module-description">Create loops that continue while a condition is true. Master break, continue, and else with loops.</p>
@@ -612,6 +786,7 @@
                         <span class="topic-tag">else Clause</span>
                         <span class="topic-tag">Infinite Loops</span>
                     </div>
+                    <a href="lessons/whileloops.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
@@ -621,13 +796,13 @@
                 <p class="level-desc">Organize and manage collections of data efficiently</p>
             </div>
 
-            <!-- Module 10: Strings in Depth -->
-            <div class="module coming-soon">
+            <!-- Module 10: Strings in Depth (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">📝</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/strings.html'">
                     <div class="module-header">
                         <span class="module-number">Module 10</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Strings in Depth</h3>
                     <p class="module-description">Master string manipulation with slicing, formatting, and powerful built-in methods.</p>
@@ -638,16 +813,17 @@
                         <span class="topic-tag">f-Strings</span>
                         <span class="topic-tag">Escape Characters</span>
                     </div>
+                    <a href="lessons/strings.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 11: Lists -->
-            <div class="module coming-soon">
+            <!-- Module 11: Lists (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">📋</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/lists.html'">
                     <div class="module-header">
                         <span class="module-number">Module 11</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Lists</h3>
                     <p class="module-description">Store and manipulate ordered collections of data. Learn all the essential list operations.</p>
@@ -658,16 +834,17 @@
                         <span class="topic-tag">List Operations</span>
                         <span class="topic-tag">Nested Lists</span>
                     </div>
+                    <a href="lessons/lists.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 12: Tuples -->
-            <div class="module coming-soon">
+            <!-- Module 12: Tuples (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🔐</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/tuples.html'">
                     <div class="module-header">
                         <span class="module-number">Module 12</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Tuples</h3>
                     <p class="module-description">Work with immutable sequences. Understand when to use tuples vs lists.</p>
@@ -678,16 +855,17 @@
                         <span class="topic-tag">Immutability</span>
                         <span class="topic-tag">Named Tuples</span>
                     </div>
+                    <a href="lessons/tuples.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 13: Dictionaries -->
-            <div class="module coming-soon">
+            <!-- Module 13: Dictionaries (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">📖</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/dictionaries.html'">
                     <div class="module-header">
                         <span class="module-number">Module 13</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Dictionaries</h3>
                     <p class="module-description">Work with key-value pairs using dictionaries. Perfect for storing structured data.</p>
@@ -698,16 +876,17 @@
                         <span class="topic-tag">Iteration</span>
                         <span class="topic-tag">Nested Dicts</span>
                     </div>
+                    <a href="lessons/dictionaries.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 14: Sets -->
-            <div class="module coming-soon">
+            <!-- Module 14: Sets (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🎯</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/sets.html'">
                     <div class="module-header">
                         <span class="module-number">Module 14</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Sets</h3>
                     <p class="module-description">Store unique elements and perform set operations like union, intersection, and difference.</p>
@@ -717,16 +896,17 @@
                         <span class="topic-tag">Set Operations</span>
                         <span class="topic-tag">Frozen Sets</span>
                     </div>
+                    <a href="lessons/sets.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 15: Comprehensions -->
-            <div class="module coming-soon">
+            <!-- Module 15: Comprehensions (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">✨</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/comprehensions.html'">
                     <div class="module-header">
                         <span class="module-number">Module 15</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Comprehensions</h3>
                     <p class="module-description">Write elegant, Pythonic code with list, dictionary, and set comprehensions.</p>
@@ -737,6 +917,7 @@
                         <span class="topic-tag">Conditional Logic</span>
                         <span class="topic-tag">Nested Comprehensions</span>
                     </div>
+                    <a href="lessons/comprehensions.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
@@ -746,13 +927,13 @@
                 <p class="level-desc">Create reusable, organized code with functions and modules</p>
             </div>
 
-            <!-- Module 16: Functions Basics -->
-            <div class="module coming-soon">
+            <!-- Module 16: Functions Basics (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">⚡</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/functions.html'">
                     <div class="module-header">
                         <span class="module-number">Module 16</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Functions Basics</h3>
                     <p class="module-description">Create reusable blocks of code with functions. Learn about parameters, return values, and scope.</p>
@@ -763,16 +944,17 @@
                         <span class="topic-tag">Docstrings</span>
                         <span class="topic-tag">Scope</span>
                     </div>
+                    <a href="lessons/functions.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 17: Advanced Functions -->
-            <div class="module coming-soon">
+            <!-- Module 17: Advanced Functions (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🔥</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/advanced-functions.html'">
                     <div class="module-header">
                         <span class="module-number">Module 17</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Advanced Functions</h3>
                     <p class="module-description">Master advanced function concepts: *args, **kwargs, lambda functions, and more.</p>
@@ -783,16 +965,17 @@
                         <span class="topic-tag">Default Arguments</span>
                         <span class="topic-tag">Recursion</span>
                     </div>
+                    <a href="lessons/advanced-functions.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 18: Modules & Imports -->
-            <div class="module coming-soon">
+            <!-- Module 18: Modules & Imports (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">📦</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/modules.html'">
                     <div class="module-header">
                         <span class="module-number">Module 18</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Modules & Imports</h3>
                     <p class="module-description">Organize your code into modules and use Python's powerful standard library.</p>
@@ -803,6 +986,7 @@
                         <span class="topic-tag">Standard Library</span>
                         <span class="topic-tag">pip & Packages</span>
                     </div>
+                    <a href="lessons/modules.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
@@ -812,13 +996,13 @@
                 <p class="level-desc">Handle errors gracefully and work with external files</p>
             </div>
 
-            <!-- Module 19: Error Handling -->
-            <div class="module coming-soon">
+            <!-- Module 19: Error Handling (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🛡️</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/error-handling.html'">
                     <div class="module-header">
                         <span class="module-number">Module 19</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Error Handling</h3>
                     <p class="module-description">Handle exceptions gracefully with try-except blocks. Make your programs robust and user-friendly.</p>
@@ -829,16 +1013,17 @@
                         <span class="topic-tag">raise</span>
                         <span class="topic-tag">Custom Exceptions</span>
                     </div>
+                    <a href="lessons/error-handling.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
-            <!-- Module 20: File Handling -->
-            <div class="module coming-soon">
+            <!-- Module 20: File Handling (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">📁</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/files.html'">
                     <div class="module-header">
                         <span class="module-number">Module 20</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">File Handling</h3>
                     <p class="module-description">Read from and write to files. Work with text files, CSV, and JSON data.</p>
@@ -849,6 +1034,7 @@
                         <span class="topic-tag">CSV Files</span>
                         <span class="topic-tag">JSON Files</span>
                     </div>
+                    <a href="lessons/files.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
@@ -858,13 +1044,13 @@
                 <p class="level-desc">Learn the fundamentals of OOP to build complex applications</p>
             </div>
 
-            <!-- Module 21: Classes & Objects -->
-            <div class="module coming-soon">
+            <!-- Module 21: Classes & Objects (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🏗️</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/classes.html'">
                     <div class="module-header">
                         <span class="module-number">Module 21</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Classes & Objects</h3>
                     <p class="module-description">Introduction to OOP! Create your own classes and objects to model real-world entities.</p>
@@ -876,6 +1062,7 @@
                         <span class="topic-tag">Methods</span>
                         <span class="topic-tag">Instances</span>
                     </div>
+                    <a href="lessons/classes.html" class="start-lesson-btn">Start Lesson →</a>
                 </div>
             </div>
 
@@ -885,23 +1072,24 @@
                 <p class="level-desc">Put everything together in a real-world project!</p>
             </div>
 
-            <!-- Final Project -->
-            <div class="module coming-soon">
+            <!-- Final Project (AVAILABLE) -->
+            <div class="module available">
                 <div class="module-icon">🎓</div>
-                <div class="module-card">
+                <div class="module-card" onclick="window.location.href='lessons/capstone.html'">
                     <div class="module-header">
                         <span class="module-number">Final</span>
-                        <span class="module-status status-coming">Coming Soon</span>
+                        <span class="module-status status-available">Available</span>
                     </div>
                     <h3 class="module-title">Capstone Project</h3>
-                    <p class="module-description">Build a complete Python application from scratch! Apply everything you've learned in a guided project.</p>
+                    <p class="module-description">Build a complete Task Manager application from scratch! Apply everything you've learned in a guided project.</p>
                     <div class="module-topics">
-                        <span class="topic-tag">Project Planning</span>
-                        <span class="topic-tag">Code Organization</span>
+                        <span class="topic-tag">Task Manager</span>
+                        <span class="topic-tag">JSON Files</span>
+                        <span class="topic-tag">Functions</span>
+                        <span class="topic-tag">Error Handling</span>
                         <span class="topic-tag">Best Practices</span>
-                        <span class="topic-tag">Testing</span>
-                        <span class="topic-tag">Documentation</span>
                     </div>
+                    <a href="lessons/capstone.html" class="start-lesson-btn">Start Project →</a>
                 </div>
             </div>
         </div>
@@ -909,8 +1097,11 @@
 
     <footer>
         <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> | Python Junior Course 2024</p>
+        <p style="margin-top: 0.5rem;">
+            <button onclick="resetProgress()" style="background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">🔄 Reset Progress</button>
+        </p>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
-
-

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings in Depth - Python Junior Course</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Lesson Navigation -->
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 10</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Strings in Depth</h1>
+        <p class="subtitle">Master text manipulation like a pro! 📝</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="indexing">🔢 Indexing</button>
+        <button class="tab-btn" data-tab="slicing">✂️ Slicing</button>
+        <button class="tab-btn" data-tab="methods">🛠️ Methods</button>
+        <button class="tab-btn" data-tab="formatting">🎨 f-Strings</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are Strings?</h2>
+                <div class="markdown-content">
+                    <p>Strings are <strong>sequences of characters</strong>. They can contain letters, numbers, symbols, and even emojis! In Python, strings are <strong>immutable</strong> (cannot be changed after creation).</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of a string like a necklace of beads:</p>
+                        <ul>
+                            <li>Each bead is a <strong>character</strong></li>
+                            <li>Beads have <strong>positions</strong> (index)</li>
+                            <li>You can look at any bead by its position</li>
+                            <li>You can take a section of beads (slicing)</li>
+                        </ul>
+                    </div>
+
+                    <h3>📋 Creating Strings</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Single quotes</span>
+<span class="variable">name</span> <span class="operator">=</span> <span class="string">'Alice'</span>
+
+<span class="comment"># Double quotes</span>
+<span class="variable">greeting</span> <span class="operator">=</span> <span class="string">"Hello, World!"</span>
+
+<span class="comment"># Triple quotes (multi-line)</span>
+<span class="variable">poem</span> <span class="operator">=</span> <span class="string">"""Roses are red,
+Violets are blue,
+Python is awesome,
+And so are you!"""</span>
+
+<span class="comment"># String with quotes inside</span>
+<span class="variable">quote</span> <span class="operator">=</span> <span class="string">"She said 'Hello!'"</span>
+<span class="variable">quote2</span> <span class="operator">=</span> <span class="string">'He said "Hi!"'</span></code></pre>
+                    </div>
+
+                    <h3>📋 String Properties</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Immutable</td>
+                                <td>Cannot be changed after creation</td>
+                                <td><code>s[0] = 'X'</code> ❌ Error</td>
+                            </tr>
+                            <tr>
+                                <td>Indexed</td>
+                                <td>Each character has a position</td>
+                                <td><code>"Hello"[0]</code> → 'H'</td>
+                            </tr>
+                            <tr>
+                                <td>Iterable</td>
+                                <td>Can loop through characters</td>
+                                <td><code>for char in "Hi":</code></td>
+                            </tr>
+                            <tr>
+                                <td>Concatenatable</td>
+                                <td>Can join strings together</td>
+                                <td><code>"Py" + "thon"</code> → 'Python'</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h3>💡 Escape Characters</h3>
+                        <p>Special characters start with backslash <code>\</code>:</p>
+                        <ul>
+                            <li><code>\n</code> - New line</li>
+                            <li><code>\t</code> - Tab</li>
+                            <li><code>\\</code> - Backslash</li>
+                            <li><code>\'</code> - Single quote</li>
+                            <li><code>\"</code> - Double quote</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INDEXING -->
+        <section id="indexing" class="tab-content">
+            <div class="card">
+                <h2>🔢 String Indexing</h2>
+                
+                <div class="markdown-content">
+                    <p>Each character in a string has a <strong>position number</strong> called an <strong>index</strong>. Python uses <strong>zero-based indexing</strong> (starts from 0).</p>
+                    
+                    <div class="visual-index">
+                        <h3>📊 Visual Index Example: "PYTHON"</h3>
+                        <table class="index-table">
+                            <tr>
+                                <td class="index-cell">P</td>
+                                <td class="index-cell">Y</td>
+                                <td class="index-cell">T</td>
+                                <td class="index-cell">H</td>
+                                <td class="index-cell">O</td>
+                                <td class="index-cell">N</td>
+                            </tr>
+                            <tr>
+                                <td class="positive">0</td>
+                                <td class="positive">1</td>
+                                <td class="positive">2</td>
+                                <td class="positive">3</td>
+                                <td class="positive">4</td>
+                                <td class="positive">5</td>
+                            </tr>
+                            <tr>
+                                <td class="negative">-6</td>
+                                <td class="negative">-5</td>
+                                <td class="negative">-4</td>
+                                <td class="negative">-3</td>
+                                <td class="negative">-2</td>
+                                <td class="negative">-1</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h3>📝 Positive Indexing (from start)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">word</span> <span class="operator">=</span> <span class="string">"PYTHON"</span>
+
+<span class="function">print</span>(<span class="variable">word</span>[<span class="number">0</span>])  <span class="comment"># P (first character)</span>
+<span class="function">print</span>(<span class="variable">word</span>[<span class="number">1</span>])  <span class="comment"># Y (second character)</span>
+<span class="function">print</span>(<span class="variable">word</span>[<span class="number">5</span>])  <span class="comment"># N (last character)</span></code></pre>
+                    </div>
+
+                    <h3>📝 Negative Indexing (from end)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">word</span> <span class="operator">=</span> <span class="string">"PYTHON"</span>
+
+<span class="function">print</span>(<span class="variable">word</span>[<span class="number">-1</span>])  <span class="comment"># N (last character)</span>
+<span class="function">print</span>(<span class="variable">word</span>[<span class="number">-2</span>])  <span class="comment"># O (second to last)</span>
+<span class="function">print</span>(<span class="variable">word</span>[<span class="number">-6</span>])  <span class="comment"># P (first character)</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ IndexError</h3>
+                        <p>Accessing an index that doesn't exist causes an error:</p>
+                        <div class="code-block small">
+                            <pre><code><span class="variable">word</span> <span class="operator">=</span> <span class="string">"PYTHON"</span>  <span class="comment"># length is 6</span>
+<span class="function">print</span>(<span class="variable">word</span>[<span class="number">10</span>])  <span class="comment"># ❌ IndexError!</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Index Explorer</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">✏️ Enter a Word</span>
+                            <div class="input-group">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="index-word" value="PYTHON" placeholder="Type a word...">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Index</span>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="number" id="index-num" value="0">
+                            </div>
+                        </div>
+                        <button onclick="runIndexDemo()">▶ Get Character</button>
+                    </div>
+                    <div class="demo-output" id="index-demo-output">
+                        Enter a word and index to see the character!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLICING -->
+        <section id="slicing" class="tab-content">
+            <div class="card">
+                <h2>✂️ String Slicing</h2>
+                
+                <div class="markdown-content">
+                    <p>Slicing lets you extract a <strong>portion</strong> of a string. Think of it as cutting a piece from the middle!</p>
+                    
+                    <h3>📝 Syntax: <code>string[start:stop:step]</code></h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Description</th>
+                                <th>Default</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>start</code></td>
+                                <td>Where to start (inclusive)</td>
+                                <td>0 (beginning)</td>
+                            </tr>
+                            <tr>
+                                <td><code>stop</code></td>
+                                <td>Where to stop (exclusive)</td>
+                                <td>end of string</td>
+                            </tr>
+                            <tr>
+                                <td><code>step</code></td>
+                                <td>How many to skip</td>
+                                <td>1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🎯 Basic Slicing Examples</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">text</span> <span class="operator">=</span> <span class="string">"Hello, World!"</span>
+
+<span class="comment"># Get characters 0 to 4 (5 is excluded)</span>
+<span class="function">print</span>(<span class="variable">text</span>[<span class="number">0</span>:<span class="number">5</span>])   <span class="comment"># "Hello"</span>
+
+<span class="comment"># From index 7 to end</span>
+<span class="function">print</span>(<span class="variable">text</span>[<span class="number">7</span>:])    <span class="comment"># "World!"</span>
+
+<span class="comment"># From start to index 5</span>
+<span class="function">print</span>(<span class="variable">text</span>[:<span class="number">5</span>])    <span class="comment"># "Hello"</span>
+
+<span class="comment"># Get the whole string</span>
+<span class="function">print</span>(<span class="variable">text</span>[:])     <span class="comment"># "Hello, World!"</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Slicing with Step</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">text</span> <span class="operator">=</span> <span class="string">"ABCDEFGHIJ"</span>
+
+<span class="comment"># Every second character</span>
+<span class="function">print</span>(<span class="variable">text</span>[<span class="number">::2</span>])    <span class="comment"># "ACEGI"</span>
+
+<span class="comment"># Every third character</span>
+<span class="function">print</span>(<span class="variable">text</span>[<span class="number">::3</span>])    <span class="comment"># "ADGJ"</span>
+
+<span class="comment"># Reverse the string!</span>
+<span class="function">print</span>(<span class="variable">text</span>[::<span class="number">-1</span>])   <span class="comment"># "JIHGFEDCBA"</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Negative Slicing</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">text</span> <span class="operator">=</span> <span class="string">"Hello, World!"</span>
+
+<span class="comment"># Last 6 characters</span>
+<span class="function">print</span>(<span class="variable">text</span>[<span class="number">-6</span>:])     <span class="comment"># "World!"</span>
+
+<span class="comment"># Everything except last character</span>
+<span class="function">print</span>(<span class="variable">text</span>[:<span class="number">-1</span>])     <span class="comment"># "Hello, World"</span>
+
+<span class="comment"># From -6 to -1 (exclusive)</span>
+<span class="function">print</span>(<span class="variable">text</span>[<span class="number">-6</span>:<span class="number">-1</span>])   <span class="comment"># "World"</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Common Slice Patterns</h3>
+                        <ul>
+                            <li><code>s[::-1]</code> - Reverse string</li>
+                            <li><code>s[1:]</code> - Remove first character</li>
+                            <li><code>s[:-1]</code> - Remove last character</li>
+                            <li><code>s[::2]</code> - Every other character</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Slice Playground</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">✏️ String</span>
+                            <div class="input-group">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="slice-word" value="Hello, World!" placeholder="Type a string...">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🚀 Start</span>
+                            <div class="input-group">
+                                <span class="input-icon">[</span>
+                                <input type="text" id="slice-start" value="0" placeholder="start">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🏁 Stop</span>
+                            <div class="input-group">
+                                <span class="input-icon">:</span>
+                                <input type="text" id="slice-stop" value="5" placeholder="stop">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">👣 Step</span>
+                            <div class="input-group">
+                                <span class="input-icon">:</span>
+                                <input type="text" id="slice-step" value="" placeholder="step">
+                            </div>
+                        </div>
+                        <button onclick="runSliceDemo()">▶ Slice!</button>
+                    </div>
+                    <div class="demo-output" id="slice-demo-output">
+                        Adjust the slice parameters and click "Slice!"
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODS -->
+        <section id="methods" class="tab-content">
+            <div class="card">
+                <h2>🛠️ String Methods</h2>
+                
+                <div class="markdown-content">
+                    <p>Python strings come with many built-in <strong>methods</strong> (functions attached to strings) that make text manipulation easy!</p>
+                    
+                    <h3>📋 Case Methods</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">text</span> <span class="operator">=</span> <span class="string">"hello WORLD"</span>
+
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">upper</span>())       <span class="comment"># "HELLO WORLD"</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">lower</span>())       <span class="comment"># "hello world"</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">capitalize</span>())  <span class="comment"># "Hello world"</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">title</span>())       <span class="comment"># "Hello World"</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">swapcase</span>())    <span class="comment"># "HELLO world"</span></code></pre>
+                    </div>
+
+                    <h3>📋 Search Methods</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">text</span> <span class="operator">=</span> <span class="string">"Hello, World!"</span>
+
+<span class="comment"># Find position of substring</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">find</span>(<span class="string">"World"</span>))     <span class="comment"># 7</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">find</span>(<span class="string">"Python"</span>))    <span class="comment"># -1 (not found)</span>
+
+<span class="comment"># Check if contains</span>
+<span class="function">print</span>(<span class="string">"World"</span> <span class="keyword">in</span> <span class="variable">text</span>)       <span class="comment"># True</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">startswith</span>(<span class="string">"Hello"</span>)) <span class="comment"># True</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">endswith</span>(<span class="string">"!"</span>))      <span class="comment"># True</span>
+
+<span class="comment"># Count occurrences</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">count</span>(<span class="string">"o"</span>))        <span class="comment"># 2</span></code></pre>
+                    </div>
+
+                    <h3>📋 Modify Methods</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Replace</span>
+<span class="variable">text</span> <span class="operator">=</span> <span class="string">"Hello, World!"</span>
+<span class="function">print</span>(<span class="variable">text</span>.<span class="function">replace</span>(<span class="string">"World"</span>, <span class="string">"Python"</span>))  <span class="comment"># "Hello, Python!"</span>
+
+<span class="comment"># Strip whitespace</span>
+<span class="variable">messy</span> <span class="operator">=</span> <span class="string">"   hello   "</span>
+<span class="function">print</span>(<span class="variable">messy</span>.<span class="function">strip</span>())   <span class="comment"># "hello"</span>
+<span class="function">print</span>(<span class="variable">messy</span>.<span class="function">lstrip</span>())  <span class="comment"># "hello   " (left only)</span>
+<span class="function">print</span>(<span class="variable">messy</span>.<span class="function">rstrip</span>())  <span class="comment"># "   hello" (right only)</span>
+
+<span class="comment"># Split into list</span>
+<span class="variable">sentence</span> <span class="operator">=</span> <span class="string">"apple,banana,cherry"</span>
+<span class="function">print</span>(<span class="variable">sentence</span>.<span class="function">split</span>(<span class="string">","</span>))  <span class="comment"># ['apple', 'banana', 'cherry']</span>
+
+<span class="comment"># Join list into string</span>
+<span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'cherry'</span>]
+<span class="function">print</span>(<span class="string">", "</span>.<span class="function">join</span>(<span class="variable">fruits</span>))  <span class="comment"># "apple, banana, cherry"</span></code></pre>
+                    </div>
+
+                    <h3>📋 Check Methods (return True/False)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="function">print</span>(<span class="string">"hello"</span>.<span class="function">isalpha</span>())    <span class="comment"># True (all letters)</span>
+<span class="function">print</span>(<span class="string">"12345"</span>.<span class="function">isdigit</span>())    <span class="comment"># True (all digits)</span>
+<span class="function">print</span>(<span class="string">"hello123"</span>.<span class="function">isalnum</span>()) <span class="comment"># True (letters or digits)</span>
+<span class="function">print</span>(<span class="string">"   "</span>.<span class="function">isspace</span>())       <span class="comment"># True (all whitespace)</span>
+<span class="function">print</span>(<span class="string">"HELLO"</span>.<span class="function">isupper</span>())    <span class="comment"># True (all uppercase)</span>
+<span class="function">print</span>(<span class="string">"hello"</span>.<span class="function">islower</span>())    <span class="comment"># True (all lowercase)</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Remember!</h3>
+                        <p>String methods return <strong>new strings</strong>. They don't modify the original!</p>
+                        <div class="code-block small">
+                            <pre><code><span class="variable">name</span> <span class="operator">=</span> <span class="string">"alice"</span>
+<span class="variable">name</span>.<span class="function">upper</span>()  <span class="comment"># Returns "ALICE" but name is still "alice"</span>
+<span class="variable">name</span> <span class="operator">=</span> <span class="variable">name</span>.<span class="function">upper</span>()  <span class="comment"># Now name is "ALICE"</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Method Tester</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">✏️ Input String</span>
+                            <div class="input-group">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="method-input" value="  hello WORLD  " placeholder="Type a string...">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🛠️ Method</span>
+                            <select id="method-select">
+                                <option value="upper">upper()</option>
+                                <option value="lower">lower()</option>
+                                <option value="capitalize">capitalize()</option>
+                                <option value="title">title()</option>
+                                <option value="strip">strip()</option>
+                                <option value="swapcase">swapcase()</option>
+                                <option value="reverse">[::-1] (reverse)</option>
+                            </select>
+                        </div>
+                        <button onclick="runMethodDemo()">▶ Apply Method</button>
+                    </div>
+                    <div class="demo-output" id="method-demo-output">
+                        Select a method and click "Apply Method"!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- F-STRINGS -->
+        <section id="formatting" class="tab-content">
+            <div class="card">
+                <h2>🎨 f-Strings (Formatted String Literals)</h2>
+                
+                <div class="markdown-content">
+                    <p>f-Strings are the <strong>modern way</strong> to format strings in Python (3.6+). They're fast, readable, and powerful!</p>
+                    
+                    <h3>📝 Basic f-String Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">name</span> <span class="operator">=</span> <span class="string">"Alice"</span>
+<span class="variable">age</span> <span class="operator">=</span> <span class="number">25</span>
+
+<span class="comment"># f-string (modern way)</span>
+<span class="function">print</span>(<span class="string">f"Hello, </span><span class="variable">{name}</span><span class="string">! You are </span><span class="variable">{age}</span><span class="string"> years old."</span>)
+<span class="comment"># Output: Hello, Alice! You are 25 years old.</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Expressions Inside f-Strings</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">price</span> <span class="operator">=</span> <span class="number">19.99</span>
+<span class="variable">quantity</span> <span class="operator">=</span> <span class="number">3</span>
+
+<span class="comment"># Math inside f-string</span>
+<span class="function">print</span>(<span class="string">f"Total: $</span><span class="variable">{price * quantity}</span><span class="string">"</span>)
+<span class="comment"># Output: Total: $59.97</span>
+
+<span class="comment"># Method calls</span>
+<span class="variable">name</span> <span class="operator">=</span> <span class="string">"bob"</span>
+<span class="function">print</span>(<span class="string">f"Hello, </span><span class="variable">{name.upper()}</span><span class="string">!"</span>)
+<span class="comment"># Output: Hello, BOB!</span>
+
+<span class="comment"># Conditional expression</span>
+<span class="variable">score</span> <span class="operator">=</span> <span class="number">85</span>
+<span class="function">print</span>(<span class="string">f"Result: </span><span class="variable">{'Pass' if score >= 60 else 'Fail'}</span><span class="string">"</span>)
+<span class="comment"># Output: Result: Pass</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Number Formatting</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">pi</span> <span class="operator">=</span> <span class="number">3.14159265359</span>
+<span class="variable">big_num</span> <span class="operator">=</span> <span class="number">1234567890</span>
+<span class="variable">percent</span> <span class="operator">=</span> <span class="number">0.875</span>
+
+<span class="comment"># Decimal places</span>
+<span class="function">print</span>(<span class="string">f"Pi: </span><span class="variable">{pi:.2f}</span><span class="string">"</span>)           <span class="comment"># Pi: 3.14</span>
+<span class="function">print</span>(<span class="string">f"Pi: </span><span class="variable">{pi:.4f}</span><span class="string">"</span>)           <span class="comment"># Pi: 3.1416</span>
+
+<span class="comment"># Thousands separator</span>
+<span class="function">print</span>(<span class="string">f"Number: </span><span class="variable">{big_num:,}</span><span class="string">"</span>)    <span class="comment"># Number: 1,234,567,890</span>
+
+<span class="comment"># Percentage</span>
+<span class="function">print</span>(<span class="string">f"Score: </span><span class="variable">{percent:.1%}</span><span class="string">"</span>)   <span class="comment"># Score: 87.5%</span>
+
+<span class="comment"># Padding</span>
+<span class="variable">num</span> <span class="operator">=</span> <span class="number">42</span>
+<span class="function">print</span>(<span class="string">f"ID: </span><span class="variable">{num:05d}</span><span class="string">"</span>)          <span class="comment"># ID: 00042 (pad with zeros)</span>
+<span class="function">print</span>(<span class="string">f"ID: </span><span class="variable">{num:>10}</span><span class="string">"</span>)         <span class="comment"># ID:         42 (right align)</span></code></pre>
+                    </div>
+
+                    <h3>📋 Old vs New Formatting</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">name</span> <span class="operator">=</span> <span class="string">"Alice"</span>
+<span class="variable">age</span> <span class="operator">=</span> <span class="number">25</span>
+
+<span class="comment"># Old way 1: % formatting</span>
+<span class="function">print</span>(<span class="string">"Hello, %s! Age: %d"</span> <span class="operator">%</span> (<span class="variable">name</span>, <span class="variable">age</span>))
+
+<span class="comment"># Old way 2: .format()</span>
+<span class="function">print</span>(<span class="string">"Hello, {}! Age: {}"</span>.<span class="function">format</span>(<span class="variable">name</span>, <span class="variable">age</span>))
+
+<span class="comment"># Modern way: f-strings ✅</span>
+<span class="function">print</span>(<span class="string">f"Hello, </span><span class="variable">{name}</span><span class="string">! Age: </span><span class="variable">{age}</span><span class="string">"</span>)</code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Why f-Strings?</h3>
+                        <ul>
+                            <li>More readable - variables are right in the string</li>
+                            <li>Faster than other methods</li>
+                            <li>Can include any Python expression</li>
+                            <li>Less error-prone than % formatting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 f-String Builder</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">👤 Name</span>
+                            <div class="input-group">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="fstring-name" value="Student" placeholder="Your name">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📊 Score</span>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="number" id="fstring-score" value="85.5" step="0.1">
+                            </div>
+                        </div>
+                        <button onclick="runFstringDemo()">▶ Format</button>
+                    </div>
+                    <div class="demo-output" id="fstring-demo-output">
+                        Click "Format" to see f-string examples!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master strings!</p>
+                
+                <!-- Practice Sub-Navigation -->
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- DRAG & DROP -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/4</span>
+                        </div>
+                        <h4>Get the first character of a string</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">word = "Python"</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">first = word[</span>
+                                <span class="drop-zone" data-answer="0" data-index="0"></span>
+                                <span class="code-text">]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(first)  # Output: "P"</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="0">0</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="1">1</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="-1">-1</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/4</span>
+                        </div>
+                        <h4>Reverse a string using slicing</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">text = "Hello"</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">reversed_text = text[</span>
+                                <span class="drop-zone" data-answer="::" data-index="0"></span>
+                                <span class="drop-zone" data-answer="-1" data-index="1"></span>
+                                <span class="code-text">]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(reversed_text)  # Output: "olleH"</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="::">:: </div>
+                            <div class="drag-piece" draggable="true" data-value="-1">-1</div>
+                            <div class="drag-piece decoy" draggable="true" data-value=":">:</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="1">1</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">3/4</span>
+                        </div>
+                        <h4>Convert to uppercase and check</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">name = "alice"</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">upper_name = name.</span>
+                                <span class="drop-zone" data-answer="upper" data-index="0"></span>
+                                <span class="code-text">()</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">is_upper = upper_name.</span>
+                                <span class="drop-zone" data-answer="isupper" data-index="1"></span>
+                                <span class="code-text">()</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(is_upper)  # Output: True</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="upper">upper</div>
+                            <div class="drag-piece" draggable="true" data-value="isupper">isupper</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="lower">lower</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="isalpha">isalpha</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag4">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">4/4</span>
+                        </div>
+                        <h4>Use f-string to format a message</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">name = "Bob"</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">score = 95</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">message = </span>
+                                <span class="drop-zone" data-answer="f" data-index="0"></span>
+                                <span class="code-text">"</span>
+                                <span class="drop-zone" data-answer="{name}" data-index="1"></span>
+                                <span class="code-text"> scored </span>
+                                <span class="drop-zone" data-answer="{score}" data-index="2"></span>
+                                <span class="code-text">%"</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag4">
+                            <div class="drag-piece" draggable="true" data-value="f">f</div>
+                            <div class="drag-piece" draggable="true" data-value="{name}">{name}</div>
+                            <div class="drag-piece" draggable="true" data-value="{score}">{score}</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="$name">$name</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="%s">%s</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag4')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag4')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag4"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                            <span class="dot" data-num="4"></span>
+                        </div>
+                        <span class="progress-text">0/4 completed</span>
+                    </div>
+                </div>
+
+                <!-- CODING -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: First and Last</h4>
+                            <p>Print the first and last character of the given word.</p>
+                            <div class="example-box">
+                                <strong>Expected Output for "Python":</strong>
+                                <div class="example-case">
+                                    <span><code>First: P, Last: n</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false">word = "Python"
+
+# Get first and last characters
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>word[0]</code> for first, <code>word[-1]</code> for last character.</p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Word Count</h4>
+                            <p>Count how many words are in the sentence (words are separated by spaces).</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>Word count: 5</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false">sentence = "Python is a great language"
+
+# Count the words
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use <code>split()</code> to split by spaces, then use <code>len()</code> on the result.</p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Email Validator</h4>
+                            <p>Check if an email contains "@" and ends with ".com"</p>
+                            <div class="example-box">
+                                <strong>Expected Output for valid email:</strong>
+                                <div class="example-case">
+                                    <span><code>Valid email!</code></span>
+                                </div>
+                                <strong>Expected Output for invalid email:</strong>
+                                <div class="example-case">
+                                    <span><code>Invalid email!</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false">email = "student@school.com"
+
+# Check if valid email
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Use <code>"@" in email</code> and <code>email.endswith(".com")</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- QUIZ -->
+                <div id="quiz" class="practice-content">
+                    <div class="section-header">
+                        <h3>🧠 Code Analysis Quiz</h3>
+                        <p>Look at the code carefully and predict what will happen!</p>
+                    </div>
+
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header">
+                            <span class="question-num">Question 1/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>word = "Python"
+print(word[2])</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="a">
+                                <span class="option-text">P</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="b">
+                                <span class="option-text">y</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="c">
+                                <span class="option-text">t</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="d">
+                                <span class="option-text">h</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header">
+                            <span class="question-num">Question 2/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>text = "Hello"
+print(text[-2])</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="a">
+                                <span class="option-text">l</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="b">
+                                <span class="option-text">o</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="c">
+                                <span class="option-text">e</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="d">
+                                <span class="option-text">H</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header">
+                            <span class="question-num">Question 3/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>text = "Python"
+print(text[1:4])</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="a">
+                                <span class="option-text">Pyth</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="b">
+                                <span class="option-text">yth</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="c">
+                                <span class="option-text">ytho</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="d">
+                                <span class="option-text">Pyt</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header">
+                            <span class="question-num">Question 4/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>name = "alice"
+print(name.capitalize())</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="a">
+                                <span class="option-text">ALICE</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="b">
+                                <span class="option-text">Alice</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="c">
+                                <span class="option-text">alice</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="d">
+                                <span class="option-text">aLICE</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header">
+                            <span class="question-num">Question 5/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>x = 10
+y = 3
+print(f"{x/y:.2f}")</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="a">
+                                <span class="option-text">3.33</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="b">
+                                <span class="option-text">3.3333333</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="c">
+                                <span class="option-text">3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="d">
+                                <span class="option-text">3.3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        // String specific demos
+        function runIndexDemo() {
+            const word = document.getElementById('index-word').value;
+            const index = parseInt(document.getElementById('index-num').value);
+            
+            const outputEl = document.getElementById('index-demo-output');
+            
+            try {
+                if (index >= word.length || index < -word.length) {
+                    outputEl.innerHTML = `<span class="error">❌ IndexError! Index ${index} is out of range for "${word}" (length: ${word.length})</span>`;
+                    return;
+                }
+                
+                const char = word[index < 0 ? word.length + index : index];
+                outputEl.innerHTML = `
+                    <div><strong>String:</strong> "${word}"</div>
+                    <div><strong>Index:</strong> ${index}</div>
+                    <div><strong>Character:</strong> "${char}"</div>
+                `;
+                outputEl.classList.add('success');
+            } catch (e) {
+                outputEl.innerHTML = `<span class="error">❌ Error: ${e.message}</span>`;
+            }
+        }
+
+        function runSliceDemo() {
+            const word = document.getElementById('slice-word').value;
+            const start = document.getElementById('slice-start').value;
+            const stop = document.getElementById('slice-stop').value;
+            const step = document.getElementById('slice-step').value;
+            
+            let sliceNotation = '';
+            let startIdx = start === '' ? 0 : parseInt(start);
+            let stopIdx = stop === '' ? word.length : parseInt(stop);
+            let stepVal = step === '' ? 1 : parseInt(step);
+            
+            // Build slice notation for display
+            sliceNotation = `[${start}:${stop}${step ? ':' + step : ''}]`;
+            
+            // Perform the slice (JavaScript simulation)
+            let result = '';
+            try {
+                if (stepVal === 0) throw new Error("Step cannot be zero");
+                
+                if (stepVal > 0) {
+                    let s = start === '' ? 0 : (startIdx < 0 ? Math.max(0, word.length + startIdx) : Math.min(startIdx, word.length));
+                    let e = stop === '' ? word.length : (stopIdx < 0 ? Math.max(0, word.length + stopIdx) : Math.min(stopIdx, word.length));
+                    for (let i = s; i < e; i += stepVal) {
+                        result += word[i];
+                    }
+                } else {
+                    let s = start === '' ? word.length - 1 : (startIdx < 0 ? word.length + startIdx : Math.min(startIdx, word.length - 1));
+                    let e = stop === '' ? -1 : (stopIdx < 0 ? word.length + stopIdx : stopIdx);
+                    for (let i = s; i > e; i += stepVal) {
+                        if (i >= 0 && i < word.length) result += word[i];
+                    }
+                }
+                
+                document.getElementById('slice-demo-output').innerHTML = `
+                    <div><strong>String:</strong> "${word}"</div>
+                    <div><strong>Slice:</strong> <code>text${sliceNotation}</code></div>
+                    <div><strong>Result:</strong> "${result}"</div>
+                `;
+            } catch (e) {
+                document.getElementById('slice-demo-output').innerHTML = `<span class="error">❌ ${e.message}</span>`;
+            }
+        }
+
+        function runMethodDemo() {
+            const input = document.getElementById('method-input').value;
+            const method = document.getElementById('method-select').value;
+            
+            let result;
+            switch(method) {
+                case 'upper': result = input.toUpperCase(); break;
+                case 'lower': result = input.toLowerCase(); break;
+                case 'capitalize': result = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase(); break;
+                case 'title': result = input.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' '); break;
+                case 'strip': result = input.trim(); break;
+                case 'swapcase': result = input.split('').map(c => c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()).join(''); break;
+                case 'reverse': result = input.split('').reverse().join(''); break;
+            }
+            
+            document.getElementById('method-demo-output').innerHTML = `
+                <div><strong>Original:</strong> "${input}"</div>
+                <div><strong>Method:</strong> <code>.${method}()</code></div>
+                <div><strong>Result:</strong> "${result}"</div>
+            `;
+        }
+
+        function runFstringDemo() {
+            const name = document.getElementById('fstring-name').value;
+            const score = parseFloat(document.getElementById('fstring-score').value);
+            
+            document.getElementById('fstring-demo-output').innerHTML = `
+                <div><strong>Variables:</strong> name="${name}", score=${score}</div>
+                <hr style="margin: 0.5rem 0; opacity: 0.3;">
+                <div><code>f"Hello, {name}!"</code> → "Hello, ${name}!"</div>
+                <div><code>f"{name.upper()} scored {score}%"</code> → "${name.toUpperCase()} scored ${score}%"</div>
+                <div><code>f"Score: {score:.1f}"</code> → "Score: ${score.toFixed(1)}"</div>
+                <div><code>f"Pass: {score >= 60}"</code> → "Pass: ${score >= 60}"</div>
+            `;
+        }
+    </script>
+</body>
+</html>
+

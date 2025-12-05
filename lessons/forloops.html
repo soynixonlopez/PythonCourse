@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Loops - Python Junior Course</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Lesson Navigation -->
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 08</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>For Loops</h1>
+        <p class="subtitle">Repeat actions with elegance and precision! 🔄</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="basic">🔹 Basic For Loop</button>
+        <button class="tab-btn" data-tab="range">🔢 range() Function</button>
+        <button class="tab-btn" data-tab="enumerate">📋 enumerate()</button>
+        <button class="tab-btn" data-tab="nested">🔷 Nested Loops</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are For Loops?</h2>
+                <div class="markdown-content">
+                    <p>A <strong>for loop</strong> allows you to repeat a block of code a specific number of times, or iterate over a sequence (like a list, string, or range of numbers).</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Imagine you're a teacher calling attendance:</p>
+                        <ul>
+                            <li><strong>FOR EACH</strong> student in the class</li>
+                            <li>Call their name</li>
+                            <li>Wait for response</li>
+                            <li>Move to the next student</li>
+                        </ul>
+                        <p>You repeat the same action FOR EACH item in a group!</p>
+                    </div>
+
+                    <h3>📋 What Can You Iterate Over?</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Example</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>string</code></td>
+                                <td><code>"Hello"</code></td>
+                                <td>Loop through each character</td>
+                            </tr>
+                            <tr>
+                                <td><code>list</code></td>
+                                <td><code>[1, 2, 3]</code></td>
+                                <td>Loop through each item</td>
+                            </tr>
+                            <tr>
+                                <td><code>range()</code></td>
+                                <td><code>range(5)</code></td>
+                                <td>Loop through numbers 0 to 4</td>
+                            </tr>
+                            <tr>
+                                <td><code>tuple</code></td>
+                                <td><code>(1, 2, 3)</code></td>
+                                <td>Loop through each element</td>
+                            </tr>
+                            <tr>
+                                <td><code>dictionary</code></td>
+                                <td><code>{"a": 1}</code></td>
+                                <td>Loop through keys (or values)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h3>💡 Key Concept: Iteration</h3>
+                        <p><strong>Iteration</strong> means going through items one by one. Each time the loop runs is called an <strong>iteration</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BASIC FOR LOOP -->
+        <section id="basic" class="tab-content">
+            <div class="card">
+                <h2>🔹 Basic For Loop Syntax</h2>
+                
+                <div class="markdown-content">
+                    <p>The for loop follows this simple structure:</p>
+                    
+                    <h3>📝 Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">for</span> <span class="variable">item</span> <span class="keyword">in</span> <span class="variable">sequence</span>:
+    <span class="comment"># code to execute for each item</span>
+    <span class="function">print</span>(<span class="variable">item</span>)</code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Looping Through a String</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">word</span> <span class="operator">=</span> <span class="string">"Python"</span>
+
+<span class="keyword">for</span> <span class="variable">letter</span> <span class="keyword">in</span> <span class="variable">word</span>:
+    <span class="function">print</span>(<span class="variable">letter</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># P</span>
+<span class="comment"># y</span>
+<span class="comment"># t</span>
+<span class="comment"># h</span>
+<span class="comment"># o</span>
+<span class="comment"># n</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Looping Through a List</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">fruits</span> <span class="operator">=</span> [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>]
+
+<span class="keyword">for</span> <span class="variable">fruit</span> <span class="keyword">in</span> <span class="variable">fruits</span>:
+    <span class="function">print</span>(<span class="string">f"I love </span><span class="variable">{fruit}</span><span class="string">!"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># I love apple!</span>
+<span class="comment"># I love banana!</span>
+<span class="comment"># I love cherry!</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Don't Forget the Colon!</h3>
+                        <p>The <code>:</code> at the end of the for line is required. Also, the code inside the loop must be <strong>indented</strong> (4 spaces).</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Try It Yourself!</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">✏️ Enter a Word</span>
+                            <div class="input-group">
+                                <span class="input-icon">📝</span>
+                                <input type="text" id="forloop-word-input" value="Hello" placeholder="Type a word...">
+                            </div>
+                        </div>
+                        <button onclick="runForLoopDemo()">▶ Run Loop</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code><span class="variable">word</span> <span class="operator">=</span> <span class="string">"<span id="forloop-word-value">Hello</span>"</span>
+
+<span class="keyword">for</span> <span class="variable">letter</span> <span class="keyword">in</span> <span class="variable">word</span>:
+    <span class="function">print</span>(<span class="string">f"Letter: </span><span class="variable">{letter}</span><span class="string">"</span>)</code></pre>
+                    </div>
+                    <div class="demo-output" id="forloop-demo-output">
+                        Click "Run Loop" to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RANGE FUNCTION -->
+        <section id="range" class="tab-content">
+            <div class="card">
+                <h2>🔢 The <code>range()</code> Function</h2>
+                
+                <div class="markdown-content">
+                    <p>The <code>range()</code> function generates a sequence of numbers. It's perfect when you need to loop a specific number of times!</p>
+                    
+                    <h3>📝 Three Ways to Use range()</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Syntax</th>
+                                <th>Generates</th>
+                                <th>Example Output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>range(stop)</code></td>
+                                <td>0 to stop-1</td>
+                                <td><code>range(5)</code> → 0, 1, 2, 3, 4</td>
+                            </tr>
+                            <tr>
+                                <td><code>range(start, stop)</code></td>
+                                <td>start to stop-1</td>
+                                <td><code>range(2, 6)</code> → 2, 3, 4, 5</td>
+                            </tr>
+                            <tr>
+                                <td><code>range(start, stop, step)</code></td>
+                                <td>start to stop-1 by step</td>
+                                <td><code>range(0, 10, 2)</code> → 0, 2, 4, 6, 8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🎯 Example: Basic range()</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Print numbers 0 to 4</span>
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>):
+    <span class="function">print</span>(<span class="variable">i</span>)
+
+<span class="comment"># Output: 0, 1, 2, 3, 4</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Counting from 1</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Count from 1 to 5 (inclusive)</span>
+<span class="keyword">for</span> <span class="variable">num</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">6</span>):
+    <span class="function">print</span>(<span class="string">f"Count: </span><span class="variable">{num}</span><span class="string">"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># Count: 1</span>
+<span class="comment"># Count: 2</span>
+<span class="comment"># Count: 3</span>
+<span class="comment"># Count: 4</span>
+<span class="comment"># Count: 5</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Counting by Steps</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Even numbers from 0 to 10</span>
+<span class="keyword">for</span> <span class="variable">even</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">0</span>, <span class="number">11</span>, <span class="number">2</span>):
+    <span class="function">print</span>(<span class="variable">even</span>)
+
+<span class="comment"># Output: 0, 2, 4, 6, 8, 10</span>
+
+<span class="comment"># Countdown from 10 to 1</span>
+<span class="keyword">for</span> <span class="variable">countdown</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">10</span>, <span class="number">0</span>, <span class="number">-1</span>):
+    <span class="function">print</span>(<span class="variable">countdown</span>)
+
+<span class="comment"># Output: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Remember!</h3>
+                        <p>The <code>stop</code> value is <strong>never included</strong> in range(). So <code>range(5)</code> gives you 0-4, not 0-5!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo calculator-demo">
+                    <h3>🎮 Range Generator</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🚀 Start</span>
+                            <div class="input-group">
+                                <span class="input-icon">1</span>
+                                <input type="number" id="range-start" value="1" placeholder="Start">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🏁 Stop</span>
+                            <div class="input-group">
+                                <span class="input-icon">N</span>
+                                <input type="number" id="range-stop" value="10" placeholder="Stop">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">👣 Step</span>
+                            <div class="input-group">
+                                <span class="input-icon">+</span>
+                                <input type="number" id="range-step" value="1" placeholder="Step">
+                            </div>
+                        </div>
+                        <button onclick="runRangeDemo()">▶ Generate</button>
+                    </div>
+                    <div class="demo-output" id="range-demo-output">
+                        Click "Generate" to see the sequence!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ENUMERATE -->
+        <section id="enumerate" class="tab-content">
+            <div class="card">
+                <h2>📋 The <code>enumerate()</code> Function</h2>
+                
+                <div class="markdown-content">
+                    <p>Sometimes you need both the <strong>item</strong> AND its <strong>index</strong> (position). That's where <code>enumerate()</code> comes in!</p>
+                    
+                    <h3>📝 Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">for</span> <span class="variable">index</span>, <span class="variable">item</span> <span class="keyword">in</span> <span class="builtin">enumerate</span>(<span class="variable">sequence</span>):
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{index}</span><span class="string">: </span><span class="variable">{item}</span><span class="string">"</span>)</code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Without enumerate() (The Hard Way)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">colors</span> <span class="operator">=</span> [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+
+<span class="comment"># Manually tracking index - NOT recommended!</span>
+<span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>
+<span class="keyword">for</span> <span class="variable">color</span> <span class="keyword">in</span> <span class="variable">colors</span>:
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{index}</span><span class="string">: </span><span class="variable">{color}</span><span class="string">"</span>)
+    <span class="variable">index</span> <span class="operator">+=</span> <span class="number">1</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: With enumerate() (The Pythonic Way)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">colors</span> <span class="operator">=</span> [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]
+
+<span class="comment"># Much cleaner with enumerate!</span>
+<span class="keyword">for</span> <span class="variable">index</span>, <span class="variable">color</span> <span class="keyword">in</span> <span class="builtin">enumerate</span>(<span class="variable">colors</span>):
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{index}</span><span class="string">: </span><span class="variable">{color}</span><span class="string">"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># 0: red</span>
+<span class="comment"># 1: green</span>
+<span class="comment"># 2: blue</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Starting from 1</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">students</span> <span class="operator">=</span> [<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>]
+
+<span class="comment"># Start counting from 1 instead of 0</span>
+<span class="keyword">for</span> <span class="variable">position</span>, <span class="variable">name</span> <span class="keyword">in</span> <span class="builtin">enumerate</span>(<span class="variable">students</span>, <span class="variable">start</span><span class="operator">=</span><span class="number">1</span>):
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{position}</span><span class="string">. </span><span class="variable">{name}</span><span class="string">"</span>)
+
+<span class="comment"># Output:</span>
+<span class="comment"># 1. Alice</span>
+<span class="comment"># 2. Bob</span>
+<span class="comment"># 3. Charlie</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Use Case: Creating Numbered Lists</h3>
+                        <p>Perfect for menus, rankings, or any time you need numbered items!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Enumerate Demo</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📋 Items (comma-separated)</span>
+                            <div class="input-group">
+                                <span class="input-icon">🔢</span>
+                                <input type="text" id="enumerate-input" value="apple, banana, cherry" placeholder="item1, item2, item3">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🚀 Start From</span>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="number" id="enumerate-start" value="1" min="0">
+                            </div>
+                        </div>
+                        <button onclick="runEnumerateDemo()">▶ Enumerate</button>
+                    </div>
+                    <div class="demo-output" id="enumerate-demo-output">
+                        Click "Enumerate" to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NESTED LOOPS -->
+        <section id="nested" class="tab-content">
+            <div class="card">
+                <h2>🔷 Nested For Loops</h2>
+                
+                <div class="markdown-content">
+                    <p>A <strong>nested loop</strong> is a loop inside another loop. The inner loop runs completely for <em>each</em> iteration of the outer loop.</p>
+                    
+                    <h3>📝 Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">for</span> <span class="variable">outer</span> <span class="keyword">in</span> <span class="variable">outer_sequence</span>:
+    <span class="keyword">for</span> <span class="variable">inner</span> <span class="keyword">in</span> <span class="variable">inner_sequence</span>:
+        <span class="comment"># This runs for EVERY combination</span>
+        <span class="function">print</span>(<span class="variable">outer</span>, <span class="variable">inner</span>)</code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Multiplication Table</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Print a 3x3 multiplication table</span>
+<span class="keyword">for</span> <span class="variable">i</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">4</span>):
+    <span class="keyword">for</span> <span class="variable">j</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">4</span>):
+        <span class="variable">result</span> <span class="operator">=</span> <span class="variable">i</span> <span class="operator">*</span> <span class="variable">j</span>
+        <span class="function">print</span>(<span class="string">f"</span><span class="variable">{i}</span><span class="string"> x </span><span class="variable">{j}</span><span class="string"> = </span><span class="variable">{result}</span><span class="string">"</span>)
+    <span class="function">print</span>(<span class="string">"---"</span>)  <span class="comment"># Separator between rows</span>
+
+<span class="comment"># Output:</span>
+<span class="comment"># 1 x 1 = 1</span>
+<span class="comment"># 1 x 2 = 2</span>
+<span class="comment"># 1 x 3 = 3</span>
+<span class="comment"># ---</span>
+<span class="comment"># 2 x 1 = 2</span>
+<span class="comment"># ... and so on</span></code></pre>
+                    </div>
+
+                    <h3>🎯 Example: Pattern Drawing</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Draw a triangle of stars</span>
+<span class="keyword">for</span> <span class="variable">row</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">6</span>):
+    <span class="keyword">for</span> <span class="variable">star</span> <span class="keyword">in</span> <span class="builtin">range</span>(<span class="variable">row</span>):
+        <span class="function">print</span>(<span class="string">"⭐"</span>, <span class="variable">end</span><span class="operator">=</span><span class="string">""</span>)
+    <span class="function">print</span>()  <span class="comment"># New line after each row</span>
+
+<span class="comment"># Output:</span>
+<span class="comment"># ⭐</span>
+<span class="comment"># ⭐⭐</span>
+<span class="comment"># ⭐⭐⭐</span>
+<span class="comment"># ⭐⭐⭐⭐</span>
+<span class="comment"># ⭐⭐⭐⭐⭐</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Watch Your Iterations!</h3>
+                        <p>Nested loops can run many times! A loop of 100 inside a loop of 100 = <strong>10,000 iterations</strong>!</p>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Pattern Generator</h3>
+                    <div class="demo-controls">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📐 Rows</span>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="number" id="pattern-rows" value="5" min="1" max="10">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">⭐ Symbol</span>
+                            <select id="pattern-symbol">
+                                <option value="⭐">⭐ Star</option>
+                                <option value="❤️">❤️ Heart</option>
+                                <option value="🔥">🔥 Fire</option>
+                                <option value="🐍">🐍 Python</option>
+                                <option value="█">█ Block</option>
+                            </select>
+                        </div>
+                        <button onclick="runPatternDemo()">▶ Draw Pattern</button>
+                    </div>
+                    <div class="demo-output pattern-output" id="pattern-demo-output">
+                        Click "Draw Pattern" to see the result!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master for loops!</p>
+                
+                <!-- Practice Sub-Navigation -->
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 1 -->
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/4</span>
+                        </div>
+                        <h4>Print each character in "Python"</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">word = "Python"</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="for" data-index="0"></span>
+                                <span class="code-text"> letter </span>
+                                <span class="drop-zone" data-answer="in" data-index="1"></span>
+                                <span class="code-text"> word</span>
+                                <span class="drop-zone" data-answer=":" data-index="2"></span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="drop-zone" data-answer="print" data-index="3"></span>
+                                <span class="code-text">(letter)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="in">in</div>
+                            <div class="drag-piece" draggable="true" data-value=":">:</div>
+                            <div class="drag-piece" draggable="true" data-value="print">print</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="while">while</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="if">if</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 2 -->
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/4</span>
+                        </div>
+                        <h4>Print numbers 0 to 4 using range()</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="for" data-index="0"></span>
+                                <span class="code-text"> i </span>
+                                <span class="drop-zone" data-answer="in" data-index="1"></span>
+                                <span class="code-text"> </span>
+                                <span class="drop-zone" data-answer="range" data-index="2"></span>
+                                <span class="code-text">(</span>
+                                <span class="drop-zone" data-answer="5" data-index="3"></span>
+                                <span class="code-text">):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print(i)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="in">in</div>
+                            <div class="drag-piece" draggable="true" data-value="range">range</div>
+                            <div class="drag-piece" draggable="true" data-value="5">5</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="4">4</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="len">len</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 3 -->
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">3/4</span>
+                        </div>
+                        <h4>Use enumerate to print index and item</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">fruits = ["apple", "banana", "cherry"]</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">for </span>
+                                <span class="drop-zone" data-answer="index" data-index="0"></span>
+                                <span class="code-text">, fruit in </span>
+                                <span class="drop-zone" data-answer="enumerate" data-index="1"></span>
+                                <span class="code-text">(fruits):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print(f"{</span>
+                                <span class="drop-zone" data-answer="index" data-index="2"></span>
+                                <span class="code-text">}: {fruit}")</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="index">index</div>
+                            <div class="drag-piece" draggable="true" data-value="enumerate">enumerate</div>
+                            <div class="drag-piece" draggable="true" data-value="index">index</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="range">range</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="i">i</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <!-- Drag & Drop Challenge 4 -->
+                    <div class="drag-challenge" data-challenge="drag4">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">4/4</span>
+                        </div>
+                        <h4>Nested loop to print a 3x3 grid</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="for" data-index="0"></span>
+                                <span class="code-text"> row in range(3):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="drop-zone" data-answer="for" data-index="1"></span>
+                                <span class="code-text"> col in </span>
+                                <span class="drop-zone" data-answer="range" data-index="2"></span>
+                                <span class="code-text">(</span>
+                                <span class="drop-zone" data-answer="3" data-index="3"></span>
+                                <span class="code-text">):</span>
+                            </div>
+                            <div class="puzzle-line indent-2">
+                                <span class="code-text">print("*", end=" ")</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">print()  # New line</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag4">
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="for">for</div>
+                            <div class="drag-piece" draggable="true" data-value="range">range</div>
+                            <div class="drag-piece" draggable="true" data-value="3">3</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="while">while</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="2">2</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag4')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag4')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag4"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                            <span class="dot" data-num="4"></span>
+                        </div>
+                        <span class="progress-text">0/4 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <!-- Coding Challenge 1 -->
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Sum of Numbers</h4>
+                            <p>Use a for loop to calculate the sum of numbers from 1 to 10.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>The sum is: 55</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" placeholder="# Initialize a variable to store the sum
+total = 0
+
+# Write your for loop here using range(1, 11)
+" spellcheck="false">total = 0
+
+# Write your for loop here
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>range(1, 11)</code> to get numbers 1-10. Add each number to <code>total</code> using <code>+=</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <!-- Coding Challenge 2 -->
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Even Numbers</h4>
+                            <p>Print all even numbers from 2 to 20 (inclusive).</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>2 4 6 8 10 12 14 16 18 20</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" placeholder="# Use range() with a step of 2
+# Or use range() and check if number is even
+
+" spellcheck="false"># Print even numbers from 2 to 20
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Try <code>range(2, 21, 2)</code> - starts at 2, ends before 21, steps by 2!</p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <!-- Coding Challenge 3 -->
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Multiplication Table</h4>
+                            <p>Print the multiplication table for the number 5 (from 5x1 to 5x10).</p>
+                            <div class="example-box">
+                                <strong>Expected Output Format:</strong>
+                                <div class="example-case">
+                                    <span><code>5 x 1 = 5</code></span>
+                                </div>
+                                <div class="example-case">
+                                    <span><code>5 x 2 = 10</code></span>
+                                </div>
+                                <div class="example-case">
+                                    <span><code>... and so on until 5 x 10 = 50</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" placeholder="# Create a multiplication table for 5
+number = 5
+
+# Write your for loop here
+" spellcheck="false">number = 5
+
+# Write your for loop here
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Use <code>range(1, 11)</code> and multiply <code>number * i</code>. Use f-string: <code>f"{number} x {i} = {result}"</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="section-header">
+                        <h3>🧠 Code Analysis Quiz</h3>
+                        <p>Look at the code carefully and predict what will happen!</p>
+                    </div>
+
+                    <!-- Quiz Question 1 -->
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header">
+                            <span class="question-num">Question 1/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>for i in range(3):
+    print(i)</code></pre>
+                        </div>
+                        <p class="question-text">What will this code print?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="a">
+                                <span class="option-text">1, 2, 3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="b">
+                                <span class="option-text">0, 1, 2</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="c">
+                                <span class="option-text">0, 1, 2, 3</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q1" value="d">
+                                <span class="option-text">1, 2</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 2 -->
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header">
+                            <span class="question-num">Question 2/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>word = "Hi"
+for letter in word:
+    print(letter)</code></pre>
+                        </div>
+                        <p class="question-text">How many times will print() be called?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="a">
+                                <span class="option-text">1 time</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="b">
+                                <span class="option-text">2 times</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="c">
+                                <span class="option-text">3 times</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q2" value="d">
+                                <span class="option-text">0 times</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 3 -->
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header">
+                            <span class="question-num">Question 3/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>for num in range(2, 8, 2):
+    print(num)</code></pre>
+                        </div>
+                        <p class="question-text">What numbers will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="a">
+                                <span class="option-text">2, 4, 6, 8</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="b">
+                                <span class="option-text">2, 4, 6</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="c">
+                                <span class="option-text">0, 2, 4, 6</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q3" value="d">
+                                <span class="option-text">2, 3, 4, 5, 6, 7</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 4 -->
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header">
+                            <span class="question-num">Question 4/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>total = 0
+for i in range(1, 4):
+    total += i
+print(total)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="a">
+                                <span class="option-text">4</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="b">
+                                <span class="option-text">6</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="c">
+                                <span class="option-text">10</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q4" value="d">
+                                <span class="option-text">3</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Question 5 -->
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header">
+                            <span class="question-num">Question 5/5</span>
+                        </div>
+                        <div class="code-display">
+                            <pre><code>for i in range(2):
+    for j in range(2):
+        print("*", end="")
+    print()</code></pre>
+                        </div>
+                        <p class="question-text">What pattern will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="a">
+                                <span class="option-text">**<br>**</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="b">
+                                <span class="option-text">****</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="c">
+                                <span class="option-text">*<br>*<br>*<br>*</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="analysis-q5" value="d">
+                                <span class="option-text">*<br>**</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        // For Loop specific demos
+        function runForLoopDemo() {
+            const word = document.getElementById('forloop-word-input').value || 'Hello';
+            document.getElementById('forloop-word-value').textContent = word;
+            
+            let output = '';
+            for (let letter of word) {
+                output += `Letter: ${letter}\n`;
+            }
+            
+            const outputEl = document.getElementById('forloop-demo-output');
+            outputEl.innerHTML = `<pre>${output}</pre>`;
+            outputEl.classList.add('success');
+        }
+
+        function runRangeDemo() {
+            const start = parseInt(document.getElementById('range-start').value) || 0;
+            const stop = parseInt(document.getElementById('range-stop').value) || 10;
+            const step = parseInt(document.getElementById('range-step').value) || 1;
+            
+            let numbers = [];
+            if (step > 0) {
+                for (let i = start; i < stop; i += step) {
+                    numbers.push(i);
+                }
+            } else if (step < 0) {
+                for (let i = start; i > stop; i += step) {
+                    numbers.push(i);
+                }
+            }
+            
+            const outputEl = document.getElementById('range-demo-output');
+            if (numbers.length === 0) {
+                outputEl.innerHTML = `<span class="error">⚠️ No numbers generated! Check your range values.</span>`;
+            } else {
+                outputEl.innerHTML = `
+                    <div><strong>Code:</strong> <code>range(${start}, ${stop}, ${step})</code></div>
+                    <div><strong>Numbers:</strong> ${numbers.join(', ')}</div>
+                    <div><strong>Count:</strong> ${numbers.length} numbers</div>
+                `;
+                outputEl.classList.add('success');
+            }
+        }
+
+        function runEnumerateDemo() {
+            const input = document.getElementById('enumerate-input').value;
+            const start = parseInt(document.getElementById('enumerate-start').value) || 0;
+            
+            const items = input.split(',').map(item => item.trim()).filter(item => item);
+            
+            let output = '';
+            items.forEach((item, idx) => {
+                output += `${idx + start}: ${item}\n`;
+            });
+            
+            const outputEl = document.getElementById('enumerate-demo-output');
+            outputEl.innerHTML = `<pre>${output}</pre>`;
+            outputEl.classList.add('success');
+        }
+
+        function runPatternDemo() {
+            const rows = parseInt(document.getElementById('pattern-rows').value) || 5;
+            const symbol = document.getElementById('pattern-symbol').value;
+            
+            let pattern = '';
+            for (let i = 1; i <= rows; i++) {
+                pattern += symbol.repeat(i) + '\n';
+            }
+            
+            const outputEl = document.getElementById('pattern-demo-output');
+            outputEl.innerHTML = `<pre style="font-size: 1.5rem; line-height: 1.2;">${pattern}</pre>`;
+            outputEl.classList.add('success');
+        }
+
+        // Update live preview for word input
+        document.getElementById('forloop-word-input')?.addEventListener('input', function() {
+            document.getElementById('forloop-word-value').textContent = this.value || 'Hello';
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions Basics - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 16</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Functions Basics</h1>
+        <p class="subtitle">Create reusable blocks of code! ⚡</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="define">🔧 Defining Functions</button>
+        <button class="tab-btn" data-tab="params">📥 Parameters</button>
+        <button class="tab-btn" data-tab="return">📤 Return Values</button>
+        <button class="tab-btn" data-tab="scope">🔍 Scope</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are Functions?</h2>
+                <div class="markdown-content">
+                    <p>A <strong>function</strong> is a reusable block of code that performs a specific task. Instead of writing the same code over and over, you write it once and call it whenever needed!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of a function like a recipe:</p>
+                        <ul>
+                            <li>Has a <strong>name</strong> (e.g., "make_pizza")</li>
+                            <li>Takes <strong>ingredients</strong> (parameters)</li>
+                            <li>Follows <strong>steps</strong> (the code)</li>
+                            <li><strong>Returns</strong> a result (the pizza!)</li>
+                        </ul>
+                    </div>
+
+                    <h3>📋 Why Use Functions?</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Benefit</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Reusability</strong></td><td>Write once, use many times</td></tr>
+                            <tr><td><strong>Organization</strong></td><td>Break code into logical pieces</td></tr>
+                            <tr><td><strong>Readability</strong></td><td>Give meaningful names to operations</td></tr>
+                            <tr><td><strong>Maintainability</strong></td><td>Fix bugs in one place</td></tr>
+                            <tr><td><strong>Testing</strong></td><td>Test individual pieces of code</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="tip-box">
+                        <h3>💡 Built-in Functions You Already Know!</h3>
+                        <p><code>print()</code>, <code>len()</code>, <code>input()</code>, <code>range()</code>, <code>type()</code> - all functions!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEFINING FUNCTIONS -->
+        <section id="define" class="tab-content">
+            <div class="card">
+                <h2>🔧 Defining Functions</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Basic Syntax</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">function_name</span>():
+    <span class="string">"""Docstring: describes what the function does"""</span>
+    <span class="comment"># Function body (code)</span>
+    <span class="function">print</span>(<span class="string">"Hello from the function!"</span>)</code></pre>
+                    </div>
+
+                    <h3>🎯 Simple Function Example</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="comment"># Define the function</span>
+<span class="keyword">def</span> <span class="function">greet</span>():
+    <span class="string">"""Print a greeting message"""</span>
+    <span class="function">print</span>(<span class="string">"Hello, World!"</span>)
+    <span class="function">print</span>(<span class="string">"Welcome to Python!"</span>)
+
+<span class="comment"># Call the function</span>
+<span class="function">greet</span>()  <span class="comment"># Output: Hello, World! Welcome to Python!</span>
+
+<span class="comment"># Call it again!</span>
+<span class="function">greet</span>()  <span class="comment"># Runs the same code again</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Important Rules!</h3>
+                        <ul>
+                            <li>Function name must start with a letter or underscore</li>
+                            <li>Use lowercase with underscores (snake_case)</li>
+                            <li>Don't forget the colon <code>:</code> after <code>def</code></li>
+                            <li>Indent the function body (4 spaces)</li>
+                            <li>Call with parentheses: <code>greet()</code> not <code>greet</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <h3>🎮 Function Call Demo</h3>
+                    <div class="demo-controls">
+                        <button onclick="runFunctionDemo()">▶ Call greet() Function</button>
+                    </div>
+                    <div class="demo-code">
+                        <pre><code><span class="keyword">def</span> <span class="function">greet</span>():
+    <span class="function">print</span>(<span class="string">"Hello, World!"</span>)
+    <span class="function">print</span>(<span class="string">"Welcome to Python!"</span>)
+
+<span class="function">greet</span>()</code></pre>
+                    </div>
+                    <div class="demo-output" id="function-demo-output">
+                        Click to run the function!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARAMETERS -->
+        <section id="params" class="tab-content">
+            <div class="card">
+                <h2>📥 Function Parameters</h2>
+                
+                <div class="markdown-content">
+                    <p>Parameters let you pass data INTO your function.</p>
+                    
+                    <h3>📝 Function with Parameters</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">greet</span>(<span class="variable">name</span>):
+    <span class="string">"""Greet a person by name"""</span>
+    <span class="function">print</span>(<span class="string">f"Hello, </span><span class="variable">{name}</span><span class="string">!"</span>)
+
+<span class="comment"># Call with argument</span>
+<span class="function">greet</span>(<span class="string">"Alice"</span>)   <span class="comment"># Hello, Alice!</span>
+<span class="function">greet</span>(<span class="string">"Bob"</span>)     <span class="comment"># Hello, Bob!</span></code></pre>
+                    </div>
+
+                    <h3>📝 Multiple Parameters</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">add_numbers</span>(<span class="variable">a</span>, <span class="variable">b</span>):
+    <span class="string">"""Add two numbers and print result"""</span>
+    <span class="variable">result</span> <span class="operator">=</span> <span class="variable">a</span> <span class="operator">+</span> <span class="variable">b</span>
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{a}</span><span class="string"> + </span><span class="variable">{b}</span><span class="string"> = </span><span class="variable">{result}</span><span class="string">"</span>)
+
+<span class="function">add_numbers</span>(<span class="number">5</span>, <span class="number">3</span>)    <span class="comment"># 5 + 3 = 8</span>
+<span class="function">add_numbers</span>(<span class="number">10</span>, <span class="number">20</span>)  <span class="comment"># 10 + 20 = 30</span></code></pre>
+                    </div>
+
+                    <h3>📝 Default Parameters</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">greet</span>(<span class="variable">name</span>, <span class="variable">greeting</span><span class="operator">=</span><span class="string">"Hello"</span>):
+    <span class="string">"""Greet with optional greeting"""</span>
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{greeting}</span><span class="string">, </span><span class="variable">{name}</span><span class="string">!"</span>)
+
+<span class="function">greet</span>(<span class="string">"Alice"</span>)              <span class="comment"># Hello, Alice!</span>
+<span class="function">greet</span>(<span class="string">"Bob"</span>, <span class="string">"Hi"</span>)          <span class="comment"># Hi, Bob!</span>
+<span class="function">greet</span>(<span class="string">"Charlie"</span>, <span class="string">"Welcome"</span>) <span class="comment"># Welcome, Charlie!</span></code></pre>
+                    </div>
+
+                    <h3>📝 Keyword Arguments</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">describe_pet</span>(<span class="variable">name</span>, <span class="variable">animal</span><span class="operator">=</span><span class="string">"dog"</span>):
+    <span class="function">print</span>(<span class="string">f"</span><span class="variable">{name}</span><span class="string"> is a </span><span class="variable">{animal}</span><span class="string">"</span>)
+
+<span class="comment"># Using keyword arguments</span>
+<span class="function">describe_pet</span>(<span class="variable">name</span><span class="operator">=</span><span class="string">"Buddy"</span>)                  <span class="comment"># Buddy is a dog</span>
+<span class="function">describe_pet</span>(<span class="variable">name</span><span class="operator">=</span><span class="string">"Whiskers"</span>, <span class="variable">animal</span><span class="operator">=</span><span class="string">"cat"</span>) <span class="comment"># Whiskers is a cat</span>
+<span class="function">describe_pet</span>(<span class="variable">animal</span><span class="operator">=</span><span class="string">"bird"</span>, <span class="variable">name</span><span class="operator">=</span><span class="string">"Tweety"</span>)  <span class="comment"># Order doesn't matter!</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Parameter vs Argument</h3>
+                        <ul>
+                            <li><strong>Parameter</strong>: Variable in function definition</li>
+                            <li><strong>Argument</strong>: Value passed when calling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RETURN VALUES -->
+        <section id="return" class="tab-content">
+            <div class="card">
+                <h2>📤 Return Values</h2>
+                
+                <div class="markdown-content">
+                    <p>Use <code>return</code> to send data back from the function.</p>
+                    
+                    <h3>📝 Basic Return</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">add</span>(<span class="variable">a</span>, <span class="variable">b</span>):
+    <span class="string">"""Return the sum of a and b"""</span>
+    <span class="keyword">return</span> <span class="variable">a</span> <span class="operator">+</span> <span class="variable">b</span>
+
+<span class="comment"># Store the result</span>
+<span class="variable">result</span> <span class="operator">=</span> <span class="function">add</span>(<span class="number">5</span>, <span class="number">3</span>)
+<span class="function">print</span>(<span class="variable">result</span>)  <span class="comment"># 8</span>
+
+<span class="comment"># Use directly</span>
+<span class="function">print</span>(<span class="function">add</span>(<span class="number">10</span>, <span class="number">20</span>))  <span class="comment"># 30</span></code></pre>
+                    </div>
+
+                    <h3>📝 Return Multiple Values</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">get_stats</span>(<span class="variable">numbers</span>):
+    <span class="string">"""Return min, max, and sum of a list"""</span>
+    <span class="keyword">return</span> <span class="builtin">min</span>(<span class="variable">numbers</span>), <span class="builtin">max</span>(<span class="variable">numbers</span>), <span class="builtin">sum</span>(<span class="variable">numbers</span>)
+
+<span class="variable">minimum</span>, <span class="variable">maximum</span>, <span class="variable">total</span> <span class="operator">=</span> <span class="function">get_stats</span>([<span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">2</span>])
+<span class="function">print</span>(<span class="string">f"Min: </span><span class="variable">{minimum}</span><span class="string">, Max: </span><span class="variable">{maximum}</span><span class="string">, Sum: </span><span class="variable">{total}</span><span class="string">"</span>)
+<span class="comment"># Min: 1, Max: 9, Sum: 20</span></code></pre>
+                    </div>
+
+                    <h3>📝 Return Ends the Function</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">def</span> <span class="function">is_positive</span>(<span class="variable">num</span>):
+    <span class="keyword">if</span> <span class="variable">num</span> <span class="operator">></span> <span class="number">0</span>:
+        <span class="keyword">return</span> <span class="boolean">True</span>
+    <span class="keyword">return</span> <span class="boolean">False</span>
+
+<span class="function">print</span>(<span class="function">is_positive</span>(<span class="number">5</span>))   <span class="comment"># True</span>
+<span class="function">print</span>(<span class="function">is_positive</span>(<span class="number">-3</span>))  <span class="comment"># False</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ No Return = None</h3>
+                        <p>Functions without <code>return</code> (or just <code>return</code> alone) return <code>None</code></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCOPE -->
+        <section id="scope" class="tab-content">
+            <div class="card">
+                <h2>🔍 Variable Scope</h2>
+                
+                <div class="markdown-content">
+                    <p><strong>Scope</strong> determines where a variable can be accessed.</p>
+                    
+                    <h3>📝 Local vs Global Scope</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">global_var</span> <span class="operator">=</span> <span class="string">"I'm global!"</span>  <span class="comment"># Global scope</span>
+
+<span class="keyword">def</span> <span class="function">my_function</span>():
+    <span class="variable">local_var</span> <span class="operator">=</span> <span class="string">"I'm local!"</span>  <span class="comment"># Local scope</span>
+    <span class="function">print</span>(<span class="variable">global_var</span>)  <span class="comment"># Can access global</span>
+    <span class="function">print</span>(<span class="variable">local_var</span>)   <span class="comment"># Can access local</span>
+
+<span class="function">my_function</span>()
+<span class="function">print</span>(<span class="variable">global_var</span>)  <span class="comment"># Works</span>
+<span class="comment"># print(local_var)  # ❌ NameError! local_var not defined here</span></code></pre>
+                    </div>
+
+                    <h3>📝 The global Keyword</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="variable">counter</span> <span class="operator">=</span> <span class="number">0</span>
+
+<span class="keyword">def</span> <span class="function">increment</span>():
+    <span class="keyword">global</span> <span class="variable">counter</span>  <span class="comment"># Use the global variable</span>
+    <span class="variable">counter</span> <span class="operator">+=</span> <span class="number">1</span>
+
+<span class="function">increment</span>()
+<span class="function">increment</span>()
+<span class="function">print</span>(<span class="variable">counter</span>)  <span class="comment"># 2</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Best Practice</h3>
+                        <p>Avoid <code>global</code> when possible. Pass values as parameters and use return values instead!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master functions!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <h4>Define a simple function</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="def" data-index="0"></span>
+                                <span class="code-text"> greet()</span>
+                                <span class="drop-zone" data-answer=":" data-index="1"></span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="drop-zone" data-answer="print" data-index="2"></span>
+                                <span class="code-text">("Hello!")</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="def">def</div>
+                            <div class="drag-piece" draggable="true" data-value=":">:</div>
+                            <div class="drag-piece" draggable="true" data-value="print">print</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="function">function</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="func">func</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <h4>Function with parameters and return</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">def add(a, </span>
+                                <span class="drop-zone" data-answer="b" data-index="0"></span>
+                                <span class="code-text">):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="drop-zone" data-answer="return" data-index="1"></span>
+                                <span class="code-text"> a + b</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">result = </span>
+                                <span class="drop-zone" data-answer="add" data-index="2"></span>
+                                <span class="code-text">(3, 5)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="b">b</div>
+                            <div class="drag-piece" draggable="true" data-value="return">return</div>
+                            <div class="drag-piece" draggable="true" data-value="add">add</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="print">print</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="yield">yield</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <h4>Function with default parameter</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">def greet(name</span>
+                                <span class="drop-zone" data-answer="=" data-index="0"></span>
+                                <span class="code-text">"Guest"):</span>
+                            </div>
+                            <div class="puzzle-line indent">
+                                <span class="code-text">return </span>
+                                <span class="drop-zone" data-answer="f" data-index="1"></span>
+                                <span class="code-text">"Hello, {name}!"</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(</span>
+                                <span class="drop-zone" data-answer="greet" data-index="2"></span>
+                                <span class="code-text">())  # "Hello, Guest!"</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="=">=</div>
+                            <div class="drag-piece" draggable="true" data-value="f">f</div>
+                            <div class="drag-piece" draggable="true" data-value="greet">greet</div>
+                            <div class="drag-piece decoy" draggable="true" data-value=":">:</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="str">str</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Double It</h4>
+                            <p>Create a function that returns double the input number.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>double(5) → 10</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false"># Define a function called 'double' that takes a number
+# and returns its double
+
+# Test it
+print(double(5))
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>def double(n): return n * 2</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Is Even</h4>
+                            <p>Create a function that returns True if a number is even, False otherwise.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>is_even(4) → True</code></span>
+                                </div>
+                                <div class="example-case">
+                                    <span><code>is_even(7) → False</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false"># Define a function 'is_even' that checks if a number is even
+
+# Test it
+print(is_even(4))
+print(is_even(7))
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use the modulo operator: <code>return n % 2 == 0</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Greeting with Default</h4>
+                            <p>Create a function that greets a user. If no name is given, use "World".</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>greet("Alice") → "Hello, Alice!"</code></span>
+                                </div>
+                                <div class="example-case">
+                                    <span><code>greet() → "Hello, World!"</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false"># Define 'greet' function with default parameter
+
+# Test it
+print(greet("Alice"))
+print(greet())
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Use <code>def greet(name="World"):</code> and return with f-string!</p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                        <div class="code-display">
+                            <pre><code>def greet():
+    print("Hello!")
+
+greet</code></pre>
+                        </div>
+                        <p class="question-text">What happens?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="a"><span class="option-text">Prints "Hello!"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="b"><span class="option-text">Nothing happens (no call)</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="c"><span class="option-text">Error</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="d"><span class="option-text">Prints the function object</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                        <div class="code-display">
+                            <pre><code>def add(a, b=5):
+    return a + b
+
+print(add(3))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="a"><span class="option-text">3</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="b"><span class="option-text">8</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="c"><span class="option-text">Error</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="d"><span class="option-text">5</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                        <div class="code-display">
+                            <pre><code>def test():
+    print("A")
+    return
+    print("B")
+
+test()</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="a"><span class="option-text">A and B</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="b"><span class="option-text">Only A</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="c"><span class="option-text">Only B</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="d"><span class="option-text">Nothing</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                        <div class="code-display">
+                            <pre><code>def multiply(x, y):
+    x * y
+
+result = multiply(3, 4)
+print(result)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="a"><span class="option-text">12</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="b"><span class="option-text">None</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="c"><span class="option-text">Error</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="d"><span class="option-text">0</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                        <div class="code-display">
+                            <pre><code>x = 10
+def change():
+    x = 20
+change()
+print(x)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="a"><span class="option-text">10</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="b"><span class="option-text">20</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="c"><span class="option-text">Error</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="d"><span class="option-text">None</span></label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+    <script>
+        function runFunctionDemo() {
+            document.getElementById('function-demo-output').innerHTML = `
+                <pre>Hello, World!
+Welcome to Python!</pre>
+            `;
+        }
+    </script>
+</body>
+</html>
+

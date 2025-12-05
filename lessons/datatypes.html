@@ -89,11 +89,11 @@
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Use type() to check data types
-print(type("Hello"))     # &lt;class 'str'&gt;
-print(type(42))          # &lt;class 'int'&gt;
-print(type(3.14))        # &lt;class 'float'&gt;
-print(type(True))        # &lt;class 'bool'&gt;</code></pre>
+                        <pre><code><span class="comment"># Use type() to check data types</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="string">"Hello"</span>))     <span class="comment"># &lt;class 'str'&gt;</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="number">42</span>))          <span class="comment"># &lt;class 'int'&gt;</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="number">3.14</span>))        <span class="comment"># &lt;class 'float'&gt;</span>
+<span class="function">print</span>(<span class="function">type</span>(<span class="keyword">True</span>))        <span class="comment"># &lt;class 'bool'&gt;</span></code></pre>
                     </div>
                 </div>
             </div>
@@ -113,20 +113,20 @@ print(type(True))        # &lt;class 'bool'&gt;</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Single quotes
-name = 'Alex'
+                        <pre><code><span class="comment"># Single quotes</span>
+<span class="variable">name</span> <span class="operator">=</span> <span class="string">'Alex'</span>
 
-# Double quotes (same thing!)
-greeting = "Hello, World!"
+<span class="comment"># Double quotes (same thing!)</span>
+<span class="variable">greeting</span> <span class="operator">=</span> <span class="string">"Hello, World!"</span>
 
-# Triple quotes (for multiple lines)
-poem = """Roses are red,
+<span class="comment"># Triple quotes (for multiple lines)</span>
+<span class="variable">poem</span> <span class="operator">=</span> <span class="string">"""Roses are red,
 Violets are blue,
 Python is awesome,
-And so are you!"""
+And so are you!"""</span>
 
-# Empty string
-empty = ""</code></pre>
+<span class="comment"># Empty string</span>
+<span class="variable">empty</span> <span class="operator">=</span> <span class="string">""</span></code></pre>
                     </div>
 
                     <h3>🔗 String Concatenation (+)</h3>
@@ -136,16 +136,16 @@ empty = ""</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>first_name = "John"
-last_name = "Doe"
+                        <pre><code><span class="variable">first_name</span> <span class="operator">=</span> <span class="string">"John"</span>
+<span class="variable">last_name</span> <span class="operator">=</span> <span class="string">"Doe"</span>
 
-# Combine strings
-full_name = first_name + " " + last_name
-print(full_name)  # John Doe
+<span class="comment"># Combine strings</span>
+<span class="variable">full_name</span> <span class="operator">=</span> <span class="variable">first_name</span> <span class="operator">+</span> <span class="string">" "</span> <span class="operator">+</span> <span class="variable">last_name</span>
+<span class="function">print</span>(<span class="variable">full_name</span>)  <span class="comment"># John Doe</span>
 
-# Repeat strings with *
-laugh = "ha" * 3
-print(laugh)  # hahaha</code></pre>
+<span class="comment"># Repeat strings with *</span>
+<span class="variable">laugh</span> <span class="operator">=</span> <span class="string">"ha"</span> <span class="operator">*</span> <span class="number">3</span>
+<span class="function">print</span>(<span class="variable">laugh</span>)  <span class="comment"># hahaha</span></code></pre>
                     </div>
 
                     <h3>📏 String Length</h3>
@@ -154,28 +154,40 @@ print(laugh)  # hahaha</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>message = "Hello!"
-print(len(message))  # 6</code></pre>
+                        <pre><code><span class="variable">message</span> <span class="operator">=</span> <span class="string">"Hello!"</span>
+<span class="function">print</span>(<span class="function">len</span>(<span class="variable">message</span>))  <span class="comment"># 6</span></code></pre>
                     </div>
 
                     <div class="tip-box">
                         <h3>💡 Pro Tip: f-Strings</h3>
                         <p>The easiest way to include variables in strings:</p>
                         <div class="code-block small">
-                            <pre><code>name = "Alex"
-age = 15
-print(f"My name is {name} and I'm {age} years old")
-# Output: My name is Alex and I'm 15 years old</code></pre>
+                            <pre><code><span class="variable">name</span> <span class="operator">=</span> <span class="string">"Alex"</span>
+<span class="variable">age</span> <span class="operator">=</span> <span class="number">15</span>
+<span class="function">print</span>(<span class="string">f"My name is </span><span class="fstring-bracket">{</span><span class="variable">name</span><span class="fstring-bracket">}</span><span class="string"> and I'm </span><span class="fstring-bracket">{</span><span class="variable">age</span><span class="fstring-bracket">}</span><span class="string"> years old"</span>)
+<span class="comment"># Output: My name is Alex and I'm 15 years old</span></code></pre>
                         </div>
                     </div>
                 </div>
 
-                <div class="interactive-demo">
-                    <h3>🎮 String Combiner</h3>
+                <div class="interactive-demo string-demo">
+                    <h3>🔗 String Combiner</h3>
                     <div class="demo-controls">
-                        <input type="text" id="str1" value="Hello" style="width: 100px;">
-                        <span style="color: var(--accent-yellow); font-size: 1.5rem;">+</span>
-                        <input type="text" id="str2" value="World" style="width: 100px;">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🅰️ String 1</span>
+                            <div class="input-group">
+                                <span class="input-icon">💬</span>
+                                <input type="text" id="str1" value="Hello" placeholder="First text...">
+                            </div>
+                        </div>
+                        <span style="color: var(--accent-yellow); font-size: 2rem; font-weight: 700; text-shadow: 0 0 10px rgba(249, 226, 175, 0.5); line-height: 48px;">+</span>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🅱️ String 2</span>
+                            <div class="input-group">
+                                <span class="input-icon">💬</span>
+                                <input type="text" id="str2" value="World" placeholder="Second text...">
+                            </div>
+                        </div>
                         <button onclick="combineStrings()">▶ Combine</button>
                     </div>
                     <div class="demo-output" id="string-output">Click "Combine" to see the result!</div>
@@ -196,13 +208,13 @@ print(f"My name is {name} and I'm {age} years old")
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>age = 25
-temperature = -10
-score = 0
-big_number = 1000000
+                        <pre><code><span class="variable">age</span> <span class="operator">=</span> <span class="number">25</span>
+<span class="variable">temperature</span> <span class="operator">=</span> <span class="number">-10</span>
+<span class="variable">score</span> <span class="operator">=</span> <span class="number">0</span>
+<span class="variable">big_number</span> <span class="operator">=</span> <span class="number">1000000</span>
 
-# You can use underscores for readability
-population = 7_900_000_000  # Same as 7900000000</code></pre>
+<span class="comment"># You can use underscores for readability</span>
+<span class="variable">population</span> <span class="operator">=</span> <span class="number">7_900_000_000</span>  <span class="comment"># Same as 7900000000</span></code></pre>
                     </div>
 
                     <h3>💧 Floats (float)</h3>
@@ -212,10 +224,10 @@ population = 7_900_000_000  # Same as 7900000000</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>pi = 3.14159
-price = 19.99
-temperature = -2.5
-percentage = 0.85</code></pre>
+                        <pre><code><span class="variable">pi</span> <span class="operator">=</span> <span class="number">3.14159</span>
+<span class="variable">price</span> <span class="operator">=</span> <span class="number">19.99</span>
+<span class="variable">temperature</span> <span class="operator">=</span> <span class="number">-2.5</span>
+<span class="variable">percentage</span> <span class="operator">=</span> <span class="number">0.85</span></code></pre>
                     </div>
 
                     <h3>🧮 Math Operations</h3>
@@ -242,26 +254,32 @@ percentage = 0.85</code></pre>
                     <div class="warning-box">
                         <h3>⚠️ Division Always Returns Float!</h3>
                         <div class="code-block small">
-                            <pre><code>print(10 / 2)   # 5.0 (float, not int!)
-print(10 // 2)  # 5 (floor division = int)</code></pre>
+                            <pre><code><span class="function">print</span>(<span class="number">10</span> <span class="operator">/</span> <span class="number">2</span>)   <span class="comment"># 5.0 (float, not int!)</span>
+<span class="function">print</span>(<span class="number">10</span> <span class="operator">//</span> <span class="number">2</span>)  <span class="comment"># 5 (floor division = int)</span></code></pre>
                         </div>
                     </div>
                 </div>
 
-                <div class="interactive-demo">
-                    <h3>🧮 Calculator</h3>
+                <div class="interactive-demo calculator-demo">
+                    <h3>🧮 Python Calculator</h3>
                     <div class="demo-controls">
-                        <input type="number" id="num1" value="10" style="width: 80px;">
-                        <select id="op">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Number 1</span>
+                            <input type="number" id="num1" value="10" placeholder="Enter value">
+                        </div>
+                        <select id="op" class="operator-select">
                             <option value="+">+</option>
-                            <option value="-">-</option>
+                            <option value="-">−</option>
                             <option value="*">×</option>
                             <option value="/">÷</option>
-                            <option value="//">// (floor)</option>
-                            <option value="%">% (mod)</option>
-                            <option value="**">** (power)</option>
+                            <option value="//">//</option>
+                            <option value="%">%</option>
+                            <option value="**">**</option>
                         </select>
-                        <input type="number" id="num2" value="3" style="width: 80px;">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Number 2</span>
+                            <input type="number" id="num2" value="3" placeholder="Enter value">
+                        </div>
                         <button onclick="calculate()">▶ Calculate</button>
                     </div>
                     <div class="demo-output" id="calc-output">Click "Calculate" to see the result!</div>
@@ -283,13 +301,13 @@ print(10 // 2)  # 5 (floor division = int)</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Direct assignment
-is_student = True
-has_license = False
-is_raining = True
+                        <pre><code><span class="comment"># Direct assignment</span>
+<span class="variable">is_student</span> <span class="operator">=</span> <span class="keyword">True</span>
+<span class="variable">has_license</span> <span class="operator">=</span> <span class="keyword">False</span>
+<span class="variable">is_raining</span> <span class="operator">=</span> <span class="keyword">True</span>
 
-# Note: True and False are capitalized!
-# true ❌  True ✅</code></pre>
+<span class="comment"># Note: True and False are capitalized!</span>
+<span class="comment"># true ❌  True ✅</span></code></pre>
                     </div>
 
                     <h3>🔍 Comparison Operators</h3>
@@ -299,15 +317,15 @@ is_raining = True
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code>x = 10
-y = 5
+                        <pre><code><span class="variable">x</span> <span class="operator">=</span> <span class="number">10</span>
+<span class="variable">y</span> <span class="operator">=</span> <span class="number">5</span>
 
-print(x > y)    # True  (10 is greater than 5)
-print(x < y)    # False (10 is not less than 5)
-print(x == y)   # False (10 does not equal 5)
-print(x != y)   # True  (10 is not equal to 5)
-print(x >= 10)  # True  (10 is >= 10)
-print(x <= 5)   # False (10 is not <= 5)</code></pre>
+<span class="function">print</span>(<span class="variable">x</span> <span class="operator">></span> <span class="variable">y</span>)    <span class="comment"># True  (10 is greater than 5)</span>
+<span class="function">print</span>(<span class="variable">x</span> <span class="operator"><</span> <span class="variable">y</span>)    <span class="comment"># False (10 is not less than 5)</span>
+<span class="function">print</span>(<span class="variable">x</span> <span class="operator">==</span> <span class="variable">y</span>)   <span class="comment"># False (10 does not equal 5)</span>
+<span class="function">print</span>(<span class="variable">x</span> <span class="operator">!=</span> <span class="variable">y</span>)   <span class="comment"># True  (10 is not equal to 5)</span>
+<span class="function">print</span>(<span class="variable">x</span> <span class="operator">>=</span> <span class="number">10</span>)  <span class="comment"># True  (10 is >= 10)</span>
+<span class="function">print</span>(<span class="variable">x</span> <span class="operator"><=</span> <span class="number">5</span>)   <span class="comment"># False (10 is not <= 5)</span></code></pre>
                     </div>
 
                     <h3>🎯 Comparison Operators Table</h3>
@@ -364,51 +382,60 @@ print(x <= 5)   # False (10 is not <= 5)</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># String to Number
-age_str = "25"
-age_int = int(age_str)
-print(age_int + 5)  # 30
+                        <pre><code><span class="comment"># String to Number</span>
+<span class="variable">age_str</span> <span class="operator">=</span> <span class="string">"25"</span>
+<span class="variable">age_int</span> <span class="operator">=</span> <span class="function">int</span>(<span class="variable">age_str</span>)
+<span class="function">print</span>(<span class="variable">age_int</span> <span class="operator">+</span> <span class="number">5</span>)  <span class="comment"># 30</span>
 
-# Number to String
-score = 100
-message = "Your score is: " + str(score)
-print(message)  # Your score is: 100
+<span class="comment"># Number to String</span>
+<span class="variable">score</span> <span class="operator">=</span> <span class="number">100</span>
+<span class="variable">message</span> <span class="operator">=</span> <span class="string">"Your score is: "</span> <span class="operator">+</span> <span class="function">str</span>(<span class="variable">score</span>)
+<span class="function">print</span>(<span class="variable">message</span>)  <span class="comment"># Your score is: 100</span>
 
-# Float to Integer (removes decimals!)
-price = 19.99
-whole_price = int(price)
-print(whole_price)  # 19
+<span class="comment"># Float to Integer (removes decimals!)</span>
+<span class="variable">price</span> <span class="operator">=</span> <span class="number">19.99</span>
+<span class="variable">whole_price</span> <span class="operator">=</span> <span class="function">int</span>(<span class="variable">price</span>)
+<span class="function">print</span>(<span class="variable">whole_price</span>)  <span class="comment"># 19</span>
 
-# Integer to Float
-number = 42
-decimal = float(number)
-print(decimal)  # 42.0</code></pre>
+<span class="comment"># Integer to Float</span>
+<span class="variable">number</span> <span class="operator">=</span> <span class="number">42</span>
+<span class="variable">decimal</span> <span class="operator">=</span> <span class="function">float</span>(<span class="variable">number</span>)
+<span class="function">print</span>(<span class="variable">decimal</span>)  <span class="comment"># 42.0</span></code></pre>
                     </div>
 
                     <div class="warning-box">
                         <h3>⚠️ Common Errors</h3>
                         <div class="code-block small">
-                            <pre><code># This will cause an ERROR!
-int("hello")     # ❌ Can't convert text to number
-int("3.14")      # ❌ Use float() first, then int()
+                            <pre><code><span class="comment"># This will cause an ERROR!</span>
+<span class="function">int</span>(<span class="string">"hello"</span>)     <span class="comment"># ❌ Can't convert text to number</span>
+<span class="function">int</span>(<span class="string">"3.14"</span>)      <span class="comment"># ❌ Use float() first, then int()</span>
 
-# This works:
-int(float("3.14"))  # ✅ → 3</code></pre>
+<span class="comment"># This works:</span>
+<span class="function">int</span>(<span class="function">float</span>(<span class="string">"3.14"</span>))  <span class="comment"># ✅ → 3</span></code></pre>
                         </div>
                     </div>
                 </div>
 
-                <div class="interactive-demo">
+                <div class="interactive-demo type-demo">
                     <h3>🔄 Type Converter</h3>
                     <div class="demo-controls">
-                        <input type="text" id="convert-input" value="42" style="width: 120px;">
-                        <select id="convert-type">
-                            <option value="str">str()</option>
-                            <option value="int">int()</option>
-                            <option value="float">float()</option>
-                            <option value="bool">bool()</option>
-                            <option value="type">type()</option>
-                        </select>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">📥 Input Value</span>
+                            <div class="input-group">
+                                <span class="input-icon">✏️</span>
+                                <input type="text" id="convert-input" value="42" placeholder="Any value...">
+                            </div>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">⚙️ Convert To</span>
+                            <select id="convert-type">
+                                <option value="str">str()</option>
+                                <option value="int">int()</option>
+                                <option value="float">float()</option>
+                                <option value="bool">bool()</option>
+                                <option value="type">type()</option>
+                            </select>
+                        </div>
                         <button onclick="convertType()">▶ Convert</button>
                     </div>
                     <div class="demo-output" id="convert-output">Click "Convert" to see the result!</div>

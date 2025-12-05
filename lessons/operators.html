@@ -59,46 +59,52 @@
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># Basic operations
-print(15 + 7)    # 22
-print(20 - 8)    # 12
-print(6 * 9)     # 54
-print(100 / 4)   # 25.0
+                        <pre><code><span class="comment"># Basic operations</span>
+<span class="function">print</span>(<span class="number">15</span> <span class="operator">+</span> <span class="number">7</span>)    <span class="comment"># 22</span>
+<span class="function">print</span>(<span class="number">20</span> <span class="operator">-</span> <span class="number">8</span>)    <span class="comment"># 12</span>
+<span class="function">print</span>(<span class="number">6</span> <span class="operator">*</span> <span class="number">9</span>)     <span class="comment"># 54</span>
+<span class="function">print</span>(<span class="number">100</span> <span class="operator">/</span> <span class="number">4</span>)   <span class="comment"># 25.0</span>
 
-# Floor division (rounds down)
-print(17 // 5)   # 3 (not 3.4)
+<span class="comment"># Floor division (rounds down)</span>
+<span class="function">print</span>(<span class="number">17</span> <span class="operator">//</span> <span class="number">5</span>)   <span class="comment"># 3 (not 3.4)</span>
 
-# Modulo (remainder after division)
-print(17 % 5)    # 2 (17 = 5*3 + 2)
+<span class="comment"># Modulo (remainder after division)</span>
+<span class="function">print</span>(<span class="number">17</span> <span class="operator">%</span> <span class="number">5</span>)    <span class="comment"># 2 (17 = 5*3 + 2)</span>
 
-# Exponent (power)
-print(2 ** 10)   # 1024 (2 to the power of 10)</code></pre>
+<span class="comment"># Exponent (power)</span>
+<span class="function">print</span>(<span class="number">2</span> <span class="operator">**</span> <span class="number">10</span>)   <span class="comment"># 1024 (2 to the power of 10)</span></code></pre>
                     </div>
 
                     <div class="tip-box">
                         <h3>💡 Order of Operations (PEMDAS)</h3>
                         <p>Python follows math rules: Parentheses → Exponents → Multiply/Divide → Add/Subtract</p>
                         <div class="code-block small">
-                            <pre><code>print(2 + 3 * 4)     # 14 (not 20!)
-print((2 + 3) * 4)   # 20 (parentheses first)</code></pre>
+                            <pre><code><span class="function">print</span>(<span class="number">2</span> <span class="operator">+</span> <span class="number">3</span> <span class="operator">*</span> <span class="number">4</span>)     <span class="comment"># 14 (not 20!)</span>
+<span class="function">print</span>((<span class="number">2</span> <span class="operator">+</span> <span class="number">3</span>) <span class="operator">*</span> <span class="number">4</span>)   <span class="comment"># 20 (parentheses first)</span></code></pre>
                         </div>
                     </div>
                 </div>
 
-                <div class="interactive-demo">
+                <div class="interactive-demo calculator-demo">
                     <h3>🧮 Try Arithmetic</h3>
                     <div class="demo-controls">
-                        <input type="number" id="arith-n1" value="17" style="width: 70px;">
-                        <select id="arith-op">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Number 1</span>
+                            <input type="number" id="arith-n1" value="17" placeholder="Enter number">
+                        </div>
+                        <select id="arith-op" class="operator-select">
                             <option value="+">+</option>
-                            <option value="-">-</option>
-                            <option value="*">*</option>
-                            <option value="/">/</option>
+                            <option value="-">−</option>
+                            <option value="*">×</option>
+                            <option value="/">÷</option>
                             <option value="//">//</option>
                             <option value="%">%</option>
                             <option value="**">**</option>
                         </select>
-                        <input type="number" id="arith-n2" value="5" style="width: 70px;">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Number 2</span>
+                            <input type="number" id="arith-n2" value="5" placeholder="Enter number">
+                        </div>
                         <button onclick="calcArith()">▶ Calculate</button>
                     </div>
                     <div class="demo-output" id="arith-output">Click "Calculate"!</div>
@@ -183,24 +189,24 @@ print((2 + 3) * 4)   # 20 (parentheses first)</code></pre>
                             <span>Python</span>
                             <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
-                        <pre><code># 🎂 Can you vote? (age must be 18 or more)
-age = 16
-can_vote = age >= 18      # False (16 is not >= 18)
+                        <pre><code><span class="comment"># 🎂 Can you vote? (age must be 18 or more)</span>
+<span class="variable">age</span> <span class="operator">=</span> <span class="number">16</span>
+<span class="variable">can_vote</span> <span class="operator">=</span> <span class="variable">age</span> <span class="operator">>=</span> <span class="number">18</span>      <span class="comment"># False (16 is not >= 18)</span>
 
-# 🎮 Did you beat the high score?
-your_score = 850
-high_score = 800
-new_record = your_score > high_score  # True! 850 > 800
+<span class="comment"># 🎮 Did you beat the high score?</span>
+<span class="variable">your_score</span> <span class="operator">=</span> <span class="number">850</span>
+<span class="variable">high_score</span> <span class="operator">=</span> <span class="number">800</span>
+<span class="variable">new_record</span> <span class="operator">=</span> <span class="variable">your_score</span> <span class="operator">></span> <span class="variable">high_score</span>  <span class="comment"># True! 850 > 800</span>
 
-# 💰 Do you have enough money?
-price = 50
-my_money = 45
-can_buy = my_money >= price  # False (45 < 50)
+<span class="comment"># 💰 Do you have enough money?</span>
+<span class="variable">price</span> <span class="operator">=</span> <span class="number">50</span>
+<span class="variable">my_money</span> <span class="operator">=</span> <span class="number">45</span>
+<span class="variable">can_buy</span> <span class="operator">=</span> <span class="variable">my_money</span> <span class="operator">>=</span> <span class="variable">price</span>  <span class="comment"># False (45 < 50)</span>
 
-# 🔐 Is the password correct?
-password = "python123"
-attempt = "python123"
-access = password == attempt  # True! They match!</code></pre>
+<span class="comment"># 🔐 Is the password correct?</span>
+<span class="variable">password</span> <span class="operator">=</span> <span class="string">"python123"</span>
+<span class="variable">attempt</span> <span class="operator">=</span> <span class="string">"python123"</span>
+<span class="variable">access</span> <span class="operator">=</span> <span class="variable">password</span> <span class="operator">==</span> <span class="variable">attempt</span>  <span class="comment"># True! They match!</span></code></pre>
                     </div>
 
                     <div class="warning-box">
@@ -211,9 +217,9 @@ access = password == attempt  # True! They match!</code></pre>
                             <li><code>==</code> (two equals) → <strong>COMPARES</strong> values: <code>x == 5</code> means "is x equal to 5?"</li>
                         </ul>
                         <div class="code-block small">
-                            <pre><code>x = 5      # ✅ Assigns 5 to x
-x == 5     # ✅ Checks if x equals 5 (returns True)
-if x = 5:  # ❌ ERROR! Use == for comparisons!</code></pre>
+                            <pre><code><span class="variable">x</span> <span class="operator">=</span> <span class="number">5</span>      <span class="comment"># ✅ Assigns 5 to x</span>
+<span class="variable">x</span> <span class="operator">==</span> <span class="number">5</span>     <span class="comment"># ✅ Checks if x equals 5 (returns True)</span>
+<span class="keyword">if</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">5</span><span class="operator">:</span>  <span class="comment"># ❌ ERROR! Use == for comparisons!</span></code></pre>
                         </div>
                     </div>
                 </div>
@@ -221,16 +227,25 @@ if x = 5:  # ❌ ERROR! Use == for comparisons!</code></pre>
                 <div class="interactive-demo">
                     <h3>🐊 Try the Crocodile Game!</h3>
                     <div class="demo-controls">
-                        <input type="number" id="comp-n1" value="10" style="width: 70px;">
-                        <select id="comp-op">
-                            <option value="==">== (equal?)</option>
-                            <option value="!=">!= (different?)</option>
-                            <option value=">">&gt; (crocodile eats left)</option>
-                            <option value="<">&lt; (chick points right)</option>
-                            <option value=">=">&gt;= (big or same)</option>
-                            <option value="<=">&lt;= (small or same)</option>
-                        </select>
-                        <input type="number" id="comp-n2" value="5" style="width: 70px;">
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Value 1</span>
+                            <input type="number" id="comp-n1" value="10" placeholder="Enter value">
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">⚖️ Compare</span>
+                            <select id="comp-op">
+                                <option value="==">== equal?</option>
+                                <option value="!=">!= different?</option>
+                                <option value=">">&gt; 🐊 left</option>
+                                <option value="<">&lt; 🐤 right</option>
+                                <option value=">=">&gt;= big/same</option>
+                                <option value="<=">&lt;= small/same</option>
+                            </select>
+                        </div>
+                        <div class="styled-input-wrapper">
+                            <span class="input-label">🔢 Value 2</span>
+                            <input type="number" id="comp-n2" value="5" placeholder="Enter value">
+                        </div>
                         <button onclick="calcComp()">▶ Compare</button>
                     </div>
                     <div class="demo-output" id="comp-output">Click "Compare" to see if it's True or False!</div>

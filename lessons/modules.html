@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules & Imports - Python Junior Course</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="lesson-nav">
+        <a href="../roadmap.html" class="back-to-roadmap">← Back to Roadmap</a>
+        <span class="lesson-badge">Module 18</span>
+    </div>
+    
+    <header>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">🐍 Python Jr.</a></div>
+        <h1>Modules & Imports</h1>
+        <p class="subtitle">Organize and reuse code with modules! 📦</p>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="intro">📚 Introduction</button>
+        <button class="tab-btn" data-tab="import">📥 Import Methods</button>
+        <button class="tab-btn" data-tab="stdlib">🐍 Standard Library</button>
+        <button class="tab-btn" data-tab="practice">🎮 Practice</button>
+    </nav>
+
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro" class="tab-content active">
+            <div class="card intro-card">
+                <h2>🎯 What are Modules?</h2>
+                <div class="markdown-content">
+                    <p>A <strong>module</strong> is a Python file (.py) containing code you can reuse. Python comes with many built-in modules!</p>
+                    
+                    <div class="analogy-box">
+                        <h3>🌍 Real-Life Analogy</h3>
+                        <p>Think of modules like a toolbox:</p>
+                        <ul>
+                            <li>Each tool (function) serves a purpose</li>
+                            <li>You pick the tools you need</li>
+                            <li>No need to build every tool yourself</li>
+                        </ul>
+                    </div>
+
+                    <h3>📋 Why Use Modules?</h3>
+                    <table class="info-table">
+                        <thead>
+                            <tr><th>Benefit</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Organization</strong></td><td>Split code into logical files</td></tr>
+                            <tr><td><strong>Reusability</strong></td><td>Use code in multiple programs</td></tr>
+                            <tr><td><strong>Namespace</strong></td><td>Avoid naming conflicts</td></tr>
+                            <tr><td><strong>Community</strong></td><td>Use libraries made by others</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPORT METHODS -->
+        <section id="import" class="tab-content">
+            <div class="card">
+                <h2>📥 Import Methods</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 Basic Import</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">import</span> <span class="variable">math</span>
+
+<span class="function">print</span>(<span class="variable">math</span>.<span class="variable">pi</span>)         <span class="comment"># 3.14159...</span>
+<span class="function">print</span>(<span class="variable">math</span>.<span class="function">sqrt</span>(<span class="number">16</span>))   <span class="comment"># 4.0</span>
+<span class="function">print</span>(<span class="variable">math</span>.<span class="function">ceil</span>(<span class="number">4.2</span>))  <span class="comment"># 5</span></code></pre>
+                    </div>
+
+                    <h3>📝 Import Specific Items</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">from</span> <span class="variable">math</span> <span class="keyword">import</span> <span class="variable">pi</span>, <span class="function">sqrt</span>
+
+<span class="function">print</span>(<span class="variable">pi</span>)       <span class="comment"># 3.14159... (no math. prefix!)</span>
+<span class="function">print</span>(<span class="function">sqrt</span>(<span class="number">16</span>))  <span class="comment"># 4.0</span></code></pre>
+                    </div>
+
+                    <h3>📝 Import with Alias</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">import</span> <span class="variable">math</span> <span class="keyword">as</span> <span class="variable">m</span>
+
+<span class="function">print</span>(<span class="variable">m</span>.<span class="variable">pi</span>)      <span class="comment"># Use short name</span>
+<span class="function">print</span>(<span class="variable">m</span>.<span class="function">sqrt</span>(<span class="number">16</span>)) <span class="comment"># 4.0</span>
+
+<span class="comment"># Common aliases</span>
+<span class="keyword">import</span> <span class="variable">numpy</span> <span class="keyword">as</span> <span class="variable">np</span>
+<span class="keyword">import</span> <span class="variable">pandas</span> <span class="keyword">as</span> <span class="variable">pd</span></code></pre>
+                    </div>
+
+                    <h3>📝 Import All (Not Recommended)</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">from</span> <span class="variable">math</span> <span class="keyword">import</span> <span class="operator">*</span>  <span class="comment"># Imports everything - avoid!</span>
+
+<span class="function">print</span>(<span class="variable">pi</span>)  <span class="comment"># Works, but where did pi come from?</span></code></pre>
+                    </div>
+
+                    <div class="warning-box">
+                        <h3>⚠️ Avoid <code>from x import *</code></h3>
+                        <p>It pollutes your namespace and makes it unclear where things come from.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STANDARD LIBRARY -->
+        <section id="stdlib" class="tab-content">
+            <div class="card">
+                <h2>🐍 Useful Standard Library Modules</h2>
+                
+                <div class="markdown-content">
+                    <h3>📝 math - Mathematical Functions</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">import</span> <span class="variable">math</span>
+
+<span class="variable">math</span>.<span class="variable">pi</span>          <span class="comment"># 3.14159...</span>
+<span class="variable">math</span>.<span class="function">sqrt</span>(<span class="number">16</span>)    <span class="comment"># 4.0</span>
+<span class="variable">math</span>.<span class="function">ceil</span>(<span class="number">4.2</span>)   <span class="comment"># 5 (round up)</span>
+<span class="variable">math</span>.<span class="function">floor</span>(<span class="number">4.8</span>)  <span class="comment"># 4 (round down)</span>
+<span class="variable">math</span>.<span class="function">pow</span>(<span class="number">2</span>, <span class="number">3</span>)   <span class="comment"># 8.0 (2^3)</span></code></pre>
+                    </div>
+
+                    <h3>📝 random - Random Numbers</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">import</span> <span class="variable">random</span>
+
+<span class="variable">random</span>.<span class="function">random</span>()           <span class="comment"># 0.0 to 1.0</span>
+<span class="variable">random</span>.<span class="function">randint</span>(<span class="number">1</span>, <span class="number">10</span>)     <span class="comment"># 1 to 10 (inclusive)</span>
+<span class="variable">random</span>.<span class="function">choice</span>([<span class="string">"a"</span>, <span class="string">"b"</span>]) <span class="comment"># Random element</span>
+<span class="variable">random</span>.<span class="function">shuffle</span>(<span class="variable">my_list</span>)   <span class="comment"># Shuffle in place</span></code></pre>
+                    </div>
+
+                    <h3>📝 datetime - Date and Time</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">from</span> <span class="variable">datetime</span> <span class="keyword">import</span> <span class="variable">datetime</span>, <span class="variable">date</span>
+
+<span class="variable">now</span> <span class="operator">=</span> <span class="variable">datetime</span>.<span class="function">now</span>()
+<span class="function">print</span>(<span class="variable">now</span>)              <span class="comment"># Current date and time</span>
+<span class="function">print</span>(<span class="variable">now</span>.<span class="variable">year</span>)          <span class="comment"># Current year</span>
+<span class="function">print</span>(<span class="variable">date</span>.<span class="function">today</span>())      <span class="comment"># Today's date</span></code></pre>
+                    </div>
+
+                    <h3>📝 os - Operating System</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Python</span>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                        <pre><code><span class="keyword">import</span> <span class="variable">os</span>
+
+<span class="variable">os</span>.<span class="function">getcwd</span>()            <span class="comment"># Current directory</span>
+<span class="variable">os</span>.<span class="function">listdir</span>(<span class="string">"."</span>)        <span class="comment"># List files in directory</span>
+<span class="variable">os</span>.<span class="variable">path</span>.<span class="function">exists</span>(<span class="string">"file.txt"</span>)  <span class="comment"># Check if exists</span></code></pre>
+                    </div>
+
+                    <div class="tip-box">
+                        <h3>💡 Explore the Standard Library!</h3>
+                        <p>Python has modules for: JSON, CSV, email, web requests, and much more!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICE -->
+        <section id="practice" class="tab-content">
+            <div class="card">
+                <h2>🎮 Practice Zone</h2>
+                <p class="practice-intro">Complete all challenges to master modules!</p>
+                
+                <div class="practice-tabs">
+                    <button class="practice-tab-btn active" data-practice="dragdrop">
+                        <span class="tab-icon">🧩</span>
+                        <span class="tab-label">Part 1: Drag & Drop</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="coding">
+                        <span class="tab-icon">⌨️</span>
+                        <span class="tab-label">Part 2: Write Code</span>
+                    </button>
+                    <button class="practice-tab-btn" data-practice="quiz">
+                        <span class="tab-icon">🧠</span>
+                        <span class="tab-label">Part 3: Code Analysis</span>
+                    </button>
+                </div>
+
+                <!-- ==================== PART 1: DRAG & DROP ==================== -->
+                <div id="dragdrop" class="practice-content active">
+                    <div class="section-header">
+                        <h3>🧩 Complete the Code</h3>
+                        <p>Drag the correct pieces to fill in the blanks!</p>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <h4>Import the math module</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="import" data-index="0"></span>
+                                <span class="code-text"> math</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(</span>
+                                <span class="drop-zone" data-answer="math" data-index="1"></span>
+                                <span class="code-text">.pi)</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag1">
+                            <div class="drag-piece" draggable="true" data-value="import">import</div>
+                            <div class="drag-piece" draggable="true" data-value="math">math</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="include">include</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="require">require</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag1')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag1')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag1"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <h4>Import specific function</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="drop-zone" data-answer="from" data-index="0"></span>
+                                <span class="code-text"> math </span>
+                                <span class="drop-zone" data-answer="import" data-index="1"></span>
+                                <span class="code-text"> sqrt</span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(sqrt(16))  # 4.0</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag2">
+                            <div class="drag-piece" draggable="true" data-value="from">from</div>
+                            <div class="drag-piece" draggable="true" data-value="import">import</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="use">use</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="get">get</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag2')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag2')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag2"></div>
+                    </div>
+
+                    <div class="drag-challenge" data-challenge="drag3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <h4>Import with alias</h4>
+                        
+                        <div class="code-puzzle">
+                            <div class="puzzle-line">
+                                <span class="code-text">import random </span>
+                                <span class="drop-zone" data-answer="as" data-index="0"></span>
+                                <span class="code-text"> </span>
+                                <span class="drop-zone" data-answer="rnd" data-index="1"></span>
+                            </div>
+                            <div class="puzzle-line">
+                                <span class="code-text">print(rnd.randint(1, 10))</span>
+                            </div>
+                        </div>
+
+                        <div class="drag-pieces" id="pieces-drag3">
+                            <div class="drag-piece" draggable="true" data-value="as">as</div>
+                            <div class="drag-piece" draggable="true" data-value="rnd">rnd</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="alias">alias</div>
+                            <div class="drag-piece decoy" draggable="true" data-value="rand">rand</div>
+                        </div>
+
+                        <button class="check-btn" onclick="checkDragChallenge('drag3')">✓ Check Answer</button>
+                        <button class="reset-btn" onclick="resetDragChallenge('drag3')">↺ Reset</button>
+                        <div class="challenge-result" id="result-drag3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="dragdrop-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 2: WRITE CODE ==================== -->
+                <div id="coding" class="practice-content">
+                    <div class="section-header">
+                        <h3>⌨️ Write Your Own Code</h3>
+                        <p>Read the problem carefully and write the solution!</p>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code1">
+                        <div class="challenge-header">
+                            <span class="difficulty easy">Easy</span>
+                            <span class="challenge-num">1/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Calculate Square Root</h4>
+                            <p>Import math and calculate the square root of 144.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>12.0</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code1">1</span></span>
+                            </div>
+                            <textarea id="code1-input" class="code-textarea" spellcheck="false"># Import math and print sqrt(144)
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code1')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code1')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code1">
+                            <p>Use <code>import math</code> then <code>print(math.sqrt(144))</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code1"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code2">
+                        <div class="challenge-header">
+                            <span class="difficulty medium">Medium</span>
+                            <span class="challenge-num">2/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Random Number</h4>
+                            <p>Generate a random number between 1 and 100 using the random module.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>Random number: (some number between 1-100)</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code2">1</span></span>
+                            </div>
+                            <textarea id="code2-input" class="code-textarea" spellcheck="false"># Import random and generate a number between 1 and 100
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code2')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code2')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code2">
+                            <p>Use <code>import random</code> then <code>random.randint(1, 100)</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code2"></div>
+                    </div>
+
+                    <div class="coding-challenge" data-challenge="code3">
+                        <div class="challenge-header">
+                            <span class="difficulty hard">Hard</span>
+                            <span class="challenge-num">3/3</span>
+                        </div>
+                        <div class="problem-statement">
+                            <h4>🎯 Problem: Current Date</h4>
+                            <p>Print today's date using the datetime module.</p>
+                            <div class="example-box">
+                                <strong>Expected Output:</strong>
+                                <div class="example-case">
+                                    <span><code>Today: 2024-01-15 (format: YYYY-MM-DD)</code></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="code-editor">
+                            <div class="editor-header">
+                                <span>Python</span>
+                                <span class="line-count">Lines: <span id="lines-code3">1</span></span>
+                            </div>
+                            <textarea id="code3-input" class="code-textarea" spellcheck="false"># Import datetime and print today's date
+
+</textarea>
+                        </div>
+                        <div class="code-actions">
+                            <button class="run-btn" onclick="runCodingChallenge('code3')">▶ Run & Check</button>
+                            <button class="hint-toggle" onclick="toggleCodingHint('code3')">💡 Hint</button>
+                        </div>
+                        <div class="coding-hint" id="hint-code3">
+                            <p>Use <code>from datetime import date</code> then <code>print(date.today())</code></p>
+                        </div>
+                        <div class="challenge-result" id="result-code3"></div>
+                    </div>
+
+                    <div class="progress-tracker" id="coding-progress">
+                        <span class="progress-label">Progress:</span>
+                        <div class="progress-dots">
+                            <span class="dot" data-num="1"></span>
+                            <span class="dot" data-num="2"></span>
+                            <span class="dot" data-num="3"></span>
+                        </div>
+                        <span class="progress-text">0/3 completed</span>
+                    </div>
+                </div>
+
+                <!-- ==================== PART 3: CODE ANALYSIS QUIZ ==================== -->
+                <div id="quiz" class="practice-content">
+                    <div class="analysis-question" data-question="q1">
+                        <div class="question-header"><span class="question-num">Question 1/5</span></div>
+                        <div class="code-display">
+                            <pre><code>import math
+print(math.sqrt(25))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="a"><span class="option-text">5</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="b"><span class="option-text">5.0</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="c"><span class="option-text">25</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q1" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q2">
+                        <div class="question-header"><span class="question-num">Question 2/5</span></div>
+                        <div class="code-display">
+                            <pre><code>from math import pi
+print(pi)</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="a"><span class="option-text">3.14159...</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="b"><span class="option-text">"pi"</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="c"><span class="option-text">Error</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q2" value="d"><span class="option-text">3</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q3">
+                        <div class="question-header"><span class="question-num">Question 3/5</span></div>
+                        <div class="code-display">
+                            <pre><code>import math as m
+print(m.ceil(4.1))</code></pre>
+                        </div>
+                        <p class="question-text">What will be printed?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="a"><span class="option-text">4</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="b"><span class="option-text">5</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="c"><span class="option-text">4.1</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q3" value="d"><span class="option-text">Error</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q4">
+                        <div class="question-header"><span class="question-num">Question 4/5</span></div>
+                        <p class="question-text">Which import is most explicit and recommended?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="a"><span class="option-text">from math import *</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="b"><span class="option-text">import math</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="c"><span class="option-text">from math import sqrt, pi</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q4" value="d"><span class="option-text">All are equal</span></label>
+                        </div>
+                    </div>
+
+                    <div class="analysis-question" data-question="q5">
+                        <div class="question-header"><span class="question-num">Question 5/5</span></div>
+                        <div class="code-display">
+                            <pre><code>import random
+random.randint(1, 5)</code></pre>
+                        </div>
+                        <p class="question-text">What's a possible output?</p>
+                        <div class="quiz-options">
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="a"><span class="option-text">0</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="b"><span class="option-text">3</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="c"><span class="option-text">6</span></label>
+                            <label class="option-label"><input type="radio" name="analysis-q5" value="d"><span class="option-text">0.5</span></label>
+                        </div>
+                    </div>
+
+                    <button class="submit-quiz-btn" onclick="submitAnalysisQuiz()">📊 Submit Quiz</button>
+                    <div class="quiz-final-result" id="quiz-final-result">
+                        <div class="result-score">
+                            <span class="score-value" id="quiz-score">0</span>
+                            <span class="score-total">/5</span>
+                        </div>
+                        <div class="result-message" id="quiz-message"></div>
+                        <div class="result-breakdown" id="quiz-breakdown"></div>
+                        <button class="retry-btn" onclick="resetAnalysisQuiz()">🔄 Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/soynixonlopez" target="_blank">nixondev</a> for Python learners | Practice makes perfect! 🐍</p>
+        <p style="margin-top: 0.5rem;"><a href="../roadmap.html">← Back to Roadmap</a> | <a href="../index.html">Home</a></p>
+    </footer>
+    <script src="../main.js"></script>
+</body>
+</html>
+
